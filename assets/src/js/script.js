@@ -52,6 +52,7 @@
 			FBZ.control.defineStage();
 			FBZ.control.resizeContentBlock();
 			FBZ.control.scrollerControl();
+			FBZ.control.onResizeStage(); 
 		},
 
 		getHeight : function (obj) {
@@ -72,6 +73,16 @@
 			console.log("def stage", FBZ.model.stageH, FBZ.model.stageW );
 		},
 
+		onResizeStage : function ()  { 
+
+			$(window).resize(function() {
+// to re - resize the layout . 
+				FBZ.control.defineStage();
+				FBZ.control.resizeContentBlock();
+			}.debounce(150));
+
+		},
+
 		resizeContentBlock : function () { 
 			FBZ.view.$block.css("width",FBZ.model.stageW);
 			FBZ.view.$block.css("height",FBZ.model.stageH);
@@ -87,10 +98,10 @@
 			                                    // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
 			   animationTime: 1200,             // AnimationTime let you define how long each section takes to animate
 			   pagination: true,                // You can either show or hide the pagination. Toggle true for show, false for hide.
-			   updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
+			   updateURL: true,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
 			   beforeMove: function(index) {},  // This option accepts a callback function. The function will be called before the page moves.
 			   afterMove: function(index) {},   // This option accepts a callback function. The function will be called after the page moves.
-			   loop: false,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
+			   loop: true,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
 			   keyboard: true,                  // You can activate the keyboard controls
 			   responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
 			                                    // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
@@ -99,23 +110,6 @@
 			});
 
 	},
-		// Throttle calls to "callback" routine and ensure that it
-		// is not invoked any more often than "delay" milliseconds.
-		throttle:function(delay, callback) {
-			var previousCall = new Date().getTime();
-			return function() {
-				var time = new Date().getTime();
-
-				// if "delay" milliseconds have expired since
-				// the previous call then propagate this call to
-				// "callback"
-				//
-				if ((time - previousCall) >= delay) {
-					previousCall = time;
-					callback.apply(null, arguments);
-				}
-			};
-		},
 
 		isSupportedBrowserHistory: function () {
 
@@ -168,3 +162,29 @@
 	*/
 
 })(window.FBZ = window.FBZ || {}, jQuery);
+
+
+
+// debounce prototype
+Function.prototype.debounce = function (milliseconds) {
+    var baseFunction = this,
+        timer = null,
+        wait = milliseconds;
+
+    return function () {
+        var self = this,
+            args = arguments;
+
+        function complete() {
+            baseFunction.apply(self, args);
+            timer = null;
+        }
+
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        timer = setTimeout(complete, wait);
+    };
+};
+

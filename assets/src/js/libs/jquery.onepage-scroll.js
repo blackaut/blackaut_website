@@ -19,6 +19,7 @@ var current;
 var next;
 var prev;
 var pos;
+var init_index;
 
 
 !function($){
@@ -338,7 +339,6 @@ var pos;
 
       //  console.log(FBZ.model.stageH,el.find(".onepage-pagination"));
         var posTop = (FBZ.model.stageH / 2) * -1;
-        console.log("posTop : ", posTop);
         el.find(".onepage-pagination").css("margin-top", posTop);
       }
       $('ul.onepage-pagination').html(paginationList);
