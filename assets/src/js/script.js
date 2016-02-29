@@ -29,8 +29,8 @@
 		stageW	: window.innerWidth,
 		currentSection : 0,
 		lastScrollTop : 0, // setting initial scrolltop as top of page
-		direction : 0 // direction of scroll 1)up -1)down 0)static
-
+		direction : 0 ,// direction of scroll 1)up -1)down 0)static
+		stateObj : {}
 	};
 
 	FBZ.view = {
@@ -83,9 +83,9 @@
 
 			$(".main").onepage_scroll({
 			   sectionContainer: "section",     // sectionContainer accepts any kind of selector in case you don't want to use section
-			   easing: "ease",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
+			   easing: "cubic-bezier(0.175, 0.885, 0.420, 1.310)",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
 			                                    // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
-			   animationTime: 1000,             // AnimationTime let you define how long each section takes to animate
+			   animationTime: 1200,             // AnimationTime let you define how long each section takes to animate
 			   pagination: true,                // You can either show or hide the pagination. Toggle true for show, false for hide.
 			   updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
 			   beforeMove: function(index) {},  // This option accepts a callback function. The function will be called before the page moves.
@@ -96,89 +96,9 @@
 			                                    // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
 			                                    // the browser's width is less than 600, the fallback will kick in.
 			   direction: "vertical",            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
-			 posTop : 0 
 			});
 
-		// window.onscroll = FBZ.control.throttle(2000, function() {
-
-		// 	var direction = FBZ.control.detectDirection();
-
-		// 	if (direction === -1) {
-
-
-		// 		FBZ.model.currentSection ++;
-
-		// 	}else if (direction === 1 ){
-
-		// 		FBZ.model.currentSection --;
-		// 		// if(FBZ.model.currentSection < 0 ) {
-		// 		// 	FBZ.model.currentSection = 0;
-		// 		// }
-		// 	}
-
-		// 	console.log("current Section : ", FBZ.model.currentSection, "direction : ", direction );
-
-		// 	$("body").animate({'scrollTop': (FBZ.model.currentSection*FBZ.model.stageH)+'px' }, 2000);
-
-
-		// 	// console.log("onscroll", $window.scrollTop());
-
-		// 	//FBZ.view.$stage.scrollTop(200);
-		// 	//$("body").animate({'scrollTop': 700+'px' }, 500);
-
-		// 	console.log("onscroll", FBZ.view.$stage.scrollTop());
-
-
-		// 	//	console.log(FBZ.control.detectDirection());
-
-		// 		// if (delta > 0) $('body').text('down');
-		// 		// else $('body').text('up');
-
-		// 		// var olPosTop = FBZ.control.determineOlPosY(FBZ.control.olTop);
-
-		// 		// var olPosBot = FBZ.control.determineOlPosY(FBZ.control.olBot);
-
-		// 		// FBZ.control.setCss3Style(FBZ.control.olTop,'transform','translateY('+olPosTop+'px) skew(-30deg) rotate(-30deg)');
-		// 		// FBZ.control.setCss3Style(FBZ.control.olBot,'transform','translateY('+olPosBot+'px) skew(-30deg) rotate(-30deg)');
-		// });
 	},
-
-	  detectDirection : function () {
-        // current scrollTop can't be cached or in the local global scope
-        var st = window.pageYOffset;
-
-        if (st > FBZ.model.lastScrollTop) {
-            // scrolling down
-            FBZ.model.direction = -1;
-        } else if (st < FBZ.model.lastScrollTop ){
-            // scrolling up
-            FBZ.model.direction = 1;
-        } else {
-            // static
-            FBZ.model.direction = 0;
-        }
-
-        // updated lastscrolltop with new current top
-        FBZ.model.lastScrollTop = st;
-
-        // return the direction
-        return FBZ.model.direction;
-
-    },
-
-
-		determineOlPosY: function (obj) {
-
-			var posY ;
-			if (obj.alternate === true ) { 
-				posY = FBZ.control.windowHeight+FBZ.control.windowHeight*.6;
-				obj.alternate = false;
-			}else{
-				posY = -(FBZ.control.windowHeight*1.5);
-				obj.alternate = true;
-			}
-			return posY;
-		},
 		// Throttle calls to "callback" routine and ensure that it
 		// is not invoked any more often than "delay" milliseconds.
 		throttle:function(delay, callback) {
@@ -195,6 +115,25 @@
 					callback.apply(null, arguments);
 				}
 			};
+		},
+
+		isSupportedBrowserHistory: function () {
+
+			return!!(window.history && history.pushState);
+
+		},
+
+		historyReplaceValue: function (nameSection,nameArticle) {
+
+		
+			if(FBZ.control.$historySupported) {
+				//	console.log("historyPushValue");
+				if (nameArticle == "null" ) {
+					history.pushState(FBZ.model.stateObj,"", "#!/"+nameSection);
+				}else { 
+				//	history.pushState(KO.Config.stateObj,"", "#!/"+nameSection+"/"+nameArticle);
+				}
+			}
 		},
 
 		toCamelCase: function (str){

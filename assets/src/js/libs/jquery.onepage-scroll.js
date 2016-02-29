@@ -271,7 +271,7 @@ var pos;
 
     function init_scroll(event, delta) {
 
-      console.log(delta);
+   //   console.log(delta);
         deltaOfInterest = delta;
         var timeNow = new Date().getTime();
         // Cancel scroll if currently animating or within quiet period
@@ -360,6 +360,7 @@ var pos;
           $("body").addClass("viewing-page-"+next.data("index"))
           if (history.replaceState && settings.updateURL == true) {
             var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (init_index);
+            console.log("href :",href);
             history.pushState( {}, document.title, href );
           }
         }

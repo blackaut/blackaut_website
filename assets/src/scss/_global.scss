@@ -108,32 +108,30 @@ body {
 }
 
 
-// .mainContent { 
+.mainContent { 
 
-// 	//border: #000FFF;
-// 	position:absolute;
-// 	top:0;
-// 	left:0;
-// 	height:100%;
-// //		overflow:hidden;
+	//border: #000FFF;
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+//		overflow:hidden;
 
-// }
+}
 
 .block { 
 
-	//color:#FFF000;
+	background-color:$color-primary ;
 	position:relative;
 //	border:1px solid red;
 	text-align:center;
 
 }
 
-.h1 { 
 
-
-}
-
-
+//                : $003236;
+// $color-secondary              : $CCC6B1;
+// $color-highlight  
 .intro-scroll-icon { 
 
 	max-width:70px;
@@ -142,16 +140,16 @@ body {
 
 
 .center {
-	border:1px solid green;
+//	border:1px solid green;
 	//text-align:center;
 	transform:translateX(-50);
 }
 
 
 .black {
-	background-color: #000;
+	background-color: $color-primary;
 }
 .grey { 
 
-	background-color: #222;
+	background-color: #CCC6B1;
 }
