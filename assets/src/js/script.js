@@ -30,7 +30,8 @@
 		currentSection : 0,
 		lastScrollTop : 0, // setting initial scrolltop as top of page
 		direction : 0 ,// direction of scroll 1)up -1)down 0)static
-		stateObj : {}
+		stateObj : {},
+		i18n : null
 	};
 
 	FBZ.view = {
@@ -52,7 +53,19 @@
 			FBZ.control.defineStage();
 			FBZ.control.resizeContentBlock();
 			FBZ.control.scrollerControl();
-			FBZ.control.onResizeStage(); 
+			FBZ.control.onResizeStage();
+			FBZ.control.multilingualEngine(); 
+		},
+
+		multilingualEngine : function () {
+
+		var i18n = window.domI18n({
+		selector: '[data-translatable]',
+		separator: ' // ',
+		languages: ['en', 'fr'],
+		defaultLanguage: 'en'
+		});
+			i18n.changeLanguage('fr');
 		},
 
 		getHeight : function (obj) {
@@ -70,7 +83,7 @@
 
 			FBZ.model.stageH = FBZ.control.getHeight(FBZ.view.$stage);
 			FBZ.model.stageW = FBZ.control.getWidth(FBZ.view.$stage);
-			console.log("def stage", FBZ.model.stageH, FBZ.model.stageW );
+		//	console.log("def stage", FBZ.model.stageH, FBZ.model.stageW );
 		},
 
 		onResizeStage : function ()  { 
@@ -96,12 +109,12 @@
 			   sectionContainer: "section",     // sectionContainer accepts any kind of selector in case you don't want to use section
 			   easing: "cubic-bezier(0.175, 0.885, 0.420, 1.310)",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
 			                                    // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
-			   animationTime: 1200,             // AnimationTime let you define how long each section takes to animate
+			   animationTime: 900,             // AnimationTime let you define how long each section takes to animate
 			   pagination: true,                // You can either show or hide the pagination. Toggle true for show, false for hide.
 			   updateURL: true,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
 			   beforeMove: function(index) {},  // This option accepts a callback function. The function will be called before the page moves.
 			   afterMove: function(index) {},   // This option accepts a callback function. The function will be called after the page moves.
-			   loop: true,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
+			   loop: false,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
 			   keyboard: true,                  // You can activate the keyboard controls
 			   responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
 			                                    // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
@@ -110,25 +123,6 @@
 			});
 
 	},
-
-		isSupportedBrowserHistory: function () {
-
-			return!!(window.history && history.pushState);
-
-		},
-
-		historyReplaceValue: function (nameSection,nameArticle) {
-
-		
-			if(FBZ.control.$historySupported) {
-				//	console.log("historyPushValue");
-				if (nameArticle == "null" ) {
-					history.pushState(FBZ.model.stateObj,"", "#!/"+nameSection);
-				}else { 
-				//	history.pushState(KO.Config.stateObj,"", "#!/"+nameSection+"/"+nameArticle);
-				}
-			}
-		},
 
 		toCamelCase: function (str){
 			return str.toLowerCase().replace(/(\-[a-z])/g, function($1){

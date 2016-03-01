@@ -161,6 +161,7 @@ var init_index;
       if (history.replaceState && settings.updateURL == true) {
         var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (index + 1);
         history.pushState( {}, document.title, href );
+       // console.log("moveDown : ", index, $('.block').children().eq(index) );
       }
       el.transformPage(settings, pos, next.data("index"));
     }

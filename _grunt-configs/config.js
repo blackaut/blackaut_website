@@ -50,6 +50,7 @@ module.exports = {
 			'./node_modules/trak.js/dist/trak.js',
 			'./node_modules/swiftclick/js/libs/swiftclick.js',
 			'./node_modules/cookies-js/dist/cookies.js',
+			'./node_modules/dom-i18n/src/dom-i18n.js',
 			
 			'<%=config.srcDir%>/js/libs/picturefill.js',
 			'<%=config.srcDir%>/js/libs/jquery.onepage-scroll.js',
