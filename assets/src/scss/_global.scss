@@ -170,12 +170,12 @@ header {
   a {
     display: inline-block;
     padding: 1em 2em;
-    border: 3px solid black;
+    border: 3px solid white;
     position: relative;
     overflow: hidden;
     transition: 0.3s;
     text-decoration: none;
-    color: black;
+    color: white;
   }
 
   a:after {
@@ -185,7 +185,7 @@ header {
     left: 0%;
     width: 100%;
     height: 100%;
-    background: black;
+    background: white;
     transform: rotate(-20deg) scaleX(0) scaleY(3);
     z-index: -1;
     transition: 0.3s;
@@ -202,3 +202,21 @@ header {
   }
 
 }
+
+
+.dropdown-menu { 
+  position:fixed;
+  top:10px;
+  right:20px;
+
+}
+.lang-btn {
+  color:white;
+  cursor:pointer;
+}
+
+.data-translatable { 
+  display:none;
+
+}
+

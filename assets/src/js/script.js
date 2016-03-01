@@ -41,6 +41,7 @@
 		$header		:$('header'),
 		$container	:$('container'),
 		$block		:$('.block'),
+		$langBtn	:$('.lang-btn'),
 		$footer		:$('footer')
 	};
 
@@ -55,17 +56,33 @@
 			FBZ.control.scrollerControl();
 			FBZ.control.onResizeStage();
 			FBZ.control.multilingualEngine(); 
+
 		},
 
 		multilingualEngine : function () {
 
-		var i18n = window.domI18n({
-		selector: '[data-translatable]',
-		separator: ' // ',
-		languages: ['en', 'fr'],
-		defaultLanguage: 'en'
-		});
-			i18n.changeLanguage('fr');
+
+			i18n = window.domI18n({
+			selector: '[data-translatable]',
+			separator: ' // ',
+			languages: ['es', 'en', 'fr'],
+			defaultLanguage: 'fr'
+			});
+
+			console.dir(FBZ.view.$langBtn);
+
+			FBZ.view.$langBtn.children().click = function () {
+       			 FBZ.control.changeLanguage('en');
+       			 console.log("change");
+      };
+      	console.dir(FBZ.view.$langBtn);
+		},
+
+		changeLanguage : function (language) { 
+
+			i18n.changeLanguage(language);
+			console.log("changeLanguage");
+
 		},
 
 		getHeight : function (obj) {
@@ -157,7 +174,7 @@
 
 })(window.FBZ = window.FBZ || {}, jQuery);
 
-
+var i18n;
 
 // debounce prototype
 Function.prototype.debounce = function (milliseconds) {
