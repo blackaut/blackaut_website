@@ -70,12 +70,17 @@
 			});
 
 			console.dir(FBZ.view.$langBtn);
+		
+		FBZ.view.$langBtn.click(function(){
+		  // Holds the product ID of the clicked element
+  		var languageSelected = $(this).attr('lang');
+  		FBZ.control.changeLanguage(languageSelected);
+       	console.log("change to ",languageSelected);
 
-			FBZ.view.$langBtn.children().click = function () {
-       			 FBZ.control.changeLanguage('en');
-       			 console.log("change");
-      };
-      	console.dir(FBZ.view.$langBtn);
+		});
+
+
+    
 		},
 
 		changeLanguage : function (language) { 

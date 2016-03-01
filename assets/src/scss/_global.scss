@@ -213,6 +213,11 @@ header {
 .lang-btn {
   color:white;
   cursor:pointer;
+//  display:non
+  & .active { 
+    display:block;
+    background-color:#FF0;
+  }
 }
 
 .data-translatable { 
