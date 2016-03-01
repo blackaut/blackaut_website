@@ -164,45 +164,6 @@ header {
 }
 
 
-// a
-.fancyButton { 
-
-  a {
-    display: inline-block;
-    padding: 1em 2em;
-    border: 3px solid white;
-    position: relative;
-    overflow: hidden;
-    transition: 0.3s;
-    text-decoration: none;
-    color: white;
-  }
-
-  a:after {
-    content: '';
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    background: white;
-    transform: rotate(-20deg) scaleX(0) scaleY(3);
-    z-index: -1;
-    transition: 0.3s;
-    opacity: 0;
-  }
-
-  a:hover {
-    color: white;
-  }
-
-  a:hover:after {
-    transform: rotate(-20deg) scaleX(1.1) scaleY(3);
-    opacity: 1;
-  }
-
-}
-
 
 .dropdown-menu { 
   position:fixed;
@@ -222,6 +183,5 @@ header {
 
 .data-translatable { 
   display:none;
-
 }
 
