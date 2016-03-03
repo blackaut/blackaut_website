@@ -61,12 +61,13 @@
 
 		multilingualEngine : function () {
 
+			// multilingual plugin config . 
 
 			i18n = window.domI18n({
-			selector: '[data-translatable]',
-			separator: ' // ',
-			languages: ['es', 'en', 'fr'],
-			defaultLanguage: 'fr'
+				selector: '[data-translatable]',
+				separator: ' // ',
+				languages: ['es', 'en', 'fr'],
+				defaultLanguage: 'es'
 			});
 
 			console.dir(FBZ.view.$langBtn);
@@ -121,6 +122,10 @@
 		resizeContentBlock : function () { 
 			FBZ.view.$block.css("width",FBZ.model.stageW);
 			FBZ.view.$block.css("height",FBZ.model.stageH);
+
+			var dynamicPadding = ((FBZ.model.stageW+FBZ.model.stageH)*.5)*.075;
+						FBZ.view.$block.css("padding",dynamicPadding);
+
 		//	console.log(FBZ.view.$block);
 		},
 
