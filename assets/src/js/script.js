@@ -123,8 +123,8 @@
 			FBZ.view.$block.css("width",FBZ.model.stageW);
 			FBZ.view.$block.css("height",FBZ.model.stageH);
 
-			var dynamicPadding = ((FBZ.model.stageW+FBZ.model.stageH)*.5)*.075;
-						FBZ.view.$block.css("padding",dynamicPadding);
+			// var dynamicPadding = ((FBZ.model.stageW+FBZ.model.stageH)*.5)*.075;
+			// 			FBZ.view.$block.css("padding",dynamicPadding);
 
 		//	console.log(FBZ.view.$block);
 		},
