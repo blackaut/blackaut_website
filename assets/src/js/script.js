@@ -56,7 +56,13 @@
 			FBZ.control.scrollerControl();
 			FBZ.control.onResizeStage();
 			FBZ.control.multilingualEngine(); 
+			FBZ.control.checkURL();
 
+		},
+
+		checkURL : function () {
+
+			$.fn.goToSectionByName();
 		},
 
 		multilingualEngine : function () {
@@ -66,22 +72,17 @@
 			i18n = window.domI18n({
 				selector: '[data-translatable]',
 				separator: ' // ',
-				languages: ['es', 'en', 'fr'],
+				languages: ['es', 'en'],
 				defaultLanguage: 'es'
 			});
+			
+			FBZ.view.$langBtn.click(function(){
+				
+				var languageSelected = $(this).attr('lang');
+				FBZ.control.changeLanguage(languageSelected);
+				console.log("change language to ",languageSelected);
 
-			console.dir(FBZ.view.$langBtn);
-		
-		FBZ.view.$langBtn.click(function(){
-		  // Holds the product ID of the clicked element
-  		var languageSelected = $(this).attr('lang');
-  		FBZ.control.changeLanguage(languageSelected);
-       	console.log("change to ",languageSelected);
-
-		});
-
-
-    
+			});
 		},
 
 		changeLanguage : function (language) { 
