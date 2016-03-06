@@ -50,14 +50,33 @@
 	FBZ.control = {
 		// add function here
 		init : function () {
-			console.debug('FabzOff is running');
+			console.debug('NullØbject is running');
 			FBZ.control.defineStage();
 			FBZ.control.resizeContentBlock();
 			FBZ.control.scrollerControl();
 			FBZ.control.onResizeStage();
 			FBZ.control.multilingualEngine(); 
 			FBZ.control.checkURL();
+			FBZ.control.twitterWidget();
 
+		},
+
+		twitterWidget : function () {
+			window.twttr = (function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0],
+				t = window.twttr || {};
+				if (d.getElementById(id)) return t;
+			  	js = d.createElement(s);
+			  	js.id = id;
+			  	js.src = "https://platform.twitter.com/widgets.js";
+			  	fjs.parentNode.insertBefore(js, fjs); 
+				t._e = [];
+				t.ready = function(f) {
+					t._e.push(f);
+				};
+			 
+			  return t;
+			}(document, "script", "twitter-wjs"));
 		},
 
 		checkURL : function () {
@@ -81,8 +100,22 @@
 				var languageSelected = $(this).attr('lang');
 				FBZ.control.changeLanguage(languageSelected);
 				console.log("change language to ",languageSelected);
+				
+				var buttons = $.find(".lang-btn");
+				for(var i = 0 ; i < buttons.length ; i ++ ) { 
+					$(buttons[i]).removeClass("active");
+					console.dir(buttons[i],buttons[i]);
+				//	if (buttons[i].hasClass("active")) {
+						
+				//	}
+				}
 
+			//	console.log($.find(".lang-btn").hasClass("active").removeClass("active" ));	
+
+
+				$(this).addClass("active" );
 			});
+			//FBZ.control.changeLanguage('es');
 		},
 
 		changeLanguage : function (language) { 

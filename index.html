@@ -4,30 +4,30 @@
 <!-- find and replace all to set the file structure 
 
 Null Øbject 
-{twitter-username}
+nullObjectRules
 Null Øbject
-{page description}
+we are a collaborative corporation
 {share image}
-{page url}
-{content}
+http://www.nullobject.org
+Null-Object Website
 
 	// -->
 
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>Null Øbject - just say NØ</title>
-		<meta name="description" content="{content}">
+		<meta name="description" content="Null-Object Website">
 		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui"> -->
 		<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no,  minimal-ui">
 
 		<link rel="stylesheet" href="/assets/dist/css/kickoff.css">
 
-		<meta name="application-name" content="{content}">
+		<meta name="application-name" content="Null-Object Website">
 
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
 		<!-- Apple iOS -->
-		<meta name="apple-mobile-web-app-title" content="{content}">
+		<meta name="apple-mobile-web-app-title" content="Null-Object Website">
 		<link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png" />
 		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 		<link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
@@ -43,18 +43,18 @@ Null Øbject
 
 
 		<!-- Twitter - more info at https://dev.twitter.com/cards/overview -->
-		<meta name="twitter:site" content="@{twitter-username}"> <!-- e.g. @TryKickoff -->
+		<meta name="twitter:site" content="@nullObjectRules"> <!-- e.g. @TryKickoff -->
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content="Null Øbject" />
-		<meta name="twitter:description" content="{page description}" />
+		<meta name="twitter:description" content="we are a collaborative corporation" />
 		<meta name="twitter:image" content="{share image}" />
-		<meta name="twitter:url" content="{page url}" />
+		<meta name="twitter:url" content="http://www.nullobject.org" />
 
 		<!-- Open Graph data - more info at http://ogp.me/ -->
 		<meta property="og:title" content="Null Øbject" />
-		<meta property="og:description" content="{page description}" />
+		<meta property="og:description" content="we are a collaborative corporation" />
 		<meta property="og:type" content="article" />
-		<meta property="og:url" content="{page url}" />
+		<meta property="og:url" content="http://www.nullobject.org" />
 		<meta property="og:image" content="{share image}" />
 
 		<!-- Open Search - include this if you have search on your site
@@ -63,8 +63,8 @@ Null Øbject
 		     * https://uk.thebar.com/osd.xml
 		     * https://uk.thebar.com/opensearch.xml
 		 -->
-		<link rel="search" type="application/opensearchdescription+xml" href="{page url}/osd.xml" title="Null Øbject">
-		<link rel="search" type="application/opensearchdescription+xml" href="{page url}/opensearch.xml" title="Null Øbject">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://www.nullobject.org/osd.xml" title="Null Øbject">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://www.nullobject.org/opensearch.xml" title="Null Øbject">
 
 
 		<script src="/assets/dist/js/libs/modernizr.min.js"></script>
@@ -120,19 +120,15 @@ Null Øbject
 				</section>
 				<section class="projects block has-padding black page3" data-name="#projects"> 
 						<h2 data-translatable>Projectos // Projects </h2>
-						<div class="center page-container">
-							<div id="first" class="project-image">
-  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRY_V11m-f9wAkfLVWBtgHfzN3h4u8d_wXuP6P_zxj-BSLY2xLLag"/>
-							</div>
-							<div id="first" class="project-image">
-  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRY_V11m-f9wAkfLVWBtgHfzN3h4u8d_wXuP6P_zxj-BSLY2xLLag"/>
-</div>
-							<div  class="project-image">
-  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRY_V11m-f9wAkfLVWBtgHfzN3h4u8d_wXuP6P_zxj-BSLY2xLLag"/>
-</div>
+						<div class="center project-container">
 							<div class="project-image">
-  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRY_V11m-f9wAkfLVWBtgHfzN3h4u8d_wXuP6P_zxj-BSLY2xLLag"/>
-</div>
+  							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRY_V11m-f9wAkfLVWBtgHfzN3h4u8d_wXuP6P_zxj-BSLY2xLLag"/>
+  							</div>
+  							<h3 data-translatable> Nombre del Proyecto // Project name</h3>
+  							<p class="project-date">2011</p>
+  							<p class="project-description" data-translatable>Descripción del Proyecto // Project description</p>
+  							<button class="project-button" data-translatable>leer mas // read more</button> 
+							
 						</div>
 				</section>
 
@@ -150,7 +146,7 @@ Null Øbject
 
 						<form class="form form--horizontal" method="post" accept-charset="utf-8" action="php/html_form_send.php" enctype="multipart/form-data">
 
-						<h2 data-translatable> Contacto // Contact</h2>
+						<h2 data-translatable>Contacto // Contact</h2>
 								<fieldset class="form-fieldset">
 									<div class="form-controlGroup">
 										<label class="form-label" for="first_name" data-translatable>Nombre // First Name </label>
@@ -185,16 +181,34 @@ Null Øbject
 							</form>
 				</section>
 				<section class="contact block grey page7" data-name="#footer"> 
-							<div class="contact-info">
+							<div class="contact-info thirder">
 								<h2 data-translatable >Informaci&otilde;n de Contacto // Contact Information</h2>
 
 								<address class="addressinfo">Toledo 1960 Providencia, <br>Santiago, Chile.</address>
 
-								<a class="contact-mailto-link" href='mailto:fabz@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>fabz@nullobject.org</a>
-								<a class="contact-mailto-link" href='mailto:naik@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>naik@nullobject.org</a>
-								<a class="contact-mailto-link" href='mailto:juanpablo@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>juanpablo@nullobject.org</a>
+
+							<div class="contact-mails thirder">
+								<a class="contact-mailto-link" href='mailto:fabz@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>fabz@nullobject.org</a><br>
+								<a class="contact-mailto-link" href='mailto:naik@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>naik@nullobject.org</a><br>
+								<a class="contact-mailto-link" href='mailto:juanpablo@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>juanpablo@nullobject.org</a><br>
 								<a class="contact-mailto-link" href='mailto:pablo.ortuzar@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>pablo.ortuzar@nullobject.org</a>
 							</div>
+
+
+							<div class="contact-social thirder">
+
+							</div>
+
+							<div class="contact-visit-sections"> </div>
+								<div class="contact-visit-logo ">
+									<img class="logo-init" src="../assets/img/no_logo_academy.svg" alt="no_logo">
+								</div>
+
+								<div class="contact-visit-logo">
+									<img class="logo-init" src="../assets/img/no_logo_labs.svg" alt="no_logo">
+								</div>
+							</div>
+
 							<footer>
 								<h3 data-translatable >© 2016  NULLØBJECT TODOS LOS DERECHOS RESERVADOS | LAS MARCAS MENTIONADAS SON PROPIEDAD DE SUS RESPECTIVOS DUE&Ntilde;OS. // © 2016 ALL RIGHTS RESERVED NULLØBJECT | BRANDS MENTIONNED ABOVE ARE PROPERTY OF THEIR RESPECTIVE OWNER.</h3>
 							</footer>
@@ -205,17 +219,23 @@ Null Øbject
 		</div>
 
 		<header class="masthead" role="banner">
-				<div class="dropdown-menu">
-					<a class='lang-btn active' lang='en' >en</a>
-					<a class='lang-btn' lang='es' >es</a>
-				</div>
+			<div class="dropdown-menu">
+				<a class='lang-btn' lang='en' >EN</a>
+				<a class='lang-btn active' lang='es' >ES</a>
+			</div>
 
+			<div class="site-menu">
+					<a class='menu-btn'  href='/' >HOME</a>
+					<a class='menu-btn' href='/academy/' >ACADEMY</a>
+					<a class='menu-btn' href='/labs/' >LABS</a>
+			</div>
 
-		<div class="site-menu">
-					<a class='menu-btn'  href='/' >home</a>
-					<a class='menu-btn' href='/academy/' >academy</a>
-					<a class='menu-btn' href='/labs/' >labs</a>
-				</div>
+			<div class="no-icon-menu"> 
+					<div class="header-logo">
+						<img class="logo-init" src="../assets/img/shield_logo.svg" alt="shield_logo">
+					</div>
+			</div>
+
 		</header>
 		<!-- JavaScript -->
 		<script src="/assets/dist/js/script.js"></script>

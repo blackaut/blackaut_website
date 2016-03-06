@@ -54,10 +54,8 @@ body, .onepage-wrapper, html {
 	position: absolute;
 	width: 4px;
 	height: 4px;
-	background: rgba(0,0,0,0.85);
+	background: rgba(255,255,255,1);
 	border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
 }
 
 .onepage-pagination li a.active:before{
@@ -67,6 +65,22 @@ body, .onepage-wrapper, html {
 	border: 1px solid black;
 	margin-top: -4px;
 	left: 8px;
+	background-image: gradient(
+
+linear,
+
+left bottom,
+
+right top,
+
+color-stop(0.07, #FFFF00),
+
+color-stop(0.5, #000000),
+
+color-stop(1, #FFFF00)
+
+);
+
 }
 
 .disabled-onepage-scroll, .disabled-onepage-scroll .wrapper {
@@ -79,10 +93,8 @@ body, .onepage-wrapper, html {
 	left: auto !important;
 }
 .disabled-onepage-scroll .onepage-wrapper {
-	-webkit-transform: none !important;
-	-moz-transform: none !important;
+
 	transform: none !important;
-	-ms-transform: none !important;
 	min-height: 100%;
 }
 
@@ -136,10 +148,18 @@ body {
 // $color-secondary              : $CCC6B1;
 // $color-highlight  
 .intro-scroll-icon { 
-
-	max-width:50px;
+	width: 100%;
+	display: block;
+	position: absolute;
 	margin:0 auto;
-	bottom: 0;
+	//margin-top:50%;
+	bottom: 5px;
+	svg {
+
+		max-width:50px;
+		transform:translateX(-100%);
+
+	}
 
 }
 
@@ -173,7 +193,7 @@ header {
 	//background-color: #CCC6B1;
 	position:absolute;
 	top:0;
-	height: 50px;
+	height: 80px;
 	text-align: center;
 	background-color: #666;
 	width: 100%;
@@ -181,50 +201,87 @@ header {
 	margin: auto;
 }
 
-.dropdown-menu { 
-	position:fixed;
-	top:10px;
-	right:20px;
 
+.header-logo { 
+	width: 80px;
+	top: 0px;
+	left:20px;
+//	position:fixed;
+//	display:none;
+
+	&.active { 
+
+		display:inline-block;
+	}
 }
+
+
+
 
 .site-menu {
 	position:fixed;
-	top:10px;
-	left:20px;
+	top:25px;
+	left:90px;
+	color: #444;
+
 }
 
 .menu-btn {
-	color:white;
+	color:white!important;
 	cursor:pointer;
 	padding: 10px 10px 10px 10px;
-	margin-left: 10px;
+	margin-left: 30px;
+
 //  display:non
 	& .active { 
 		display:block;
-		background-color: #000;
+		color: #000;
 	}
+}
+
+
+// lang
+.dropdown-menu { 
+	position:fixed;
+	top:24px;
+	right:20px;
+//	background-color:#DDD;
+	//border: 1px #DDD solid;
+	border: 1px #BBB solid;
+	border-radius: 2px;
 }
 
 
 .lang-btn {
 	color:white;
 	cursor:pointer;
-//  display:non
-	& .active { 
-		display:block;
-		background-color:#FF0;
+	padding:4px;
+	color:#DDD;
+//	margin: 0 auto;
+	display: inline-block;
+	transition: all 600ms ease-in-out;
+	//transform:translateX(-5px);
+	max-width:35px;
+	&.active {
+		background-color:#DDD;
+		color:#000;
+	}
+	&:hover {
+		color:#000;
 	}
 }
 
+
+// end header 
+
+// helper translation plugin
 .data-translatable { 
 	display:none;
 }
 
 
 
-
-// mission inphography 
+// mission infography 
 
 .sphere {
 		text-align:center;
@@ -289,21 +346,49 @@ header {
   display:inline-block;
   box-shadow: 0 0 5px #ccc;
   overflow: hidden;
-  -webkit-transition: all 600ms ease-in-out;
+  transition: all 600ms ease-in-out;
 
 }
 
 .project-image > img {
-  -webkit-transition: all 500ms ease-in-out;
-  -webkit-transform: rotate(20deg) scale(2);
-  -webkit-filter: grayscale(1);
+ transition: all 500ms ease-in-out;
+ transform: rotate(20deg) scale(2);
+ filter: grayscale(1);
 }
 
 .project-image > img:hover{
-  -webkit-transition: all 450ms ease-in-out;
-  -webkit-transform: rotate(0deg) scale(1);
-  -webkit-filter: grayscale(0);
+  transition: all 450ms ease-in-out;
+  transform: rotate(0deg) scale(1);
+  filter: grayscale(0);
 }
+
+
+.cursos-image {
+  width:100vw; 
+  height:20vw;
+  background: #eee;
+  margin:50px 0 0 100px;
+  display:inline-block;
+  box-shadow: 0 0 5px #ccc;
+  overflow: hidden;
+  transition: all 600ms ease-in-out;
+
+}
+
+.cursos-image > img {
+  transition: all 500ms ease-in-out;
+  transform: rotate(20deg) scale(2);
+  filter: grayscale(1);
+ width:100vw; 
+}
+
+.cursos-image > img:hover{
+  transition: all 450ms ease-in-out;
+  transform: rotate(0deg) scale(1);
+  filter: grayscale(0);
+}
+
+
 
 footer {
 
@@ -314,4 +399,10 @@ footer {
 	width: 100%;
 	position: absolute;
 	margin: auto;
+	
+	h3 { 
+		font-size:0.6em;
+		margin-top:40px;
+	}
 }
+
