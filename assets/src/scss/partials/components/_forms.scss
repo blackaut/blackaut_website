@@ -17,8 +17,8 @@
 $input-bgColor         : #fff;                // Colour of input background
 $input-borderColor     : #ccc;                // Colour of input borders
 $form-actions-bgColor  : #f5f5f5;             // Background colour of form actions container (i.e. submit)
-$label-textColor       : $color-text;         // Text colour of form labels and legends
-$input-textColor       : $color-text;         // Text colour of form inputs
+$label-textColor       : #000;         // Text colour of form labels and legends
+$input-textColor       : #000;         // Text colour of form inputs
 
 $placeholder-textColor : lighten(#000, 70%);  // Text colour of input placeholder
 
@@ -310,8 +310,6 @@ input[type="submit"] {
 	padding: $baseline 20px;
 	margin-top: $baseline;
 	margin-bottom: $baseline;
-	background-color: $form-actions-bgColor;
-	border-top: 1px solid #ddd;
 
 	.btn {
 		margin-right: 10px;

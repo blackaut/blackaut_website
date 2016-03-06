@@ -15,7 +15,7 @@ Null Øbject
 
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Null Øbject</title>
+		<title>Null Øbject - just say NØ</title>
 		<meta name="description" content="{content}">
 		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui"> -->
 		<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no,  minimal-ui">
@@ -73,9 +73,9 @@ Null Øbject
 
 			<div id="mainContent" class="main container" role="main">
 				
-				<section class="intro block black page1  " data-name="#home">
+				<section class="intro block has-padding black page1  " data-name="#home">
 					<div class="intro-logo center page-container">
-						<img src="assets/img/no_logo.png" alt="no_logo">
+						<img class="logo-init" src="assets/img/no_logo.svg" alt="no_logo">
 					</div>
 					<div class="intro-scroll-icon">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -93,7 +93,7 @@ Null Øbject
 				</section>
 
 
-				<section class="mission block grey page2" data-name="#mission">
+				<section class="mission block has-padding grey page2" data-name="#mission">
 					
 						<div class="infograph halfer"> 
 							
@@ -114,12 +114,12 @@ Null Øbject
 							</div>
 						</div>
 						<div class="halfer">
-							<h1 data-translatable>Misión // Mission // Missionx</h1>
-							 <p data-translatable>El rapido zorro salta sobre el perro flojo. // The quick brown fox jumps over the lazy dog. // Le rapide renard marron saute par-dessus le chien paresseux.</p>
+							<h1 data-translatable>Misión // Mission</h1>
+							 <p data-translatable>Somos un equipo de talentosos profesionales que disfruta al realizar sus ideas, Creemos en encontrar el delicado balance entre ciencia y naturaleza. Estamos dedicados a investigar, difundir e implementar el uso de la Tecnologías digitales para la industria creativa. // We are team of greatly talented professionals, we believe in finding the delicate balance of science and nature. We like to make ideas happen. We think that the best work is the result of a constant dialog that will evolve into something unique.</p>
 						</div>
 				</section>
-				<section class="projects block black page3" data-name="#projects"> 
-						
+				<section class="projects block has-padding black page3" data-name="#projects"> 
+						<h2 data-translatable>Projectos // Projects </h2>
 						<div class="center page-container">
 							<div id="first" class="project-image">
   <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRY_V11m-f9wAkfLVWBtgHfzN3h4u8d_wXuP6P_zxj-BSLY2xLLag"/>
@@ -135,28 +135,31 @@ Null Øbject
 </div>
 						</div>
 				</section>
-				<section class="about block grey page4"  data-name="#about"> 
-						
-				</section>
 
-				<section class="team block black page5" data-name="#team"> 
-					
+				<section class="team block has-padding black page5" data-name="#team"> 
+					<h2 data-translatable> Equipo // Team</h2>
+
+						<div class="team person-card"> 
+							<img src="http://indiabright.com/wp-content/uploads/2015/11/profile_picture_by_kyo_tux-d4hrimy.png" > 
+							<h3>Nombre</h3>
+							<h4>Cargo</h4>
+						</div>
 				</section>
 				
-				<section class="contact block grey page6" data-name="#contact"> 
-				
+				<section class="contact block has-padding grey page6" data-name="#contact"> 
+
 						<form class="form form--horizontal" method="post" accept-charset="utf-8" action="php/html_form_send.php" enctype="multipart/form-data">
 
-						<h2>Send me an email</h2>
+						<h2 data-translatable> Contacto // Contact</h2>
 								<fieldset class="form-fieldset">
 									<div class="form-controlGroup">
-										<label class="form-label" for="first_name">First Name</label>
+										<label class="form-label" for="first_name" data-translatable>Nombre // First Name </label>
 										<div class="form-controlGroup-inputWrapper">
 											<input class="form-input form_el" name="first_name" type="text" id="text" placeholder="First Name" required/>
 										</div>
 									</div>
 									<div class="form-controlGroup">
-										<label class="form-label" for="last_name">Last Name</label>
+										<label class="form-label" for="last_name" data-translatable>Apellido // Last Name</label>
 										<div class="form-controlGroup-inputWrapper">
 											<input class="form-input" name="last_name" type="text" id="text" class="form_el" placeholder="Last Name" required/>
 										</div>
@@ -164,12 +167,12 @@ Null Øbject
 									<div class="form-controlGroup">
 										<label class="form-label" for="email">Email</label>
 										<div class="form-controlGroup-inputWrapper">
-										<input class="form-input" name="email" type="email" id="email" class="form_el" placeholder="fabian@fabz.tv" required/>
+										<input class="form-input" name="email" type="email" id="email" class="form_el" required/>
 										</div>
 									</div>
 
 									<div class="form-controlGroup">
-										<label class="form-label" for="comments">Message</label>
+										<label class="form-label" for="comments" data-translatable>Mensaje // Message</label>
 										<div class="form-controlGroup-inputWrapper">
 											<textarea class="form-input form-input--textarea" name="comments" id="comments" class="form_el" rows="2" cols="50"></textarea>
 										</div>
@@ -180,25 +183,28 @@ Null Øbject
 									<input type="submit" class="btn btn--primary form_el" />
 								</div>
 							</form>
-
-											<div class="contact-info">
-												<h2>Contact Information</h2>
-
-												<address class="addressinfo">Toledo 1960 Providencia, <br>Santiago, Chile.</address>
-
-												<a class="contact-mailto-link" href='mailto:fabz@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>fabian@fabz.tv</a>
-											</div>
-											<footer>
-												<h3 data-translatable >© 2016  NULLØBJECT TODOS LOS DERECHOS RESERVADOS | LAS MARCAS MENTIONADAS SON PROPIEDAD DE SUS RESPECTIVOS DUE&Ntilde;OS. // © 2016 ALL RIGHTS RESERVED NULLØBJECT | BRANDS MENTIONNED ABOVE ARE PROPERTY OF THEIR RESPECTIVE OWNER.</h3>
-											</footer>
-										</div>
 				</section>
+				<section class="contact block grey page7" data-name="#footer"> 
+							<div class="contact-info">
+								<h2 data-translatable >Informaci&otilde;n de Contacto // Contact Information</h2>
 
+								<address class="addressinfo">Toledo 1960 Providencia, <br>Santiago, Chile.</address>
+
+								<a class="contact-mailto-link" href='mailto:fabz@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>fabz@nullobject.org</a>
+								<a class="contact-mailto-link" href='mailto:naik@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>naik@nullobject.org</a>
+								<a class="contact-mailto-link" href='mailto:juanpablo@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>juanpablo@nullobject.org</a>
+								<a class="contact-mailto-link" href='mailto:pablo.ortuzar@nullobject.org?subject=How%20can%20I%20help&body=Contact%20from%20nullobject.org'>pablo.ortuzar@nullobject.org</a>
+							</div>
+							<footer>
+								<h3 data-translatable >© 2016  NULLØBJECT TODOS LOS DERECHOS RESERVADOS | LAS MARCAS MENTIONADAS SON PROPIEDAD DE SUS RESPECTIVOS DUE&Ntilde;OS. // © 2016 ALL RIGHTS RESERVED NULLØBJECT | BRANDS MENTIONNED ABOVE ARE PROPERTY OF THEIR RESPECTIVE OWNER.</h3>
+							</footer>
+						</div>
+				</section>
 			</div><!-- Close container -->
 
 		</div>
 
-		<div class="masthead" role="banner">
+		<header class="masthead" role="banner">
 				<div class="dropdown-menu">
 					<a class='lang-btn active' lang='en' >en</a>
 					<a class='lang-btn' lang='es' >es</a>
@@ -207,10 +213,10 @@ Null Øbject
 
 		<div class="site-menu">
 					<a class='menu-btn'  href='/' >home</a>
-					<a class='menu-btn' href='/academy.html' >academy</a>
-					<a class='menu-btn' href='/labs.html' >labs</a>
+					<a class='menu-btn' href='/academy/' >academy</a>
+					<a class='menu-btn' href='/labs/' >labs</a>
 				</div>
-		</div>
+		</header>
 		<!-- JavaScript -->
 		<script src="/assets/dist/js/script.js"></script>
 

@@ -124,10 +124,13 @@ body {
 	background-color:$color-primary;
 	position:relative;
 	text-align:center;
-	padding: 10vw;
 
 }
 
+.has-padding  { 
+
+	padding: 10vw;
+}
 
 //                : $003236;
 // $color-secondary              : $CCC6B1;
@@ -138,6 +141,11 @@ body {
 	margin:0 auto;
 	bottom: 0;
 
+}
+
+.logo-init { 
+
+	max-width: 60vw;
 }
 
 
@@ -162,10 +170,15 @@ body {
 
 header {
 
-	height:100px;
 	//background-color: #CCC6B1;
 	position:absolute;
 	top:0;
+	height: 50px;
+	text-align: center;
+	background-color: #666;
+	width: 100%;
+	position: absolute;
+	margin: auto;
 }
 
 .dropdown-menu { 
@@ -215,11 +228,11 @@ header {
 
 .sphere {
 		text-align:center;
-    border-radius:250px;
-    vertical-align: middle;
-    display: table-cell;
-    text-align:center;
-    background:#000;
+	border-radius:250px;
+	vertical-align: middle;
+	display: table-cell;
+	text-align:center;
+	background:#000;
 }
 
 .infograph { 
@@ -233,6 +246,14 @@ header {
 	width:40vw;
 	display:inline-block;
 	border:1px solid green;
+	float: left;
+
+}
+.thirder { 
+
+	width:26vw;
+	display:inline-block;
+	border:1px solid red;
 	float: left;
 
 }
@@ -265,14 +286,12 @@ header {
   border:solid 7px #fff;
   background: #eee;
   margin:50px 0 0 100px;
-  position: absolute;
+  display:inline-block;
   box-shadow: 0 0 5px #ccc;
   overflow: hidden;
   -webkit-transition: all 600ms ease-in-out;
-  
+
 }
-
-
 
 .project-image > img {
   -webkit-transition: all 500ms ease-in-out;
@@ -286,4 +305,13 @@ header {
   -webkit-filter: grayscale(0);
 }
 
+footer {
 
+	bottom: 0;
+	height: 100px;
+	text-align: center;
+	background-color: #000;
+	width: 100%;
+	position: absolute;
+	margin: auto;
+}

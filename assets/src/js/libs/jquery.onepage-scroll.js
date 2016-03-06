@@ -168,7 +168,7 @@ var init_index = 0;
 				//		var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (index - 1);
 
 						var sectionValue = $('section').eq(index).attr("data-name") ;
-						console.log(sectionValue);
+				//		console.log(sectionValue);
 						history.pushState( {}, document.title, sectionValue );
 						}
 					//  console.log(
@@ -212,7 +212,7 @@ var init_index = 0;
 			$("body").addClass("viewing-page-"+next.data("index"))
 
 			$.fn.replaceHistoryAndGo(settings, pos, next.data("index"));
-				console.log("moveDown",index, pos,next.data("index") );
+		//		console.log("moveDown",index, pos,next.data("index") );
 		}
 
  $.fn.moveUp = function() {
@@ -274,7 +274,7 @@ var init_index = 0;
           //  history.pushState( {}, document.title, href );
             var sectionValue = $('section').eq(page_index-1).attr("data-name") ;
 						history.pushState( {}, document.title, sectionValue );
-						console.log("moveTo",sectionValue);
+			//			console.log("moveTo",sectionValue);
 
         }
         el.transformPage(settings, pos, page_index);
