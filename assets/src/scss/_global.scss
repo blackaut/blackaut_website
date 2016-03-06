@@ -2,9 +2,32 @@
 body, html {
 	margin: 0;
 	overflow: hidden;
-	-webkit-transition: opacity 400ms;
-	-moz-transition: opacity 400ms;
 	transition: opacity 400ms;
+
+}
+
+.roboto-uppercase { 
+	font-family: Roboto;
+	text-transform: uppercase;
+	font-size: 0.7em;
+}
+
+h1 { 
+
+	font-family: Roboto;
+	text-transform: uppercase;
+	font-size: 1em;
+	text-align:left;
+	color: #333;
+	padding-left: 5vw;
+	&:before {
+		content: "";
+			text-decoration:underline;
+
+}
+
+
+
 }
 
 body, .onepage-wrapper, html {
@@ -32,7 +55,7 @@ body, .onepage-wrapper, html {
 .onepage-pagination {
 	position: absolute;
 	right: 10px;
-	top: 50%;
+	top: 50vh;
 	z-index: 5;
 	list-style: none;
 	margin: 0;
@@ -49,7 +72,7 @@ body, .onepage-wrapper, html {
 	display: block;
 	cursor:pointer;
 }
-.onepage-pagination li a:before{
+.onepage-pagination li a:before {
 	content: '';
 	position: absolute;
 	width: 4px;
@@ -58,29 +81,13 @@ body, .onepage-wrapper, html {
 	border-radius: 10px;
 }
 
-.onepage-pagination li a.active:before{
+.onepage-pagination li a.active:before {
 	width: 10px;
 	height: 10px;
 	background: none;
-	border: 1px solid black;
+	border: 1px solid white;
 	margin-top: -4px;
 	left: 8px;
-	background-image: gradient(
-
-linear,
-
-left bottom,
-
-right top,
-
-color-stop(0.07, #FFFF00),
-
-color-stop(0.5, #000000),
-
-color-stop(1, #FFFF00)
-
-);
-
 }
 
 .disabled-onepage-scroll, .disabled-onepage-scroll .wrapper {
@@ -146,7 +153,10 @@ body {
 
 //                : $003236;
 // $color-secondary              : $CCC6B1;
-// $color-highlight  
+// $color-highlight
+
+
+// intro   
 .intro-scroll-icon { 
 	width: 100%;
 	display: block;
@@ -163,9 +173,29 @@ body {
 
 }
 
+.intro-keywords {
+	width: 100%;
+//	float: left;
+	list-style-type: none;
+	display:inline;
+	//margin:0 auto;
+	
+	li { 
+		border-right: 1px white solid;
+		display: inline-block;
+		text-align:center;
+		padding:0px 20px 0px 20px;
+	&:last-child { 
+		border-right: none;
+		}
+	}
+}
+
 .logo-init { 
 
 	max-width: 60vw;
+	padding-bottom:20px;
+	border-bottom:1px white solid;
 }
 
 
@@ -197,7 +227,6 @@ header {
 	text-align: center;
 	background-color: #666;
 	width: 100%;
-	position: absolute;
 	margin: auto;
 }
 
@@ -206,8 +235,6 @@ header {
 	width: 80px;
 	top: 0px;
 	left:20px;
-//	position:fixed;
-//	display:none;
 
 	&.active { 
 
@@ -231,6 +258,7 @@ header {
 	cursor:pointer;
 	padding: 10px 10px 10px 10px;
 	margin-left: 30px;
+	font-size: 0.7em;
 
 //  display:non
 	& .active { 
@@ -245,23 +273,27 @@ header {
 	position:fixed;
 	top:24px;
 	right:20px;
-//	background-color:#DDD;
-	//border: 1px #DDD solid;
-	border: 1px #BBB solid;
 	border-radius: 2px;
+	&:before { 
+
+		border: 1px #BBB solid;
+	}
 }
 
 
 .lang-btn {
+
+	font-size: 0.5em;
 	color:white;
 	cursor:pointer;
-	padding:4px;
+	padding:5px;
 	color:#DDD;
 //	margin: 0 auto;
 	display: inline-block;
-	transition: all 600ms ease-in-out;
+	transition: all 300ms ease-in-out;
 	//transform:translateX(-5px);
 	max-width:35px;
+
 	&.active {
 		background-color:#DDD;
 		color:#000;
@@ -284,7 +316,7 @@ header {
 // mission infography 
 
 .sphere {
-		text-align:center;
+	text-align:center;
 	border-radius:250px;
 	vertical-align: middle;
 	display: table-cell;
@@ -382,7 +414,7 @@ header {
  width:100vw; 
 }
 
-.cursos-image > img:hover{
+.cursos-image > img:hover {
   transition: all 450ms ease-in-out;
   transform: rotate(0deg) scale(1);
   filter: grayscale(0);
@@ -406,3 +438,13 @@ footer {
 	}
 }
 
+.contact-visit-logo {
+	max-width:30vh;
+	display:inline-block;
+	position:relative
+}
+.contact-visit-sections { 
+	width:100vw;
+	display:block;
+
+}
