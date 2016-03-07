@@ -439,12 +439,14 @@ footer {
 }
 
 .contact-visit-logo {
-	max-width:30vh;
-	display:inline-block;
-	position:relative
+	max-width:30vw;
+	display: inline;
+    position: relative;
 }
 .contact-visit-sections { 
-	width:100vw;
+	width:100%;
 	display:block;
+	    max-width: 30vh;
+
 
 }
