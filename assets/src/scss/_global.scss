@@ -1,3 +1,50 @@
+// bg object
+
+
+.background-object { 
+	top:0;
+	rigth:0;
+	position: absolute;
+	display:inline-block;
+}
+
+// people
+.people-container { 
+
+	width:100%;
+	display:inline-block;
+	margin: 0 auto;
+	//border:1px solid pink;
+	text-align:center;
+}
+
+
+.person-card {
+	display: inline-block;
+//	float: left;
+//	transform: scale(0.2);
+	max-width:15vh;
+	padding: 5px;
+//	border:1px solid red;
+height:100%;
+
+	h3  {
+
+		margin:0;
+		font-size:.7em;
+	}
+	h4 { 
+		margin:0;
+		font-size:.6em;
+		
+	}
+}
+
+.person-img { 
+
+	width: 15vw;
+	//overflow:hidden;
+}
 
 body, html {
 	margin: 0;
@@ -12,23 +59,39 @@ body, html {
 	font-size: 0.7em;
 }
 
+.roboto-big { 
+	font-family: Roboto;
+	text-transform: uppercase;
+	font-size: .6em;
+}
+
 h1 { 
 
 	font-family: Roboto;
 	text-transform: uppercase;
-	font-size: 1em;
+	font-size: .8em;
 	text-align:left;
-	color: #333;
-	padding-left: 5vw;
+	padding-left:5vw;
+	margin-top: 6vw;
 	&:before {
 		content: "";
-			text-decoration:underline;
+		text-decoration:underline;
+	}
+}
+h2 { 
 
+   font-family: 'aldrichregular';
+   	font-size: 1.5em;
 }
 
+p { 
 
+	font-family: 'anonymous_proregular';
+	font-size: .7em;
+ }
 
-}
+// plug in - page completes
+
 
 body, .onepage-wrapper, html {
 	display: block;
@@ -129,18 +192,16 @@ body {
 
 .mainContent { 
 
-	//border: #000FFF;
 	position:absolute;
 	top:0;
 	left:0;
 	height:100%;
-//		overflow:hidden;
 
 }
 
 .block { 
 
-	background-color:$color-primary;
+	//background-color:$color-primary;
 	position:relative;
 	text-align:center;
 
@@ -158,19 +219,19 @@ body {
 
 // intro   
 .intro-scroll-icon { 
-	width: 100%;
+
+	width: 30px;
 	display: block;
-	position: absolute;
+	position: fixed;
 	margin:0 auto;
 	//margin-top:50%;
 	bottom: 5px;
+	right: 5px;
+
 	svg {
-
-		max-width:50px;
-		transform:translateX(-100%);
-
+		max-width:30px;
+		//transform:translateX(-100%);
 	}
-
 }
 
 .intro-keywords {
@@ -193,9 +254,10 @@ body {
 
 .logo-init { 
 
-	max-width: 60vw;
+	max-width: 40vh;
 	padding-bottom:20px;
-	border-bottom:1px white solid;
+//	border-bottom:1px white solid;
+	transform:translateY(30vh);
 }
 
 
@@ -209,12 +271,36 @@ body {
 
 
 .black {
-	background-color: $color-primary;
+	background-color: $no-black;
 }
+.dark-grey { 
+	background-color: $no-gray;
+}
+
 .grey { 
 
-	background-color: #CCC6B1;
+		background-color: $no-palegray;
 }
+
+.blue { 
+	background-color: $no-styleblue;
+
+}
+
+
+.pink { 
+	background-color:$no-hardpink;
+
+}
+
+
+// $no-black				: #1d1d1d;
+// $no-gray					: #3b3b3b;
+// $no-palegray				: #949494;
+// $no-styleblue			: #00FFD9; 
+// $no-hardpink				: #ff1f71;
+
+
 
 /// header 
 
@@ -225,16 +311,25 @@ header {
 	top:0;
 	height: 80px;
 	text-align: center;
-	background-color: #666;
+//	background-color: $no-hardpink;
 	width: 100%;
 	margin: auto;
+
+	&:after { 
+	//	height: 0;
+		border-style: solid;
+		border-width: 231px 115.5px 0 115.5px;
+		border-color: #007bff transparent transparent transparent;
+		transform:skew(30deg);
+	}
 }
 
 
 .header-logo { 
+	
 	width: 80px;
 	top: 0px;
-	left:20px;
+	margin-left:22px;
 
 	&.active { 
 
@@ -243,28 +338,32 @@ header {
 }
 
 
-
-
 .site-menu {
 	position:fixed;
 	top:25px;
 	left:90px;
-	color: #444;
-
+	color: $no-black;
 }
 
 .menu-btn {
-	color:white!important;
+
+	color:$no-hardpink!important;
 	cursor:pointer;
 	padding: 10px 10px 10px 10px;
 	margin-left: 30px;
 	font-size: 0.7em;
+	border-left: 1px solid $no-hardpink;
 
 //  display:non
 	& .active { 
-		display:block;
-		color: #000;
+
+//		display:block;
+		//color: $no-styleblue!important;
 	}
+	&:hover { 
+		//color: $no-styleblue!important;
+	}
+
 }
 
 
@@ -276,7 +375,7 @@ header {
 	border-radius: 2px;
 	&:before { 
 
-		border: 1px #BBB solid;
+		border: 1px $no-gray solid;
 	}
 }
 
@@ -284,10 +383,9 @@ header {
 .lang-btn {
 
 	font-size: 0.5em;
-	color:white;
+	color: $no-hardpink;
 	cursor:pointer;
 	padding:5px;
-	color:#DDD;
 //	margin: 0 auto;
 	display: inline-block;
 	transition: all 300ms ease-in-out;
@@ -295,11 +393,11 @@ header {
 	max-width:35px;
 
 	&.active {
-		background-color:#DDD;
-		color:#000;
+		background-color:$no-palegray;
+		color:$no-black;
 	}
 	&:hover {
-		color:#000;
+		color:$no-black;
 	}
 }
 
@@ -316,52 +414,142 @@ header {
 // mission infography 
 
 .sphere {
+
 	text-align:center;
 	border-radius:250px;
 	vertical-align: middle;
 	display: table-cell;
-	text-align:center;
-	background:#000;
+	background-color:$no-hardpink;
+	animation: animSphereBig 15s ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+	backface-visibility: hidden;
+	font-family: 'anonymous_proregular';
+	color:$no-black;
+	opacity:.9;
+
+};
+
+.sphere-big { 
+
+//	background-color:$no-gr;
+	opacity:1;
 }
+
+.sphere-one {
+	position:absolute;
+	//background-color:$no-styleblue;
+	animation: animSphere1 9s ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+	backface-visibility: hidden;
+//	mix-blend-mode: multiply;
+	opacity:.8;
+
+};
+
+
+.sphere-two {
+
+	position:absolute;
+	animation: animSphere2 11s ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+	backface-visibility: hidden;
+	opacity:.8;
+};
+
+.sphere-three {
+
+
+	mix-blend-mode: overlay;
+	position:absolute;
+	animation: animSphere3 10s ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+	backface-visibility: hidden;
+}
+
+
+.sphere-wrap {
+
+	position:absolute;
+	
+}
+
+/*  general fade out */
+@keyframes animSphereBig {
+    0%   {transform: translateY(90%) translateX(30%)  }
+    50% {transform: translateY(80%) translateX(40%) }
+
+    100% {transform: translateY(70%) translateX(55%) }
+}
+
+// hacer
+@keyframes animSphere1 {
+	0%   {transform: translateY(210%) translateX(0%) }
+    100% {transform: translateY(220%) translateX(5%)}
+  }
+
+//
+@keyframes animSphere2 {
+	 0%   {transform: translateY(120%) translateX(210%)}
+    100% {transform: translateY(120%) translateX(230%)}
+
+}
+
+@keyframes animSphere3 {
+	0%   {transform: translateY(10%) translateX(12%)  }
+    100% {transform: translateY(15%) translateX(27%) }
+
+}
+
+
+
+
+.is-animating  {
+	animation: anim 2s ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+	backface-visibility: hidden;
+}
+
+
+
+
 
 .infograph { 
-	border:1px solid red;
+//border:1px solid red;
 	//width:auto;
 	margin:0 auto;
-}
-
-.halfer { 
-
 	width:40vw;
-	display:inline-block;
-	border:1px solid green;
-	float: left;
-
-}
-.thirder { 
-
-	width:26vw;
-	display:inline-block;
-	border:1px solid red;
-	float: left;
-
+	height:100%;
+	float:left;
 }
 
 .infograph-big {
 
-		color:#fff;
-		width:30vw; /* 20% of the viewport width */
-		height: 30vw;
-		font-size:1.5em;
+	color:$no-hardpink;
+	background-color:$no-black!important;
+	width:20vw; /* 20% of the viewport width */
+	height: 20vw;
+	font-size:.9em;
+	transform: translateX(50%) translateY(50%);
 }
 
 .infograph-small {
 
-		color:#fff;
-		width:15vw; /* 10% of the viewport width */
-		height: 15vw;
-	//	font-size:.8em;
+		color:$no-gray;
+		width:10vw; /* 10% of the viewport width */
+		height: 10vw;
+		font-size:.75em;
 		//position:absolute;
+		transform: translateX(50%) translateY(50%);
 }
 
 
@@ -420,14 +608,12 @@ header {
   filter: grayscale(0);
 }
 
-
-
 footer {
 
 	bottom: 0;
 	height: 100px;
 	text-align: center;
-	background-color: #000;
+	background-color: $no-black;
 	width: 100%;
 	position: absolute;
 	margin: auto;
@@ -439,14 +625,42 @@ footer {
 }
 
 .contact-visit-logo {
-	max-width:30vw;
+
 	display: inline;
-    position: relative;
+	position: relative;
+	float:left;
 }
 .contact-visit-sections { 
 	width:100%;
 	display:block;
-	    max-width: 30vh;
 
+}
+.logo-footer {
+	max-width:30vw;
+	max-height: 30vh;
+	
+}
+// dividers
+.thirder { 
+
+	width:26vw;
+	display:inline-block;
+	// border:1px solid red;
+	float: left;
+
+}
+
+.halfer { 
+
+	width:40vw;
+	display:inline-block;
+//	border:1px solid green;
+	float: left;
+
+}
+.oner {
+
+	width:100%;
+	// border:1px solid blue;
 
 }

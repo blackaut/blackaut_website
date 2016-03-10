@@ -42,7 +42,8 @@
 		$container	:$('container'),
 		$block		:$('.block'),
 		$langBtn	:$('.lang-btn'),
-		$footer		:$('footer')
+		$footer		:$('footer'),
+		$scrollIcon :$('intro-scroll-icon')
 	};
 
 
@@ -57,27 +58,48 @@
 			FBZ.control.onResizeStage();
 			FBZ.control.multilingualEngine(); 
 			FBZ.control.checkURL();
-			FBZ.control.twitterWidget();
+		//	FBZ.control.twitterWidget();
+			FBZ.control.disappearScrollIcon();
+			FBZ.control.interactiveBG();
 
 		},
 
-		twitterWidget : function () {
-			window.twttr = (function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0],
-				t = window.twttr || {};
-				if (d.getElementById(id)) return t;
-			  	js = d.createElement(s);
-			  	js.id = id;
-			  	js.src = "https://platform.twitter.com/widgets.js";
-			  	fjs.parentNode.insertBefore(js, fjs); 
-				t._e = [];
-				t.ready = function(f) {
-					t._e.push(f);
-				};
-			 
-			  return t;
-			}(document, "script", "twitter-wjs"));
+		interactiveBG : function () {
+
+			$(".bg").interactive_bg({
+			   strength: 25,              // Movement Strength when the cursor is moved. The higher, the faster it will reacts to your cursor. The default value is 25.
+			   scale: 1.05,               // The scale in which the background will be zoomed when hovering. Change this to 1 to stop scaling. The default value is 1.05.
+			   animationSpeed: "100ms",   // The time it takes for the scale to animate. This accepts CSS3 time function such as "100ms", "2.5s", etc. The default value is "100ms".
+			   contain: true,             // This option will prevent the scaled object/background from spilling out of its container. Keep this true for interactive background. Set it to false if you want to make an interactive object instead of a background. The default value is true.
+			   wrapContent: false         // This option let you choose whether you want everything inside to reacts to your cursor, or just the background. Toggle it to true to have every elements inside reacts the same way. The default value is false
+			 });
+			$(".bg").interactive_bg(); // function call
+
 		},
+
+		disappearScrollIcon : function ()  { 
+			FBZ.view.$scrollIcon.scroll( function () { 
+				//$scrollIcon.css(alpha);
+				console.log("scroll");
+			});
+		},
+
+		// twitterWidget : function () {
+		// 	window.twttr = (function(d, s, id) {
+		// 		var js, fjs = d.getElementsByTagName(s)[0],
+		// 		t = window.twttr || {};
+		// 		if (d.getElementById(id)) return t;
+		// 	  	js = d.createElement(s);
+		// 	  	js.id = id;
+		// 	  	js.src = "https://platform.twitter.com/widgets.js";
+		// 	  	fjs.parentNode.insertBefore(js, fjs); 
+		// 		t._e = [];
+		// 		t.ready = function(f) {
+		// 			t._e.push(f);
+		// 		};
+		// 	  return t;
+		// 	}(document, "script", "twitter-wjs"));
+		// },
 
 		checkURL : function () {
 
@@ -99,29 +121,26 @@
 				
 				var languageSelected = $(this).attr('lang');
 				FBZ.control.changeLanguage(languageSelected);
-				console.log("change language to ",languageSelected);
+			//	console.log("change language to :",languageSelected);
 				
 				var buttons = $.find(".lang-btn");
 				for(var i = 0 ; i < buttons.length ; i ++ ) { 
 					$(buttons[i]).removeClass("active");
 					console.dir(buttons[i],buttons[i]);
 				//	if (buttons[i].hasClass("active")) {
-						
 				//	}
 				}
-
 			//	console.log($.find(".lang-btn").hasClass("active").removeClass("active" ));	
-
-
 				$(this).addClass("active" );
 			});
-			//FBZ.control.changeLanguage('es');
+
+			FBZ.control.changeLanguage('es');
 		},
 
 		changeLanguage : function (language) { 
 
 			i18n.changeLanguage(language);
-			console.log("changeLanguage");
+		//	console.log("changeLanguage");
 
 		},
 
@@ -146,9 +165,16 @@
 		onResizeStage : function ()  { 
 
 			$(window).resize(function() {
-// to re - resize the layout . 
+				// to re - resize the layout . 
 				FBZ.control.defineStage();
 				FBZ.control.resizeContentBlock();
+				
+				// for moving background obj
+				 $(".bg > .ibg-bg").css({
+			        width: $(window).outerWidth(),
+			        height: $(window).outerHeight()
+			      })
+
 			}.debounce(150));
 
 		},

@@ -13,12 +13,25 @@ $purple                       : #8e44ad;
 $gray                         : #95a5a6;
 
 
+
+// colores nullØbject :D 
+
+$no-black					: #1d1d1d;
+$no-gray					: #3b3b3b;
+$no-palegray				: #949494;
+$no-styleblue				: #00FFD9; 
+$no-hardpink				: #ff1f71;
+
+
+
 //003236
 
 // Color Scheme
-$color-primary                : #003236;
-$color-secondary              : #CCC6B1;
-$color-highlight              : #000;
+$color-primary                : $no-black;
+
+$color-secondary              : $no-palegray;
+$color-highlight              : $no-gray;
+
 
 // Common colors
 $color-text                   : #FFF;
@@ -27,14 +40,14 @@ $color-border                 : #ddd;
 
 // Text Selection
 $color-selection              : #fff;
-$color-selection-bg           : $color-primary;
+$color-selection-bg           : $no-palegray;
 
 
 // Links
-$color-link-default           : $color-primary;
-$color-link-visited           : $color-primary;
-$color-link-hover             : darken($color-primary, 20%);
-$color-link-active            : darken($color-primary, 20%);
+$color-link-default           : $no-palegray;
+$color-link-visited           : $no-palegray;
+$color-link-hover             : darken($no-palegray, 20%);
+$color-link-active            : darken($no-palegray, 20%);
 
 
 // <hr> border color
