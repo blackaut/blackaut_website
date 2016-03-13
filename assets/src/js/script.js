@@ -61,8 +61,17 @@
 		//	FBZ.control.twitterWidget();
 			FBZ.control.disappearScrollIcon();
 			FBZ.control.interactiveBG();
+			FBZ.control.readFromGoogleDocs();
 
 		},
+
+		readFromGoogleDocs : function () { 
+
+			// https://docs.google.com/spreadsheets/d/1T0qB23t_Lc17VrtnybisyjVsfufbM3trJ9QGNjJUspo/pubhtml
+ 				 Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1T0qB23t_Lc17VrtnybisyjVsfufbM3trJ9QGNjJUspo/pubhtml',
+                   callback: function(data, tabletop) { console.dir(data) } } )
+ 			 
+		}, 
 
 		interactiveBG : function () {
 

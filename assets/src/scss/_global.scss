@@ -324,9 +324,15 @@ body {
 	max-width: 40vh;
 	padding-bottom:20px;
 //	border-bottom:1px white solid;
-	transform:translateY(30vh);
+
 }
 
+.intro-logo { 
+
+	transform:translateY(-50%);
+	top: 50%;
+	position:relative;
+}
 
 .center {
 //	border:1px solid green;
@@ -393,6 +399,7 @@ header {
 
 .header-logo { 
 	
+	display:none;
 	width: 80px;
 	top: 0px;
 	margin-left:22px;
