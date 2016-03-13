@@ -125,7 +125,7 @@ h2 {
  	  	color: $no-hardpink;
  	  	width: auto;
  	  	text-align:right;
- 	  	padding-right:5vw;
+ 	  	padding-right:4vw;
  	 // 	transform:translateY(-120%);
 	}
 }
@@ -383,17 +383,10 @@ header {
 	top:0;
 	height: 80px;
 	text-align: center;
-//	background-color: $no-hardpink;
+	//background-color: $no-hardpink;
 	width: 100%;
 	margin: auto;
 
-	&:after { 
-	//	height: 0;
-		border-style: solid;
-		border-width: 231px 115.5px 0 115.5px;
-		border-color: #007bff transparent transparent transparent;
-		transform:skew(30deg);
-	}
 }
 
 
@@ -633,33 +626,58 @@ header {
 
 /// projects section
 
+.projects-arrow { 
+
+	width: 96vw;
+	background-color:$no-palegray;
+	height:5vh;
+	font-size:1.4em;
+
+}
+
+.icon-arrow-up {
+	position:relative;
+	//top:50%;
+	transform:translateY(-150%);	
+}
+
+
 
 .projects-scroller { 
 
-	width: 95vw;
+	width: 96vw;
+	height: 67vh;
 	//height: auto; 
 //	border: 1px so;
 	background-color:$no-gray;
-	overflow: auto; 
+	overflow: hidden; 
 	white-space: nowrap; 
 	//padding-top: 20px;
-	padding-bottom:20px;
+//	padding-bottom:20px;
 
 }
 
 
 .project-card { 
-	display:inline-block; 
-	background-color:$no-hardpink;
+	cursor:pointer;
+	//display:inline-block; 
+	//background-color:$no-hardpink;
 	//margin-left: 20px;
 	width:95vw; 
 	position:relative;
+	transition: all 600ms ease-in-out;
+
+	&:hover { 
+
+		height:20vh;
+
+	}
 }
 
 
 .project-image {
  
-  height: 60vh;
+  height: 5vh;
   width:100%;
   border:solid 7px $no-black;
   background: #eee;
@@ -683,7 +701,7 @@ header {
 }
 .project-copy { 
 	position : absolute;
-	top:60%;
+	top:30%;
 	
 }
 
@@ -692,9 +710,9 @@ header {
 	background-color: $no-hardpink;
 	font-family: 'aldrichregular';
    	color:$no-black;
-   	font-size: 1.5em;
+   	font-size: 1.2em;
 	padding-left:20px;
-		padding-right:20px;
+	padding-right:20px;
    	text-transform:uppercase;
 }
 

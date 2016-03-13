@@ -31,22 +31,25 @@
 		lastScrollTop : 0, // setting initial scrolltop as top of page
 		direction : 0 ,// direction of scroll 1)up -1)down 0)static
 		stateObj : {},
-		i18n : null
+		i18n : null,
+		noBrain : {} 
 	};
 
 	FBZ.view = {
 
 		// add dom elements here
-		$stage 		:$(window),
-		$header		:$('header'),
-		$container	:$('container'),
-		$block		:$('.block'),
-		$langBtn	:$('.lang-btn'),
-		$footer		:$('footer'),
-		$scrollIcon :$('intro-scroll-icon')
+		$stage 				:$(window),
+		$header				:$('header'),
+		$container			:$('container'),
+		$block				:$('.block'),
+		$langBtn			:$('.lang-btn'),
+		$footer				:$('footer'),
+		$scrollIcon 		:$('intro-scroll-icon'),
+		$projectArrowUp		:$('arrow-up'),
+		$projectArrowUp		:$('arrow-down'),
+		$projectScroller 	:$('projects-scroller'),
+		$projectsCardHolder	:$('projects-holder')
 	};
-
-
 
 	FBZ.control = {
 		// add function here
@@ -62,15 +65,29 @@
 			FBZ.control.disappearScrollIcon();
 			FBZ.control.interactiveBG();
 			FBZ.control.readFromGoogleDocs();
+			FBZ.control.activateProjectsAccordeon();
 
+		},
+
+		activateProjectsAccordeon : function () {
+			console.log (
+				FBZ.control.getHeight(FBZ.view.$projectArrowUp),
+			FBZ.view.$projectArrowUp.height,
+			FBZ.view.$projectArrowUp.height,	
+			FBZ.view.$projectScroller.height,
+			FBZ.view.$projectsCardHolder.height
+			)
 		},
 
 		readFromGoogleDocs : function () { 
 
 			// https://docs.google.com/spreadsheets/d/1T0qB23t_Lc17VrtnybisyjVsfufbM3trJ9QGNjJUspo/pubhtml
- 				 Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1T0qB23t_Lc17VrtnybisyjVsfufbM3trJ9QGNjJUspo/pubhtml',
-                   callback: function(data, tabletop) { console.dir(data) } } )
- 			 
+
+			Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1T0qB23t_Lc17VrtnybisyjVsfufbM3trJ9QGNjJUspo/pubhtml',
+				callback: function(data, tabletop) { 
+					console.dir(data) 
+					FBZ.model.noBrain = data;
+				} } )
 		}, 
 
 		interactiveBG : function () {
