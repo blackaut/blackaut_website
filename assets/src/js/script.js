@@ -44,11 +44,11 @@
 		$block				:$('.block'),
 		$langBtn			:$('.lang-btn'),
 		$footer				:$('footer'),
-		$scrollIcon 		:$('intro-scroll-icon'),
-		$projectArrowUp		:$('arrow-up'),
-		$projectArrowUp		:$('arrow-down'),
-		$projectScroller 	:$('projects-scroller'),
-		$projectsCardHolder	:$('projects-holder')
+		$scrollIcon 		:$('.intro-scroll-icon'),
+		$projectArrowUp		:$('.arrow-up'),
+		$projectArrowDown	:$('.arrow-down'),
+		$projectScroller 	:$('.projects-scroller'),
+		$projectsCardHolder	:$('.projects-holder')
 	};
 
 	FBZ.control = {
@@ -70,13 +70,25 @@
 		},
 
 		activateProjectsAccordeon : function () {
-			console.log (
-				FBZ.control.getHeight(FBZ.view.$projectArrowUp),
-			FBZ.view.$projectArrowUp.height,
-			FBZ.view.$projectArrowUp.height,	
-			FBZ.view.$projectScroller.height,
-			FBZ.view.$projectsCardHolder.height
-			)
+			// console.log (
+			
+			// FBZ.view.$projectArrowDown	
+				
+			// )
+			var visibleScroll 	= FBZ.view.$projectScroller.height();
+			var totalScroll 	= FBZ.view.$projectsCardHolder.height();
+			var overFlow = totalScroll - visibleScroll;
+
+			FBZ.view.$projectArrowUp.on('click hover', function () {
+				    // Do something for both
+				     console.log(overFlow);
+			});
+
+			FBZ.view.$projectArrowDown.on('click hover', function () {
+				    // Do something for both
+				    console.log(overFlow, "lalal");
+				    FBZ.view.$projectsCardHolder
+			});
 		},
 
 		readFromGoogleDocs : function () { 
