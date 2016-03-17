@@ -69,15 +69,18 @@
 
 		},
 
+		activateCellIntro : function () {
+			
+		},
+
 		activateProjectsAccordeon : function () {
 			// console.log (
 			
-			// FBZ.view.$projectArrowDown	
-				
+			// FBZ.view.$projectArrowDown
 			// )
 			var visibleScroll 	= FBZ.view.$projectScroller.height();
 			var totalScroll 	= FBZ.view.$projectsCardHolder.height();
-			var overFlow = totalScroll - visibleScroll;
+			var overFlow 		= totalScroll - visibleScroll;
 
 			FBZ.view.$projectArrowUp.on('click hover', function () {
 				    // Do something for both
