@@ -66,7 +66,13 @@
 			FBZ.control.interactiveBG();
 			FBZ.control.readFromGoogleDocs();
 			FBZ.control.activateProjectsAccordeon();
+			FBZ.control.genIntro();
 
+		},
+
+
+		genIntro :function ()  { 
+			//  new Nodes();
 		},
 
 		activateCellIntro : function () {

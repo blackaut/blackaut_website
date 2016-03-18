@@ -55,7 +55,8 @@ module.exports = {
 			'<%=config.srcDir%>/js/libs/jquery.onepage-scroll.js',
 			'<%=config.srcDir%>/js/libs/jquery.interactive_bg.js',
 			'<%=config.srcDir%>/js/libs/tabletop.js',
-
+			'<%=config.srcDir%>/js/libs/tweenlite.js',
+			'<%=config.srcDir%>/js/libs/generative_nodes.js',
 			'<%=config.srcDir%>/js/script.js'
 		]
 	},

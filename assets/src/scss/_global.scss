@@ -484,12 +484,12 @@ header {
 
 .no-header { 
 	transform:skew(-15deg);
-	font-size:1.8em;
+	font-size:1.3em;
 	font-family: 'aldrichregular';
 	color:$no-hardpink;
 	position:fixed;
-	top:18px;
-	left:35px;
+	top:22px;
+	left:40px;
 	selectable:false;
 }
 
@@ -504,7 +504,7 @@ header {
 
 
 .header-logo { 
-	
+
 	display:none;
 	width: 80px;
 	top: 0px;
@@ -885,19 +885,24 @@ footer {
 
 .contact-visit-logo {
 
-	display: inline;
-	position: relative;
-	float:left;
+	//display: inline;
+	//position: relative;
+	//float:left;
+	//padding: auto;
 }
 .contact-visit-sections { 
 	width:100%;
 	display:block;
-
+	text-align:center;
+	margin:0 auto;
+	// border:1px solid blue;
+    display: $no_gray;
+    float: left;
+    height: 100%;
 }
 .logo-footer {
 	max-width:30vw;
 	max-height: 30vh;
-	
 }
 
 // line decor
@@ -934,4 +939,38 @@ footer {
     float: left;
     height: 100%;
 
+}
+
+.footer-list { 
+	transition:	$transition;
+	list-style-type: none;
+	font-family:"Roboto";
+	text-transform:Uppercase;
+	font-size:0.6em;
+	li  { 
+		text-align:left;
+	}
+	a {
+		color:$no-hardpink;
+		&:hover { 
+			
+			color:$no-palegray;
+		
+
+		}
+		
+	}
+}
+
+.logo-footer {
+
+	padding:30px;
+	width:25vw;
+	//height:100px;
+}
+
+
+.contact-mailto-link { 
+
+	color:$no-black;
 }
