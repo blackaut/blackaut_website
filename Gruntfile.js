@@ -55,8 +55,11 @@ module.exports = function (grunt) {
 		'copy:modernizr',
 		//'images',
 		'browserSync:serve',
-		'watch'
+		'watch',
+		'bake:build'
 	]);
+
+
 
 
 	/**
@@ -164,4 +167,6 @@ module.exports = function (grunt) {
 		'sass',
 		'autoprefixer'
 	]);
+
+
 };
