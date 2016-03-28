@@ -24,16 +24,7 @@ module.exports = {
 		// and ensuring we support IE8+ with prefixes
 		autoprefixer : ['> 5%', 'last 2 versions', 'firefox > 3.6', 'ie > 7'] // <%=config.css.autoprefixer%>
 	},
-	bake: {
-	  build: {
-	    files: {
-	     // 'labs/index.html' : 'header.html',
-	      //'labs/index.html' : 'footer.html',
-	      'index.html' : 'includes/header.html',
-	      'index.html' : 'inlcudes/footer.html'
-	    }
-	  }
-	},
+
 	// Javascript-related Grunt vars
 	js : {
 		distDir  : '<%=config.distDir%>/js/', // <%=config.js.distDir%>
@@ -68,7 +59,6 @@ module.exports = {
 			'<%=config.srcDir%>/js/script.js'
 		]
 	},
-
 
 	// Image-related Grunt vars
 	img : {
