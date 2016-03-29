@@ -21,10 +21,9 @@
 	
 	FBZ.model = {
 		// add your data here 
-		
+
 		windowH	: 0, //browser screen 
 		windowW	: 0,
-
 		stageH	: window.innerHeight, //total document size
 		stageW	: window.innerWidth,
 		currentSection : 0,
