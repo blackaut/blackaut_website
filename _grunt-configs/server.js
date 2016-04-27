@@ -9,7 +9,8 @@ module.exports.tasks = {
 	    files: {
 			'index.html' : 'index_base.html',
 			'academy/index.html' : 'academy/index_academy.html',
-			'labs/index.html' : 'labs/index_labs.html'
+			'labs/index.html' : 'labs/index_labs.html',
+			'videos/index.html' : 'videos/index_videos.html'
 			}
 		}
 	},
