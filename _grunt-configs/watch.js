@@ -19,6 +19,16 @@ module.exports.tasks = {
 			]
 		},
 
+		sections: {
+			files: ['**/*.html'],
+			tasks: [
+				'compileCSS',
+				'clean:tempCSS',
+				'bake'
+			]
+		},
+
+
 		js: {
 			files: ['<%=config.js.fileList%>'],
 			tasks: [

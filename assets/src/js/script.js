@@ -69,6 +69,11 @@
 
 		},
 
+		initAcademy : function () { 
+
+			console.log("academy init");
+
+		},
 
 		genIntro :function ()  { 
 			//  new Nodes();
@@ -240,7 +245,7 @@
 
 			$(".main").onepage_scroll({
 			   sectionContainer: "section",     // sectionContainer accepts any kind of selector in case you don't want to use section
-			   easing: "cubic-bezier(0.175, 0.885, 0.420, 1.310)",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
+			   easing: "ease-out",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
 			                                    // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
 			   animationTime: 900,             // AnimationTime let you define how long each section takes to animate
 			   pagination: true,                // You can either show or hide the pagination. Toggle true for show, false for hide.

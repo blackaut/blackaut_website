@@ -10,7 +10,6 @@ module.exports = {
 	distDir : './assets/dist', // <%=config.distDir%>
 	tempDir : './assets/temp', // <%=config.tempDir%>
 
-
 	// CSS-related Grunt vars
 	css : {
 		scssDir  : '<%=config.srcDir%>/scss', // <%=config.css.scssDir%>
