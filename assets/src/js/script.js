@@ -30,8 +30,13 @@
 		lastScrollTop : 0, // setting initial scrolltop as top of page
 		direction : 0 ,// direction of scroll 1)up -1)down 0)static
 		stateObj : {},
+		currentSection : "home",
 		i18n : null,
-		noBrain : {} 
+		noBrain : {},
+		proyects: {},
+		courses: {},
+		people : {}
+
 	};
 
 	FBZ.view = {
@@ -66,7 +71,43 @@
 			FBZ.control.readFromGoogleDocs();
 			FBZ.control.activateProjectsAccordeon();
 			FBZ.control.genIntro();
+			FBZ.control.determineSection();
+		},
 
+		determineSection : function () { 
+			// this function determines the current page and assign it to a string
+
+			var section = window.location.href.split("/");
+
+			if ( section.length <= 4 ) { 
+
+					FBZ.model.currentSection  = "home";
+
+			} else { 
+
+					FBZ.model.currentSection  = section[section.length-2];
+			}
+
+			//console.log(FBZ.model.currentSection);
+
+		}, 
+
+
+		parseBrain : function () { 
+
+			if (	FBZ.model.currentSection == 'home' ) { 
+
+				FBZ.control.populateProjects();
+
+			}
+
+
+
+		},
+
+		populateProjects :  function () { 
+			console.log("populateProjects");
+			console.dir(FBZ.model.noBrain);
 		},
 
 		initAcademy : function () { 
@@ -112,8 +153,10 @@
 				callback: function(data, tabletop) { 
 					console.dir(data) 
 					FBZ.model.noBrain = data;
+					FBZ.control.parseBrain();
 				} } )
 		}, 
+
 
 		interactiveBG : function () {
 

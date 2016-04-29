@@ -1,11 +1,13 @@
-.first-halfer  { 
+.logo-init-academy {
 
+	color:no-black;
+}
+
+.first-halfer  {
 		margin-right: 10vh; 
 	}
 
-
-.bg-people { 
-
+.bg-people {
 	// width:100%;
 	// height:100%;
 	// position:absolute;
@@ -37,6 +39,28 @@
 
 }
 
+.overlayer-academy { 
+  background-color:$no-styleblue;
+  width: 100%;
+  height:100%;
+  top:98px;
+  //transform: skew(-30deg) rotate(-30deg);
+  position: fixed;
+  mix-blend-mode: exclusion;
+
+}
+
+.overlayer-labs { 
+
+  background-color:$no-hardpink;
+  width: 100%;
+  height:100%;
+  top:98px;
+  //transform: skew(-30deg) rotate(-30deg);
+  position: fixed;
+  mix-blend-mode: exclusion;
+
+}
 .base {
   //background-color:#333;
   width: 100%;

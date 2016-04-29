@@ -18,9 +18,8 @@ module.exports.tasks = {
 				'clean:tempCSS'
 			]
 		},
-
 		sections: {
-			files: ['**/*.html'],
+			files: ['index_base.html','academy/index_academy.html','labs/index_labs.html','videos/index_videos.html'],
 			tasks: [
 				'compileCSS',
 				'clean:tempCSS',
