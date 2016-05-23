@@ -126,6 +126,9 @@ var init_index = 0;
 				 "transition": "all " + settings.animationTime + "ms " + settings.easing
 				});
 			}
+
+			FBZ.control.sectionMonitor(index);
+
 			$(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
 				if (typeof settings.afterMove == 'function') settings.afterMove(index);
 			});
