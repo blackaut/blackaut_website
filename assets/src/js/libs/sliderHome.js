@@ -73,7 +73,6 @@ FBZ.slider = {
 
 		changeImageToIndex : function (index) {
 
-
 			FBZ.view.sliderHome.children().removeClass("active");
 			$(FBZ.view.sliderHome.children().get(index)).addClass('active');
 		},

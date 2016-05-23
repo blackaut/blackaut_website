@@ -14,10 +14,8 @@
 
 		// follow a singleton pattern
 		// (http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)
-		FBZ.control.addLoadingCurtain();
+//		FBZ.control.addLoadingCurtain();
 		FBZ.control.readFromGoogleDocs();
-
-		
 
 	});// END DOC READY
 	
