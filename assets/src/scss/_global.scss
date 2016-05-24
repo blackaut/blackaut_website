@@ -84,13 +84,13 @@
 .display-card { 
 
 	background-color: black;
-    width: 34vw;
-    height: 100%;
-    float: right;
-    padding: 40px;
-    overflow: auto;
-    position: relative;
-    z-index: 440;
+	width: 34vw;
+	height: 100%;
+	float: right;
+	padding: 40px;
+	overflow: auto;
+	position: relative;
+	z-index: 440;
 	opacity:.8;
 	cursor:pointer;
 	&.active { 
@@ -200,12 +200,12 @@ $size: 42px;
 	margin-top:20px;
 	padding-right:60px;
 	height: $size;
-    text-align: right;
-    width: 100%;
-    float: right;
-    a { 
+	text-align: right;
+	width: 100%;
+	float: right;
+	a { 
 		color:$no-hardpink;
-    }
+	}
 
 
 }
@@ -268,22 +268,22 @@ $size: 42px;
 
 
 .fullscreen-bg {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: -100;
 }
 
 .fullscreen-bg__video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 // object-fit: fill;
 // object-fit: contain;
@@ -431,13 +431,13 @@ body, html {
 .mission-text-container { 
   //  border: 5px solid #000;
   //  padding:100%;
-    display: flex;	
+	display: flex;	
 }
 
 .mission-text { 
   display:inline-block;
-    vertical-align:bottom;
-    width:100%; /* Let it be a block */
+	vertical-align:bottom;
+	width:100%; /* Let it be a block */
 	bottom:0;
 	padding: 40% 100px 50px 50px;
 	//bottom:100%;
@@ -481,16 +481,14 @@ h1 {
 }
 h2 { 
 
-   font-family: 'aldrichregular';
-   font-size: 1.5em;
+	font-family: 'aldrichregular';
+	font-size: 1.5em;
 
-   	&.inverse { 
- 	  //	background-color:
- 	  	color: $no-hardpink;
- 	  	width: auto;
- 	  	text-align:right;
- 	  	padding-right:60px;
- 	 // 	transform:translateY(-120%);
+	&.inverse { 
+		color: $no-hardpink;
+		width: auto;
+		text-align:right;
+		padding-right:60px;
 	}
 }
 
@@ -498,11 +496,9 @@ h2 {
 
 p { 
 
-	//font-family: 'anonymous_proregular';
 	font-family: 'aldrichregular';
-	//  text-align: justify;  
 	font-size: .8em;
-	 text-align:left;
+	text-align:left;
  }
 
 // plug in - page completes
@@ -605,18 +601,18 @@ body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html {
  */
 body {
 	background-color: $color-bg;
-	//overflow:hidden;
 }
 
 
 .mainContent {
+
 	position:absolute;
 	top:0;
 	left:0;
 	height:100%;
-
 }
-.pink-container { 
+
+.pink-container {
 
 	margin-top:100px;
 	padding:10px;
@@ -624,9 +620,8 @@ body {
 }
 
 
-.block { 
+.block {
 
-	//background-color:$color-primary;
 	position:relative;
 	text-align:center;
 
@@ -647,7 +642,6 @@ body {
 .is-fading-in { 
 
 	animation: animFadeIn 700ms ease-out;
-//	opacity:1;
 	animation-fill-mode: forwards;
 	backface-visibility: hidden;
 }
@@ -655,8 +649,8 @@ body {
 
 /*   fade in */
 @keyframes animFadeIn {
-    0%   {opacity:0;  }
-    100% {opacity:1; }
+	0%   {opacity:0;  }
+	100% {opacity:1; }
 }
 
 
@@ -675,12 +669,6 @@ body {
 	margin-top: 98px;
 }
 
-
-//                : $003236;
-// $color-secondary              : $CCC6B1;
-// $color-highlight
-
-
 // intro   
 .intro-scroll-icon { 
 
@@ -688,13 +676,11 @@ body {
 	display: block;
 	position: fixed;
 	margin:0 auto;
-	//margin-top:50%;
 	bottom: 5px;
 	right: 5px;
 
 	svg {
 		max-width:30px;
-		//transform:translateX(-100%);
 	}
 }
 
@@ -778,11 +764,11 @@ header {
 	top:0;
 	height: 98px;
 	text-align: center;
-	//background-color: $no-hardpink;
 	width: 100%;
 	margin: auto;
-
 }
+
+
 .logo-header {
 
 	width:215px;
@@ -804,27 +790,13 @@ header {
 }
 
 .icon-tumblr:before {
-    content: "\e911";
+	content: "\e911";
 }
 
 .icon-facebook:before {
-    content: "\e90f";
+	content: "\e90f";
 }
 
-
-
-// .header-logo { 
-
-// 	display:none;
-// 	width: 80px;
-// 	top: 0px;
-// 	margin-left:22px;
-
-// 	&.active { 
-
-// 		display:inline-block;
-// 	}
-// }
 
 .menu-dot { 
 	display:inline;
@@ -914,19 +886,15 @@ header {
 
 
 .infograph { 
-//	border:1px solid red;
+
 	width:500px;
 	left: 0;
-    top: 50%;
-    position: absolute;
-    transform: translateY(-70%);
-    //opacity:0;
+	top: 50%;
+	position: absolute;
+	transform: translateY(-70%);
 }
 .piramid-info {
 
-//	position:absolute;
-//	top:50%;
-//	transform:translateY(-50%);
 	left:0;
 }
 
@@ -959,9 +927,9 @@ header {
 /// projects section
 
 .projects-arrow { 
+
 	display:none;
 	width: 96vw;
-	//background-color:$no-palegray;
 	height:5vh;
 	font-size:2em;
 	cursor: pointer;
@@ -976,16 +944,15 @@ header {
 }
 
 .icon-arrow-up {
+
 	position:relative;
-	//top:50%;
-	//transform:translateY(-150%);	
 }
 
 .projects-holder { 
 
 	position: absolute;
 	top : 0;
- 	transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
 
 }
 
@@ -1026,8 +993,8 @@ header {
 
 .project-image {
 	padding-left:20px;
- 	width: 60%;
- 	height: 50%;
+	width: 60%;
+	height: 50%;
 	display:inline-block;
 	overflow: hidden;
 	transition: all 600ms ease-in-out;
@@ -1035,16 +1002,15 @@ header {
 }
 
 .boldie { 
- font-weight: bold;	
+ font-weight: bold;
 }
 
 .project-date { 
 	text-align:right;
-//	background-color: white;
 	font-family: 'aldrichregular';
-   	color:white;
-   	font-size: 1em;
-   	text-transform:uppercase;
+	color:white;
+	font-size: 1em;
+	text-transform:uppercase;
 
 }
 .project-description {
@@ -1074,26 +1040,26 @@ header {
 	float:left;
 	text-align:left;
 	font-family: 'aldrichregular';
-   	color:white;
-   	font-size: 1em;
-   	text-transform:uppercase;
-   	overflow:hidden;
-   	bottom:0;
-   	position: absolute;
+	color:white;
+	font-size: 1em;
+	text-transform:uppercase;
+	overflow:hidden;
+	bottom:0;
+	position: absolute;
 
 }
 
 
 .project-keywords:after {
 
-    content:"";
-    display: inline-block;
-    height: 0.5em;
-    vertical-align: bottom;
-  	width:97vw;
-    margin-right: -100%;
-    margin-left: 10px;
-    border-top: 5px solid white;
+	content:"";
+	display: inline-block;
+	height: 0.5em;
+	vertical-align: bottom;
+	width:97vw;
+	margin-right: -100%;
+	margin-left: 10px;
+	border-top: 5px solid white;
 }
 // .project-image > img {
 
@@ -1111,13 +1077,13 @@ header {
 .project-name {
 	display: block;
 	font-family: 'aldrichregular';
-   	color:white;
+	color:white;
 
-   	font-size: 2.2em;
-   	text-align: left;
+	font-size: 2.2em;
+	text-align: left;
 	padding-left:20px;
 	// padding-right:20px;
-   	text-transform:uppercase;
+	text-transform:uppercase;
 	margin : 0px;
 	padding-top:5px;
 	transition:$transition;
@@ -1128,28 +1094,27 @@ header {
 	}
 }
 
-
-
 /// cursos 
 
 
 .cursos-image {
-  width:100vw; 
-  height:20vw;
-  background: #eee;
-  margin:50px 0 0 100px;
-  display:inline-block;
-  box-shadow: 0 0 5px #ccc;
-  overflow: hidden;
-  transition: all 600ms ease-in-out;
+
+	width:100vw; 
+	height:20vw;
+	background: #eee;
+	margin:50px 0 0 100px;
+	display:inline-block;
+	box-shadow: 0 0 5px #ccc;
+	overflow: hidden;
+	transition: all 600ms ease-in-out;
 
 }
 
 .cursos-image > img {
-  transition: all 500ms ease-in-out;
-  transform: rotate(20deg) scale(2);
-  filter: grayscale(1);
- width:100vw; 
+	transition: all 500ms ease-in-out;
+	transform: rotate(20deg) scale(2);
+	filter: grayscale(1);
+	width:100vw; 
 }
 
 .cursos-image > img:hover {
@@ -1176,10 +1141,10 @@ footer {
 		width:30vw;
 		bottom:0;
 		padding:5px;
+		z-index:3;
 	}
 
 }
-
 
 
 .footer-bg { 
@@ -1189,12 +1154,21 @@ footer {
 	height: 100%;
 	transform:skewY(7deg);
 	position: absolute;
-	z-index:-1;
+	z-index:-2;
 	top:0;
 	left:0;
 }
 
+.footer-container {
+	position:relative;
+	width:100%;
+	display:inline-block;
+	height:0.8em;
+}
+
 .footer-list { 
+	left:0;
+	position:absolute;
 	transition:	$transition;
 	list-style-type: none;
 	font-family: 'aldrichregular';
@@ -1202,7 +1176,7 @@ footer {
 	font-size:0.8em;
 	display:inline-block;
 	width:100%;
-	li  { 
+	li {
 		display:inline-block;
 
 	}
@@ -1212,9 +1186,7 @@ footer {
 		color:$no-hardpink;
 		&:hover { 
 			
-			color:$no-palegray;
-		
-
+			color:$no-black;
 		}
 		
 	}
@@ -1232,11 +1204,9 @@ footer {
 
 .line {
 		position:absolute;
-	//	display: inline;
 		height: 0.6em;
 		vertical-align: bottom;
 		margin-top: 16px;
-	//	padding-left:auto;
 		width:100%;
 		border-top: 1px solid $no-gray;
 		left:0;
@@ -1247,11 +1217,12 @@ footer {
 	padding-top: 40px;
 }
 .logo-footer {
+
 	height: 150px;
 	cursor:pointer;
 	img { 
-	color:$no-gray;
-}
+		color:$no-gray;
+	}
 
 	&:hover { 
 
@@ -1260,11 +1231,19 @@ footer {
 	}
 }
 
+.logo-footer-svg { 
+	height: 150px;
+	&:hover {
+
+		color:$no-gray;
+		}
+	}
+
 // line decor
 .gradient-line {
-    border-width: 1px;
-    border-style: solid;
-    border-image:      linear-gradient(to bottom, rgba(29, 29, 29, 0), rgba(29,29,29,1), rgba(29, 29, 29, 0)) 1 100%;
+	border-width: 1px;
+	border-style: solid;
+	border-image:      linear-gradient(to bottom, rgba(29, 29, 29, 0), rgba(29,29,29,1), rgba(29, 29, 29, 0)) 1 100%;
 
 }
 
@@ -1310,8 +1289,8 @@ footer {
 	width:100%;
 	// border:1px solid blue;
 
-    float: left;
-    height: 100%;
+	float: left;
+	height: 100%;
 
 }
 

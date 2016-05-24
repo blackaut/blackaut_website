@@ -14,7 +14,7 @@
 
 		// follow a singleton pattern
 		// (http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)
-//		FBZ.control.addLoadingCurtain();
+		FBZ.control.addLoadingCurtain();
 		FBZ.control.readFromGoogleDocs();
 
 	});// END DOC READY
@@ -64,7 +64,9 @@
 		$projectCard 		:$('.project-card'),
 		$coursesContainers	:$('.course-container'),
 		$staffContainer		:$('.people-staff'),
-		$collabContainer	:$('.people-collaborators')
+		$collabContainer	:$('.people-collaborators'),
+		$footerList			:$('.footer-list'),
+		$logosFooter		:$('.logo-footer'),
 
 	};
 
@@ -83,7 +85,39 @@
 	//		FBZ.control.interactiveBG();
 			FBZ.control.determineSection();
 			// FBZ.control.removeLoadingCurtain();
-			// FBZ.control.onClickHeaderBtn()
+			FBZ.control.activateFooter();
+		},
+
+		activateFooter : function () { 
+
+			//console.log(FBZ.view.$footerList, FBZ.view.$logosFooter);
+			FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
+
+		},
+
+		displayFooterList : function (e) {
+
+			FBZ.view.$logosFooter.off("mouseover",FBZ.control.displayFooterList);
+
+
+			var currentRolloveredSection = e.currentTarget.getAttribute("data");
+
+			for (var i = 0 ; i < FBZ.view.$footerList.length ; i++ ) { 
+
+				if( $(FBZ.view.$footerList[i]).hasClass(currentRolloveredSection) ) {
+
+					FBZ.control.fadeShow( $(FBZ.view.$footerList[i]));
+					// when the animation finishes reactivate btns
+					setTimeout(function(){ 
+						FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
+
+					}, 702);
+				}else{ 
+					FBZ.control.fadeHide( $(FBZ.view.$footerList[i]));
+				}
+
+			}
+
 		},
 
 		addLoadingCurtain : function() { 
