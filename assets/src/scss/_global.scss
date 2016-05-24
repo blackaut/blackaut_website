@@ -1110,7 +1110,6 @@ header {
 
 .project-name {
 	display: block;
-//	background-color: $no-hardpink;
 	font-family: 'aldrichregular';
    	color:white;
 
@@ -1121,6 +1120,8 @@ header {
    	text-transform:uppercase;
 	margin : 0px;
 	padding-top:5px;
+	transition:$transition;
+
 	&:hover { 
 
 		 text-shadow: 2px 2px 0px $no-hardpink;
@@ -1168,7 +1169,6 @@ footer {
 
 	h3 { 
 		font-size:0.6em;
-//		margin-top:40px;
 		color:$no-gray;
 		display:inline;
 		margin:0;
@@ -1197,17 +1197,18 @@ footer {
 .footer-list { 
 	transition:	$transition;
 	list-style-type: none;
-	font-family:"Roboto";
+	font-family: 'aldrichregular';
 	text-transform:Uppercase;
-	font-size:0.6em;
+	font-size:0.8em;
 	display:inline-block;
 	width:100%;
 	li  { 
-//		text-align:left;
-	display:inline-block;
+		display:inline-block;
 
 	}
 	a {
+		transition:	$transition;
+
 		color:$no-hardpink;
 		&:hover { 
 			
@@ -1219,7 +1220,10 @@ footer {
 	}
 }
 
+.footer-list:after { 
 
+	content:"";
+}
 
 .end-line {
 	width:100%;
@@ -1244,6 +1248,16 @@ footer {
 }
 .logo-footer {
 	height: 150px;
+	cursor:pointer;
+	img { 
+	color:$no-gray;
+}
+
+	&:hover { 
+
+		color:$no-gray;
+
+	}
 }
 
 // line decor
