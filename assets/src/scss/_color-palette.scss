@@ -18,6 +18,7 @@ $gray                         : #95a5a6;
 $no-black					: #000;
 $no-gray					: #3b3b3b;
 $no-palegray				: #949494;
+$no-ultrapalegray 			: #f4f4f4;
 $no-styleblue				: #FF0000; 
 $no-hardpink				: #ff1f71;
 
@@ -34,7 +35,7 @@ $color-highlight              : $no-gray;
 
 // Common colors
 $color-text                   : #FFF;
-$color-bg                     : #f1f1f1;
+$color-bg                     : $no-ultrapalegray;
 $color-border                 : #ddd;
 
 // Text Selection

@@ -20,6 +20,7 @@ var next = 0;
 var prev = 0;
 var pos;
 var init_index = 0;
+var totalSections = $("section").length;
 
 
 !function($){
@@ -107,6 +108,9 @@ var init_index = 0;
 			// Just a simple edit that makes use of modernizr to detect an IE8 browser and changes the transform method into
 			// an top animate so IE8 users can also use this script.
 			if($('html').hasClass('ie8')){
+
+
+
 				if (settings.direction == 'horizontal') {
 					var toppos = (el.width()/100)*pos;
 					$(this).animate({left: toppos+'px'},settings.animationTime);
@@ -115,6 +119,11 @@ var init_index = 0;
 					$(this).animate({top: toppos+'px'},settings.animationTime);
 				}
 			} else{
+
+				if(totalSections === index ) {
+					console.log("footer Reached",pos);
+					pos -= (pos/index)*.5;
+				}
 				$(this).css({
 					"-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
 				 "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
@@ -126,7 +135,7 @@ var init_index = 0;
 				 "transition": "all " + settings.animationTime + "ms " + settings.easing
 				});
 			}
-
+			console.log("totalSections :",totalSections);
 			FBZ.control.sectionMonitor(index);
 
 			$(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
@@ -173,16 +182,16 @@ var init_index = 0;
 						var sectionValue = $('section').eq(index).attr("data-name") ;
 				//		console.log(sectionValue);
 						history.pushState( {}, document.title, sectionValue );
-						}
-					//  console.log(
-					// // "deltaOfInterest :", deltaOfInterest,
-					//  "index :", index,
-					// // "current :", current,
-					//  "next : ", next,
-					//  "prev", prev,
-					//  "pos", pos,
-					//  "init_index", init_index
-					//  );
+					}
+					 console.log(
+					// "deltaOfInterest :", deltaOfInterest,
+					 "index :", index,
+					// "current :", current,
+					 "next : ", next,
+					 "prev", prev,
+					 "pos", pos,
+					 "init_index", init_index
+					 );
 
 					el.transformPage(settings, position, data);
 			}

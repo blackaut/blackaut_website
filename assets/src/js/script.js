@@ -62,7 +62,10 @@
 		$projectScroller 	:$('.projects-scroller'),
 		$projectsCardHolder	:$('.projects-holder'),
 		$projectCard 		:$('.project-card'),
-		$coursesContainers	:$('.course-container')
+		$coursesContainers	:$('.course-container'),
+		$staffContainer		:$('.people-staff'),
+		$collabContainer	:$('.people-collaborators')
+
 	};
 
 	FBZ.control = {
@@ -78,7 +81,6 @@
 		//	FBZ.control.twitterWidget();
 			FBZ.control.disappearScrollIcon();
 	//		FBZ.control.interactiveBG();
-			FBZ.control.genIntro();
 			FBZ.control.determineSection();
 			// FBZ.control.removeLoadingCurtain();
 			// FBZ.control.onClickHeaderBtn()
@@ -120,11 +122,10 @@
 				FBZ.slider.deleteInterval();
 			}
 
+
 		},
 
-
 		parseBrain : function () {
-
 
 			FBZ.slider.init();
 			// triggers the init func
@@ -145,6 +146,29 @@
 			}
 
 		},
+
+
+		/// init specific per section
+
+		initHome : function () { 
+
+		//	console.log(" home");
+			FBZ.control.populateProjects();
+			FBZ.control.populatePeople();
+		},
+
+		initAcademy : function () { 
+
+		//	console.log("academy init");
+			FBZ.control.populateCourses();
+		},
+
+		initLabs : function () { 
+
+//			console.log("labs init");
+
+		},
+
 
 		populateProjects :  function () { 
 		//	console.log("populateProjects");
@@ -220,30 +244,111 @@
 
 		},
 
-		initHome : function () { 
+		populatePeople : function () { 
 
-		//	console.log(" home");
-			FBZ.control.populateProjects();
+			FBZ.model.totalAmountOfPeople = FBZ.model.noBrain.People.elements.length;
+
+			FBZ.model.peoplePicBaseURL = "assets/img/people/";
+			for ( var i = 0 ; i < FBZ.model.noBrain.People.elements.length ; i ++ ) { 
+			//	console.log(FBZ.model.noBrain.People.elements[i]);
+				
+				var peopleCard = "<div class='people person-card "+FBZ.model.noBrain.People.elements[i].Rank+"'>"+ 
+									"<div class='person-img-decoration'><img src='assets/img/circle_people.svg'/></div>"+
+
+										"<div class='person-img'>"+
+											"<picture>"+
+												"<source srcset='"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.People.elements[i].Pic+"_small.jpg' media='(max-width: 320px)'/>"+
+												"<source srcset='"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.People.elements[i].Pic+"_med.jpg' media='(max-width: 650px)'/>"+
+												"<source srcset='"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.People.elements[i].Pic+"_big.jpg' media='(max-width: 900px)'/>"+
+												"<img srcset='"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.People.elements[i].Pic+"_med.jpg' alt='"+FBZ.model.noBrain.People.elements[i].Name+" "+FBZ.model.noBrain.People.elements[i].LastName+"'/>"+
+											"</picture>"+
+										"</div>"+
+											"<h3>"+FBZ.model.noBrain.People.elements[i].Name+" "+FBZ.model.noBrain.People.elements[i].LastName+"</h3>"+
+											"<h4 data-translatable>"+FBZ.model.noBrain.People.elements[i].Role+"</h4>"+
+									"</div><!-- end person-->";
+
+				if (FBZ.model.noBrain.People.elements[i].Rank == "staff") {
+
+					FBZ.view.$staffContainer.append(peopleCard);
+				//	console.log("staff");
+				}else { 
+					FBZ.view.$collabContainer.append(peopleCard);
+				}
+			
+			}
 		},
 
-		initAcademy : function () { 
+		populateProjects :  function () { 
+		//	console.log("populateProjects");
 
-		//	console.log("academy init");
-			FBZ.control.populateCourses();
+			FBZ.model.totalAmountOfProjects  = FBZ.model.noBrain.Projects.elements.length;
+			 /// ,this is an injection of content coming from the no brain 
+//			console.log(FBZ.model.noBrain.Projects.elements.length);
+			for ( var i = 0 ; i < FBZ.model.noBrain.Projects.elements.length ; i ++ ) { 
+//				console.log(FBZ.model.noBrain.Projects.elements[i]);
+				if(FBZ.model.noBrain.Projects.elements[i].Privacy != "PRIVATE") {  
+
+				FBZ.view.$projectsCardHolder.append(
+
+						"<div class='project-card'>"+ 
+
+											"<h3 data-translatable class='project-name'>"+FBZ.model.noBrain.Projects.elements[i].Name +"</h3>"+
+											"<div class='project-image is-hidden'>"+
+											FBZ.model.noBrain.Projects.elements[i].Image+"</div>"+
+											// "<div class='project-text-wrapper is-hidden'>"+
+										"<h3 data-translatable class='project-client is-hidden'>"+FBZ.model.noBrain.Projects.elements[i].Client +"</h3>"+
+											"<p class='project-date is-hidden'>"+ FBZ.model.noBrain.Projects.elements[i].StartDate+"</p>"+
+											"<p class='project-description is-hidden' data-translatable>"+FBZ.model.noBrain.Projects.elements[i].Description+"</p>"+
+											// "</div><!--end project text-wrapper-->"+
+											"<div class='project-keywords is-hidden' data-translatable>"+FBZ.model.noBrain.Projects.elements[i].Keywords+"<span></span></div>"+
+										"</div><!--end project card-->");
+				}
+			}
+			// to activate accordeon.
+			FBZ.control.activateProjectsAccordeon();
+
 		},
 
-		initLabs : function () { 
+		populateCourses :  function () { 
+	//		console.log("populateCourses");
 
-//			console.log("labs init");
+ 			FBZ.model.totalAmountOfCourses  = FBZ.model.noBrain.Courses.elements.length;
+// 			 /// ,this is an injection of content coming from the no brain 
+		//	console.log(FBZ.model.noBrain.Courses.elements.length, FBZ.view.$coursesContainers);
+			for ( var i = 0 ; i < FBZ.model.noBrain.Courses.elements.length ; i ++ ) { 
+				console.log("container : ", FBZ.view.$coursesContainers[i]);
+				if(FBZ.model.noBrain.Courses.elements[i].Privacy != "PRIVATE") {  
+						
+			//	$coursesContainers
 
-		},
+				 $(FBZ.view.$coursesContainers[i]).append(
+
+						"<div class='course-card'>"+ 
 
 
-		genIntro :function ()  { 
-			//  new Nodes();
-		},
+									"<div class='course-image'>"+
+											FBZ.model.noBrain.Courses.elements[i].CoursePic+"</div>"+
+									"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
+									"<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
 
-		activateCellIntro : function () {
+									"<p data-translatable class='course-teacher'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
+									"<div class='course-details is-hidden'>"+
+										"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
+										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
+										"<p data-translatable class='course-lessonDates'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
+										"<p data-translatable class='course-lessonHours'>"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
+
+										"<div class='teacher-image'>"+
+											FBZ.model.noBrain.Courses.elements[i].TeacherPic+"</div>"+
+										// "<h3 data-translatable class='course-client is-hidden'>"+FBZ.model.noBrain.Courses.elements[i].Client +"</h3>"+
+										// 	"<p class='course-date is-hidden'>"+ FBZ.model.noBrain.Courses.elements[i].StartDate+"</p>"+
+										// 	"<p class='course-description is-hidden' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].Description+"</p>"+
+										// 	// "</div><!--end course text-wrapper-->"+
+										 	"<button class='course-keywords is-hidden' href='"+FBZ.model.noBrain.Courses.elements[i].URL+"' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
+										"</div></div><!--end course card-->"
+										);
+				}
+			}
 
 		},
 
