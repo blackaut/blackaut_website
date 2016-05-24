@@ -1,3 +1,29 @@
+// academy 
+
+
+.game-rules-box { 
+	background-color:$no-black;
+	padding:15px;
+//	margin-top:50px;
+	opacity:0.8;
+	position: absolute;
+    left: 50%;
+    top:50%;
+    transform:  translateY(-50%) translateX(-50%);
+
+}
+
+.academy-text-shape {
+	margin-top: 130px;
+	text-align: justify;
+	p { 
+		shape-outside:  circle(150px at center);
+	}
+	padding-left:20px;
+	padding-right:20px;
+}
+
+
 
 // .curtain { 
 
@@ -1250,12 +1276,16 @@ footer {
 // dividers
 .thirder { 
 
-	width:26vw;
+	width:30vw;
 	display:inline-block;
 	// border:1px solid red;
 	float: left;
 	text-align:center;
+	padding-left:20px;
+	padding-right:20px;
 }
+
+
 
 .halfer { 
 
