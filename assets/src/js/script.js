@@ -92,13 +92,11 @@
 
 			//console.log(FBZ.view.$footerList, FBZ.view.$logosFooter);
 			FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
-
 		},
 
 		displayFooterList : function (e) {
 
 			FBZ.view.$logosFooter.off("mouseover",FBZ.control.displayFooterList);
-
 
 			var currentRolloveredSection = e.currentTarget.getAttribute("data");
 
@@ -236,7 +234,7 @@
 		},
 
 		populateCourses :  function () { 
-	//		console.log("populateCourses");
+	//		looconsole.log("populateCourses");
 
  			FBZ.model.totalAmountOfCourses  = FBZ.model.noBrain.Courses.elements.length;
 // 			 /// ,this is an injection of content coming from the no brain 
@@ -253,25 +251,28 @@
 
 
 									"<div class='course-image'>"+
-											FBZ.model.noBrain.Courses.elements[i].CoursePic+"</div>"+
-									"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
-									"<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
+											FBZ.model.noBrain.Courses.elements[i].CoursePic+
+									"</div>"+
+									"<div class='course-box'>"+
+										"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
+										"<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
 
-									"<p data-translatable class='course-teacher'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
-									"<div class='course-details is-hidden'>"+
-										"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
-										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
-										"<p data-translatable class='course-lessonDates'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
-										"<p data-translatable class='course-lessonHours'>"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
-
-										"<div class='teacher-image'>"+
-											FBZ.model.noBrain.Courses.elements[i].TeacherPic+"</div>"+
-										// "<h3 data-translatable class='course-client is-hidden'>"+FBZ.model.noBrain.Courses.elements[i].Client +"</h3>"+
-										// 	"<p class='course-date is-hidden'>"+ FBZ.model.noBrain.Courses.elements[i].StartDate+"</p>"+
-										// 	"<p class='course-description is-hidden' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].Description+"</p>"+
-										// 	// "</div><!--end course text-wrapper-->"+
-										 	"<button class='course-keywords is-hidden' href='"+FBZ.model.noBrain.Courses.elements[i].URL+"' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
-										"</div></div><!--end course card-->"
+										"<p data-translatable class='course-teacher'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
+										"<div class='course-details is-hidden'>"+
+											"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
+											"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
+											"<p data-translatable class='course-lessonDates'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
+											"<p data-translatable class='course-lessonHours'>"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
+											"<div class='teacher-image'>"+
+												FBZ.model.noBrain.Courses.elements[i].TeacherPic+"</div>"+
+											// "<h3 data-translatable class='course-client is-hidden'>"+FBZ.model.noBrain.Courses.elements[i].Client +"</h3>"+
+											// 	"<p class='course-date is-hidden'>"+ FBZ.model.noBrain.Courses.elements[i].StartDate+"</p>"+
+											// 	"<p class='course-description is-hidden' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].Description+"</p>"+
+											// 	// "</div><!--end course text-wrapper-->"+
+											 	// "<button class='course-keywords is-hidden' href='"+FBZ.model.noBrain.Courses.elements[i].URL+"' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
+										"</div>"+
+									"</div>"+
+								"</div><!--end course card-->"
 										);
 				}
 			}
@@ -340,49 +341,6 @@
 			}
 			// to activate accordeon.
 			FBZ.control.activateProjectsAccordeon();
-
-		},
-
-		populateCourses :  function () { 
-	//		console.log("populateCourses");
-
- 			FBZ.model.totalAmountOfCourses  = FBZ.model.noBrain.Courses.elements.length;
-// 			 /// ,this is an injection of content coming from the no brain 
-		//	console.log(FBZ.model.noBrain.Courses.elements.length, FBZ.view.$coursesContainers);
-			for ( var i = 0 ; i < FBZ.model.noBrain.Courses.elements.length ; i ++ ) { 
-				console.log("container : ", FBZ.view.$coursesContainers[i]);
-				if(FBZ.model.noBrain.Courses.elements[i].Privacy != "PRIVATE") {  
-						
-			//	$coursesContainers
-
-				 $(FBZ.view.$coursesContainers[i]).append(
-
-						"<div class='course-card'>"+ 
-
-
-									"<div class='course-image'>"+
-											FBZ.model.noBrain.Courses.elements[i].CoursePic+"</div>"+
-									"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
-									"<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
-
-									"<p data-translatable class='course-teacher'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
-									"<div class='course-details is-hidden'>"+
-										"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
-										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
-										"<p data-translatable class='course-lessonDates'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
-										"<p data-translatable class='course-lessonHours'>"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
-
-										"<div class='teacher-image'>"+
-											FBZ.model.noBrain.Courses.elements[i].TeacherPic+"</div>"+
-										// "<h3 data-translatable class='course-client is-hidden'>"+FBZ.model.noBrain.Courses.elements[i].Client +"</h3>"+
-										// 	"<p class='course-date is-hidden'>"+ FBZ.model.noBrain.Courses.elements[i].StartDate+"</p>"+
-										// 	"<p class='course-description is-hidden' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].Description+"</p>"+
-										// 	// "</div><!--end course text-wrapper-->"+
-										 	"<button class='course-keywords is-hidden' href='"+FBZ.model.noBrain.Courses.elements[i].URL+"' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
-										"</div></div><!--end course card-->"
-										);
-				}
-			}
 
 		},
 
