@@ -230,17 +230,15 @@
 			}
 			// to activate accordeon.
 			FBZ.control.activateProjectsAccordeon();
-
 		},
 
 		populateCourses :  function () { 
-	//		looconsole.log("populateCourses");
-
+	
  			FBZ.model.totalAmountOfCourses  = FBZ.model.noBrain.Courses.elements.length;
 // 			 /// ,this is an injection of content coming from the no brain 
 		//	console.log(FBZ.model.noBrain.Courses.elements.length, FBZ.view.$coursesContainers);
 			for ( var i = 0 ; i < FBZ.model.noBrain.Courses.elements.length ; i ++ ) { 
-				console.log("container : ", FBZ.view.$coursesContainers[i]);
+			//	console.log("container : ", FBZ.view.$coursesContainers[i]);
 				if(FBZ.model.noBrain.Courses.elements[i].Privacy != "PRIVATE") {  
 						
 			//	$coursesContainers
@@ -255,29 +253,123 @@
 									"</div>"+
 									"<div class='course-box'>"+
 										"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
-										"<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
+										"<h4 data-translatable class='course-start-date'>comienza el "+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
+										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
+										"<button data-translatable class='course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
 
-										"<p data-translatable class='course-teacher'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
+										"<p data-translatable class='course-teacher'>by "+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
 										"<div class='course-details is-hidden'>"+
 											"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
-											"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
 											"<p data-translatable class='course-lessonDates'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
 											"<p data-translatable class='course-lessonHours'>"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
-											"<div class='teacher-image'>"+
-												FBZ.model.noBrain.Courses.elements[i].TeacherPic+"</div>"+
-											// "<h3 data-translatable class='course-client is-hidden'>"+FBZ.model.noBrain.Courses.elements[i].Client +"</h3>"+
-											// 	"<p class='course-date is-hidden'>"+ FBZ.model.noBrain.Courses.elements[i].StartDate+"</p>"+
-											// 	"<p class='course-description is-hidden' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].Description+"</p>"+
-											// 	// "</div><!--end course text-wrapper-->"+
-											 	// "<button class='course-keywords is-hidden' href='"+FBZ.model.noBrain.Courses.elements[i].URL+"' data-translatable>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
+											"<p data-translatable class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"</p>"+
+											"<p data-translatable class='course-venue'>"+FBZ.model.noBrain.Courses.elements[i].venue+"</p>"+
+
+	
+											"<div class='teacher-card'>"+
+												"<div class='teacher-image'>"+
+													FBZ.model.noBrain.Courses.elements[i].TeacherPic+"</div>"+
+												"</div>"+
+												"<p data-translatable class='teacher-name>"+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
+												"<p data-translatable class='teacher-description'>"+FBZ.model.noBrain.Courses.elements[i].TeacherDescription+"</p>"+			
 										"</div>"+
 									"</div>"+
 								"</div><!--end course card-->"
-										);
+						);
 				}
 			}
 
+			FBZ.control.activateCoursesExpansion();
 		},
+
+
+// 	TeacherName .
+// CourseName .
+// TeacherDescription .
+// Cost	.
+// CourseDescription .
+// StudentDescription .
+// LessonDates	.
+// LessonHours .
+// CoursePic .
+// TeacherPic .
+// Privacy .
+// URL . 
+// CTACopy. 
+// Venue.
+// Time		.												
+		activateCoursesExpansion : function () {
+
+				//onClickOpenProjectCard
+				FBZ.model.$courseCard = $('.course-card');
+				FBZ.model.$courseCard.on('click',FBZ.control.collapseOrExpandCourseSelector);
+		}, 
+
+		collapseOrExpandCourseSelector : function (e) {
+
+		//	console.log($(this), $(e.currentTarget).hasClass( "active"));
+			if ( $(this).hasClass( "active") )  { 
+
+				FBZ.control.onClickCollapseCourseCard(e); 
+				$(this).removeClass('active');
+
+			//	console.log ("has active :", !$(this).hasClass( "active") ); 
+			//	console.log("this does have active so .. collapse");
+
+			}else { 
+
+				$(this).addClass('active');
+				FBZ.control.onClickOpenCourseCard(e);
+			//	console.log("this doesnt have active so .. expand");
+
+			}
+		},
+
+		onClickOpenCourseCard : function (e) {
+
+				//console.log("expand course");
+				var $this = $(e.currentTarget);
+
+				$this.css({ width : "100vw"});
+
+
+				if($this.parent().hasClass( "course-container-right"))  {
+
+					console.log("right",$this.parent());
+
+					//	FBZ.control.fadeHide($($this.parent().parent().firstChild().hide()));
+				} else {
+
+					console.log("left",$this.parent());
+					//$this.parent().parent().css({ left : "-50vw"});
+				}
+				
+				$.each( e.currentTarget.children, function( index, value ){
+				//	console.log(index, value);
+				if (!$(this).hasClass( "project-name") )  {
+
+						FBZ.control.fadeShow($(value));
+					}
+				});
+
+		},
+
+		onClickCollapseCourseCard : function (e) {
+				
+				//console.log("collapse course");
+				var $this = $(e.currentTarget);
+				$this.css({ width : "50vw"});
+				 $.each(  e.currentTarget.children, function( index, value ){
+					//console.log(index, value);
+					if (!$(this).hasClass( "project-name") )  {
+						FBZ.control.fadeHide($(value));
+					}
+				});
+		},
+
+
+		////// end courses bit 
+
 
 		populatePeople : function () { 
 
@@ -344,6 +436,7 @@
 
 		},
 
+
 		activateProjectsAccordeon : function () {
 
 			FBZ.model.visibleScrollProjects 			= FBZ.view.$projectScroller.height();
@@ -378,8 +471,8 @@
 					FBZ.control.moveToProjectIndex(); 
 			});
 			//onClickOpenProjectCard
-					FBZ.model.$projectCard 	 = $('.project-card');
-					FBZ.model.$projectCard.on('click',FBZ.control.collapseOrExpandProjectSelector);
+				FBZ.model.$projectCard 	 = $('.project-card');
+				FBZ.model.$projectCard.on('click',FBZ.control.collapseOrExpandProjectSelector);
 
 		},
 
