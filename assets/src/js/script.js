@@ -147,25 +147,31 @@
 		sectionMonitor : function (index) { 
 
 			console.log("index :", index);
-			//if (index)
+			
+			//activate slider in the correct sections 
 			if(FBZ.model.currentSection === "home" && index === 3 )  { 
-				FBZ.slider.createInterval();
+				FBZ.sliderHome.createInterval();
 			}else { 
-				FBZ.slider.deleteInterval();
+				FBZ.sliderHome.deleteInterval();
 			}
 
-
+			if(FBZ.model.currentSection === "labs" && index === 2 )  { 
+				FBZ.sliderLabs.createInterval();
+			}else { 
+				FBZ.sliderLabs.deleteInterval();
+			}
 		},
 
 		parseBrain : function () {
 
-			FBZ.slider.init();
+			
 			// triggers the init func
 			FBZ.control.init();
 
 			if (	FBZ.model.currentSection == 'home' ) { 
 
 				FBZ.control.initHome();
+				FBZ.sliderHome.init();
 
 			} else if (	FBZ.model.currentSection == 'academy' ) { 
 
@@ -174,6 +180,7 @@
 			} else if (	FBZ.model.currentSection == 'labs' ) { 
 
 				FBZ.control.initLabs();
+				FBZ.sliderLabs.init();
 
 			}
 
@@ -283,6 +290,7 @@
 		},
 
 
+
 // 	TeacherName .
 // CourseName .
 // TeacherDescription .
@@ -330,7 +338,7 @@
 				//console.log("expand course");
 				var $this = $(e.currentTarget);
 
-				$this.css({ width : "100vw"});
+				// $this.css({ width : "100vw"});
 
 
 				if($this.parent().hasClass( "course-container-right"))  {
@@ -340,30 +348,45 @@
 					//	FBZ.control.fadeHide($($this.parent().parent().firstChild().hide()));
 				} else {
 
-					console.log("left",$this.parent());
+					console.log("left",$this.parent().parent());
 					//$this.parent().parent().css({ left : "-50vw"});
 				}
 				
 				$.each( e.currentTarget.children, function( index, value ){
 				//	console.log(index, value);
-				if (!$(this).hasClass( "project-name") )  {
+				if (!$(this).hasClass( "course-name")  || $(this).hasClass( "course-start")  || $(this).hasClass( "course-students")  ||$(this).hasClass( "course-image")  )  {
 
 						FBZ.control.fadeShow($(value));
 					}
+			
 				});
 
 		},
+
+
+
+// course-name
+// course-start
+// course-students
+// course-image
+// course-CTACopy
 
 		onClickCollapseCourseCard : function (e) {
 				
 				//console.log("collapse course");
 				var $this = $(e.currentTarget);
-				$this.css({ width : "50vw"});
+				// $this.css({ width : "50vw"});
 				 $.each(  e.currentTarget.children, function( index, value ){
 					//console.log(index, value);
-					if (!$(this).hasClass( "project-name") )  {
+				if (!$(this).hasClass( "course-name")  || $(this).hasClass( "course-start")  || $(this).hasClass( "course-students")  ||$(this).hasClass( "course-image")   )  {
 						FBZ.control.fadeHide($(value));
 					}
+
+				if ( $(this).hasClass( "course-CTACopy")) {
+					FBZ.control.fadeShow($(value));
+
+				}
+
 				});
 		},
 

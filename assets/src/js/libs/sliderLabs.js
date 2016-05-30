@@ -4,7 +4,7 @@
 (function(FBZ, $) {
 
 
-FBZ.slider = {
+FBZ.sliderLabs = {
 
 		clock: {} ,
 		time: 5000,
@@ -12,44 +12,44 @@ FBZ.slider = {
 		totalImage:0,
 
 		init : function () {
-			FBZ.slider.setupSlider();
-			FBZ.slider.createSliderControl();
-		//	FBZ.slider.createInterval();
-		//	FBZ.slider.deleteInterval();
+			FBZ.sliderLabs.setupSlider();
+			FBZ.sliderLabs.createSliderControl();
+		//	FBZ.sliderLabs.createInterval();
+		//	FBZ.sliderLabs.deleteInterval();
 		},
 		createInterval : function () { 
-			 FBZ.slider.clock = setInterval( function() 
+			 FBZ.sliderLabs.clock = setInterval( function() 
 		{
 	//			console.log("interval");
-				FBZ.slider.playSlider();
-        }, FBZ.slider.time);
+				FBZ.sliderLabs.playSlider();
+        }, FBZ.sliderLabs.time);
 		}, 
 
 		deleteInterval : function () { 
-			clearInterval(FBZ.slider.clock);
+			clearInterval(FBZ.sliderLabs.clock);
 		},
 
 		setupSlider : function () {
 			//do some more stuff in here
-			FBZ.view.sliderHome = $(".sliderHome");
+			FBZ.view.sliderLabs = $(".sliderLabs");
 			
-			FBZ.view.sliderHome.parent().append(
-				"<div class='slider-control slider-home-control'></div>"
+			FBZ.view.sliderLabs.parent().append(
+				"<div class='slider-control slider-labs-control'></div>"
 			);
-			FBZ.view.sliderHomeControl = $(".slider-home-control");
+			FBZ.view.sliderLabsControl = $(".slider-labs-control");
 
-			//console.dir(FBZ.model.noBrain.SliderHome.elements.length);
-			for ( var i = 0 ; i < FBZ.model.noBrain.SliderHome.elements.length ; i ++ ) { 
+			//console.dir(FBZ.model.noBrain.SliderLabs.elements.length);
+			for ( var i = 0 ; i < FBZ.model.noBrain.SliderLabs.elements.length ; i ++ ) { 
 
-				if(FBZ.model.noBrain.SliderHome.elements[i].Privacy != "PRIVATE") {  
+				if(FBZ.model.noBrain.SliderLabs.elements[i].Privacy != "PRIVATE") {  
 
-					FBZ.view.sliderHome.append(
+					FBZ.view.sliderLabs.append(
 						"<div class='slider-card'>"+
 						"</div><!--slider card-->"
 						);
-					FBZ.view.sliderHome.children().last().css("background-image","url("+FBZ.model.noBrain.SliderHome.elements[i].picUrl+")");
+					FBZ.view.sliderLabs.children().last().css("background-image","url("+FBZ.model.noBrain.SliderLabs.elements[i].picUrl+")");
 
-					FBZ.view.sliderHomeControl.append("<div class='slider-dot'></div>")
+					FBZ.view.sliderLabsControl.append("<div class='slider-dot'></div>")
 					
 
 					}
@@ -58,35 +58,35 @@ FBZ.slider = {
 		},
 		createSliderControl : function () {
 			//FBZ.slider.currentImage = 0;
-			FBZ.slider.totalImage  = FBZ.view.sliderHomeControl.children().length-1;
+			FBZ.sliderLabs.totalImage  = FBZ.view.sliderLabsControl.children().length-1;
 		//	console.log("	FBZ.slider.totalImage ",	FBZ.slider.totalImage );
-			FBZ.view.sliderHomeControl.children().on("click",FBZ.slider.onDotClick);
-			FBZ.slider.changeImageToIndex(FBZ.slider.currentImage);
+			FBZ.view.sliderLabsControl.children().on("click",FBZ.sliderLabs.onDotClick);
+			FBZ.sliderLabs.changeImageToIndex(FBZ.sliderLabs.currentImage);
 
 		},
 		onDotClick : function (e)  { 
 
 		//	console.log($(e.currentTarget).index());
-			FBZ.slider.changeImageToIndex($(e.currentTarget).index());
-			FBZ.slider.deleteInterval();
+			FBZ.sliderLabs.changeImageToIndex($(e.currentTarget).index());
+			FBZ.sliderLabs.deleteInterval();
 		},
 
 		changeImageToIndex : function (index) {
 
-			FBZ.view.sliderHome.children().removeClass("active");
-			$(FBZ.view.sliderHome.children().get(index)).addClass('active');
+			FBZ.view.sliderLabs.children().removeClass("active");
+			$(FBZ.view.sliderLabs.children().get(index)).addClass('active');
 		},
 
 		playSlider: function () { 
 
-			console.log(FBZ.slider.currentImage, FBZ.slider.totalImage);
-			if(FBZ.slider.currentImage < FBZ.slider.totalImage) { 
-				FBZ.slider.currentImage ++;
+			console.log(FBZ.sliderLabs.currentImage, FBZ.sliderLabs.totalImage);
+			if(FBZ.sliderLabs.currentImage < FBZ.sliderLabs.totalImage) { 
+				FBZ.sliderLabs.currentImage ++;
 			}else { 
 
-				FBZ.slider.currentImage = 0;
+				FBZ.sliderLabs.currentImage = 0;
 			}
-				FBZ.slider.changeImageToIndex(FBZ.slider.currentImage);
+				FBZ.sliderLabs.changeImageToIndex(FBZ.sliderLabs.currentImage);
 
 		}
 

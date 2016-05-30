@@ -1,45 +1,6 @@
-// course 
-.course-card {
-
-    width: 50vw;
-    border-right: 1px solid $no-hardpink;
-    float: left;
-    display: inline-block;
-    height: 75vh;
-    position: relative;
-
-}
-.course-name {
-
-	font-family: 'aldrichregular';
-	text-transform: uppercase;
-	font-size: 1.5em;
-	text-align:left;
-	top:0;
-	display:inline-block;
-
-}
-
-.course-image {
-
-	height: 75vh;
-	width:22vw;
-	display:inline-block;
-	img { 
-		width:25vw;
-
-	}
-}
-.course-box {     
-
-	//border: 1px solid green;
-    width: 22vw;
-    position: absolute;
-    top: 0;
-    right: 0;
 
 
-}
+
 
 // academy
 
@@ -88,6 +49,82 @@
 	//padding-right:20px;
 	font-size:.9em;
 }
+
+
+// course 
+
+
+.course-card {
+
+    width: 50vw;
+    border-right: 1px solid $no-hardpink;
+    float: left;
+    display: inline-block;
+    height: 75vh;
+    position: relative;
+
+}
+
+.course-image {
+
+	height: 75vh;
+	width:22vw;
+	display:inline-block;
+	img { 
+		width:25vw;
+
+	}
+}
+
+.course-box {
+
+	//border: 1px solid green;
+    width: 22vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.course-name {
+
+
+	font-family: 'aldrichregular';
+	text-transform: uppercase;
+	font-size: 1.5em;
+	text-align:left;
+	top:0;
+	display:inline-block;
+
+}
+
+.course-start-date {
+
+}
+
+
+.course-students {
+
+}
+.course-CTACopy {
+
+}
+
+.course-teacher { 
+}
+.course-details {
+
+}
+.course-description {}
+.course-lessonDates {}
+.course-lessonHours{}
+.course-time{}
+.course-venue {}
+.teacher-card {}
+.teacher-image {}
+.teacher-name{}
+.teacher-description {}
+
+
+
 
 
 
