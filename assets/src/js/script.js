@@ -16,6 +16,11 @@
 		// (http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)
 		FBZ.control.addLoadingCurtain();
 		FBZ.control.readFromGoogleDocs();
+		FBZ.control.defineStage();
+		FBZ.control.resizeContentBlock();
+		FBZ.control.determineSection();
+		FBZ.control.scrollerControl();
+		FBZ.control.onResizeStage();
 
 	});// END DOC READY
 	
@@ -74,16 +79,11 @@
 		// add function here
 		init : function () {
 			console.debug('NullØbject is running');
-			FBZ.control.defineStage();
-			FBZ.control.resizeContentBlock();
-			FBZ.control.scrollerControl();
-			FBZ.control.onResizeStage();
 			FBZ.control.multilingualEngine(); 
 			FBZ.control.checkURL();
 		//	FBZ.control.twitterWidget();
 			FBZ.control.disappearScrollIcon();
 	//		FBZ.control.interactiveBG();
-			FBZ.control.determineSection();
 			// FBZ.control.removeLoadingCurtain();
 			FBZ.control.activateFooter();
 		},
@@ -131,6 +131,8 @@
 
 			var section = window.location.href.split("/");
 
+			console.log("section length :",section.length);
+
 			if ( section.length <= 4 ) { 
 
 					FBZ.model.currentSection  = "home";
@@ -146,11 +148,12 @@
 
 		sectionMonitor : function (index) { 
 
-			console.log("index :", index);
+			console.log("index :", index, FBZ.model.currentSection);
 			
 			//activate slider in the correct sections 
 			if(FBZ.model.currentSection === "home" && index === 3 )  { 
 				FBZ.sliderHome.createInterval();
+				console.log("execute slider home");
 			}else { 
 				FBZ.sliderHome.deleteInterval();
 			}
