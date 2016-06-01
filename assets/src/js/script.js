@@ -10,10 +10,8 @@
 ;(function(FBZ, $) {
 
 	$(function() {
-		// Any globals go here in CAPS (but avoid if possible)
 
-		// follow a singleton pattern
-		// (http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)
+		// initial functions 
 		FBZ.control.addLoadingCurtain();
 		FBZ.control.readFromGoogleDocs();
 		FBZ.control.defineStage();
@@ -49,7 +47,9 @@
 		proyectsHeight: 0,
 		visibleScrollProjects : 0,
 		totalScrollProjects: 0 ,	
-		overFlowProjects: 0 		
+		overFlowProjects: 0,
+		peoplePicBaseURL : "assets/img/people/"
+		
 	};
 
 	FBZ.view = {
@@ -163,6 +163,17 @@
 			}else { 
 				FBZ.sliderLabs.deleteInterval();
 			}
+
+			if(FBZ.model.currentSection === "academy" && index > 2 && index < 7 )  { 
+				FBZ.control.fixHeaderCourses();
+				console.log("fixs");
+			}else { 
+				FBZ.control.unfixHeaderCourses();
+					console.log("unfixs");
+
+			}
+
+			
 		},
 
 		parseBrain : function () {
@@ -261,29 +272,37 @@
 									"<div class='course-image'>"+
 											FBZ.model.noBrain.Courses.elements[i].CoursePic+
 									"</div>"+
+
 									"<div class='course-box'>"+
 										"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
 										"<h4 data-translatable class='course-start-date'>comienza el "+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
 										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
-										"<button data-translatable class='course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
-
 										"<p data-translatable class='course-teacher'>by "+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
-										"<div class='course-details is-hidden'>"+
-											"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
+										"<button data-translatable class='course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
+									"</div>"+
+
+
+									"<div class='course-details is-hidden'>"+
+
+										"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
 											"<p data-translatable class='course-lessonDates'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
 											"<p data-translatable class='course-lessonHours'>"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
 											"<p data-translatable class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"</p>"+
-											"<p data-translatable class='course-venue'>"+FBZ.model.noBrain.Courses.elements[i].venue+"</p>"+
-
-	
-											"<div class='teacher-card'>"+
-												"<div class='teacher-image'>"+
-													FBZ.model.noBrain.Courses.elements[i].TeacherPic+"</div>"+
-												"</div>"+
-												"<p data-translatable class='teacher-name>"+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
-												"<p data-translatable class='teacher-description'>"+FBZ.model.noBrain.Courses.elements[i].TeacherDescription+"</p>"+			
-										"</div>"+
+											"<p data-translatable class='course-venue'>"+FBZ.model.noBrain.Courses.elements[i].Venue+"</p>"+
 									"</div>"+
+									"<div class='teacher-card is-hidden'>"+
+										"<div class='teacher-image'>"+
+											"<picture>"+
+												"<source srcset='../"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.Courses.elements[i].TeacherPic+"_small.jpg' media='(max-width: 320px)'/>"+
+												"<source srcset='../"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.Courses.elements[i].TeacherPic+"_med.jpg' media='(max-width: 650px)'/>"+
+												"<source srcset='../"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.Courses.elements[i].TeacherPic+"_big.jpg' media='(max-width: 900px)'/>"+
+												"<img srcset='../"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.Courses.elements[i].TeacherPic+"_med.jpg' alt='"+FBZ.model.noBrain.Courses.elements[i].TeacherName+"'/>"+
+											"</picture>"+
+										"</div>"+
+										"<p class='teacher-name'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName+"</p>"+
+										"<p data-translatable class='teacher-description'>"+FBZ.model.noBrain.Courses.elements[i].TeacherDescription+"</p>"+			
+									"</div>"+
+
 								"</div><!--end course card-->"
 						);
 				}
@@ -292,7 +311,14 @@
 			FBZ.control.activateCoursesExpansion();
 		},
 
+		fixHeaderCourses : function () {
+			FBZ.control.fadeShow($(".cursos-header"));
+		},
 
+		unfixHeaderCourses : function () {
+			FBZ.control.fadeHide($(".cursos-header"));
+
+		}, 
 
 // 	TeacherName .
 // CourseName .
@@ -341,27 +367,26 @@
 				//console.log("expand course");
 				var $this = $(e.currentTarget);
 
-				// $this.css({ width : "100vw"});
+				$this.parent().css({ width : "100vw"});
 
 
 				if($this.parent().hasClass( "course-container-right"))  {
 
-					console.log("right",$this.parent());
-
-					//	FBZ.control.fadeHide($($this.parent().parent().firstChild().hide()));
+					// console.log("right");
+					$this.parent().parent().children(".course-container-left").hide();
 				} else {
-
-					console.log("left",$this.parent().parent());
-					//$this.parent().parent().css({ left : "-50vw"});
+					// console.log("left");
+					$this.parent().parent().children(".course-container-right").hide();
 				}
-				
-				$.each( e.currentTarget.children, function( index, value ){
-				//	console.log(index, value);
-				if (!$(this).hasClass( "course-name")  || $(this).hasClass( "course-start")  || $(this).hasClass( "course-students")  ||$(this).hasClass( "course-image")  )  {
 
-						FBZ.control.fadeShow($(value));
+				$.each( e.currentTarget.children, function( index, value ){
+					console.log(index, value);
+					if ( !$(this).hasClass( "course-box") )  {
+						if ( !$(this).hasClass( "course-image") ) {
+								FBZ.control.fadeShow($(value));
+							
+						}
 					}
-			
 				});
 
 		},
@@ -378,11 +403,25 @@
 				
 				//console.log("collapse course");
 				var $this = $(e.currentTarget);
-				// $this.css({ width : "50vw"});
+
+
+				if($this.parent().hasClass( "course-container-right"))  {
+
+					// console.log("right");
+					$this.parent().parent().children(".course-container-left").show();
+				} else {
+					// console.log("left");
+					$this.parent().parent().children(".course-container-right").show();
+				}
+				$this.parent().css({ width : "50vw"});
+				
 				 $.each(  e.currentTarget.children, function( index, value ){
-					//console.log(index, value);
-				if (!$(this).hasClass( "course-name")  || $(this).hasClass( "course-start")  || $(this).hasClass( "course-students")  ||$(this).hasClass( "course-image")   )  {
-						FBZ.control.fadeHide($(value));
+					console.log(index, value);
+				if ( !$(this).hasClass( "course-box") )  {
+					if ( !$(this).hasClass( "course-image") ) {
+
+								FBZ.control.fadeHide($(value));
+						}
 					}
 
 				if ( $(this).hasClass( "course-CTACopy")) {
@@ -401,7 +440,6 @@
 
 			FBZ.model.totalAmountOfPeople = FBZ.model.noBrain.People.elements.length;
 
-			FBZ.model.peoplePicBaseURL = "assets/img/people/";
 			for ( var i = 0 ; i < FBZ.model.noBrain.People.elements.length ; i ++ ) { 
 			//	console.log(FBZ.model.noBrain.People.elements[i]);
 				

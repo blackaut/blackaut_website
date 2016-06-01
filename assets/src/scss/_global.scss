@@ -50,37 +50,59 @@
 	font-size:.9em;
 }
 
+.cursos-header {
+
+	position: absolute;
+	top:110px;
+	right:60px;
+	display:none;
+	opacity:0;
+}
 
 // course 
+.course-container {
 
+	display: inline-block;
+	width: 50vw;
+	position: relative;
+	height: 75vh;
+	float: left;
+	border-right: 1px solid $no-hardpink;
+	padding-left:10px;
+	padding-right:50px;
+}
 
 .course-card {
 
-    width: 50vw;
-    border-right: 1px solid $no-hardpink;
-    float: left;
+    // width: 50vw;
+
     display: inline-block;
-    height: 75vh;
-    position: relative;
 	cursor: pointer;
+	background-color:$no-black;
 }
 
 .course-image {
 
 	height: 75vh;
 	width:22vw;
+	float:left;
+
 	display:inline-block;
 	img { 
 		width:25vw;
 
 	}
 }
+.info-box {
+	border:1px solid white;
+}
 
 .course-box {
 
 	//border: 1px solid green;
     width: 22vw;
-    position: absolute;
+    position: relative;
+    float:left;
     top: 0;
     right: 0;
 }
@@ -97,7 +119,11 @@
 }
 
 .course-start-date {
-
+	
+	font-family: 'aldrichregular';
+	text-transform: uppercase;
+	font-size: 0.7em;
+	color:$no-hardpink;
 }
 
 
@@ -106,11 +132,19 @@
 }
 .course-CTACopy {
 
+	background-color:$no-hardpink;
+	padding:5px;
+	font-family: Roboto;
+	text-transform: uppercase;
+	font-size: 0.7em;
 }
 
 .course-teacher { 
 }
 .course-details {
+	width: 22vw;
+    position: relative;
+    float:left;
 
 }
 .course-description {}
@@ -118,10 +152,38 @@
 .course-lessonHours{}
 .course-time{}
 .course-venue {}
-.teacher-card {}
-.teacher-image {}
+
+
+.teacher-card {
+
+
+	float:left;
+	display:inline-block;
+	background-color:$no-hardpink;
+	padding:5px;
+	width:22vw;
+	text-align:center;
+
+	.teacher-name {
+		width: 100%;
+		text-align: center;
+		font-size: 1em;
+	}
+}
+.teacher-image {
+
+	margin: 0 auto;
+
+	img { 
+		width: 100px;
+		border-radius:50%;
+	//	opacity:0.5;
+	}
+}
 .teacher-name{}
-.teacher-description {}
+.teacher-description {
+	font-size:0.6em;
+}
 
 
 
