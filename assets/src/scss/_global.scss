@@ -16,12 +16,14 @@
 } 
 .vertical-text {
 	transform-origin: left top 0;
-	transform:rotate(90deg) translateY(70%);
+	transform:rotate(90deg) translateY(40%);
 	color:$no-hardpink;
 	//display:inline;
 	width:100vh;
 	//color:black;
 	letter-spacing:.1em;
+	font-size:1.5em;
+	margin-bottom:0;
 	// ////top:0;
 	// position:absolute;
 }
@@ -33,9 +35,12 @@
 	padding-bottom:10vh;
 	color:white;
 	margin:0;
-	transform: translateX(6vw);
+	transform: translateX(4vw);
 	li { 
 		list-style: none;
+		padding:10px 0;
+	}
+	ul {
 		padding:0;
 	}
 }
@@ -68,6 +73,8 @@
 	padding-left:10px;
 	padding-right:50px;
 	margin-top:	60px;
+	//overflow-y:auto;
+	z-index:2;
 }
 
 .course-card {
@@ -1224,12 +1231,30 @@ header {
 	}
 }
 
-.big-null { 
+////// bigs
+
+.big { 
 
 	position:absolute;
 	display:block;
 	width:100%;
 	z-index:-1;
+}
+
+.big-null { 
+
+	transform:translateY(20%)translateX(-30%) scale(.9);
+}
+
+.big-academy { 
+
+	transform:translateY(-20%)translateX(-30%) scale(.9);
+	z-index:1;
+
+}
+
+.big-labs { 
+
 	transform:translateY(20%)translateX(-30%) scale(.9);
 }
 
@@ -1563,6 +1588,7 @@ footer {
 
 .fake-bg { 
 	height:100%;
+	left: 0;
 	width:100%;
 	z-index:-2;
 	position:absolute;

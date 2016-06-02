@@ -331,6 +331,13 @@
 																"</div>"+
 															"</div>"+
 
+															"<div class='form-controlGroup'>"+
+																"<div class='form-controlGroup-inputWrapper'>"+
+																	"<textarea class='form-input form-input--textarea' name='course' id='comments' class='form_el is-hidden' value='"+FBZ.model.noBrain.Courses.elements[i].CourseName+"'></textarea>"+
+																"</div>"+
+															"</div>"+
+
+
 														"</fieldset>"+
 
 														"<div class='form-actions text_centre'>"+
