@@ -17,7 +17,6 @@
 		FBZ.control.defineStage();
 		FBZ.control.resizeContentBlock();
 		FBZ.control.determineSection();
-		FBZ.control.scrollerControl();
 		FBZ.control.onResizeStage();
 
 	});// END DOC READY
@@ -48,7 +47,8 @@
 		visibleScrollProjects : 0,
 		totalScrollProjects: 0 ,	
 		overFlowProjects: 0,
-		peoplePicBaseURL : "assets/img/people/"
+		peoplePicBaseURL : "assets/img/people/",
+		currentLang:"es"
 		
 	};
 
@@ -79,13 +79,14 @@
 		// add function here
 		init : function () {
 			console.debug('NullØbject is running');
-			FBZ.control.multilingualEngine(); 
-			FBZ.control.checkURL();
+			
 		//	FBZ.control.twitterWidget();
 			FBZ.control.disappearScrollIcon();
 	//		FBZ.control.interactiveBG();
 			// FBZ.control.removeLoadingCurtain();
 			FBZ.control.activateFooter();
+			FBZ.control.scrollerControl();
+			FBZ.control.checkURL();
 		},
 
 		activateFooter : function () { 
@@ -166,11 +167,8 @@
 
 			if(FBZ.model.currentSection === "academy" && index > 2 && index < 7 )  { 
 				FBZ.control.fixHeaderCourses();
-				console.log("fixs");
 			}else { 
 				FBZ.control.unfixHeaderCourses();
-					console.log("unfixs");
-
 			}
 
 			
@@ -198,6 +196,9 @@
 
 			}
 
+			FBZ.control.multilingualEngine(); 
+
+		 	//FBZ.control.updateLanguage();
 		},
 
 
@@ -264,20 +265,21 @@
 						
 			//	$coursesContainers
 
+				var datesList = FBZ.model.noBrain.Courses.elements[i].LessonDates.replace(",","<br>");
+				console.log(dateList);
+
 				 $(FBZ.view.$coursesContainers[i]).append(
 
 						"<div class='course-card'>"+ 
 
-
-									"<div class='course-image'>"+
-											FBZ.model.noBrain.Courses.elements[i].CoursePic+
+									"<div class='close-btn is-hidden'>x</div>"+
+									"<div class='course-image' style='background-image:url("+FBZ.model.noBrain.Courses.elements[i].CoursePic+");'>"+
 									"</div>"+
-
 									"<div class='course-box'>"+
 										"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
 										"<h4 data-translatable class='course-start-date'>comienza el "+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
 										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
-										"<p data-translatable class='course-teacher'>by "+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
+										"<p data-translatable class='course-teacher'>por "+FBZ.model.noBrain.Courses.elements[i].TeacherName + " // by "+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
 										"<button data-translatable class='course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
 									"</div>"+
 
@@ -285,10 +287,12 @@
 									"<div class='course-details is-hidden'>"+
 
 										"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
-											"<p data-translatable class='course-lessonDates'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
-											"<p data-translatable class='course-lessonHours'>"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
-											"<p data-translatable class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"</p>"+
-											"<p data-translatable class='course-venue'>"+FBZ.model.noBrain.Courses.elements[i].Venue+"</p>"+
+											"<p data-translatable class='course-lessonDates'>fechas : "++" // dates : "+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
+											"<p data-translatable class='course-lessonHours'> horas pedagogicas : "+FBZ.model.noBrain.Courses.elements[i].LessonHours+" // course length :"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
+											"<p class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"hrs</p>"+
+											"<p data-translatable class='course-venue'>valor : "+FBZ.model.noBrain.Courses.elements[i].Cost+" // price : "+FBZ.model.noBrain.Courses.elements[i].Cost+"</p>"+
+											"<p data-translatable class='course-venue'>lugar : "+FBZ.model.noBrain.Courses.elements[i].Venue+" // venue : "+FBZ.model.noBrain.Courses.elements[i].Venue+"</p>"+
+
 									"</div>"+
 									"<div class='teacher-card is-hidden'>"+
 										"<div class='teacher-image'>"+
@@ -302,7 +306,38 @@
 										"<p class='teacher-name'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName+"</p>"+
 										"<p data-translatable class='teacher-description'>"+FBZ.model.noBrain.Courses.elements[i].TeacherDescription+"</p>"+			
 									"</div>"+
+										"<div class='course-contact is-hidden'>"+
 
+										"<form class='form form--horizontal' method='post' accept-charset='utf-8' action='php/html_form_send.php' enctype='multipart/form-data'>"+
+
+												"<h2 class='course-preincription' data-translatable>Pre-incribete aquí // Pre-suscribe here</h2>"+
+														"<fieldset class='form-fieldset'>"+
+															"<div class='form-controlGroup'>"+
+																// "<label class='form-label' for='first_name'>Nombre // Name</label>"+
+																"<div class='form-controlGroup-inputWrapper'>"+
+																	"<input class='form-input form_el' name='first_name' type='text' id='text' placeholder='nombre' required/>"+
+																"</div>"+
+															"</div>"+
+															"<div class='form-controlGroup'>"+
+																// "<label class='form-label' for='last_name'>telefono // telephone </label>"+
+																"<div class='form-controlGroup-inputWrapper'>"+
+																	"<input class='form-input' name='phone' type='number' id='text' class='form_el' placeholder='telefono' required/>"+
+																"</div>"+
+															"</div>"+
+															"<div class='form-controlGroup'>"+
+																// "<label class='form-label' for='email'>Email</label>"+
+																"<div class='form-controlGroup-inputWrapper'>"+
+																"<input class='form-input' name='email' type='email' id='email' class='form_el' placeholder='email' required/>"+
+																"</div>"+
+															"</div>"+
+
+														"</fieldset>"+
+
+														"<div class='form-actions text_centre'>"+
+															"<input type='submit' class='btn btn--primary form_el' />"+
+														"</div>"+
+													"</form>"+
+												"</div>"+
 								"</div><!--end course card-->"
 						);
 				}
@@ -313,6 +348,7 @@
 
 		fixHeaderCourses : function () {
 			FBZ.control.fadeShow($(".cursos-header"));
+
 		},
 
 		unfixHeaderCourses : function () {
@@ -344,24 +380,34 @@
 
 		collapseOrExpandCourseSelector : function (e) {
 
-		//	console.log($(this), $(e.currentTarget).hasClass( "active"));
+			console.log($(this), $(e.currentTarget).hasClass( "active"));
 			if ( $(this).hasClass( "active") )  { 
 
-				FBZ.control.onClickCollapseCourseCard(e); 
-				$(this).removeClass('active');
+					console.log(this);
+					// FBZ.control.onClickCollapseCourseCard(e); 
+					// $(this).removeClass('active');
 
 			//	console.log ("has active :", !$(this).hasClass( "active") ); 
 			//	console.log("this does have active so .. collapse");
 
-			}else { 
+			}else {
 
 				$(this).addClass('active');
 				FBZ.control.onClickOpenCourseCard(e);
+				FBZ.model.$courseCard.find(".close-btn").on('click',FBZ.control.onClickCloseButton);
 			//	console.log("this doesnt have active so .. expand");
 
 			}
 		},
+		onClickCloseButton : function (e) {
 
+
+		//	FBZ.control.collapseOrExpandCourseSelector($(e.currentTarget).parent().get(0));
+			//console.log($(e.currentTarget).parent().get(0));
+			FBZ.control.onClickCollapseCourseCard($(e.currentTarget).parent().get(0)); 
+			$(".course-card .active").removeClass('active');
+		},
+ 
 		onClickOpenCourseCard : function (e) {
 
 				//console.log("expand course");
@@ -392,18 +438,10 @@
 		},
 
 
-
-// course-name
-// course-start
-// course-students
-// course-image
-// course-CTACopy
-
 		onClickCollapseCourseCard : function (e) {
-				
-				//console.log("collapse course");
-				var $this = $(e.currentTarget);
 
+				//console.log("collapse course");
+				var $this = $(e);
 
 				if($this.parent().hasClass( "course-container-right"))  {
 
@@ -415,7 +453,7 @@
 				}
 				$this.parent().css({ width : "50vw"});
 				
-				 $.each(  e.currentTarget.children, function( index, value ){
+				 $.each(  e.children, function( index, value ){
 					console.log(index, value);
 				if ( !$(this).hasClass( "course-box") )  {
 					if ( !$(this).hasClass( "course-image") ) {
@@ -566,6 +604,7 @@
 				el.removeClass("is-fading-in");
 			}, 701);
 		},
+
 
 		scrollToProjectIndex : function (index) {
 
@@ -748,6 +787,10 @@
 				$(this).addClass("active" );
 			});
 
+			FBZ.control.changeLanguage('es');
+		},
+
+		updateLanguage : function () {
 			FBZ.control.changeLanguage('es');
 		},
 

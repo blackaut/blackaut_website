@@ -24,8 +24,8 @@ $placeholder-textColor : lighten(#000, 70%);  // Text colour of input placeholde
 
 // Messages & form states and alerts
 $color-warning         : #f4aa47; // base colour for warning input state
-$color-error           : #B94A4D;    // base colour for error input state
-$color-success         : $green;              // base colour for success input state
+$color-error           : $no-hardpink;    // base colour for error input state
+$color-success         : white;              // base colour for success input state
 $color-info         : $blue;                  // base colour for info input state
 
 
@@ -56,7 +56,7 @@ $color-info         : $blue;                  // base colour for info input stat
 	display: block;
 	width: 100%;
 	padding: 0;
-	margin-bottom: $baseline;
+	// margin-bottom: $baseline;
 	@include font-size($type-large);
 	line-height: $leading-base;
 	color: $label-textColor;
@@ -75,7 +75,7 @@ $color-info         : $blue;                  // base colour for info input stat
  * Form inputs and groups
  */
 .form-controlGroup {
-	margin-top: $baseline / 2;
+	margin-top: 0;
 	margin-bottom: $baseline / 2;
 	list-style-type: none;
 }
@@ -107,14 +107,14 @@ $color-info         : $blue;                  // base colour for info input stat
 	padding: .5em;
 
 	@include font-size($type-base);
-	font-family: $font-family-base;
+	font-family: 'aldrichregular';
 	line-height: $leading-base;
 	color: $input-textColor;
 	font-weight: normal;
 	vertical-align: baseline;
 
 	background-color: $input-bgColor;
-	border: 2px solid $input-borderColor;
+	//border: 2px solid $input-borderColor;
 	border-radius: 5px;
 	background-clip: padding-box;
 
@@ -148,10 +148,10 @@ $color-info         : $blue;                  // base colour for info input stat
 	// Reset the file input to browser defaults
 	&[type="file"] {
 		width: auto;
-		height: 28px;
+		height: 20px;
 		padding: initial;
 		line-height: initial;
-		border: initial;
+	//	border: initial;
 		background-color: $input-bgColor;
 		background-color: initial;
 	}
@@ -168,10 +168,7 @@ $color-info         : $blue;                  // base colour for info input stat
 		padding: 2px;
 	}
 
-	// See http://martineau.tv/2013/05/hidden-characters-in-password-inputs/
-	&[type="password"] {
-		font-family: sans-serif;
-	}
+	
 
 	&[type="range"] {
 		width: 100%;
@@ -307,16 +304,16 @@ input[type="submit"] {
  * Form actions
  */
 .form-actions {
-	padding: $baseline 20px;
-	margin-top: $baseline;
-	margin-bottom: $baseline;
+
+	font-size:1em;
+	height:25px;
+	font-family: 'aldrichregular';
+	float: right;
+	padding-right:5px;
+	margin-right:0;
 
 	.btn {
 		margin-right: 10px;
-
-		&:last-child {
-			margin-right: 0;
-		}
 	}
 }
 
@@ -396,7 +393,7 @@ input[type="submit"] {
 	.form--horizontal {
 		// Increase spacing between groups
 		.form-controlGroup {
-			margin-bottom: $baseline;
+		
 			@include clearfix;
 
 			.form-input--fileWrapper {
@@ -412,14 +409,6 @@ input[type="submit"] {
 			text-align: right;
 		}
 
-		// Move over all input controls and content
-		.form-controlGroup-inputWrapper {
-			margin-left: 160px;
-
-			&:first-child {
-				padding-left: 160px;
-			}
-		}
 
 		// Remove bottom margin on block level help text since that's accounted for on .form--control-group
 		.form-helpBlock {
@@ -429,7 +418,8 @@ input[type="submit"] {
 
 		// Move over buttons in .form-actions to align with .form-controlGroup-inputWrapper
 		.form-actions {
-			padding-left: 160px;
+			text-align: right;
+			width:50%;
 		}
 	}
 }

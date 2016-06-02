@@ -4,7 +4,6 @@
 
 // academy
 
-
 .academy { 
 
 	h2 { 
@@ -53,10 +52,8 @@
 .cursos-header {
 
 	position: absolute;
-	top:110px;
+	top:70px;
 	right:60px;
-	display:none;
-	opacity:0;
 }
 
 // course 
@@ -67,9 +64,10 @@
 	position: relative;
 	height: 75vh;
 	float: left;
-	border-right: 1px solid $no-hardpink;
+	// border-right: 1px solid $no-hardpink;
 	padding-left:10px;
 	padding-right:50px;
+	margin-top:	60px;
 }
 
 .course-card {
@@ -79,28 +77,60 @@
     display: inline-block;
 	cursor: pointer;
 	background-color:$no-black;
+
+	.close-btn {
+		cursor: pointer;
+		position:absolute;
+		font-size: 2em;
+		top: -75px;
+		right:40px;
+	}
+
+	&.active {
+
+		cursor:	default;
+	}
+
 }
 
 .course-image {
 
 	height: 75vh;
-	width:22vw;
+    width: 20vw;
+    display: inline-block;
+    position: relative;
 	float:left;
+	background-repeat: no-repeat;
+	background-position: 50% 50%; 
+	background-size: cover;
+
+}
+.course-contact {
 
 	display:inline-block;
-	img { 
-		width:25vw;
-
-	}
+	width:22vw;
+	float:left;
 }
+.course-preincription {
+
+	font-size: 0.9em;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin:0;
+	text-align: center;
+
+}
+
 .info-box {
 	border:1px solid white;
 }
 
 .course-box {
-
+	padding-left:10px;
 	//border: 1px solid green;
-    width: 22vw;
+    width: 20vw;
+    display: inline-block;
+	height:75vh;
     position: relative;
     float:left;
     top: 0;
@@ -108,13 +138,16 @@
 }
 .course-name {
 
-
+	width: 20vw;
+	word-break: break-all;
+	// word-wrap: break-word;
 	font-family: 'aldrichregular';
 	text-transform: uppercase;
 	font-size: 1.5em;
 	text-align:left;
 	top:0;
 	display:inline-block;
+	margin: 0;
 
 }
 
@@ -124,7 +157,9 @@
 	text-transform: uppercase;
 	font-size: 0.7em;
 	color:$no-hardpink;
+	margin:10px 0;
 }
+
 
 
 .course-students {
@@ -137,16 +172,18 @@
 	font-family: Roboto;
 	text-transform: uppercase;
 	font-size: 0.7em;
+	position:absolute;
+	bottom:0;
 }
 
-.course-teacher { 
-}
 .course-details {
-	width: 22vw;
     position: relative;
     float:left;
-
+    width: 30vw;
+    overflow: auto;
+    padding:0 10px;
 }
+
 .course-description {}
 .course-lessonDates {}
 .course-lessonHours{}
@@ -155,7 +192,6 @@
 
 
 .teacher-card {
-
 
 	float:left;
 	display:inline-block;
@@ -180,7 +216,10 @@
 	//	opacity:0.5;
 	}
 }
-.teacher-name{}
+.course-teacher {
+	position:absolute;
+	bottom:25px;
+}
 .teacher-description {
 	font-size:0.6em;
 }
@@ -792,6 +831,16 @@ body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html {
  */
 body {
 	background-color: $color-bg;
+}
+
+.has-padding-left {
+
+	padding-left:30px!important;
+}
+
+.has-padding-right {
+
+	padding-right:30px!important;
 }
 
 

@@ -182,7 +182,7 @@ p {
 	font-family: $font-family-base;
 	@include font-size($type-base);
 	margin-top: 0;
-	margin-bottom: $baseline;
+	margin-bottom: 3px;
 
 	// Measure - ideally about 65 chars per line
 	// =========================================
