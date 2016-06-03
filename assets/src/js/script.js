@@ -72,6 +72,7 @@
 		$collabContainer	:$('.people-collaborators'),
 		$footerList			:$('.footer-list'),
 		$logosFooter		:$('.logo-footer'),
+		$wrapper 			: $(".onepage-wrapper")
 
 	};
 
@@ -265,8 +266,8 @@
 						
 			//	$coursesContainers
 
-				var datesList = FBZ.model.noBrain.Courses.elements[i].LessonDates.replace(",","<br>");
-				console.log(dateList);
+				// var datesList = FBZ.model.noBrain.Courses.elements[i].LessonDates.replace(",","<br>");
+				// console.log(dateList);
 
 				 $(FBZ.view.$coursesContainers[i]).append(
 
@@ -287,7 +288,7 @@
 									"<div class='course-details is-hidden'>"+
 
 										"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
-											"<p data-translatable class='course-lessonDates'>fechas : "++" // dates : "+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
+											"<p data-translatable class='course-lessonDates'>fechas : "+FBZ.model.noBrain.Courses.elements[i].LessonDates+" // dates : "+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
 											"<p data-translatable class='course-lessonHours'> horas pedagogicas : "+FBZ.model.noBrain.Courses.elements[i].LessonHours+" // course length :"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
 											"<p class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"hrs</p>"+
 											"<p data-translatable class='course-venue'>valor : "+FBZ.model.noBrain.Courses.elements[i].Cost+" // price : "+FBZ.model.noBrain.Courses.elements[i].Cost+"</p>"+
@@ -823,7 +824,9 @@
 
 			FBZ.model.stageH = FBZ.control.getHeight(FBZ.view.$stage);
 			FBZ.model.stageW = FBZ.control.getWidth(FBZ.view.$stage);
+		//	FBZ.view.$wrapper.css("height",FBZ.model.stageH);
 		//	console.log("def stage", FBZ.model.stageH, FBZ.model.stageW );
+
 		},
 
 		onResizeStage : function ()  { 

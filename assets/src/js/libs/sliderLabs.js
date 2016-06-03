@@ -74,7 +74,10 @@ FBZ.sliderLabs = {
 		changeImageToIndex : function (index) {
 
 			FBZ.view.sliderLabs.children().removeClass("active");
+			FBZ.view.sliderLabsControl.children().removeClass('active');
+			
 			$(FBZ.view.sliderLabs.children().get(index)).addClass('active');
+			$(FBZ.view.sliderLabsControl.children().get(index)).addClass('active');
 		},
 
 		playSlider: function () { 

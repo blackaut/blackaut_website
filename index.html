@@ -81,27 +81,7 @@
 						</div>
 							<div class="fullscreen-bg">
 								<canvas id="demo-canvas"></canvas>
-<!-- // add later							poster="img/videoframe.jpg" -->
-							    <!-- <video loop muted autoplay  class="fullscreen-bg__video"> -->
-							        <!-- <source src="videos/big_buck_bunny.webm" type="video/webm"> -->
-							        <!-- <source src="assets/videos/home_intro.mp4" type="video/mp4"> -->
-							        <!-- <source src="video/big_buck_bunny.ogv" type="video/ogg"> -->
-							    <!-- </video> -->
 							</div>
-	<!-- 					<video controls id="myvideo">
-							<source src="somevideo.webm"></source>
-							<source src="somevideo.mp4"></source>
-						</video>
-					 -->
-<!-- 					<ul class="intro-keywords roboto-uppercase">
-						<li data-translatable>estrategia // strategy</li>
-						<li data-translatable>dise&ntilde;o // design</li>
-						<li data-translatable>tech // tech</li>
-					</ul> -->
-<!-- 						<ul class="intro-keywords roboto-uppercase">
-							<li data-translatable>just say NØ // just say NØ</li>
-						</ul> -->
-
 					<div class="intro-scroll-icon">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 							 viewBox="256 321 100 199.7" enable-background="new 256 321 100 199.7" xml:space="preserve">
@@ -118,10 +98,17 @@
 				</section>
 
 
-				<section class="mission block has-padding-top grey page2" data-name="#mission">
+				<section class="mission block  black page2" data-name="#mission">
+
+
+				 		<picture class="piramid-bg">
+							<source srcset='assets/img/bg_mision_small.png' media='(max-width: 320px)'/>
+							<source srcset='assets/img/bg_mision_med.png' media='(max-width: 650px)'/>
+							<source srcset='assets/img/bg_mision_big.png' media='(max-width: 900px)'/>
+							<img srcset='assets/img/bg_mision_med.png' alt='piramid-bg'/>
+						</picture>
 
 						<div class="halfer halfer-left mission-text-container">
-
 							<div class="mission-text">
 								<h1 data-translatable>Misión // Mission</h1>
 								<p data-translatable>Somos grupo independiente dedicado al desarollo tecnológico. Con una nueva forma de entender nuestra productividad trabajamos enfocados en el desarrollo del individuo y luego el producto. Pensamos que cada uno de nosotros es capaz de; aprender, hacer o enseñar. Nos proponemos simplemente construir un futuro mejor, buscando soluciones lógicas provienentes del dialogo entre nuestros clientes, alumnos y amigos.
@@ -133,20 +120,21 @@
 
 						<div class="halfer halfer-right"> 
 							<div class="infograph">
-								<div class="infograph-text text-learn" data-translatable>Aprender // Learn </div>
+							<!-- 	<div class="infograph-text text-learn" data-translatable>Aprender // Learn </div>
 								<div class="infograph-text text-make" data-translatable>
 								Hacer // Make </div>
 								<div class="infograph-text text-teach"data-translatable>	Enseñar // Teach </div>								
-								<img class="piramid-info" src="assets/img/about_info.svg" alt="piramid_logo"/>
+						 -->	<img class="piramid-info" src="assets/img/about_info.svg" alt="piramid_logo"/>
+
 							</div>
 						</div>
 				</section>
 
-				<section class="about block has-padding-top grey page2" data-name="#about">
+				<section class="about grey page2" data-name="#about">
 
 						<div class="display-card">
 
-						<img class="close_x" src="assets/img/close_x.svg" alt="close_x"/>
+						<!-- <img class="close_x" src="assets/img/close_x.svg" alt="close_x"/> -->
 
 							<h1 data-translatable>Sobre nosotros // About us</h1>
 							 <p data-translatable>Null Øbject es un estudio basado en Santiago de Chile. Nos encargamos de generar contenido original para diversos dispositivos y soportes desafiando las estructuras convencionales, combinando diseño gráfico, cinematografía, nostalgia y tecnología para crear experiencias únicas e innovadoras. Estamos motivados siempre por la vanguardia, la experimentación y el aprendizaje. 
@@ -157,7 +145,7 @@
 				</section>
 
 
-				<section class="projects block  black page3 has-padding-top" data-name="#projects"> 
+				<section class="projects block  black page3 " data-name="#projects"> 
 
 						<div class="center project-container">
 							<h2 data-translatable class="inverse">Proyectos // Projects </h2>
@@ -176,7 +164,7 @@
 
 				<section class="people block  page5" data-name="#staff"> 
 
-							<div class="people-container has-padding-top">
+							<div class="people-container ">
 
 							<div class="big big-null"> 
 								<img class="big big-null" src="../assets/img/big_null.svg" alt="big_null"/>
@@ -191,9 +179,9 @@
 							</div>
 				</section>
 				
-				<section class="contact  page6 has-padding-top" data-name="#contact"> 
+				<section class="contact  page6 " data-name="#contact"> 
 						<div class="fake-bg black"></div>
-						<h2 class="inverse has-padding-top" data-translatable >CONTACTO // CONTACT</h2>
+						<h2 class="inverse " data-translatable >CONTACTO // CONTACT</h2>
 
 						<p class="contact-text" data-translatable>Nos necesitas para un proyecto? Tienes ideas y no sabes bien como realizarlas ? te gustaría aprender una nueva disciplina y tomar parte en uno de nuestros cursos ?, tienes talento y necesitas un trabajo, habla con nosotros estaremos felices de ayudar.</p>
 						
@@ -211,7 +199,7 @@
 									<i class="fa icon-tumblr"></i></a>
 								</div>
 				</section>
-				<section class="footer page7 black has-padding-top" data-name="#footer"> 
+				<section class="footer page7 black" data-name="#footer"> 
 
 												<footer>
 
@@ -510,7 +498,7 @@
 														<ul class="footer-list labs is-hidden">
 															<li><a href="/labs/#home" href="javascript:history.go(0)">home</a></li>
 															<li><a href="/labs/#labs" href="javascript:history.go(0)">labs</a></li>
-															<li><a href="/labs/#workshop"href="javascript:history.go(0)" >workshop</a></li>
+															<li><a href="/labs/#tools" href="javascript:history.go(0)">tools</a></li>
 															<li><a href="/labs/#ideas" href="javascript:history.go(0)">ideas</a></li>
 														</ul>
 													</div>

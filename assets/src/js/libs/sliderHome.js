@@ -64,7 +64,7 @@ FBZ.sliderHome = {
 			FBZ.sliderHome.changeImageToIndex(FBZ.sliderHome.currentImage);
 
 		},
-		onDotClick : function (e)  { 
+		onDotClick : function (e) {
 
 		//	console.log($(e.currentTarget).index());
 			FBZ.sliderHome.changeImageToIndex($(e.currentTarget).index());
@@ -74,7 +74,11 @@ FBZ.sliderHome = {
 		changeImageToIndex : function (index) {
 
 			FBZ.view.sliderHome.children().removeClass("active");
+			FBZ.view.sliderHomeControl.children().removeClass('active');
+			
 			$(FBZ.view.sliderHome.children().get(index)).addClass('active');
+			$(FBZ.view.sliderHomeControl.children().get(index)).addClass('active');
+
 		},
 
 		playSlider: function () { 
