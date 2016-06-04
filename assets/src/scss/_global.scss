@@ -53,6 +53,11 @@
 
 // academy
 
+.has-float-right {
+
+	float:right;
+}
+
 .academy { 
 
 	h2 { 
@@ -63,6 +68,7 @@
 	}
 } 
 .vertical-text {
+
 	transform-origin: left top 0;
 	transform:rotate(90deg) translateY(40%);
 	color:$no-hardpink;
@@ -74,18 +80,23 @@
 
 .game-rules-box { 
 
+	height:75vh;
 	width:26vw;
 	background-color:$no-hardpink;
-	padding-bottom:10vh;
+	
 	color:white;
 	margin:0;
 	transform: translateX(4vw);
 	li { 
 		list-style: none;
-		padding:10px 0;
 	}
 	ul {
 		padding:0;
+		margin: 15px 15px;
+		padding-bottom:50px;
+		p {
+			margin-bottom: 30px;
+		}
 	}
 }
 
@@ -325,7 +336,7 @@
 }
 
 .slider-control {
-	top:70vh;
+	top:85vh;
 	width: 66%;
 	text-align:center;
 	position:absolute;
@@ -367,7 +378,7 @@
 	position: relative;
 	z-index: 440;
 	opacity:.8;
-	padding-top: 150px;
+	padding-top: 50px;
 	cursor:pointer;
 	&.active { 
 		transform:translateX(90%);
@@ -405,7 +416,8 @@
 // invert 
 
 .overlayer { 
-  background-color:$no-gray;
+
+  background-color:$no-black;
   width: 100%;
   height:100%;
   //transform: skew(-30deg) rotate(-30deg);
@@ -836,7 +848,7 @@ body, html {
 	position: absolute;
 	width: 15px;
 	height: 15px;
-	background: rgba($no-hardpink,.6);
+	background: rgba($no-hardpink,1);
 	border-radius: 10px;
 	&:hover { 
 		color: $no-styleblue!important;
@@ -1136,7 +1148,7 @@ header {
 // lang
 .dropdown-menu { 
 
-		font-family: 'aldrichregular';
+	font-family: 'aldrichregular';
 	position:fixed;
 	top:24px;
 	right:20px;
@@ -1188,12 +1200,14 @@ header {
 	left: 0;
 	top: 50%;
 	position: absolute;
+	margin-top:-48px;
 	transform: translateY(-50%);
 }
 .piramid-info {
 
 	left:0;
 	z-index:10;
+	width:100%;
 }
 
 .piramid-bg {
@@ -1202,6 +1216,8 @@ header {
 	top:0;
 	height:100%;
 	right:0;
+	opacity:0.5;
+
 	img {
 		height: 100vh;
 	}

@@ -172,8 +172,13 @@
 				FBZ.control.unfixHeaderCourses();
 			}
 
-			
 		},
+
+
+		reArrangeFooterElements : function () {
+
+
+		}, 
 
 		parseBrain : function () {
 
@@ -266,9 +271,8 @@
 						
 			//	$coursesContainers
 
-				// var datesList = FBZ.model.noBrain.Courses.elements[i].LessonDates.replace(",","<br>");
-				// console.log(dateList);
-
+				 var datesList = FBZ.model.noBrain.Courses.elements[i].LessonDates.replace(/,/g,"<br>");
+				
 				 $(FBZ.view.$coursesContainers[i]).append(
 
 						"<div class='course-card'>"+ 
@@ -288,7 +292,8 @@
 									"<div class='course-details is-hidden'>"+
 
 										"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
-											"<p data-translatable class='course-lessonDates'>fechas : "+FBZ.model.noBrain.Courses.elements[i].LessonDates+" // dates : "+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</p>"+
+											"<p data-translatable class='course-lessonDates'>fechas : // dates : </p>"+
+											"<p class='dates-list'>"+datesList+"</p>"+
 											"<p data-translatable class='course-lessonHours'> horas pedagogicas : "+FBZ.model.noBrain.Courses.elements[i].LessonHours+" // course length :"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
 											"<p class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"hrs</p>"+
 											"<p data-translatable class='course-venue'>valor : "+FBZ.model.noBrain.Courses.elements[i].Cost+" // price : "+FBZ.model.noBrain.Courses.elements[i].Cost+"</p>"+
@@ -332,18 +337,9 @@
 																"</div>"+
 															"</div>"+
 
-															"<div class='form-controlGroup'>"+
-																"<div class='form-controlGroup-inputWrapper'>"+
-																	"<textarea class='form-input form-input--textarea' name='course' id='comments' class='form_el is-hidden' value='"+FBZ.model.noBrain.Courses.elements[i].CourseName+"'></textarea>"+
-																"</div>"+
-															"</div>"+
-
-
+															"<p class='course-name is-hidden' name='course' id='comments' class='form_el'>"+FBZ.model.noBrain.Courses.elements[i].CourseName+"</p>"+
+															"<input type='submit' class='has-float-right btn btn--primary form_el' />"+
 														"</fieldset>"+
-
-														"<div class='form-actions text_centre'>"+
-															"<input type='submit' class='btn btn--primary form_el' />"+
-														"</div>"+
 													"</form>"+
 												"</div>"+
 								"</div><!--end course card-->"
@@ -352,6 +348,7 @@
 			}
 
 			FBZ.control.activateCoursesExpansion();
+
 		},
 
 		fixHeaderCourses : function () {
@@ -838,8 +835,8 @@
 				
 				// for moving background obj
 				 $(".bg > .ibg-bg").css({
-			        width: $(window).outerWidth(),
-			        height: $(window).outerHeight()
+					width: $(window).outerWidth(),
+					height: $(window).outerHeight()
 			      })
 
 			}.debounce(150));
@@ -849,7 +846,6 @@
 		resizeContentBlock : function () { 
 			FBZ.view.$block.css("width",FBZ.model.stageW);
 			FBZ.view.$block.css("height",FBZ.model.stageH);
-
 			// var dynamicPadding = ((FBZ.model.stageW+FBZ.model.stageH)*.5)*.075;
 			// 			FBZ.view.$block.css("padding",dynamicPadding);
 
