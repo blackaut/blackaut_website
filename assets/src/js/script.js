@@ -172,13 +172,30 @@
 				FBZ.control.unfixHeaderCourses();
 			}
 
+			if(FBZ.model.currentSection === "home" && index === 7 )  { 
+				console.log("execute footer home");
+			}else { 
+			}
+
+			if(FBZ.model.currentSection === "labs" && index === 5 )  { 
+				console.log("execute footer labs");
+
+			}else { 
+
+			}
+
+			if(FBZ.model.currentSection === "academy" && index === 6 )  { 
+				console.log("execute footer academy");
+
+			}else { 
+
+			}
+
+
+
+
 		},
 
-
-		reArrangeFooterElements : function () {
-
-
-		}, 
 
 		parseBrain : function () {
 
