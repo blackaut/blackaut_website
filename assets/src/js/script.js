@@ -33,6 +33,8 @@
 		direction : 0 ,// direction of scroll 1)up -1)down 0)static
 		stateObj : {},
 		currentSection : "home",
+		currentArticule : "",
+		currentSectionIndex : 0,
 		i18n : null,
 		noBrain : {},
 		proyects: {},
@@ -45,10 +47,11 @@
 		totalAmountOfPeople:0,
 		proyectsHeight: 0,
 		visibleScrollProjects : 0,
-		totalScrollProjects: 0 ,	
+		totalScrollProjects: 0,
 		overFlowProjects: 0,
 		peoplePicBaseURL : "assets/img/people/",
-		currentLang:"es"
+		currentLang:"es",
+		footerHasBeenDisplayed : false, 
 		
 	};
 
@@ -57,7 +60,7 @@
 		// add dom elements here
 		$stage 				:$(window),
 		$header				:$('header'),
-		$container			:$('container'),
+		$main				:$('.main'),
 		$block				:$('.block'),
 		$langBtn			:$('.lang-btn'),
 		$footer				:$('footer'),
@@ -72,8 +75,9 @@
 		$collabContainer	:$('.people-collaborators'),
 		$footerList			:$('.footer-list'),
 		$logosFooter		:$('.logo-footer'),
-		$wrapper 			: $(".onepage-wrapper")
-
+		$wrapper 			:$('.onepage-wrapper'),
+		$piramidInfo 		:$(".piramid-info"),
+		$missionText 		:$(".mission-text-container")
 	};
 
 	FBZ.control = {
@@ -133,29 +137,33 @@
 
 			var section = window.location.href.split("/");
 
-			console.log("section length :",section.length);
+			// console.log("section length :",section.length);
 
-			if ( section.length <= 4 ) { 
+			if ( section.length <= 4 ) {
 
-					FBZ.model.currentSection  = "home";
+					FBZ.model.currentSection = "home";
 
 			} else { 
 
 					FBZ.model.currentSection  = section[section.length-2];
 			}
 
+			FBZ.model.currentArticule  = section[section.length-1];
 			//console.log(FBZ.model.currentSection);
-
 		}, 
 
 		sectionMonitor : function (index) { 
 
-			console.log("index :", index, FBZ.model.currentSection);
-			
+			FBZ.control.determineSection();
+			FBZ.model.currentSectionIndex = index;
+	//		console.log("index :", index, FBZ.model.currentSection);
+	//		console.log("articule :", FBZ.model.currentArticule);
+			// FBZ.control.sectionAnimationEngine();
+
 			//activate slider in the correct sections 
 			if(FBZ.model.currentSection === "home" && index === 3 )  { 
 				FBZ.sliderHome.createInterval();
-				console.log("execute slider home");
+				// console.log("execute slider home");
 			}else { 
 				FBZ.sliderHome.deleteInterval();
 			}
@@ -172,30 +180,120 @@
 				FBZ.control.unfixHeaderCourses();
 			}
 
+
+			// to move footer up
+			if(FBZ.model.footerHasBeenDisplayed === true ) {
+				// console.log("stuff back to normal");
+				FBZ.control.moveElementsUp();
+			}
+
+			// to move footer down
 			if(FBZ.model.currentSection === "home" && index === 7 )  { 
-				console.log("execute footer home");
+				FBZ.control.moveElementsDown();
 			}else { 
 			}
 
 			if(FBZ.model.currentSection === "labs" && index === 5 )  { 
-				console.log("execute footer labs");
-
+				FBZ.control.moveElementsDown();
 			}else { 
 
 			}
 
-			if(FBZ.model.currentSection === "academy" && index === 6 )  { 
-				console.log("execute footer academy");
+			if(FBZ.model.currentSection === "academy" && index === 8 )  { 
+				FBZ.control.moveElementsDown();
 
 			}else { 
 
 			}
+			FBZ.view.$main.trigger("moveOut");
 
+			// articule triggers
+			// and on move Out 
 
+			if(FBZ.model.currentArticule === "#mission") {
 
+				FBZ.control.animate( FBZ.view.$piramidInfo,"fadeInObj");
+				FBZ.control.animate( FBZ.view.$missionText,"fadeInUpObj");
+			}
+		},
+
+		animate : function (element,animClass) {
+
+				if(element.hasClass(animClass) )  {
+					element.removeClass(animClass);
+					element.css("offsetWidth" , element.get(0).offsetWidth);
+				}
+				element.addClass(animClass);
 
 		},
 
+		sectionAnimationEngine : function () {
+
+			// console.log("section En : "	, FBZ.view.$main,FBZ.view.$main.find("section").length);
+
+			$.each( FBZ.view.$main.find("section"), function( index, value ){
+					 // console.log("index :", index , "currentSection :",FBZ.model.currentSectionIndex);
+					
+						if (index == FBZ.model.currentSectionIndex-1 ) {
+
+								FBZ.control.fadeShow($(value))
+								$.each( value.children, function( index, value ){
+									// console.log( "IF INSIDE :", value.children);
+									 if ( !$(value.children).hasClass( "is-hidden") )  {
+									 		
+									 		$.each( value.children, function( index2, value2 ){
+									 			 if ( !$(value.children).hasClass( "p") ) {
+									 			 	$($(value2).get(index2)).css("animation","animateSideIn");
+									 				console.log(value2);
+												}
+											});
+									}
+								});
+
+						}
+					// if ( !$(this).hasClass( "is-hidden") )  {
+
+					// 	FBZ.control.fadeShow($(value))
+						
+					// if ( !$(this).hasClass( "is-hidden") )  {
+
+					// 	FBZ.control.fadeShow($(value));
+					// }
+			});
+		},
+
+		moveElementsDown : function () {
+
+			FBZ.model.footerHasBeenDisplayed = true;
+
+			
+			if (FBZ.model.currentSection === "home") {
+				var offsetDownMail = FBZ.model.stageH*.28;
+				var offsetDownBig = FBZ.model.stageH*.20;
+			}
+			if (FBZ.model.currentSection === "academy") {
+				var offsetDownMail = FBZ.model.stageH*.4;
+				var offsetDownBig = FBZ.model.stageH*.30;
+			}
+			if (FBZ.model.currentSection === "labs") {
+				var offsetDownMail = FBZ.model.stageH*.4;
+				var offsetDownBig = FBZ.model.stageH*.17;
+			}
+
+			$(".mail-to-drag-down").css("margin-top",offsetDownMail);
+			$(".mail-to-drag-down").css("padding-top",0);
+			$(".big").css("margin-top", offsetDownBig);
+
+		},
+
+		moveElementsUp : function () {
+			FBZ.model.footerHasBeenDisplayed = false;
+			var offsetUp = 0;
+			$(".mail-to-drag-down").css("margin-top",offsetUp);
+			$(".mail-to-drag-down").css("padding-top",40);
+			$(".big").css("margin-top",0);
+
+		},
 
 		parseBrain : function () {
 
@@ -402,7 +500,7 @@
 
 		collapseOrExpandCourseSelector : function (e) {
 
-			console.log($(this), $(e.currentTarget).hasClass( "active"));
+			// console.log($(this), $(e.currentTarget).hasClass( "active"));
 			if ( $(this).hasClass( "active") )  { 
 
 					console.log(this);
