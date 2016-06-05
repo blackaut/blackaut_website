@@ -284,33 +284,30 @@
 					 FBZ.model.animateCoursesClock = setInterval( function() 
 					{
 					 FBZ.control.animateCourses(index);
-					 console.log("interval");
+					 // console.log("interval");
         			}, 100);
 				} else {
 
 					clearInterval( FBZ.model.animateCoursesClock);
-						FBZ.control.animate($($(".course-container-left").get(index)),"fadeInObjCourses");
-						FBZ.control.animate($($(".course-container-right").get(index)),"fadeInObjCourses");
+					FBZ.control.animate($($(".course-container-left").get(index)),"fadeInObjCourses");
+					FBZ.control.animate($($(".course-container-right").get(index)),"fadeInObjCourses");
 
-						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-name"),"fadeInLeftObj");
-						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-name"),"fadeInLeftObj");
+					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-name"),"fadeInLeftObj");
+					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-name"),"fadeInLeftObj");
 
-						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-start-date"),"fadeInLeftObjx1");
-						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-start-date"),"fadeInLeftObjx1");
+					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-start-date"),"fadeInLeftObjx1");
+					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-start-date"),"fadeInLeftObjx1");
 
-						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-students"),"fadeInLeftObjx2");
-						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-students"),"fadeInLeftObjx2");
+					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-students"),"fadeInLeftObjx2");
+					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-students"),"fadeInLeftObjx2");
 
-						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-teacher"),"fadeInLeftObjx3");
-						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-teacher"),"fadeInLeftObjx3");
+					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-teacher"),"fadeInLeftObjx3");
+					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-teacher"),"fadeInLeftObjx3");
 
-						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-CTACopy"),"fadeInLeftObjx4");
-						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-CTACopy"),"fadeInLeftObjx4");
-
+					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-CTACopy"),"fadeInLeftObjx4");
+					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-CTACopy"),"fadeInLeftObjx4");
 
 				}
-
-					console.log("animate :",index, $($(".course-container-left").get(index)).find(".course-name").length);
 		},
 		onClickDisplayCard : function () {
 
@@ -319,7 +316,6 @@
 				
 				FBZ.view.$closeDisplayCard.toggleClass("active");
 				$(".slider-control").toggleClass("active");
-			// console.log("onClickDisplayCard")
 
 		},
 
