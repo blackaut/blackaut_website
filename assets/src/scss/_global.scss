@@ -10,6 +10,7 @@
 	position:absolute;
 	left:50%;
 	transform:translateY(-50%) translateX(-50%);
+	opacity:0;
 }
 .tools-text {
 
@@ -350,6 +351,46 @@
 	to {opacity:1;transform:translateY(0%);}
 }
 
+.fadeInUpTools {
+	animation: fadeInUpTools 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .2s forwards;
+}
+
+@keyframes fadeInUpTools {
+	from {opacity:0;transform:translateY(100%) translateX(-50%);
+}
+	to {opacity:1;transform:translateY(-50%) translateX(-50%);
+}
+}
+
+
+.fadeInLeftObj {
+	animation: fadeInLeftObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .2s forwards;
+}
+
+@keyframes fadeInLeftObject {
+	from {opacity:0;transform:translateX(-100%);}
+	to {opacity:1;transform:translateX(0%);}
+}
+
+
+.fadeInRightObj {
+	animation: fadeInRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+}
+
+@keyframes fadeInRightObject {
+	from {transform:translateX(100%);}
+	to {transform:translateX(0%);}
+}
+
+.fadeOutRightObj {
+	animation: fadeOutRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+}
+
+@keyframes fadeOutRightObject {
+	from {transform:translateX(0%);}
+	to {transform:translateX(100%);}
+}
+
 
 
 .fadeOutObj {
@@ -361,7 +402,14 @@
 	to {opacity:0;}
 }
 
+.zoomInBg {
+	animation: zoomInBackground 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+}
 
+@keyframes zoomInBackground {
+	from {	transform: scale(1.5);}
+	to {	transform: scale(1);}
+}
 
 .fadeOutBigObj {
 	animation: fadeBigObject 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
@@ -402,6 +450,11 @@
 	position:absolute;
 	z-index:51;
 	height: 10px;
+	transition: all 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.2s;
+
+	&.active {
+		width: 100%;
+	}
 }
 
 .sliderHome { 
@@ -434,29 +487,33 @@
 	height: 100%;
 	float: right;
 	padding: 40px;
-	overflow: auto;
+	overflow:visible;
+	// overflow-y: auto;
 	position: relative;
 	z-index: 440;
 	opacity:.8;
 	padding-top: 50px;
 	cursor:pointer;
-	&.active { 
-		transform:translateX(90%);
-	}
+	// animation:  all  1800ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
 }
 
 .close_x { 
 
+	transform-origin: 50% 50%;
 	width:20px;
-	//left:10px;
-//	float:left;
-	padding-left:-10px;
+	transition: all 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+	position:absolute!important;
+	top:20px;
+	opacity:1!important;
+	left:0;
 	display:block;
-	transform:translateX(-20px) translateY(-20px);
+	transform: rotate(0deg) translateX(15px) translateY(-6px);
+
 	&.active { 
-		transform:rotateX(-45deg);
+		transform: rotate(45deg) translateX(-26px) translateY(23px);
 	}
 }
+
 
 .logo-init-academy {
 

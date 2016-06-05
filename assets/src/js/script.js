@@ -51,7 +51,8 @@
 		overFlowProjects: 0,
 		peoplePicBaseURL : "assets/img/people/",
 		currentLang:"es",
-		footerHasBeenDisplayed : false, 
+		footerHasBeenDisplayed : false,
+
 		
 	};
 
@@ -77,7 +78,11 @@
 		$logosFooter		:$('.logo-footer'),
 		$wrapper 			:$('.onepage-wrapper'),
 		$piramidInfo 		:$(".piramid-info"),
-		$missionText 		:$(".mission-text-container")
+		$missionText 		:$(".mission-text-container"),
+		$displayCard 		:$(".display-card"),
+		$closeDisplayCard 	:$(".close_x"),
+		$toolsTextContainer :$(".tools-text-container"),
+		$toolsBg			:$(".tools-bg")
 	};
 
 	FBZ.control = {
@@ -205,17 +210,53 @@
 			}else { 
 
 			}
-			FBZ.view.$main.trigger("moveOut");
 
-			// articule triggers
+					// articule triggers for home 
+				if(FBZ.model.currentSection === "home") {
+
+					if(FBZ.model.currentArticule === "#mission") {
+
+						FBZ.control.animate( FBZ.view.$piramidInfo,"fadeInObj");
+						FBZ.control.animate( FBZ.view.$missionText,"fadeInUpObj");
+					
+					} else if (FBZ.model.currentArticule === "#about"){
+
+						// FBZ.control.animate( FBZ.view.$sliderHome,"fadeInObj");
+						FBZ.control.animate(FBZ.view.$displayCard,"fadeInRightObj");
+					
+					} 
+				}
+
+
+				if(FBZ.model.currentSection === "labs") {
+
+					if(FBZ.model.currentArticule === "#labs") {
+
+						FBZ.control.animate(FBZ.view.$displayCard,"fadeInRightObj");
+					
+					}else if (FBZ.model.currentArticule === "#tools"){
+
+						FBZ.control.animate( FBZ.view.$toolsTextContainer,"fadeInUpTools");
+						FBZ.control.animate( FBZ.view.$toolsBg,"zoomInBg");
+						
+
+					} 
+				}
 			// and on move Out 
 
-			if(FBZ.model.currentArticule === "#mission") {
 
-				FBZ.control.animate( FBZ.view.$piramidInfo,"fadeInObj");
-				FBZ.control.animate( FBZ.view.$missionText,"fadeInUpObj");
-			}
 		},
+		onClickDisplayCard : function () {
+
+				FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
+				FBZ.view.$displayCard.toggleClass("fadeInRightObj");
+				
+				FBZ.view.$closeDisplayCard.toggleClass("active");
+				$(".slider-control").toggleClass("active");
+			console.log("onClickDisplayCard")
+
+		},
+
 
 		animate : function (element,animClass) {
 
@@ -305,6 +346,8 @@
 
 				FBZ.control.initHome();
 				FBZ.sliderHome.init();
+				FBZ.view.$displayCard.on("click",FBZ.control.onClickDisplayCard);
+				FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
 
 			} else if (	FBZ.model.currentSection == 'academy' ) { 
 
@@ -314,6 +357,8 @@
 
 				FBZ.control.initLabs();
 				FBZ.sliderLabs.init();
+				FBZ.view.$displayCard.on("click",FBZ.control.onClickDisplayCard);
+				FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
 
 			}
 
