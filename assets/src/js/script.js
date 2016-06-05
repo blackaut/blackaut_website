@@ -82,7 +82,11 @@
 		$displayCard 		:$(".display-card"),
 		$closeDisplayCard 	:$(".close_x"),
 		$toolsTextContainer :$(".tools-text-container"),
-		$toolsBg			:$(".tools-bg")
+		$toolsBg			:$(".tools-bg"),
+		$academyText		:$(".academy-text"),
+		$verticalText		:$(".vertical-text"),
+		$gameRules			:$(".game-rules"),
+
 	};
 
 	FBZ.control = {
@@ -211,7 +215,7 @@
 
 			}
 
-					// articule triggers for home 
+				// articule triggers for home 
 				if(FBZ.model.currentSection === "home") {
 
 					if(FBZ.model.currentArticule === "#mission") {
@@ -227,6 +231,7 @@
 					} 
 				}
 
+				// articule triggers for labs 
 
 				if(FBZ.model.currentSection === "labs") {
 
@@ -238,13 +243,74 @@
 
 						FBZ.control.animate( FBZ.view.$toolsTextContainer,"fadeInUpTools");
 						FBZ.control.animate( FBZ.view.$toolsBg,"zoomInBg");
-						
 
 					} 
 				}
-			// and on move Out 
+				// articule triggers for academy
+				
+				if(FBZ.model.currentSection === "academy") {
+
+					if(FBZ.model.currentArticule === "#academy") {
+
+						FBZ.control.animate(FBZ.view.$academyText,"fadeInLeftObj");
+						FBZ.control.animate(FBZ.view.$verticalText,"fadeInVerticalText");
+						FBZ.control.animate(FBZ.view.$gameRules,"fadeInRightObj");
+					
+					}else if (FBZ.model.currentArticule === "#courses-1"){
+
+						FBZ.control.animateCourses(0);
+
+					} else if (FBZ.model.currentArticule === "#courses-2"){
+
+						FBZ.control.animateCourses(1);
+
+					} else if (FBZ.model.currentArticule === "#courses-3"){
+
+						FBZ.control.animateCourses(2);
+
+					} else if (FBZ.model.currentArticule === "#courses-4"){
+
+						FBZ.control.animateCourses(3);
+
+					} 
+				}
+		},
+
+			animateCourses : function (index) {
+
+				// do poll to fix loading bug
+				if($($(".course-container-left").get(index)).find(".course-name").length === 0) {
+
+					 FBZ.model.animateCoursesClock = setInterval( function() 
+					{
+					 FBZ.control.animateCourses(index);
+					 console.log("interval");
+        			}, 100);
+				} else {
+
+					clearInterval( FBZ.model.animateCoursesClock);
+						FBZ.control.animate($($(".course-container-left").get(index)),"fadeInObjCourses");
+						FBZ.control.animate($($(".course-container-right").get(index)),"fadeInObjCourses");
+
+						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-name"),"fadeInLeftObj");
+						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-name"),"fadeInLeftObj");
+
+						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-start-date"),"fadeInLeftObjx1");
+						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-start-date"),"fadeInLeftObjx1");
+
+						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-students"),"fadeInLeftObjx2");
+						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-students"),"fadeInLeftObjx2");
+
+						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-teacher"),"fadeInLeftObjx3");
+						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-teacher"),"fadeInLeftObjx3");
+
+						FBZ.control.animate($($(".course-container-left").get(index)).find(".course-CTACopy"),"fadeInLeftObjx4");
+						FBZ.control.animate($($(".course-container-right").get(index)).find(".course-CTACopy"),"fadeInLeftObjx4");
 
 
+				}
+
+					console.log("animate :",index, $($(".course-container-left").get(index)).find(".course-name").length);
 		},
 		onClickDisplayCard : function () {
 
@@ -512,8 +578,12 @@
 		},
 
 		fixHeaderCourses : function () {
-			FBZ.control.fadeShow($(".cursos-header"));
 
+			if($(".cursos-header").css("opacity") != 0 ) {
+				
+			}else{
+				FBZ.control.fadeShow($(".cursos-header"));
+			}
 		},
 
 		unfixHeaderCourses : function () {
