@@ -253,7 +253,7 @@
 				
 				FBZ.view.$closeDisplayCard.toggleClass("active");
 				$(".slider-control").toggleClass("active");
-			console.log("onClickDisplayCard")
+			// console.log("onClickDisplayCard")
 
 		},
 
@@ -540,43 +540,18 @@
 
 				//onClickOpenProjectCard
 				FBZ.model.$courseCard = $('.course-card');
-				FBZ.model.$courseCard.on('click',FBZ.control.collapseOrExpandCourseSelector);
-		}, 
+				FBZ.model.$courseCard.on('click',FBZ.control.onClickOpenCourseCard);
+				FBZ.model.$courseCard.find(".close-btn").on('click',FBZ.control.onClickCollapseCourseCard);
 
-		collapseOrExpandCourseSelector : function (e) {
-
-			// console.log($(this), $(e.currentTarget).hasClass( "active"));
-			if ( $(this).hasClass( "active") )  { 
-
-					console.log(this);
-					// FBZ.control.onClickCollapseCourseCard(e); 
-					// $(this).removeClass('active');
-
-			//	console.log ("has active :", !$(this).hasClass( "active") ); 
-			//	console.log("this does have active so .. collapse");
-
-			}else {
-
-				$(this).addClass('active');
-				FBZ.control.onClickOpenCourseCard(e);
-				FBZ.model.$courseCard.find(".close-btn").on('click',FBZ.control.onClickCloseButton);
-			//	console.log("this doesnt have active so .. expand");
-
-			}
 		},
-		onClickCloseButton : function (e) {
 
-
-		//	FBZ.control.collapseOrExpandCourseSelector($(e.currentTarget).parent().get(0));
-			//console.log($(e.currentTarget).parent().get(0));
-			FBZ.control.onClickCollapseCourseCard($(e.currentTarget).parent().get(0)); 
-			$(".course-card .active").removeClass('active');
-		},
- 
 		onClickOpenCourseCard : function (e) {
+
 
 				//console.log("expand course");
 				var $this = $(e.currentTarget);
+				$this.off('click',FBZ.control.onClickOpenCourseCard);
+				$this.addClass('active');
 
 				$this.parent().css({ width : "100vw"});
 
@@ -591,22 +566,28 @@
 				}
 
 				$.each( e.currentTarget.children, function( index, value ){
-					console.log(index, value);
+					// console.log(index, value);
 					if ( !$(this).hasClass( "course-box") )  {
 						if ( !$(this).hasClass( "course-image") ) {
 								FBZ.control.fadeShow($(value));
 							
 						}
 					}
+
 				});
+				FBZ.control.fadeHide($this.find(".course-CTACopy"));
+				 $this.find(".course-teacher").addClass("active");
+
 
 		},
 
 
 		onClickCollapseCourseCard : function (e) {
 
+
 				//console.log("collapse course");
-				var $this = $(e);
+				var $this = $(e.currentTarget).parent();
+				$this.removeClass('active');
 
 				if($this.parent().hasClass( "course-container-right"))  {
 
@@ -618,8 +599,8 @@
 				}
 				$this.parent().css({ width : "50vw"});
 				
-				 $.each(  e.children, function( index, value ){
-					console.log(index, value);
+				 $.each(  $this.get(0).children, function( index, value ){
+					// console.log(index, value);
 				if ( !$(this).hasClass( "course-box") )  {
 					if ( !$(this).hasClass( "course-image") ) {
 
@@ -627,12 +608,14 @@
 						}
 					}
 
-				if ( $(this).hasClass( "course-CTACopy")) {
-					FBZ.control.fadeShow($(value));
-
-				}
-
 				});
+				FBZ.control.fadeShow($this.find(".course-CTACopy"));
+				$this.find(".course-teacher").removeClass("active");
+				
+				setTimeout(function(){ 
+					FBZ.model.$courseCard.on('click',FBZ.control.onClickOpenCourseCard);
+			}, 701);
+				
 		},
 
 
