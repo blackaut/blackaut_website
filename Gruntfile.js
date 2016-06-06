@@ -109,7 +109,7 @@ module.exports = function (grunt) {
 		'compileJS',
 		'compileCSS',
 		'clean:tempCSS',
-		'images',
+		// 'images',
 		'browserSync:styleguide',
 		'watch'
 	]);

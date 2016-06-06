@@ -14,7 +14,6 @@
 }
 .tools-text {
 
-	
 }
 
 
@@ -214,6 +213,7 @@
     float:left;
     top: 0;
     right: 0;
+    text-align: left;
 }
 .course-name {
 
@@ -240,6 +240,8 @@
 	font-size: 0.7em;
 	color:$no-hardpink;
 	margin:10px 0;
+	text-align: left;
+
 }
 
 
@@ -259,6 +261,7 @@
 	font-size: 0.7em;
 	position:absolute;
 	bottom:0;
+	white-space: nowrap;
 }
 
 .course-details {
@@ -318,11 +321,6 @@
 	font-size:0.6em;
 }
 
-
-
-
-
-
 .curtain { 
 
 	background-color: black;
@@ -334,14 +332,15 @@
 	left:0;
 	right:0;
 	bottom:0;
-	//animation: all 0.35s ease-out;
-	animation-delay:3s;
 	opacity:1;
-	animation-name: fadeOut;
-	animation-duration: 2s;
-	animation-fill-mode:forwards;
-	transition-duration:0;
-	transition:none;
+	// //animation: all 0.35s ease-out;
+	// animation-delay:3s;
+	// opacity:1;
+	// animation-name: fadeOut;
+	// animation-duration: 2s;
+	// animation-fill-mode:forwards;
+	// transition-duration:0;
+	 transition:none;
 }
 
 @keyframes fadeOut {
@@ -446,9 +445,22 @@
 	animation: fadeInRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
 }
 
+.fadeInRightObjx1 {
+	animation: fadeInRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .4s forwards;
+}
+.fadeInRightObjx2 {
+	animation: fadeInRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .6s forwards;
+}
+.fadeInRightObjx3 {
+	animation: fadeInRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .8s forwards;
+}
+.fadeInRightObjx4 {
+	animation: fadeInRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) 1s forwards;
+}
+
 @keyframes fadeInRightObject {
-	from {transform:translateX(100%);}
-	to {transform:translateX(0%);}
+	from {opacity:0;transform:translateX(100%);}
+	to {opacity:1;transform:translateX(0%);}
 }
 
 .fadeOutRightObj {
@@ -735,7 +747,6 @@ $size: 42px;
 
 // video background 
 
-
 .fullscreen-bg {
 	position: fixed;
 	top: 0;
@@ -762,7 +773,6 @@ $size: 42px;
 
 .img-left { 
 
-
 	float:right;
 	left:0;
 	transform:translateX(60px);
@@ -771,7 +781,8 @@ $size: 42px;
 // bg object
 
 
-.background-object { 
+.background-object {
+
 	top:100px;
 	right:100px;
 	position: absolute;
@@ -780,12 +791,13 @@ $size: 42px;
 
 // people
 
-.people-linebreak { 
+.people-linebreak {
+
 	display: block;
 }
 
 
-.people-container { 
+.people-container {
 
 //	background: src("../assets/img/bg_people.svg");
 	z-index:10;
@@ -798,6 +810,7 @@ $size: 42px;
 	h2 {
 		margin-top:20px!important;
 		margin-bottom:10px!important;
+		padding-right: 60px!important;
 	}
 }
 
@@ -805,6 +818,8 @@ $size: 42px;
 
 	text-align:right;
 	padding-right:50px;
+	opacity:0;
+
 }
 
 
@@ -813,6 +828,58 @@ $size: 42px;
 	text-align:right;
 	padding-right:50px;
 	padding-left:20%;
+	opacity:0;
+
+
+}
+
+.rotate-first-decoration {
+	transform: scale(1.4) rotate(45deg)!important;
+	opacity:1;
+	animation: rotateFirstDecor 3000ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .2s forwards;
+}
+
+@keyframes rotateFirstDecor {
+	from {
+		opacity:0;
+		transform: scale(1) rotate(90deg)!important;
+	}
+	to {
+		opacity:1;
+		transform: scale(1.4) rotate(45deg)!important;
+	}
+
+}
+.rotate-mid-decoration {
+
+	opacity:1;
+	transform: scale(1.4) rotate(0deg);
+	animation: rotateMidDecor 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .2s forwards;
+}
+
+@keyframes rotateMidDecor {
+	from {
+		opacity:0;transform: scale(1) rotate(359deg)!important;
+	}
+	to {
+		opacity:1;transform: scale(1.4) rotate(0deg)!important;
+	}
+
+}
+
+.rotate-last-decoration {
+	opacity:1;
+	transform: scale(1.4) rotate(-45deg);
+	animation: rotateMidDecor 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .2s forwards;
+}
+
+@keyframes rotateLastDecor {
+	from {
+		opacity:0;transform: scale(1) rotate(45deg)!important;
+	}
+	to {
+		opacity:1;transform: scale(1.4) rotate(-45deg)!important;
+	}
 
 }
 
@@ -821,7 +888,7 @@ $size: 42px;
 	display: inline-block;
 //	float: left;
 //	transform: scale(0.2);
-	font-family:"aldrichregular";
+	// font-family:"aldrichregular";
 	color:black;
 	padding: 5px;
 	padding-bottom:0;
@@ -830,25 +897,23 @@ $size: 42px;
 
 	h3  {
 
+		// font-family:"aldrichregular";
+		z-index: 11;
 		margin:0;
 		font-size:.7em;
 	}
 	h4 { 
+
+		// font-family:"aldrichregular";
 		margin:0;
 		font-size:.6em;
+		z-index: 10;
+
 		
 	}
 	
 }
 
-	.person-img-decoration {
-
-		&:hover { 
-
-		 transform:rotation(90deg);
-
-		}
-	}
 
 
 .person-img { 
@@ -856,12 +921,24 @@ $size: 42px;
 	// width: 150px;
 	//overflow:hidden;
 	margin: 0 auto;
+	z-index: 3;
 
 	img { 
 		width: 100px;
 		border-radius:50%;
 	//	opacity:0.5;
 	}
+}
+
+.staff-title  {
+
+	opacity:0;
+}
+
+.collab-title {
+
+	opacity:0;
+
 }
 
 .staff { 
@@ -875,29 +952,15 @@ $size: 42px;
 
 .person-img-decoration { 
 
+	z-index: -1;
 	position:absolute;
-	transform:scale(1.4);
-	clip-path: polygon(0% 50%, 0% 0, 100% 0%, 100% 50%);
-
-	&:last-child { 
-	//	clip-path: polygon(0% 50%, 0% 0, 100% 0%, 100% 50%);
-
-	}
+	// transform:scale(1.4);
+	// clip-path: polygon(0% 50%, 0% 0, 100% 0%, 100% 50%);
 
 	.collab { 
 		display:none;
 	}
 }
-
-
-
-
-.person-img-decoration &:first-child { 
-	//	background: black;
-		//clip-path: polygon(100% 50%, 0% 0, 100% 0%, 100% 50%);
-
-	}
-
 
 
 body, html {
@@ -1198,7 +1261,7 @@ body {
 
 .logo-init { 
 
-	margin-top:-98px;
+	// margin-top:-98px;
 	max-width: 40vh;
 	padding-bottom:20px;
 //	border-bottom:1px white solid;
@@ -1208,7 +1271,7 @@ body {
 
 .intro-logo { 
 
-	transform:translateY(-50%);
+	transform:translateY(-70%);
 	top: 50%;
 	position:relative;
 }
@@ -1678,12 +1741,12 @@ footer {
 	height: 50%;
 	text-align: center;
 	width: 100%;
-	margin-top:110px;
+	margin-top:50px;
 	position:relative;
 	z-index:8;
 
 	h3 { 
-		font-size:0.6em;
+		font-size:0.5em;
 		color:$no-gray;
 		display:inline;
 		margin:0;
@@ -1704,7 +1767,7 @@ footer {
 	background:$no-ultrapalegray;
 	width:100%;
 	height: 150%;
-	transform:skewY(7deg);
+	transform:skewY(6deg);
 	position: absolute;
 	z-index:-2;
 	top:10px;
@@ -1755,7 +1818,7 @@ footer {
 }
 .footer-list li:last-child:after {
 
-		content: "";
+	content: "";
 
 }
 
@@ -1773,7 +1836,7 @@ footer {
 
 .line {
 		position:absolute;
-		height: 0.6em;
+		height: 0.5em;
 		vertical-align: bottom;
 		margin-top: 16px;
 		width:100%;

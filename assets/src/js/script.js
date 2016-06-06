@@ -9,10 +9,15 @@
 // Create a closure to maintain scope of the '$' and FBZ
 ;(function(FBZ, $) {
 
+		$(window).load(function() {
+
+		});
+
+
 	$(function() {
 
 		// initial functions 
-		FBZ.control.addLoadingCurtain();
+		// FBZ.control.addLoadingCurtain();
 		FBZ.control.readFromGoogleDocs();
 		FBZ.control.defineStage();
 		FBZ.control.resizeContentBlock();
@@ -97,10 +102,10 @@
 		//	FBZ.control.twitterWidget();
 			FBZ.control.disappearScrollIcon();
 	//		FBZ.control.interactiveBG();
-			// FBZ.control.removeLoadingCurtain();
 			FBZ.control.activateFooter();
 			FBZ.control.scrollerControl();
 			FBZ.control.checkURL();
+			FBZ.control.removeLoadingCurtain();
 		},
 
 		activateFooter : function () { 
@@ -133,9 +138,9 @@
 
 		},
 
-		addLoadingCurtain : function() { 
-			FBZ.control.fadeShow($(".curtain"));
-		},
+		// addLoadingCurtain : function() { 
+		// 	FBZ.control.fadeShow($(".curtain"));
+		// },
 
 		removeLoadingCurtain : function() { 
 			FBZ.control.fadeHide($(".curtain"));
@@ -229,6 +234,13 @@
 						FBZ.control.animate(FBZ.view.$displayCard,"fadeInRightObj");
 					
 					} 
+					 else if (FBZ.model.currentArticule === "#staff"){
+
+
+					 	FBZ.control.onStaffPage();
+				
+					
+					} 
 				}
 
 				// articule triggers for labs 
@@ -313,12 +325,10 @@
 
 				FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
 				FBZ.view.$displayCard.toggleClass("fadeInRightObj");
-				
 				FBZ.view.$closeDisplayCard.toggleClass("active");
 				$(".slider-control").toggleClass("active");
 
 		},
-
 
 		animate : function (element,animClass) {
 
@@ -425,7 +435,7 @@
 			}
 
 			FBZ.control.multilingualEngine(); 
-
+			FBZ.control.removeLoadingCurtain();
 		 	//FBZ.control.updateLanguage();
 		},
 
@@ -713,13 +723,80 @@
 				if (FBZ.model.noBrain.People.elements[i].Rank == "staff") {
 
 					FBZ.view.$staffContainer.append(peopleCard);
-				//	console.log("staff");
+					//	console.log("staff");
 				}else { 
 					FBZ.view.$collabContainer.append(peopleCard);
 				}
 			
 			}
+			FBZ.control.activateStaffPage();
 		},
+
+		activateStaffPage: function () {
+
+			// console.log( "activate :", FBZ.view.$staffContainer.find(".people"),FBZ.view.$staffContainer.find(".people").length);
+			// console.log( "activate :", FBZ.view.$collabContainer.find(".people"),FBZ.view.$collabContainer.find(".people").length);
+			var staffLength  = FBZ.view.$staffContainer.find(".people").length;
+			// var collabLength = FBZ.view.$collabContainer.find(".people").length;
+
+			// console.log(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0));
+
+			$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)).addClass("rotate-first-decoration");
+			$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)).addClass("rotate-last-decoration");
+
+		},
+
+		onStaffPage: function () {
+
+
+
+			var staffLength  = FBZ.view.$staffContainer.find(".people").length;
+				// do poll to fix loading bug
+				if(staffLength === 0) {
+
+					 FBZ.model.animateStaffClock = setInterval( function() 
+					{
+					 FBZ.control.onStaffPage();
+					 console.log("interval");
+				}, 100);
+				} else {
+
+				clearInterval(FBZ.model.animateStaffClock);
+				
+				$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)).addClass("rotate-first-decoration");
+				$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)).addClass("rotate-last-decoration");
+				FBZ.control.animate( $(".staff-title"),"fadeInRightObj");
+				FBZ.control.animate( FBZ.view.$staffContainer,"fadeInRightObjx1");
+				FBZ.control.animate( $(".collab-title"),"fadeInRightObjx2");
+				FBZ.control.animate( FBZ.view.$collabContainer,"fadeInRightObjx3");
+			for ( var i = 0 ; i < staffLength; i ++ ) { 
+				console.log("on staff page :",i);
+				if ( i == 0 ) {
+					console.log("staff is 0");
+					$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)).addClass("rotate-first-decoration");
+				}else if (i === staffLength-1 ){
+					console.log("staff is last");
+					$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)).addClass("rotate-last-decoration");
+
+				}else {
+					$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(i)).addClass("rotate-mid-decoration");
+						console.log("staff is mid");
+				}
+			// 			// FBZ.control.animate(FBZ.view.$displayCard,"fadeInRightObj");
+			// console.log( "activate :", FBZ.view.$staffContainer.find(".people"),FBZ.view.$staffContainer.find(".people").length);
+			// console.log( "activate :", FBZ.view.$collabContainer.find(".people"),FBZ.view.$collabContainer.find(".people").length);
+			// var staffLength  = FBZ.view.$staffContainer.find(".people").length;
+			// var collabLength = FBZ.view.$collabContainer.find(".people").length;
+
+			// console.log(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0));
+
+			// $(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)).addClass("rotate-first-decoration");
+			// $(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)).addClass("rotate-last-decoration");
+				}
+			}
+		},
+
+
 
 		populateProjects :  function () { 
 		//	console.log("populateProjects");
@@ -1046,7 +1123,7 @@
 				 $(".bg > .ibg-bg").css({
 					width: $(window).outerWidth(),
 					height: $(window).outerHeight()
-			      })
+			})
 
 			}.debounce(150));
 
@@ -1056,13 +1133,10 @@
 			FBZ.view.$block.css("width",FBZ.model.stageW);
 			FBZ.view.$block.css("height",FBZ.model.stageH);
 			// var dynamicPadding = ((FBZ.model.stageW+FBZ.model.stageH)*.5)*.075;
-			// 			FBZ.view.$block.css("padding",dynamicPadding);
-
-		//	console.log(FBZ.view.$block);
+			// FBZ.view.$block.css("padding",dynamicPadding);
 		},
 
 		scrollerControl:function () {
-
 
 			$(".main").onepage_scroll({
 			   sectionContainer: "section",     // sectionContainer accepts any kind of selector in case you don't want to use section
