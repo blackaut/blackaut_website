@@ -101,11 +101,10 @@
 			
 		//	FBZ.control.twitterWidget();
 			FBZ.control.disappearScrollIcon();
-	//		FBZ.control.interactiveBG();
+			// FBZ.control.interactiveBG();
 			FBZ.control.activateFooter();
 			FBZ.control.scrollerControl();
 			FBZ.control.checkURL();
-			FBZ.control.removeLoadingCurtain();
 		},
 
 		activateFooter : function () { 
@@ -116,6 +115,9 @@
 
 		displayFooterList : function (e) {
 
+			FBZ.control.animate(FBZ.view.$logosFooter,"make-small");
+
+
 			FBZ.view.$logosFooter.off("mouseover",FBZ.control.displayFooterList);
 
 			var currentRolloveredSection = e.currentTarget.getAttribute("data");
@@ -124,6 +126,7 @@
 
 				if( $(FBZ.view.$footerList[i]).hasClass(currentRolloveredSection) ) {
 
+				FBZ.control.animate(FBZ.view.$footerList[i],"make-big");
 					FBZ.control.fadeShow( $(FBZ.view.$footerList[i]));
 					// when the animation finishes reactivate btns
 					setTimeout(function(){ 
@@ -1008,18 +1011,18 @@
 		}, 
 
 
-		interactiveBG : function () {
+		// interactiveBG : function () {
 
-			$(".bg").interactive_bg({
-			   strength: 25,              // Movement Strength when the cursor is moved. The higher, the faster it will reacts to your cursor. The default value is 25.
-			   scale: 1.05,               // The scale in which the background will be zoomed when hovering. Change this to 1 to stop scaling. The default value is 1.05.
-			   animationSpeed: "100ms",   // The time it takes for the scale to animate. This accepts CSS3 time function such as "100ms", "2.5s", etc. The default value is "100ms".
-			   contain: true,             // This option will prevent the scaled object/background from spilling out of its container. Keep this true for interactive background. Set it to false if you want to make an interactive object instead of a background. The default value is true.
-			   wrapContent: false         // This option let you choose whether you want everything inside to reacts to your cursor, or just the background. Toggle it to true to have every elements inside reacts the same way. The default value is false
-			 });
-			$(".bg").interactive_bg(); // function call
+		// 	$(".logo-init").interactive_bg({
+		// 	   strength: 25,              // Movement Strength when the cursor is moved. The higher, the faster it will reacts to your cursor. The default value is 25.
+		// 	   scale: 1.05,               // The scale in which the background will be zoomed when hovering. Change this to 1 to stop scaling. The default value is 1.05.
+		// 	   animationSpeed: "100ms",   // The time it takes for the scale to animate. This accepts CSS3 time function such as "100ms", "2.5s", etc. The default value is "100ms".
+		// 	   contain: true,             // This option will prevent the scaled object/background from spilling out of its container. Keep this true for interactive background. Set it to false if you want to make an interactive object instead of a background. The default value is true.
+		// 	   wrapContent: false         // This option let you choose whether you want everything inside to reacts to your cursor, or just the background. Toggle it to true to have every elements inside reacts the same way. The default value is false
+		// 	 });
+		// 	$(".logo-init").interactive_bg(); // function call
 
-		},
+		// },
 
 		disappearScrollIcon : function ()  { 
 			FBZ.view.$scrollIcon.scroll( function () { 
@@ -1156,6 +1159,9 @@
 			});
 
 	},
+
+
+
 
 		toCamelCase: function (str){
 			return str.toLowerCase().replace(/(\-[a-z])/g, function($1){

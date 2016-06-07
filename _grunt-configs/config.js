@@ -51,7 +51,7 @@ module.exports = {
 			'./node_modules/dom-i18n/src/dom-i18n.js',
 			'<%=config.srcDir%>/js/libs/picturefill.js',
 			'<%=config.srcDir%>/js/libs/jquery.onepage-scroll.js',
-			'<%=config.srcDir%>/js/libs/jquery.interactive_bg.js',
+			// '<%=config.srcDir%>/js/libs/jquery.interactive_bg.js',
 			'<%=config.srcDir%>/js/libs/tabletop.js',
 			'<%=config.srcDir%>/js/libs/tweenlite.js',
 			'<%=config.srcDir%>/js/libs/generative_nodes.js',
