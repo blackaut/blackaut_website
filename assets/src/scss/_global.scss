@@ -1098,19 +1098,40 @@ body, html {
   //  padding:100%;
 	display: flex;
 	opacity:0;
+	width:100%;
+	height:50%;
+	display:inline-block;
+	@include respond-min($bp-narrow) {
+	
+	}
+	@include respond-min($bp-mid) {
+		width:50%;
+		height:100%;
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	}
+
 }
 
 .mission-text { 
-  display:inline-block;
-	// vertical-align:bottom;
+  	display:inline-block;
 	width:100%; /* Let it be a block */
 	bottom:0;
-	padding: 30% 100px 50px 50px;
-	//bottom:100%;
-	// position:absolute;
-	// vertical-align : bottom;
-	//  margin-top: auto;   
-	// align-self: flex-end;
+	padding: 30px 35px 30px 20px;
+	
+	@include respond-min($bp-narrow) {
+	
+	}
+	@include respond-min($bp-mid) {
+		padding: 30% 100px 50px 50px;
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	}
+
 }
 
 
@@ -1132,10 +1153,12 @@ h1 {
 	font-family: 'aldrichregular';
 
 	text-transform: uppercase;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	text-align:left;
 	//padding-left:5vw;
 	//margin-top: 6vw;
+	margin-bottom: 15px;
+
 	&:before {
 		content: "";
 		text-decoration:underline;
@@ -1144,11 +1167,30 @@ h1 {
 
 		color:$no-hardpink;
 	}
-}
-h2 { 
 
-	font-family: 'aldrichregular';
+	@include respond-min($bp-narrow) {
+		font-size: 1.2em;
+
+	}
+	@include respond-min($bp-mid) {
+	font-size: 1.4em;
+	margin-bottom: 56px;
+
+	}
+	@include respond-min($bp-wide) {
 	font-size: 1.5em;
+
+	}
+	@include respond-min($bp-huge) {
+	}
+}
+
+
+h2 {
+
+	text-transform: uppercase;
+	font-family: 'aldrichregular';
+	font-size: 1.1em;
 
 	&.inverse { 
 		color: $no-hardpink;
@@ -1156,9 +1198,28 @@ h2 {
 		text-align:right;
 		padding-right:103px;
 	}
+
+
 	&.contact-text {
 		margin-top: 120px;
 	}
+
+
+	@include respond-min($bp-narrow) {
+		font-size: 1.2em;
+
+	}
+	@include respond-min($bp-mid) {
+	font-size: 1.4em;
+
+	}
+	@include respond-min($bp-wide) {
+	font-size: 1.5em;
+
+	}
+	@include respond-min($bp-huge) {
+	}
+
 }
 
 
@@ -1166,9 +1227,20 @@ h2 {
 p { 
 
 	font-family: 'aldrichregular';
-	font-size: .8em;
+	font-size: .7em;
 	text-align:left;
 	margin-bottom:5px;
+	@include respond-min($bp-narrow) {
+		font-size: .8em;
+	}
+	@include respond-min($bp-mid) {
+	
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	}
+
  }
 
 // plug in - page completes
@@ -1386,10 +1458,19 @@ body {
 .logo-init { 
 
 	// margin-top:-98px;
-	max-width: 40vh;
+	max-width: 20vh;
 	padding-bottom:20px;
 //	border-bottom:1px white solid;
 	transition: all 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000); /* easeOutSine */
+
+	@include respond-min($bp-narrow) {
+	max-width: 30vh;
+	
+	}
+	@include respond-min($bp-mid) {
+	max-width: 40vh;
+	
+	}
 
 }
 
@@ -1607,14 +1688,71 @@ header {
 }
 
 
+
+.piramid-container { 
+
+	width:100%;
+	height:50%;
+	display:inline-block;
+//	border:1px solid green;
+//	float: left;
+	position:relative;
+	// @include respond-min($bp-narrow) {
+	
+	// }
+	@include respond-min($bp-mid) {
+		width:50%;
+		height:100%;
+	}
+	// @include respond-min($bp-wide) {
+
+	// }
+	// @include respond-min($bp-huge) {
+	// }
+}
+
+
 .infograph { 
 
+	width:290px;
+	left: auto;
+	top: 0;
+	margin: 0 auto;
+	margin-top:-48px;
+	transform: translateY(0);
+//	padding-left:20px!important;
+
+	@include respond-min($bp-narrow) {
+	width:350px;
+	left: 0;
+	top: 50%;
+	margin-top:-48px;
+	transform: translateY(0%);
+	}
+	@include respond-min($bp-mid) {
+	width:420px;
+	left: 0;
+	top: 50%;
+	margin-top:0px;
+	transform: translateY(50%);	
+	padding-left:0px!important;
+
+	padding-right:50px!important;
+	
+	}
+	@include respond-min($bp-wide) {
 	width:500px;
 	left: 0;
 	top: 50%;
 	position: absolute;
 	margin-top:-48px;
 	transform: translateY(-50%);
+	
+	}
+	@include respond-min($bp-huge) {
+	
+	}
+
 }
 .piramid-info {
 
@@ -2056,12 +2194,24 @@ footer {
 
 .halfer { 
 
-	width:50%;
-	height:100%;
+	width:100%;
+	height:50%;
 	display:inline-block;
 //	border:1px solid green;
 //	float: left;
 	position:relative;
+	// @include respond-min($bp-narrow) {
+	
+	// }
+	// @include respond-min($bp-mid) {
+	// 	width:50%;
+	// 	height:100%;
+	// }
+	// @include respond-min($bp-wide) {
+
+	// }
+	// @include respond-min($bp-huge) {
+	// }
 }
 
 .halfer-left { 
