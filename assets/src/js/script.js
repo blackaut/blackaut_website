@@ -106,32 +106,65 @@
 
 		activateFooter : function () { 
 
-			//console.log(FBZ.view.$footerList, FBZ.view.$logosFooter);
 			FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
+
+			FBZ.control.displayFooterList(FBZ.model.currentSection);
 		},
 
 		displayFooterList : function (e) {
 
-			FBZ.control.animate(FBZ.view.$logosFooter,"make-small");
 
-
-			FBZ.view.$logosFooter.off("mouseover",FBZ.control.displayFooterList);
-
-			var currentRolloveredSection = e.currentTarget.getAttribute("data");
+			var currentRolloveredSection;
+			// if the function doesnt come from an event trigger it using the passed value.
+			if(e.currentTarget == undefined) {
+				var currentRolloveredSection =	e;
+			}else{	
+				currentRolloveredSection = e.currentTarget.getAttribute("data");
+			}
 
 			for (var i = 0 ; i < FBZ.view.$footerList.length ; i++ ) { 
 
 				if( $(FBZ.view.$footerList[i]).hasClass(currentRolloveredSection) ) {
 
-				FBZ.control.animate(FBZ.view.$footerList[i],"make-big");
-					FBZ.control.fadeShow( $(FBZ.view.$footerList[i]));
-					// when the animation finishes reactivate btns
-					setTimeout(function(){ 
-						FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
 
-					}, 702);
+					console.log(currentRolloveredSection);
+
+					if( $(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
+						 $(FBZ.view.$logosFooter[i]).removeClass("make-small");
+					}
+
+					if( !$(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
+						FBZ.control.animate($(FBZ.view.$logosFooter[i]),"make-big");
+					}
+
+						if($(FBZ.view.$footerList[i]).hasClass("is-hidden")) {
+							$(FBZ.view.$footerList[i]).removeClass("is-hidden");
+						}
+
+					if( !$(FBZ.view.$footerList[i]).hasClass("make-text-big")) {
+						FBZ.control.animate($(FBZ.view.$footerList[i]),"make-text-big");
+					}
+					
+
+					// FBZ.control.fadeShow( $(FBZ.view.$footerList[i]));
+					// when the animation finishes reactivate btns
+					// setTimeout(function(){ 
+					// 	FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
+
+					// }, 502);
 				}else{ 
-					FBZ.control.fadeHide( $(FBZ.view.$footerList[i]));
+					
+					if( $(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
+						 $(FBZ.view.$logosFooter[i]).removeClass("make-big");
+					}
+					if( !$(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
+						FBZ.control.animate($(FBZ.view.$logosFooter[i]),"make-small");
+					}
+
+					if(!$(FBZ.view.$footerList[i]).hasClass("is-hidden")) {
+						$(FBZ.view.$footerList[i]).addClass("is-hidden");
+					}
+				
 				}
 
 			}
@@ -332,12 +365,28 @@
 
 		animate : function (element,animClass) {
 
+				if(element.hasClass("is-hidden")) {
+					element.removeClass("is-hidden");
+				}
 				if(element.hasClass(animClass) )  {
 					element.removeClass(animClass);
 					element.css("offsetWidth" , element.get(0).offsetWidth);
 				}
 				element.addClass(animClass);
 
+		},
+
+		animateAndHide : function (element,animClass,time) {
+
+				if(element.hasClass(animClass) )  {
+					element.removeClass(animClass);
+					element.css("offsetWidth" , element.get(0).offsetWidth);
+				}
+				element.addClass(animClass);
+
+				setTimeout(function(){ 
+					element.addClass("is-hidden");
+				}, time);
 		},
 
 		sectionAnimationEngine : function () {

@@ -455,6 +455,55 @@ $size: 60px;
 }
 
 
+.make-small {
+	svg {
+		animation: makeSmallAnim 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000)  forwards;
+	}
+}
+@keyframes makeSmallAnim {
+	from { opacity:1;transform:scale(1);}
+	to {opacity:.2;transform:scale(.8);}
+}
+
+
+
+.make-big {
+	svg {
+	animation: makeBigAnim 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+	}
+}
+
+@keyframes makeBigAnim {
+	from { opacity:1;transform:scale(.8);}
+	to {opacity:.8;transform:scale(1);}
+}
+
+
+
+.make-text-small {
+		animation: makeTextSmallAnim 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000)  forwards;
+		z-index: 2;
+}
+@keyframes maketextSmallAnim {
+	from { opacity:1;transform:scale(1);}
+	to {opacity:0;transform:scale(.8);}
+}
+
+
+
+.make-text-big {
+	animation: makeTextBigAnim 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+	z-index: 10;
+
+}
+
+@keyframes makeTextBigAnim {
+	from { opacity:0;transform:scale(.8);}
+	to {opacity:1;transform:scale(1);}
+}
+
+
+
 .fadeInObj {
 	animation: fadeInObject 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .5s forwards;
 }
@@ -812,7 +861,7 @@ $size: 42px;
 
 .social-buttons {
 	padding-top:20px;
-	height: $size;
+	height: $size*.8;
 	text-align: right;
 	width: 100%;
 	float: right;
@@ -821,20 +870,40 @@ $size: 42px;
 	}
 
 
+	@include respond-min($bp-mid) {
+		height: $size;
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	}
 }
 
 .social-button {
 
 	display: inline-block;
-	width: $size;
-	height: $size;
-	line-height: $size;
+	width: $size*.8;
+	height: $size*.8;
+	line-height: $size*.8;
 	margin: 0 5px;
 	text-align: center;
 	position: relative;
 	overflow: hidden;
 	transition: $transition;
 	border:1px $no-hardpink solid;
+
+	@include respond-min($bp-narrow) {
+
+	}
+	@include respond-min($bp-mid) {
+		width: $size;
+		height: $size;
+		line-height: $size;
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	}
 
 	&:before {
 		content: '';
@@ -1359,9 +1428,8 @@ h1 {
 
 	}
 	@include respond-min($bp-mid) {
-	font-size: 1.4em;
-	margin-bottom: 56px;
-
+		font-size: 1.4em;
+		margin-bottom: 56px;
 	}
 	@include respond-min($bp-wide) {
 	font-size: 1.5em;
@@ -1388,7 +1456,20 @@ h2 {
 
 
 	&.contact-text {
+		margin-top: 10px;
+
+		@include respond-min($bp-narrow) {
+		margin-top: 20px;
+		}
+		@include respond-min($bp-mid) {
+		margin-top: 40px;
+		}
+		@include respond-min($bp-wide) {
+		margin-top: 80px;
+		}
+		@include respond-min($bp-huge) {
 		margin-top: 120px;
+		}
 	}
 
 
@@ -1400,8 +1481,8 @@ h2 {
 
 	}
 	@include respond-min($bp-mid) {
-	font-size: 1.4em;
-	&.inverse {
+		font-size: 1.4em;
+		&.inverse {
 			padding-right:103px;
 		}
 
@@ -2108,8 +2189,8 @@ header {
 	position:absolute;
 	display:block;
 	width:100%;
-	z-index:-1;
-	transition: all 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000); /* easeOutSine */
+    z-index: 5;
+    transition: all 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000); /* easeOutSine */
 	opacity:0.4;
 
 	@include respond-min($bp-narrow) {
@@ -2383,18 +2464,22 @@ header {
 section.ideas {
 	z-index:-2;
 }
-
+section.contact {
+	z-index:0;
+}
 section.footer {
 
-	z-index: -3;
+	overflow: visible;
+	z-index: 1;
 }
 footer {
 
 	height: 50%;
 	text-align: center;
 	width: 100%;
-	margin-top:50px;
-	position:relative;
+	overflow:visible;
+	position:absolute;
+	bottom:50%;
 	z-index:8;
 
 	h3 { 
@@ -2427,8 +2512,10 @@ footer {
 }
 
 .footer-container {
-	position:relative;
+	position:absolute;
 	width:100%;
+	left:0;
+	bottom:40%;
 	display:inline-block;
 	height:0.8em;
 }
@@ -2482,8 +2569,9 @@ footer {
 }
 
 .end-line {
-	width:100%;
-
+	width: 100%;
+	position: absolute;
+	bottom: 30%;
 }
 
 .line {
@@ -2498,7 +2586,10 @@ footer {
 }
 
 .logos-footer {
-	padding-top: 40px;
+    margin-bottom: 0;
+    position: absolute;
+    width: 100%;
+    bottom: 50%;
 }
 .logo-footer {
 
@@ -2516,7 +2607,26 @@ footer {
 }
 
 .logo-footer-svg { 
-	height: 150px;
+
+	height: 50px;
+
+	@include respond-min($bp-narrow) {
+		height: 50px;
+
+	}
+	@include respond-min($bp-mid) {
+		height: 100px;
+
+	}
+	@include respond-min($bp-wide) {
+		height: 120px;
+	
+	}
+	@include respond-min($bp-huge) {
+
+	 height: 150px;
+	
+	}
 	&:hover {
 
 		color:$no-gray;
@@ -2602,27 +2712,91 @@ footer {
 
 	text-align:right;
 	display:block;
-	padding-right: 103px;
+	padding-right: 40px;
 	float: right;
-	
+
+	@include respond-min($bp-narrow) {
+		padding-right: 40px;
+	}
+	@include respond-min($bp-mid) {
+		padding-right: 103px;
+	}
+	@include respond-min($bp-wide) {
+		padding-right: 103px;
+	}
+	@include respond-min($bp-huge) {
+		padding-right: 103px;
+	}
 
 }
+
+
+
+.address-text {
+	width:90%;
+	
+	@include respond-min($bp-narrow) {
+			width:80%;
+	}
+	@include respond-min($bp-mid) {
+			width:auto;
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	}
+}
 .contact-paragraph {
-	width:50%;
+
 	float:right;
-	margin-left: 50%;
-	font-size:1em;
+	width:80%;
+	margin-left: 20%;
+	font-size:.8em;
+
+	@include respond-min($bp-narrow) {
+		width:80%;
+		margin-left: 20%;
+		font-size:.8em;
+	}
+	@include respond-min($bp-mid) {
+		width:70%;
+		margin-left: 30%;
+		font-size:1em;
+	}
+	@include respond-min($bp-wide) {
+		width:50%;
+		margin-left: 50%;
+	}
+	@include respond-min($bp-huge) {
+		width:50%;
+		margin-left: 50%;
+	}
 
 }
 
 .contact-mailto-link { 
 
-	padding-top:40px;
+	font-size:1.2em;
+	padding-top:30px;
 	width:100%;
 	font-family: 'aldrichregular';
-	font-size: 1.5em;
 	color: $no-hardpink!important;
 	transition: all 1800ms cubic-bezier(0.390, 0.575, 0.565, 1.000); /* easeOutSine */
+
+	@include respond-min($bp-narrow) {
+
+	}
+	@include respond-min($bp-mid) {
+		padding-top:40px;
+		font-size: 1.5em;
+	}
+	@include respond-min($bp-wide) {
+
+	}
+	@include respond-min($bp-huge) {
+	font-size: 2em;
+	}
+
 	&:hover { 
 
 		// color:  $no-styleblue!important; 
@@ -2631,10 +2805,10 @@ footer {
 
 }
 
-.fake-bg { 
-	height:100%;
-	left: 0;
-	width:100%;
-	z-index:-2;
-	position:absolute;
-}
+// .fake-bg { 
+// 	height:100%;
+// 	left: 0;
+// 	width:100%;
+// 	z-index:-2;
+// 	position:absolute;
+// }
