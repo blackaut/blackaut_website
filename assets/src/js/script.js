@@ -127,7 +127,6 @@
 				if( $(FBZ.view.$footerList[i]).hasClass(currentRolloveredSection) ) {
 
 
-					console.log(currentRolloveredSection);
 
 					if( $(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
 						 $(FBZ.view.$logosFooter[i]).removeClass("make-small");
@@ -144,14 +143,7 @@
 					if( !$(FBZ.view.$footerList[i]).hasClass("make-text-big")) {
 						FBZ.control.animate($(FBZ.view.$footerList[i]),"make-text-big");
 					}
-					
 
-					// FBZ.control.fadeShow( $(FBZ.view.$footerList[i]));
-					// when the animation finishes reactivate btns
-					// setTimeout(function(){ 
-					// 	FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
-
-					// }, 502);
 				}else{ 
 					
 					if( $(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
@@ -373,7 +365,6 @@
 					element.css("offsetWidth" , element.get(0).offsetWidth);
 				}
 				element.addClass(animClass);
-
 		},
 
 		animateAndHide : function (element,animClass,time) {
@@ -388,7 +379,7 @@
 					element.addClass("is-hidden");
 				}, time);
 		},
-
+		// WIP section
 		sectionAnimationEngine : function () {
 
 			// console.log("section En : "	, FBZ.view.$main,FBZ.view.$main.find("section").length);
@@ -426,22 +417,21 @@
 
 		moveElementsDown : function () {
 
+			// to determine a realible position for the mail
 			FBZ.model.footerHasBeenDisplayed = true;
+			var manualOffSet = FBZ.model.stageH*0.2;
+			var objePosMail =  $(".mail-to-drag-down").position();
+			var objeHeightMail  = $(".mail-to-drag-down").height() + $(".address-text").height() + $(".social-buttons").height();
+			var offsetDownMail = FBZ.model.stageH - objePosMail.top  - objeHeightMail - manualOffSet ;
 
-			
-			if (FBZ.model.currentSection === "home") {
-				var offsetDownMail = FBZ.model.stageH*.28;
-				var offsetDownBig = FBZ.model.stageH*.20;
-			}
-			if (FBZ.model.currentSection === "academy") {
-				var offsetDownMail = FBZ.model.stageH*.4;
-				var offsetDownBig = FBZ.model.stageH*.30;
-			}
-			if (FBZ.model.currentSection === "labs") {
-				var offsetDownMail = FBZ.model.stageH*.4;
-				var offsetDownBig = FBZ.model.stageH*.17;
-			}
 
+			var manualOffSetBig = FBZ.model.stageH*0.5;
+			var objePosBig =  $(".big").position();
+			var objeHeightBig  = $(".big img").height();
+			var offsetDownBig = FBZ.model.stageH - objePosBig.top  - objeHeightBig + manualOffSetBig;
+
+
+			console.log("position : ", objePosBig.top , "stage : ", FBZ.model.stageH , "result :", offsetDownBig, "height : ",objeHeightBig);
 			$(".mail-to-drag-down").css("margin-top",offsetDownMail);
 			$(".mail-to-drag-down").css("padding-top",0);
 			$(".big").css("margin-top", offsetDownBig);
@@ -821,24 +811,24 @@
 
 				clearInterval(FBZ.model.animateStaffClock);
 				
-				$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)).addClass("rotate-first-decoration");
-				$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)).addClass("rotate-last-decoration");
+				FBZ.control.animate($(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)),"rotate-first-decoration");
+				FBZ.control.animate($(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)),"rotate-last-decoration");
 				FBZ.control.animate( $(".staff-title"),"fadeInRightObj");
 				FBZ.control.animate( FBZ.view.$staffContainer,"fadeInRightObjx1");
 				FBZ.control.animate( $(".collab-title"),"fadeInRightObjx2");
 				FBZ.control.animate( FBZ.view.$collabContainer,"fadeInRightObjx3");
 			for ( var i = 0 ; i < staffLength; i ++ ) { 
-				console.log("on staff page :",i);
+				// console.log("on staff page :",i);
 				if ( i == 0 ) {
-					console.log("staff is 0");
-					$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)).addClass("rotate-first-decoration");
+					// console.log("staff is 0");
+					// $(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)).addClass("rotate-first-decoration");
 				}else if (i === staffLength-1 ){
-					console.log("staff is last");
-					$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)).addClass("rotate-last-decoration");
+					// console.log("staff is last");
+					// $(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)).addClass("rotate-last-decoration");
 
 				}else {
-					$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(i)).addClass("rotate-mid-decoration");
-						console.log("staff is mid");
+					FBZ.control.animate($(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(i)),"rotate-mid-decoration");
+						// console.log("staff is mid");
 				}
 			// 			// FBZ.control.animate(FBZ.view.$displayCard,"fadeInRightObj");
 			// console.log( "activate :", FBZ.view.$staffContainer.find(".people"),FBZ.view.$staffContainer.find(".people").length);

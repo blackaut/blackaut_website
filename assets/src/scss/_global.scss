@@ -1291,11 +1291,11 @@ $size: 42px;
 
 @keyframes rotateFirstDecor {
 	from {
-		opacity:0;
+		// opacity:0;
 		transform:translateX(-50%) translateY(-15%) rotate(90deg);
 	}
 	to {
-		opacity:1;
+		// opacity:1;
 		transform:translateX(-50%) translateY(-15%) rotate(45deg);
 	}
 
@@ -1309,25 +1309,25 @@ $size: 42px;
 
 @keyframes rotateMidDecor {
 	from {
-		opacity:0;
+		// opacity:0;
 		transform:translateX(-50%) translateY(-15%) rotate(45deg);
 		}
 	to {
-		opacity:1;
+		// opacity:1;
 		transform:translateX(-50%) translateY(-15%) rotate(0deg);
 		}
 
 }
 
 .rotate-last-decoration {
-	opacity:1;
+	 opacity:1;
 	transform: scale(1) rotate(-45deg);
 	animation: rotateLastDecor 3000ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .6s forwards;
 }
 
 @keyframes rotateLastDecor {
 	from {
-		opacity:0;
+		// opacity:0;
 		transform:translateX(-50%) translateY(-15%) rotate(-90deg);
 
 	}
@@ -2189,7 +2189,7 @@ header {
 	position:absolute;
 	display:block;
 	width:100%;
-    z-index: 5;
+    z-index: 0;
     transition: all 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000); /* easeOutSine */
 	opacity:0.4;
 
@@ -2217,14 +2217,14 @@ header {
 .big-academy { 
 
 	transform:translateY(-20%)translateX(-30%) scale(.9);
-	z-index:1;
+	// z-index:1;
 
 }
 
 .big-labs { 
 
 	transform:translateY(-58%)translateX(-22%) scale(.9);
-	z-index:-1;
+	// z-index:-1;
 
 }
 
@@ -2465,7 +2465,7 @@ section.ideas {
 	z-index:-2;
 }
 section.contact {
-	z-index:0;
+	z-index:-1;
 }
 section.footer {
 
@@ -2483,7 +2483,7 @@ footer {
 	z-index:8;
 
 	h3 { 
-		font-size:0.5em;
+		font-size:0.4em;
 		color:$no-gray;
 		display:inline;
 		margin:0;
@@ -2492,7 +2492,20 @@ footer {
 		bottom:0;
 		padding:5px;
 		z-index:3;
+
+		@include respond-min($bp-narrow) {
+			font-size:0.5em;
+		}
+		@include respond-min($bp-mid) {
+			font-size:0.6em;
+		}
+		@include respond-min($bp-wide) {
+		}
+		@include respond-min($bp-huge) {
+		
+		}
 	}
+
 }
 
 .footer-padding {
@@ -2512,24 +2525,51 @@ footer {
 }
 
 .footer-container {
+
 	position:absolute;
 	width:100%;
 	left:0;
-	bottom:40%;
+	bottom:50%;
 	display:inline-block;
 	height:0.8em;
+	@include respond-min($bp-narrow) {
+		bottom:40%;
+	}
+	@include respond-min($bp-mid) {
+		bottom:40%;
+	}
+	@include respond-min($bp-wide) {
+		bottom:40%;
+	}
+	@include respond-min($bp-huge) {
+		bottom:40%;
+	}
 }
 
-.footer-list { 
+.footer-list {
+	selectable:false; 
 	left:0;
 	position:absolute;
 	transition:	$transition;
 	list-style-type: none;
 	font-family: 'aldrichregular';
 	text-transform:Uppercase;
-	font-size:0.8em;
+	font-size:0.6em;
 	display:inline-block;
 	width:100%;
+	margin: 0 10px;
+
+	@include respond-min($bp-narrow) {
+		font-size:0.7em;
+	}
+	@include respond-min($bp-mid) {
+	font-size:0.8em;
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	
+	}
 	li {
 		display:inline-block;
 
@@ -2562,7 +2602,6 @@ footer {
 }
 
 
-
 .footer-list:after { 
 
 	content:"";
@@ -2571,8 +2610,21 @@ footer {
 .end-line {
 	width: 100%;
 	position: absolute;
-	bottom: 30%;
+	bottom: 35%;
+	@include respond-min($bp-narrow) {
+		bottom: 30%;
+	}
+	@include respond-min($bp-mid) {
+		bottom: 25%;
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	
+	}
+
 }
+
 
 .line {
 		position:absolute;
@@ -2583,55 +2635,64 @@ footer {
 		border-top: 1px solid $no-gray;
 		left:0;
 		z-index:-1;
+
+		@include respond-min($bp-narrow) {
+		
+	}
+	@include respond-min($bp-mid) {
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	
+	}
+
 }
 
 .logos-footer {
     margin-bottom: 0;
     position: absolute;
     width: 100%;
-    bottom: 50%;
-}
-.logo-footer {
-
-	height: 150px;
+    bottom: 65%;
 	cursor:pointer;
-	img { 
-		color:$no-gray;
+	@include respond-min($bp-narrow) {
+		bottom: 50%;
+	}
+	@include respond-min($bp-mid) {
+		    bottom: 50%;
+	}
+	@include respond-min($bp-wide) {
+		    bottom: 50%;
+	}
+	@include respond-min($bp-huge) {
+		    bottom: 50%;
 	}
 
-	&:hover { 
-
-		color:$no-gray;
-
-	}
 }
 
 .logo-footer-svg { 
 
-	height: 50px;
+	height: 75px;
 
 	@include respond-min($bp-narrow) {
-		height: 50px;
+		height: 75px;
 
 	}
 	@include respond-min($bp-mid) {
-		height: 100px;
+		height: 120px;
 
 	}
 	@include respond-min($bp-wide) {
-		height: 120px;
+		height: 140px;
 	
 	}
 	@include respond-min($bp-huge) {
 
-	 height: 150px;
+	 height: 160px;
 	
 	}
-	&:hover {
 
-		color:$no-gray;
-		}
-	}
+}
 
 // line decor
 .gradient-line {
