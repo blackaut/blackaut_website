@@ -17,10 +17,7 @@
 	$(function() {
 
 		// initial functions 
-		// FBZ.control.addLoadingCurtain();
 		FBZ.control.readFromGoogleDocs();
-		FBZ.control.defineStage();
-		FBZ.control.resizeContentBlock();
 		FBZ.control.determineSection();
 		FBZ.control.onResizeStage();
 
@@ -475,6 +472,10 @@
 //				console.log(FBZ.model.noBrain.Projects.elements[i]);
 				if(FBZ.model.noBrain.Projects.elements[i].Privacy != "PRIVATE") {  
 
+					var link = FBZ.model.noBrain.Projects.elements[i].URL;
+					if(link != "") {  
+						link= "<a class='project-link is hidden' href='"+link+"' target='_blank'>"+FBZ.model.noBrain.Projects.elements[i].URL+"</a>";
+					}
 				FBZ.view.$projectsCardHolder.append(
 
 						"<div class='project-card'>"+ 
@@ -486,8 +487,9 @@
 										"<h3 data-translatable class='project-client is-hidden'>"+FBZ.model.noBrain.Projects.elements[i].Client +"</h3>"+
 											"<p class='project-date is-hidden'>"+ FBZ.model.noBrain.Projects.elements[i].StartDate+"</p>"+
 											"<p class='project-description is-hidden' data-translatable>"+FBZ.model.noBrain.Projects.elements[i].Description+"</p>"+
+											link+
 											// "</div><!--end project text-wrapper-->"+
-											"<div class='project-keywords is-hidden' data-translatable>"+FBZ.model.noBrain.Projects.elements[i].Keywords+"<span></span></div>"+
+											"<div class='project-keywords is-hidden'>"+FBZ.model.noBrain.Projects.elements[i].Keywords+"<span></span></div>"+
 										"</div><!--end project card-->");
 				}
 			}
@@ -530,7 +532,7 @@
 											"<p data-translatable class='course-lessonDates'>fechas : // dates : </p>"+
 											"<p class='dates-list'>"+datesList+"</p>"+
 											"<p data-translatable class='course-lessonHours'> horas pedagogicas : "+FBZ.model.noBrain.Courses.elements[i].LessonHours+" // course length :"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
-											"<p class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"hrs</p>"+
+											"<p class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"</p>"+
 											"<p data-translatable class='course-venue'>valor : "+FBZ.model.noBrain.Courses.elements[i].Cost+" // price : "+FBZ.model.noBrain.Courses.elements[i].Cost+"</p>"+
 											"<p data-translatable class='course-venue'>lugar : "+FBZ.model.noBrain.Courses.elements[i].Venue+" // venue : "+FBZ.model.noBrain.Courses.elements[i].Venue+"</p>"+
 
@@ -707,9 +709,14 @@
 
 			for ( var i = 0 ; i < FBZ.model.noBrain.People.elements.length ; i ++ ) { 
 			//	console.log(FBZ.model.noBrain.People.elements[i]);
+			var decor = ""; 
+			
+			if (FBZ.model.noBrain.People.elements[i].Rank == "staff") { 
+				decor =	"<div class='person-img-decoration'><img src='assets/img/circle_people.svg'/></div>"
+			}
 				
 				var peopleCard = "<div class='people person-card "+FBZ.model.noBrain.People.elements[i].Rank+"'>"+ 
-									"<div class='person-img-decoration'><img src='assets/img/circle_people.svg'/></div>"+
+									decor+
 
 										"<div class='person-img'>"+
 											"<picture>"+
@@ -743,7 +750,6 @@
 			// var collabLength = FBZ.view.$collabContainer.find(".people").length;
 
 			// console.log(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0));
-
 			$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(0)).addClass("rotate-first-decoration");
 			$(FBZ.view.$staffContainer.find(".people").find(".person-img-decoration").get(staffLength-1)).addClass("rotate-last-decoration");
 
@@ -1110,7 +1116,7 @@
 
 			FBZ.model.stageH = FBZ.control.getHeight(FBZ.view.$stage);
 			FBZ.model.stageW = FBZ.control.getWidth(FBZ.view.$stage);
-		//	FBZ.view.$wrapper.css("height",FBZ.model.stageH);
+
 		//	console.log("def stage", FBZ.model.stageH, FBZ.model.stageW );
 
 		},
@@ -1122,11 +1128,8 @@
 				FBZ.control.defineStage();
 				FBZ.control.resizeContentBlock();
 				
-				// for moving background obj
-				 $(".bg > .ibg-bg").css({
-					width: $(window).outerWidth(),
-					height: $(window).outerHeight()
-			})
+				//	// to activate accordeon add existence check 
+		//		FBZ.control.activateProjectsAccordeon();
 
 			}.debounce(150));
 
