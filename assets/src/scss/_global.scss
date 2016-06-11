@@ -23,7 +23,7 @@ $size: 60px;
 .tools-text-container {
 	background-color:rgba($no-black,0.8);
 	padding: 30px 25px;
-	width:500px;
+	width:300px;
 	margin:auto;
 	top:50%;
 	position:absolute;
@@ -31,8 +31,42 @@ $size: 60px;
 	transform:translateY(-50%) translateX(-50%);
 	opacity:0;
 	z-index:450;
+
+
+	@include respond-min($bp-narrow) {
+		width:300px;
+	}
+
+	@include respond-min($bp-mid) {
+		width:400px;
+	}
+
+	@include respond-min($bp-wide) {
+		width:500px;
+	}
+
+	@include respond-min($bp-huge) {
+		width:700px;
+	}
+
 }
 .tools-text {
+
+
+
+	@include respond-min($bp-narrow) {
+
+	}
+
+	@include respond-min($bp-mid) {
+	}
+
+	@include respond-min($bp-wide) {
+
+	}
+
+	@include respond-min($bp-huge) {
+	}
 
 }
 
@@ -326,8 +360,8 @@ $size: 60px;
 
 .course-image {
 
-	height: 75vh;
-    width: 20vw;
+	height: 25vh;
+    width: 80vw;
     display: inline-block;
     position: relative;
 	float:left;
@@ -335,6 +369,25 @@ $size: 60px;
 	background-position: 50% 50%; 
 	background-size: cover;
 	transition: all 1000ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+
+
+	@include respond-min($bp-narrow) {
+
+	}
+
+	@include respond-min($bp-mid) {
+			height: 75vh;
+			width: 20vw;
+	}
+
+	@include respond-min($bp-wide) {
+
+	}
+
+	@include respond-min($bp-huge) {
+	}
+
+
 
 }
 .course-contact {
@@ -359,19 +412,41 @@ $size: 60px;
 
 .course-box {
 	overflow:hidden;
-	padding-left:10px;
-    width: 20vw;
+	padding-left:0px;
+    width: 100%;
     display: inline-block;
-	height:75vh;
+	height:50%;
     position: relative;
     float:left;
-    top: 0;
+    top: auto;
     right: 0;
     text-align: left;
+
+
+	@include respond-min($bp-narrow) {
+
+	}
+
+	@include respond-min($bp-mid) {
+			width: 20vw;
+			height:75vh;
+			top: 0;
+    		right: 0;
+    		padding-left:10px;
+
+	}
+
+	@include respond-min($bp-wide) {
+
+	}
+
+	@include respond-min($bp-huge) {
+	}
+
 }
 .course-name {
 
-	width: 20vw;
+	width: 100%;
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	hyphens: auto;
@@ -383,6 +458,28 @@ $size: 60px;
 	display:inline-block;
 	margin: 0;
 	opacity:0;
+
+
+	@include respond-min($bp-narrow) {
+
+	}
+
+	@include respond-min($bp-mid) {
+
+		width: 20vw;
+	
+	}
+
+	@include respond-min($bp-wide) {
+
+	}
+
+	@include respond-min($bp-huge) {
+	}
+
+
+
+
 
 }
 
@@ -427,7 +524,7 @@ $size: 60px;
 }
 
 .course-description {
-	opacity:0;
+	// opacity:0;
 
 }
 .course-lessonDates {}

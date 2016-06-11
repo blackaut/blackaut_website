@@ -567,7 +567,7 @@
 
 									"<div class='course-details is-hidden'>"+
 
-										"<p data-translatable class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
+										"<p class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
 											"<p data-translatable class='course-lessonDates'>fechas : // dates : </p>"+
 											"<p class='dates-list'>"+datesList+"</p>"+
 											"<p data-translatable class='course-lessonHours'> horas pedagogicas : "+FBZ.model.noBrain.Courses.elements[i].LessonHours+" // course length :"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
@@ -613,7 +613,7 @@
 																"</div>"+
 															"</div>"+
 
-															"<p class='course-name is-hidden' name='course' id='comments' class='form_el'>"+FBZ.model.noBrain.Courses.elements[i].CourseName+"</p>"+
+															"<p class='form-course-name is-hidden' name='course' id='comments' class='form_el'>"+FBZ.model.noBrain.Courses.elements[i].CourseName+"</p>"+
 															"<input type='submit' class='has-float-right btn btn--primary form_el' />"+
 														"</fieldset>"+
 													"</form>"+
