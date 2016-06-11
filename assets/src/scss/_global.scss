@@ -91,48 +91,130 @@ $size: 60px;
 .academy { 
 
 	h2 { 
-		margin-top: 20px;
+		margin-top: 10px;
 		color:$no-hardpink;
 		margin-bottom:10px;
 		background-color:none;
-		padding-right: 65px!important;
+		padding-right: 33px!important;
+
+		@include respond-min($bp-narrow) {
+		
+		}
+		@include respond-min($bp-mid) {
+			padding-right: 65px!important;
+			margin-top: 20px;
+		}
+		@include respond-min($bp-wide) {
+		}
+		@include respond-min($bp-huge) {
+	
+		}
 	}
 } 
 
 
 .vertical-text {
 
-	transform-origin: left top 0;
-	transform:rotate(270deg) translateY(-120%)translateX(-70%);
+	transform-origin: left top;
+	// transform:rotate(270deg) translateY(-0%)translateX(-70%);
 	color:$no-hardpink;
-	width:100vh;
-	letter-spacing:.4em;
-	font-size:1.7em;
+	width:75vh;
+	letter-spacing:.2em;
+	font-size:1.2em;
 	margin-bottom:0;
-	 white-space: nowrap;
-	 opacity: 0;
+	white-space: nowrap;
+	opacity: 0;
+	text-align:right;
+	// border:1px solid blue;
+
+	@include respond-min($bp-narrow) {
+		
+	}
+	@include respond-min($bp-mid) {
+		letter-spacing:.3em;
+		font-size:1.7em;
+
+	}
+	@include respond-min($bp-wide) {
+	}
+	@include respond-min($bp-huge) {
+	
+	}
+
 }
+
+.fadeInVerticalText {
+	animation: fadeInVerticalText 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .6s forwards;
+}
+
+@keyframes fadeInVerticalText {
+	from {
+		opacity:0;
+		@include respond-min($bp-mid) {
+				transform:rotate(270deg) translateY(-1.7em)translateX(100%);
+
+		}
+		transform:rotate(270deg) translateY(-1.2em)translateX(100%);
+	}
+	to {opacity:1;
+		@include respond-min($bp-mid) {
+		transform:rotate(270deg) translateY(-1.2em)translateX(-100%);
+
+		}
+		transform:rotate(270deg) translateY(-1.7em)translateX(-100%);
+	}
+}
+
 
 .game-rules-box { 
 
-	height:75vh;
-	width:26vw;
+
+
+	// border:1px solid red;
+	
 	background-color:$no-hardpink;
 	color:white;
+	
 	margin:0;
+	margin-right:30px;
+	
+	padding:20px 20px;
+	height:75vh;
+	width:80%;
 	transform: translateX(1.7em);
+	float:auto;
+
 	li { 
 		list-style: none;
 	}
 	ul {
 		padding:0;
-		// margin: 15px 15px;
-		// padding-bottom:50px;
+		margin:0;
 		p {
 			margin-bottom: 10px;
 		}
 	}
+	@include respond-min($bp-narrow) {
+		// height:75vh;
+	}
+	@include respond-min($bp-mid) {
+		width:26vw;
+		margin-right:103px;
+		// padding:30px 30px;
+		float:right;
+		height:auto;
+
+	}
+	@include respond-min($bp-wide) {
+
+		height:75vh;
+	}
+	@include respond-min($bp-huge) {
+	
+	}
+
 }
+
 
 .academy-text {
 	text-align: justify;
@@ -140,6 +222,57 @@ $size: 60px;
 	padding-left:40px;
 	font-size:.9em;
 	opacity:0;
+
+
+	@include respond-min($bp-narrow) {
+	}
+	@include respond-min($bp-mid) {
+		
+	}
+	@include respond-min($bp-wide) {
+			font-size:1em;
+	}
+	@include respond-min($bp-huge) {
+		font-size:1.5em;
+	}
+}
+
+.academy-text-services {
+
+	display:none!important;
+
+	@include respond-min($bp-narrow) {
+	}
+	@include respond-min($bp-mid) {
+		
+		display: inline-block!important;
+	}
+	@include respond-min($bp-wide) {
+		
+	}
+	@include respond-min($bp-huge) {
+		
+	}
+}
+
+.academy-text-intro {
+
+	// width:100%;
+
+	display:none!important;
+
+	@include respond-min($bp-narrow) {
+	}
+	@include respond-min($bp-mid) {
+		
+		display: inline-block!important;
+	}
+	@include respond-min($bp-wide) {
+		
+	}
+	@include respond-min($bp-huge) {
+		
+	}
 }
 
 .cursos-header {
@@ -529,16 +662,6 @@ $size: 60px;
 
 
 
-.fadeInVerticalText {
-	animation: fadeInVerticalText 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .6s forwards;
-}
-
-@keyframes fadeInVerticalText {
-	from {opacity:0;transform:rotate(270deg) translateY(-120%)translateX(-90%);
-}
-	to {opacity:1;transform:rotate(270deg) translateY(-120%)translateX(-70%);
-}
-}
 
 .fadeInUpObj {
 	animation: fadeInUpObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .2s forwards;
@@ -2257,7 +2380,8 @@ header {
  font-weight: bold;
 }
 
-.project-date { 
+.project-date {
+
 	float:right;
 	text-align:right;
 	font-family: 'aldrichregular';
@@ -2325,8 +2449,7 @@ header {
 
 	}
 
-
-	}
+}
 
 .project-client { 
 
