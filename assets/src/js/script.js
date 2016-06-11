@@ -561,7 +561,7 @@
 										"<h4 data-translatable class='course-start-date'>comienza el "+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
 										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
 										"<p data-translatable class='course-teacher'>por "+FBZ.model.noBrain.Courses.elements[i].TeacherName + " // by "+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
-										"<button data-translatable class='course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</button>"+
+										"<a data-translatable class='course-CTA course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</a>"+
 									"</div>"+
 
 
@@ -572,10 +572,11 @@
 											"<p class='dates-list'>"+datesList+"</p>"+
 											"<p data-translatable class='course-lessonHours'> horas pedagogicas : "+FBZ.model.noBrain.Courses.elements[i].LessonHours+" // course length :"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
 											"<p class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"</p>"+
-											"<p data-translatable class='course-venue'>valor : "+FBZ.model.noBrain.Courses.elements[i].Cost+" // price : "+FBZ.model.noBrain.Courses.elements[i].Cost+"</p>"+
+											"<p data-translatable class='course-cost'>valor : "+FBZ.model.noBrain.Courses.elements[i].Cost+" // price : "+FBZ.model.noBrain.Courses.elements[i].Cost+"</p>"+
 											"<p data-translatable class='course-venue'>lugar : "+FBZ.model.noBrain.Courses.elements[i].Venue+" // venue : "+FBZ.model.noBrain.Courses.elements[i].Venue+"</p>"+
-
+											"<a data-translatable class='course-CTA course-CTAProgram' target='_blank' href="+FBZ.model.noBrain.Courses.elements[i].URL+">"+FBZ.model.noBrain.Courses.elements[i].CTAProgram+"</a>"+
 									"</div>"+
+
 									"<div class='teacher-card is-hidden'>"+
 										"<div class='teacher-image'>"+
 											"<picture>"+
@@ -673,7 +674,7 @@
 				$this.off('click',FBZ.control.onClickOpenCourseCard);
 				$this.addClass('active');
 
-				$this.parent().css({ width : "100vw"});
+				$this.parent().addClass("expanded");
 
 
 				if($this.parent().hasClass( "course-container-right"))  {
@@ -696,7 +697,8 @@
 
 				});
 				FBZ.control.fadeHide($this.find(".course-CTACopy"));
-				 $this.find(".course-teacher").addClass("active");
+				$this.find(".course-teacher").addClass("active");
+				$this.find(".course-image").addClass("active");
 
 
 		},
@@ -717,7 +719,7 @@
 					// console.log("left");
 					$this.parent().parent().children(".course-container-right").show();
 				}
-				$this.parent().css({ width : "50vw"});
+				$this.parent().removeClass("expanded");
 				
 				 $.each(  $this.get(0).children, function( index, value ){
 					// console.log(index, value);
@@ -731,6 +733,7 @@
 				});
 				FBZ.control.fadeShow($this.find(".course-CTACopy"));
 				$this.find(".course-teacher").removeClass("active");
+				$this.find(".course-image").removeClass("active");
 				
 				setTimeout(function(){ 
 					FBZ.model.$courseCard.on('click',FBZ.control.onClickOpenCourseCard);
