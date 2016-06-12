@@ -591,7 +591,7 @@
 									"</div>"+
 										"<div class='course-contact is-hidden'>"+
 
-										"<form class='form form--horizontal' method='post' accept-charset='utf-8' action='php/html_form_send.php' enctype='multipart/form-data'>"+
+										"<form class='form form--horizontal' method='post' accept-charset='utf-8' action='../php/html_form_send.php' enctype='multipart/form-data'>"+
 
 												"<h2 class='course-preincription' data-translatable>Pre-incribete aquí // Pre-suscribe here</h2>"+
 														"<fieldset class='form-fieldset'>"+
@@ -604,17 +604,17 @@
 															"<div class='form-controlGroup'>"+
 																// "<label class='form-label' for='last_name'>telefono // telephone </label>"+
 																"<div class='form-controlGroup-inputWrapper'>"+
-																	"<input class='form-input' name='phone' type='number' id='text' class='form_el' placeholder='telefono' required/>"+
+																	"<input class='form-input' name='telephone' type='number' id='text' class='form_el' placeholder='telefono' required/>"+
 																"</div>"+
 															"</div>"+
 															"<div class='form-controlGroup'>"+
 																// "<label class='form-label' for='email'>Email</label>"+
 																"<div class='form-controlGroup-inputWrapper'>"+
 																"<input class='form-input' name='email' type='email' id='email' class='form_el' placeholder='email' required/>"+
+																"<input class='form-course-name is-hidden' name='course' id='comments' class='form_el' value='"+FBZ.model.noBrain.Courses.elements[i].CourseName+"'/>"+
 																"</div>"+
 															"</div>"+
 
-															"<p class='form-course-name is-hidden' name='course' id='comments' class='form_el'>"+FBZ.model.noBrain.Courses.elements[i].CourseName+"</p>"+
 															"<input type='submit' class='has-float-right btn btn--primary form_el' />"+
 														"</fieldset>"+
 													"</form>"+
