@@ -23,7 +23,7 @@ $size: 60px;
 .tools-text-container {
 	background-color:rgba($no-black,0.8);
 	padding: 30px 25px;
-	width:300px;
+	width:280px;
 	margin:auto;
 	top:50%;
 	position:absolute;
@@ -91,6 +91,15 @@ $size: 60px;
 
 
 .tools-list {
+
+
+
+	font-size: .7em;
+
+
+	@include respond-min($bp-mid) {
+		font-size: 1em;
+	}
 
 	font-family: 'aldrichregular';
 	li { 
@@ -410,18 +419,23 @@ section.courses {
 
 .course-card {
 
-	display: inline-block;
+	display: block;
 	cursor: pointer;
 	background-color:$no-black;
 
 	.close-btn {
+
 		cursor: pointer;
 		position:absolute;
-		
 		transition: all 0ms cubic-bezier(0.390, 0.575, 0.565, 1.000)!important;
 	    font-size: 1.6em;
 	    top: -33px;
 	    right: 10px;
+	    display: none;
+
+	    &.active {
+	    	display: block;
+	    }
 
 		@include respond-min($bp-narrow) {
 
@@ -524,9 +538,6 @@ section.courses {
 
 }
 
-.info-box {
-	border:1px solid white;
-}
 
 .course-box {
 	overflow:hidden;
@@ -689,6 +700,10 @@ section.courses {
 		bottom:0;
 	}
 
+	&.active {
+		display: none;
+	}
+
 }
 
 .course-details {
@@ -811,11 +826,17 @@ section.courses {
 	}
 }
 .course-teacher {
+
 	opacity:0;
 	position:relative;
 	bottom:auto;
+	
+
 	&.active {
-		bottom:0px;
+		
+		@include respond-min($bp-mid) {
+			display: none;
+		}
 	}
 
 
@@ -834,9 +855,6 @@ section.courses {
 
 	@include respond-min($bp-huge) {
 	}
-
-
-
 
 	transition: all 300ms cubic-bezier(0.390, 0.575, 0.565, 1.000) .8s;
 
@@ -1080,7 +1098,6 @@ section.courses {
 	to {opacity:1;transform:translateX(0%);}
 }
 
-
 .fadeInRightObj {
 	animation: fadeInRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
 }
@@ -1103,6 +1120,32 @@ section.courses {
 	to {opacity:1;transform:translateX(0%);}
 }
 
+
+
+
+.fadeInCourses {
+	animation: fadeInCourses 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+}
+
+@keyframes fadeInCourses {
+	from {opacity:0;
+
+
+		transform:translateY(100%) translateX(0%);
+	
+		@include respond-min($bp-mid) {
+			transform:translateX(100%) translateY(0%);
+		}
+	}
+	to {
+		opacity:1;
+		
+		transform:translateY(0%) translateX(0%);
+	}
+}
+
+
+
 .fadeOutRightObj {
 	animation: fadeOutRightObject 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
 }
@@ -1110,6 +1153,22 @@ section.courses {
 @keyframes fadeOutRightObject {
 	from {transform:translateX(0%);}
 	to {transform:translateX(100%);}
+}
+
+
+.fadeOutLeftObj {
+	animation: fadeOutLeftObject 699ms cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+}
+
+@keyframes fadeOutLeftObject {
+	from {
+		opacity: 1;
+		transform:translateX(0%);
+	}
+	to {
+		opacity: 0;
+		transform:translateX(100%);
+	}
 }
 
 

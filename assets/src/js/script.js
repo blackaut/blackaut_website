@@ -561,7 +561,7 @@
 
 										"<form class='form form--horizontal' method='post' target='_blank' accept-charset='utf-8' action='../php/html_form_send.php' enctype='multipart/form-data'>"+
 
-												"<h2 class='course-preincription' data-translatable>Pre-incribete aquí // Pre-suscribe here</h2>"+
+												"<h2 class='course-preincription' data-translatable>Pre-inscribete aquí // Pre-suscribe here</h2>"+
 														"<fieldset class='form-fieldset'>"+
 															"<div class='form-controlGroup'>"+
 																// "<label class='form-label' for='first_name'>Nombre // Name</label>"+
@@ -592,7 +592,7 @@
 				}
 			}
 
-			FBZ.control.activateForm();
+			FBZ.control.activateForms();
 			FBZ.control.activateCoursesExpansion();
 
 		},
@@ -610,22 +610,7 @@
 			FBZ.control.fadeHide($(".cursos-header"));
 
 		}, 
-
-// 	TeacherName .
-// CourseName .
-// TeacherDescription .
-// Cost	.
-// CourseDescription .
-// StudentDescription .
-// LessonDates	.
-// LessonHours .
-// CoursePic .
-// TeacherPic .
-// Privacy .
-// URL . 
-// CTACopy. 
-// Venue.
-// Time		.												
+												
 		activateCoursesExpansion : function () {
 
 				//onClickOpenProjectCard
@@ -659,17 +644,16 @@
 					// console.log(index, value);
 					if ( !$(this).hasClass( "course-box") )  {
 						if ( !$(this).hasClass( "course-image") ) {
-								FBZ.control.fadeShow($(value));
-							
+							FBZ.control.animate($(value),"fadeInCourses");
 						}
 					}
 
 				});
-				FBZ.control.fadeHide($this.find(".course-CTACopy"));
+
+				$this.find(".course-CTACopy").addClass("active");
 				$this.find(".course-teacher").addClass("active");
 				$this.find(".course-image").addClass("active");
-
-
+				$this.find(".close-btn").addClass("active");
 		},
 
 
@@ -694,15 +678,18 @@
 					// console.log(index, value);
 				if ( !$(this).hasClass( "course-box") )  {
 					if ( !$(this).hasClass( "course-image") ) {
+							if ( !$(this).hasClass( "course-image") ) {
 
-								FBZ.control.fadeHide($(value));
+									FBZ.control.fadeHide($(value));
+							}
 						}
 					}
 
 				});
-				FBZ.control.fadeShow($this.find(".course-CTACopy"));
+				$this.find(".course-CTACopy").removeClass("active");
 				$this.find(".course-teacher").removeClass("active");
 				$this.find(".course-image").removeClass("active");
+				$this.find(".close-btn").removeClass("active");
 				
 				setTimeout(function(){ 
 					FBZ.model.$courseCard.on('click',FBZ.control.onClickOpenCourseCard);
@@ -1028,18 +1015,6 @@
 		}, 
 
 
-		// interactiveBG : function () {
-
-		// 	$(".logo-init").interactive_bg({
-		// 	   strength: 25,              // Movement Strength when the cursor is moved. The higher, the faster it will reacts to your cursor. The default value is 25.
-		// 	   scale: 1.05,               // The scale in which the background will be zoomed when hovering. Change this to 1 to stop scaling. The default value is 1.05.
-		// 	   animationSpeed: "100ms",   // The time it takes for the scale to animate. This accepts CSS3 time function such as "100ms", "2.5s", etc. The default value is "100ms".
-		// 	   contain: true,             // This option will prevent the scaled object/background from spilling out of its container. Keep this true for interactive background. Set it to false if you want to make an interactive object instead of a background. The default value is true.
-		// 	   wrapContent: false         // This option let you choose whether you want everything inside to reacts to your cursor, or just the background. Toggle it to true to have every elements inside reacts the same way. The default value is false
-		// 	 });
-		// 	$(".logo-init").interactive_bg(); // function call
-
-		// },
 
 		disappearScrollIcon : function ()  { 
 			FBZ.view.$scrollIcon.scroll( function () { 
@@ -1047,23 +1022,6 @@
 				console.log("scroll");
 			});
 		},
-
-		// twitterWidget : function () {
-		// 	window.twttr = (function(d, s, id) {
-		// 		var js, fjs = d.getElementsByTagName(s)[0],
-		// 		t = window.twttr || {};
-		// 		if (d.getElementById(id)) return t;
-		// 	  	js = d.createElement(s);
-		// 	  	js.id = id;
-		// 	  	js.src = "https://platform.twitter.com/widgets.js";
-		// 	  	fjs.parentNode.insertBefore(js, fjs); 
-		// 		t._e = [];
-		// 		t.ready = function(f) {
-		// 			t._e.push(f);
-		// 		};
-		// 	  return t;
-		// 	}(document, "script", "twitter-wjs"));
-		// },
 
 		checkURL : function () {
 
@@ -1176,7 +1134,7 @@
 		},
 
 
-			activateForm:function () {
+			activateForms:function () {
 
 				// contact stuff
 				$(".form").submit(FBZ.control.formFunctionality);
@@ -1200,7 +1158,7 @@
 					'course'					: FBZ.model.$selectedForm.find('input[name=course]').val()
 				};
 
-				console.dir(formData);
+				// console.dir(formData);
 
 				// process the form
 				$.ajax({

@@ -56,6 +56,15 @@ input[type=number]::-webkit-outer-spin-button {
 
 .form {
 	margin: 0 0 $baseline;
+	background-color:black;
+
+
+	&:focus {
+		height: 100%;
+		width:100%;
+	}
+
+
 }
 
 .form-fieldset {
@@ -115,7 +124,7 @@ input[type=number]::-webkit-outer-spin-button {
 .form-input {
 	display: block;
 	width: 100%;
-	height: 2.5em;
+	height: 1em;
 	padding: .5em;
 	border: 1px solid;
 
@@ -132,6 +141,11 @@ input[type=number]::-webkit-outer-spin-button {
 	background-clip: padding-box;
 
 	transition: border 200ms ease-in-out;
+
+	@include respond-min($bp-mid) {
+		height: 2em;
+
+	}
 
 	&:focus {
 		border-color: white;
