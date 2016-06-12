@@ -42,6 +42,18 @@ $color-info        	   : $no-hardpink;                  // base colour for info 
   		</div>
   	</div>
  */
+
+
+// to turn off number spinners 
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
 .form {
 	margin: 0 0 $baseline;
 }

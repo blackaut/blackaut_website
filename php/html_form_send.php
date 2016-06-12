@@ -9,10 +9,10 @@ if(isset($_POST['email'])) {
 
 	function died($error) {
 		// your error code can go here
-		echo "<h2>We are very sorry</h2><p class='description-text'> But we found error(s) with the form you submitted.</p>";
-		echo "<p class='description-text'>These errors appear below.</p>";
+		echo "<h2 data-translatable>Lo sentimos //We are very sorry</h2><p class='description-text' data-translatable> Pero encontramos errores en el formulario. // But we found error(s) with the form you submitted.</p>";
+		echo "<p data-translatable class='description-text'>Los errores aparecen abajo. // These errors appear below.</p>";
 		echo $error."<br />";
-		echo "<p class='description-text'>Please go back and fix these errors.</p>";
+		echo "<p class='description-text' data-translatable> Por favor arregla esos errores. // Please go back and fix these errors.</p>";
 		die();
 	}
 
@@ -21,7 +21,7 @@ if(isset($_POST['email'])) {
 	   !isset($_POST['telephone']) ||
 	   !isset($_POST['email']) ||
 	   !isset($_POST['course'])) {
-		died("<h2>We are really sorry</h2><p class='description-text'> but there appears to be a problem with the form you submitted.</p>");
+		died("<h2 data-translatable>Lo sentimos // We are really sorry</h2><p data-translatable class='description-text'>pero parece que hay un problema con tu formulario. // but there appears to be a problem with the form you submitted.</p>");
 	}
 
 	$first_name = $_POST['first_name']; // required
@@ -32,11 +32,11 @@ if(isset($_POST['email'])) {
 	$error_message = "";
 	$email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
 	if(!preg_match($email_exp,$email_from)) {
-		$error_message .= "<p class='description-text'>The Email Address you entered does not appear to be valid.</p>";
+		$error_message .= "<p class='description-text' data-translatable>El correo ingresado no es valido. // The Email Address you entered does not appear to be valid.</p>";
 	}
 	$string_exp = "/^[A-Za-z .'-]+$/";
 	if(!preg_match($string_exp,$first_name)) {
-		$error_message .= "<p class='description-text'>The First Name you entered does not appear to be valid.</p>";
+		$error_message .= "<p class='description-text' data-translatable>El nombre ingresado no es valido // The Name you entered does not appear to be valid.</p>";
 	}
 //	if(!preg_match($string_exp,$telephone)) {
 //		$error_message .= "<p class='description-text'>The Last Name you entered does not appear to be valid.</p>";
@@ -47,7 +47,7 @@ if(isset($_POST['email'])) {
 	if(strlen($error_message) > 0) {
 		died($error_message);
 	}
-	$email_message = "Form details below.\n\n";
+	$email_message = "La persona se ha identificado como :\n\n";
 
 	function clean_string($string) {
 		$bad = array("content-type","bcc:","to:","cc:","href");
@@ -68,13 +68,12 @@ if(isset($_POST['email'])) {
 
 // check if mail function was executed without errors
 	if($sent) { ?>
-		<h2>Thank you for contacting us</h2>
-		<p class='description-text'>Your message was successfully delivered.</p>
-		<p class='description-text'>We will be in touch with you very soon.</p>
-		<p class='description-text'>Kind regards</p>
+		<h2 data-translatable>Felicitaciones! // Congratulations!</h2>
+		<p class='description-text' data-translatable>Ya estas pre-inscrito, pronto te contactaremos para revisar los detalles. // You are pre subscribed, we will contact you shortly </p>
+		<p class='description-text' data-translatable>Muchas gracias // Many thanks </p>
 	<?php
 	} else {
 		// otherwise deliver error message
-		echo "<p class='description-text'>There was an error to deliver your message, please try again!</p>";
+		echo "<p class='description-text' data-translatable> Hubo un error al enviar tu mensaje, por favor intenta otra vez ! // There was an error to deliver your message, please try again!</p>";
 	} 
 }

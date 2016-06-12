@@ -54,6 +54,7 @@
 		peoplePicBaseURL : "assets/img/people/",
 		currentLang:"es",
 		footerHasBeenDisplayed : false,
+		$selectedform : {},
 
 		
 	};
@@ -102,7 +103,9 @@
 			FBZ.control.activateFooter();
 			FBZ.control.scrollerControl();
 			FBZ.control.checkURL();
+
 		},
+
 
 		activateFooter : function () { 
 
@@ -110,6 +113,7 @@
 
 			FBZ.control.displayFooterList(FBZ.model.currentSection);
 		},
+
 
 		displayFooterList : function (e) {
 
@@ -197,7 +201,6 @@
 			FBZ.model.currentSectionIndex = index;
 	//		console.log("index :", index, FBZ.model.currentSection);
 	//		console.log("articule :", FBZ.model.currentArticule);
-			// FBZ.control.sectionAnimationEngine();
 
 			//activate slider in the correct sections 
 			if(FBZ.model.currentSection === "home" && index === 3 )  { 
@@ -379,41 +382,6 @@
 					element.addClass("is-hidden");
 				}, time);
 		},
-		// WIP section
-		sectionAnimationEngine : function () {
-
-			// console.log("section En : "	, FBZ.view.$main,FBZ.view.$main.find("section").length);
-
-			$.each( FBZ.view.$main.find("section"), function( index, value ){
-					 // console.log("index :", index , "currentSection :",FBZ.model.currentSectionIndex);
-					
-						if (index == FBZ.model.currentSectionIndex-1 ) {
-
-								FBZ.control.fadeShow($(value))
-								$.each( value.children, function( index, value ){
-									// console.log( "IF INSIDE :", value.children);
-									 if ( !$(value.children).hasClass( "is-hidden") )  {
-									 		
-									 		$.each( value.children, function( index2, value2 ){
-									 			 if ( !$(value.children).hasClass( "p") ) {
-									 			 	$($(value2).get(index2)).css("animation","animateSideIn");
-									 				console.log(value2);
-												}
-											});
-									}
-								});
-
-						}
-					// if ( !$(this).hasClass( "is-hidden") )  {
-
-					// 	FBZ.control.fadeShow($(value))
-						
-					// if ( !$(this).hasClass( "is-hidden") )  {
-
-					// 	FBZ.control.fadeShow($(value));
-					// }
-			});
-		},
 
 		moveElementsDown : function () {
 
@@ -591,7 +559,7 @@
 									"</div>"+
 										"<div class='course-contact is-hidden'>"+
 
-										"<form class='form form--horizontal' method='post' accept-charset='utf-8' action='../php/html_form_send.php' enctype='multipart/form-data'>"+
+										"<form class='form form--horizontal' method='post' target='_blank' accept-charset='utf-8' action='../php/html_form_send.php' enctype='multipart/form-data'>"+
 
 												"<h2 class='course-preincription' data-translatable>Pre-incribete aquí // Pre-suscribe here</h2>"+
 														"<fieldset class='form-fieldset'>"+
@@ -624,6 +592,7 @@
 				}
 			}
 
+			FBZ.control.activateForm();
 			FBZ.control.activateCoursesExpansion();
 
 		},
@@ -1121,7 +1090,7 @@
 				var buttons = $.find(".lang-btn");
 				for(var i = 0 ; i < buttons.length ; i ++ ) { 
 					$(buttons[i]).removeClass("active");
-					console.dir(buttons[i],buttons[i]);
+					// console.dir(buttons[i],buttons[i]);
 				//	if (buttons[i].hasClass("active")) {
 				//	}
 				}
@@ -1133,14 +1102,15 @@
 		},
 
 		updateLanguage : function () {
-			FBZ.control.changeLanguage('es');
+
+			FBZ.control.changeLanguage(FBZ.model.currentLang);
 		},
 
 		changeLanguage : function (language) { 
 
 			i18n.changeLanguage(language);
 		//	console.log("changeLanguage");
-
+			FBZ.model.currentLang = language;
 		},
 
 		getHeight : function (obj) {
@@ -1203,8 +1173,67 @@
 			   direction: "vertical",            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
 			});
 
-	},
+		},
 
+
+			activateForm:function () {
+
+				// contact stuff
+				$(".form").submit(FBZ.control.formFunctionality);
+			},
+
+			// process the form
+			formFunctionality:function(event) {
+
+				
+				FBZ.model.$selectedForm = $(event.currentTarget);
+				// stop the form from submitting the normal way 
+				event.preventDefault();
+
+				// console.log(event,$selectedForm);
+
+				// get the form data
+				var formData = {
+					'first_name'				: FBZ.model.$selectedForm.find('input[name=first_name]').val(),
+					'telephone'					: FBZ.model.$selectedForm.find('input[name=telephone]').val(),
+					'email'						: FBZ.model.$selectedForm.find('input[name=email]').val(),
+					'course'					: FBZ.model.$selectedForm.find('input[name=course]').val()
+				};
+
+				console.dir(formData);
+
+				// process the form
+				$.ajax({
+					type 		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+					url 		: '../php/html_form_send.php', // the url where we want to POST
+					data 		: formData, // our data object
+					dataType 	: 'json', // what type of data do we expect back from the server
+					encode 		: true
+				})
+
+				// using the done promise callback
+				.always(function(data) {
+						// log data to the console so we can see
+						//console.dir(data);
+						FBZ.control.clearFormAndDisplayThankYouMessage(data.responseText);
+						}
+					)
+		},
+
+		clearFormAndDisplayThankYouMessage:function(data) { 
+
+				
+				// clean the fields
+				// FBZ.model.$selectedForm.find('input[name=first_name]').hide();
+				// FBZ.model.$selectedForm.find('input[name=telephone]').hide();
+				// FBZ.model.$selectedForm.find('input[name=email]').hide();
+				// hide the form
+				// create the answer
+				$(FBZ.model.$selectedForm.parent().parent().find(".course-contact")).prepend("<div class='email-sent'>"+data+"</div>");
+				FBZ.model.$selectedForm.hide();
+				// $('#comments').val('');
+				FBZ.control.updateLanguage();
+		},
 
 
 

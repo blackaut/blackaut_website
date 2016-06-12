@@ -748,6 +748,21 @@ section.courses {
 .course-venue {}
 
 
+.email-sent {
+
+	padding:5px;
+	width:22vw;
+	text-align:center;
+	h2 {
+		font-size: 1em;
+		margin-top: 10px;
+	}
+	p {
+		font-size: 0.7em;
+		text-align: center;
+	}
+}
+
 .teacher-card {
 
 	float:left;
@@ -782,6 +797,9 @@ section.courses {
 	}
 
 }
+
+
+
 .teacher-image {
 
 	margin: 0 auto;
