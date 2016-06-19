@@ -131,6 +131,16 @@ $size: 60px;
 	float:right;
 }
 
+.highlighted-description {
+
+
+	// font-family: Roboto;
+	// text-transform: uppercase;
+	// font-size: 0.6em;
+	// text-align:center;
+	// color: $no-hardpink;
+}
+
 .academy { 
 
 	h2 { 
@@ -1641,11 +1651,10 @@ $size: 42px;
 				font-size:.7em;
 			}
 			@include respond-min($bp-wide) {
-				font-size:1em;
+				font-size:.7em;
 			}
 			@include respond-min($bp-huge) {
-				font-size:1.2em;
-
+				font-size:.8em;
 			}
 
 	}
@@ -1665,12 +1674,11 @@ $size: 42px;
 
 		}
 		@include respond-min($bp-wide) {
-			font-size:.8em;
-
+				font-size:.6em;
+			
 		}
 		@include respond-min($bp-huge) {
-			font-size:1em;
-
+				font-size:.7em;
 		}
 		
 	}
