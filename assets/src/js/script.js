@@ -20,6 +20,8 @@
 		FBZ.control.readFromGoogleDocs();
 		FBZ.control.determineSection();
 		FBZ.control.onResizeStage();
+		FBZ.control.defineStage();
+		FBZ.control.resizeContentBlock();
 
 	});// END DOC READY
 	
@@ -55,8 +57,14 @@
 		currentLang:"es",
 		footerHasBeenDisplayed : false,
 		$selectedform : {},
+		// js detection
+		mobileMode:false,
+		tabletMode:false,
+		desktopMode:false,
+		// value holders
+		swapToMobileBreakpoint:420,
+		swapToTabletBreakpoint:1024,
 
-		
 	};
 
 	FBZ.view = {
@@ -96,16 +104,45 @@
 		// add function here
 		init : function () {
 			console.debug('NullØbject is running');
-			
-		//	FBZ.control.twitterWidget();
 			FBZ.control.disappearScrollIcon();
-			// FBZ.control.interactiveBG();
 			FBZ.control.activateFooter();
 			FBZ.control.scrollerControl();
 			FBZ.control.checkURL();
-
 		},
 
+
+		detectPlatform : function () {
+
+				console.log("detectPlatform");
+			if(FBZ.model.stageW < FBZ.model.swapToMobileBreakpoint) {
+
+				console.log("mobile");
+				// boolean to control the vertical positioning
+				FBZ.model.mobileMode = true;
+				FBZ.model.tabletMode = false;
+				FBZ.model.desktopMode = false;
+
+			// if this brakpoint condition is met display the tablet mode	
+			}else if(FBZ.model.stageW < FBZ.model.swapToTabletBreakpoint) { 
+
+				console.log("tablet");
+
+				FBZ.model.mobileMode = false;
+				FBZ.model.tabletMode = true;
+				FBZ.model.desktopMode = false;
+
+			}else {
+
+				FBZ.model.mobileMode = false;
+				FBZ.model.tabletMode = false;
+				FBZ.model.desktopMode = true;
+
+				console.log("desktop");
+
+			}
+
+
+		},
 
 		activateFooter : function () { 
 
@@ -129,8 +166,6 @@
 			for (var i = 0 ; i < FBZ.view.$footerList.length ; i++ ) { 
 
 				if( $(FBZ.view.$footerList[i]).hasClass(currentRolloveredSection) ) {
-
-
 
 					if( $(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
 						 $(FBZ.view.$logosFooter[i]).removeClass("make-small");
@@ -1086,6 +1121,7 @@
 
 			FBZ.model.stageH = FBZ.control.getHeight(FBZ.view.$stage);
 			FBZ.model.stageW = FBZ.control.getWidth(FBZ.view.$stage);
+			FBZ.control.detectPlatform();
 
 		//	console.log("def stage", FBZ.model.stageH, FBZ.model.stageW );
 

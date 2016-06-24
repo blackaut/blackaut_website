@@ -163,7 +163,26 @@ $size: 60px;
 	
 		}
 	}
+
+	
 } 
+
+.courses-title {
+	margin:10px 0px;
+	font-size: 1em;
+	text-align:center;
+}
+
+
+.cursos-list {
+	padding-top:10px;
+	line-height:1em;
+		font-family: "aldrichregular";
+	li{
+		list-style: circle;
+
+	}
+}
 
 
 .vertical-text {
