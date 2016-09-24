@@ -148,7 +148,7 @@
 
 			FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
 
-			FBZ.control.displayFooterList(FBZ.model.currentSection);
+			// FBZ.control.displayFooterList(FBZ.model.currentSection);
 		},
 
 
@@ -234,30 +234,17 @@
 
 			FBZ.control.determineSection();
 			FBZ.model.currentSectionIndex = index;
-	//		console.log("index :", index, FBZ.model.currentSection);
-	//		console.log("articule :", FBZ.model.currentArticule);
+			console.log("index :", index, FBZ.model.currentSection);
+			console.log("articule :", FBZ.model.currentArticule);
 
 			//activate slider in the correct sections 
 			if(FBZ.model.currentSection === "home" && index === 3 )  { 
 				FBZ.sliderHome.createInterval();
+				
 				// console.log("execute slider home");
 			}else { 
 				FBZ.sliderHome.deleteInterval();
 			}
-
-			if(FBZ.model.currentSection === "labs" && index === 2 )  { 
-				FBZ.sliderLabs.createInterval();
-			}else { 
-				FBZ.sliderLabs.deleteInterval();
-			}
-
-			if(FBZ.model.currentSection === "academy" && index > 2 && index < 7 )  { 
-				FBZ.control.fixHeaderCourses();
-			}else { 
-				FBZ.control.unfixHeaderCourses();
-			}
-
-
 			// to move footer up
 			if(FBZ.model.footerHasBeenDisplayed === true ) {
 				// console.log("stuff back to normal");
@@ -265,90 +252,72 @@
 			}
 
 			// to move footer down
-			if(FBZ.model.currentSection === "home" && index === 7 )  { 
+			if(FBZ.model.currentSection === "home" && index === 8 )  { 
 				FBZ.control.moveElementsDown();
-			}else { 
-			}
-
-			if(FBZ.model.currentSection === "labs" && index === 5 )  { 
-				FBZ.control.moveElementsDown();
-			}else { 
+			}else {
 
 			}
 
-			if(FBZ.model.currentSection === "academy" && index === 8 )  { 
-				FBZ.control.moveElementsDown();
+				// articule triggers for home
+			if(FBZ.model.currentArticule === "#home") {
 
-			}else { 
+					console.log("home");
 
-			}
+			} else if(FBZ.model.currentArticule === "#mission") {
 
-				// articule triggers for home 
-				if(FBZ.model.currentSection === "home") {
 
-					if(FBZ.model.currentArticule === "#mission") {
-
+					console.log("mission");
 						FBZ.control.animate( FBZ.view.$piramidInfo,"fadeInObj");
 						FBZ.control.animate( FBZ.view.$missionText,"fadeInUpObj");
 					
-					} else if (FBZ.model.currentArticule === "#about"){
+			} else if (FBZ.model.currentArticule === "#about"){
+
+				console.log("about");
 
 						// FBZ.control.animate( FBZ.view.$sliderHome,"fadeInObj");
 						FBZ.control.animate(FBZ.view.$displayCard,"fadeInRightObj");
-					
-					} 
-					 else if (FBZ.model.currentArticule === "#staff"){
 
-
-					 	FBZ.control.onStaffPage();
-				
-					
-					} 
-				}
-
+			}
 				// articule triggers for labs 
 
-				if(FBZ.model.currentSection === "labs") {
-
-					if(FBZ.model.currentArticule === "#labs") {
-
-						FBZ.control.animate(FBZ.view.$displayCard,"fadeInRightObj");
-					
-					}else if (FBZ.model.currentArticule === "#tools"){
+			else if (FBZ.model.currentArticule === "#labs"){
 
 						FBZ.control.animate( FBZ.view.$toolsTextContainer,"fadeInUpTools");
 						FBZ.control.animate( FBZ.view.$toolsBg,"zoomInBg");
+						console.log("labs");
 
-					} 
-				}
-				// articule triggers for academy
-				
-				if(FBZ.model.currentSection === "academy") {
-
-					if(FBZ.model.currentArticule === "#academy") {
+			} else if (FBZ.model.currentArticule === "#academy") {
 
 						FBZ.control.animate(FBZ.view.$academyText,"fadeInLeftObj");
 						FBZ.control.animate(FBZ.view.$verticalText,"fadeInVerticalText");
 						FBZ.control.animate(FBZ.view.$gameRules,"fadeInRightObj");
-					
-					}else if (FBZ.model.currentArticule === "#courses-1"){
+					console.log("academy");
 
-						FBZ.control.animateCourses(0);
+			} else if (FBZ.model.currentArticule === "#contact") {
 
-					} else if (FBZ.model.currentArticule === "#courses-2"){
+					console.log("contact");
+			} else if (FBZ.model.currentArticule === "#footer") {
+					console.log("footer");
 
-						FBZ.control.animateCourses(1);
+			}
 
-					} else if (FBZ.model.currentArticule === "#courses-3"){
+					// }else if (FBZ.model.currentArticule === "#courses-1"){
 
-						FBZ.control.animateCourses(2);
+					// 	FBZ.control.animateCourses(0);
 
-					} else if (FBZ.model.currentArticule === "#courses-4"){
+					// } else if (FBZ.model.currentArticule === "#courses-2"){
 
-						FBZ.control.animateCourses(3);
+					// 	FBZ.control.animateCourses(1);
 
-					} 
-				}
+					// } else if (FBZ.model.currentArticule === "#courses-3"){
+
+					// 	FBZ.control.animateCourses(2);
+
+					// } else if (FBZ.model.currentArticule === "#courses-4"){
+
+					// 	FBZ.control.animateCourses(3);
+
+					// } 
 		},
 
 			animateCourses : function (index) {
@@ -452,7 +421,6 @@
 
 		parseBrain : function () {
 
-			
 			// triggers the init func
 			FBZ.control.init();
 
@@ -463,18 +431,19 @@
 				FBZ.view.$displayCard.on("click",FBZ.control.onClickDisplayCard);
 				FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
 
-			} else if (	FBZ.model.currentSection == 'academy' ) { 
-
-				FBZ.control.initAcademy();
-
-			} else if (	FBZ.model.currentSection == 'labs' ) { 
-
-				FBZ.control.initLabs();
-				FBZ.sliderLabs.init();
-				FBZ.view.$displayCard.on("click",FBZ.control.onClickDisplayCard);
-				FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
-
 			}
+			 // else if (	FBZ.model.currentSection == 'academy' ) { 
+
+			// 	FBZ.control.initAcademy();
+
+			// } else if (	FBZ.model.currentSection == 'labs' ) { 
+
+			// 	FBZ.control.initLabs();
+			// 	FBZ.sliderLabs.init();
+			// 	FBZ.view.$displayCard.on("click",FBZ.control.onClickDisplayCard);
+			// 	FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
+
+			// }
 
 			FBZ.control.multilingualEngine(); 
 			FBZ.control.removeLoadingCurtain();
@@ -487,22 +456,15 @@
 		initHome : function () { 
 
 		//	console.log(" home");
-			FBZ.control.populateProjects();
-			FBZ.control.populatePeople();
+			// FBZ.control.populateProjects();
+			// FBZ.control.populatePeople();
 		},
 
 		initAcademy : function () { 
 
 		//	console.log("academy init");
-			FBZ.control.populateCourses();
+		// FBZ.control.populateCourses();
 		},
-
-		initLabs : function () { 
-
-//			console.log("labs init");
-
-		},
-
 
 		populateProjects :  function () { 
 		//	console.log("populateProjects");

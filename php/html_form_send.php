@@ -2,9 +2,9 @@
 if(isset($_POST['email'])) {
 
 	// CHANGE THE TWO LINES BELOW
-	$email_to = "info@nullobject.org";
+	$email_to = "info@blackaut.org";
 
-	$email_subject = "pre susbcription from nullobject.org";
+	$email_subject = "pre susbcription from blackaut.org";
 
 
 	function died($error) {

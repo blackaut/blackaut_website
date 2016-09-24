@@ -19,7 +19,7 @@ module.exports.tasks = {
 			]
 		},
 		sections: {
-			files: ['index_base.html','academy/index_academy.html','labs/index_labs.html','videos/index_videos.html'],
+			files: ['index_base.html'],
 			tasks: [
 				'compileCSS',
 				'clean:tempCSS',

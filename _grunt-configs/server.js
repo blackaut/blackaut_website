@@ -7,10 +7,7 @@ module.exports.tasks = {
 	bake: {
 	  build: {
 	    files: {
-			'index.html' : 'index_base.html',
-			'academy/index.html' : 'academy/index_academy.html',
-			'labs/index.html' : 'labs/index_labs.html',
-			'videos/index.html' : 'videos/index_videos.html'
+			'index.html' : 'index_base.html'
 			}
 		}
 	},
