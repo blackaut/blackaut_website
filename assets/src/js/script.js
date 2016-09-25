@@ -92,11 +92,29 @@
 		$missionText 		:$(".mission-text-container"),
 		$displayCard 		:$(".display-card"),
 		$closeDisplayCard 	:$(".close_x"),
-		$toolsTextContainer :$(".tools-text-container"),
-		$toolsBg			:$(".tools-bg"),
+		$labsTextContainer 	:$(".labs-text-container"),
+		$labsBg				:$(".labs-bg"),
 		$academyText		:$(".academy-text"),
 		$verticalText		:$(".vertical-text"),
 		$gameRules			:$(".game-rules"),
+
+		$missionTextParagraph :$(".mission-text-paragraph"),
+		$missionTextHeadline  :$(".mission-text-headline"),
+
+		$aboutTextParagraph :$(".about-text-paragraph"),
+		$aboutTextHeadline 	:$(".about-text-headline"),
+
+		$labsTextParagraph 	:$(".labs-text-paragraph"),
+		$labsTextHeadline 	:$(".labs-text-headline"),
+
+		$academyTextParagraph 	:$(".academy-text-paragraph"),
+		$academyTextHeadline 	:$(".academy-text-headline"),
+		$academyTextRules 		:$(".academy-text-rules"),
+
+		$contactTextParagraph 	:$(".contact-text-paragraph"),
+		$contactTextHeadline 	:$(".contact-text-headline"),
+		$contactTextAddress 	:$(".contact-text-address"),
+
 
 	};
 
@@ -282,8 +300,8 @@
 
 			else if (FBZ.model.currentArticule === "#labs"){
 
-						FBZ.control.animate( FBZ.view.$toolsTextContainer,"fadeInUpTools");
-						FBZ.control.animate( FBZ.view.$toolsBg,"zoomInBg");
+						FBZ.control.animate( FBZ.view.$labsTextContainer,"fadeInUpTools");
+						FBZ.control.animate( FBZ.view.$labsBg,"zoomInBg");
 						console.log("labs");
 
 			} else if (FBZ.model.currentArticule === "#academy") {
@@ -426,24 +444,13 @@
 
 			if (	FBZ.model.currentSection == 'home' ) { 
 
-				FBZ.control.initHome();
+				FBZ.control.populateContent();
 				FBZ.sliderHome.init();
 				FBZ.view.$displayCard.on("click",FBZ.control.onClickDisplayCard);
 				FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
 
 			}
-			 // else if (	FBZ.model.currentSection == 'academy' ) { 
-
-			// 	FBZ.control.initAcademy();
-
-			// } else if (	FBZ.model.currentSection == 'labs' ) { 
-
-			// 	FBZ.control.initLabs();
-			// 	FBZ.sliderLabs.init();
-			// 	FBZ.view.$displayCard.on("click",FBZ.control.onClickDisplayCard);
-			// 	FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
-
-			// }
+			
 
 			FBZ.control.multilingualEngine(); 
 			FBZ.control.removeLoadingCurtain();
@@ -453,10 +460,20 @@
 
 		/// init specific per section
 
-		initHome : function () { 
+		populateContent : function () { 
 
 		//	console.log(" home");
-			// FBZ.control.populateProjects();
+			FBZ.control.populateMission();
+			FBZ.control.populateAbout();
+
+			FBZ.control.populateProjects();
+
+			FBZ.control.populateLabs();
+			FBZ.control.populateAcademy();
+			FBZ.control.populateContact();
+			
+
+			
 			// FBZ.control.populatePeople();
 		},
 
@@ -464,6 +481,36 @@
 
 		//	console.log("academy init");
 		// FBZ.control.populateCourses();
+		},
+
+		populateMission :  function () { 
+
+			FBZ.view.$missionTextHeadline.append(FBZ.model.noBrain.Mission.elements[0].Headline); 
+			FBZ.view.$missionTextParagraph.append(FBZ.model.noBrain.Mission.elements[0].Paragraph); 
+		},
+
+		populateAbout :  function () { 
+			FBZ.view.$aboutTextHeadline.append(FBZ.model.noBrain.About.elements[0].Headline); 
+			FBZ.view.$aboutTextParagraph.append(FBZ.model.noBrain.About.elements[0].Paragraph); 
+
+		},
+		populateLabs :  function () { 
+
+			FBZ.view.$labsTextHeadline.append(FBZ.model.noBrain.Labs.elements[0].Headline); 
+			FBZ.view.$labsTextParagraph.append(FBZ.model.noBrain.Labs.elements[0].Paragraph); 
+
+		},
+		populateAcademy :  function () { 
+			FBZ.view.$academyTextHeadline.append(FBZ.model.noBrain.Academy.elements[0].Headline);  
+			FBZ.view.$academyTextParagraph.append(FBZ.model.noBrain.Academy.elements[0].Paragraph); 
+			FBZ.view.$academyTextRules.append(FBZ.model.noBrain.Academy.elements[0].Rules); 
+
+		},
+
+		populateContact :  function () {
+			FBZ.view.$contactTextHeadline.append(FBZ.model.noBrain.Contact.elements[0].Headline);  
+			FBZ.view.$contactTextParagraph.append(FBZ.model.noBrain.Contact.elements[0].Paragraph); 
+			FBZ.view.$contactTextAddress.append(FBZ.model.noBrain.Contact.elements[0].Address); 
 		},
 
 		populateProjects :  function () { 
@@ -1001,9 +1048,14 @@
 
 		readFromGoogleDocs : function () { 
 
+
+// NO 
 			// https://docs.google.com/spreadsheets/d/1T0qB23t_Lc17VrtnybisyjVsfufbM3trJ9QGNjJUspo/pubhtml
 
-			Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1T0qB23t_Lc17VrtnybisyjVsfufbM3trJ9QGNjJUspo/pubhtml',
+// BLACKAUT
+	//		https://docs.google.com/spreadsheets/d/1XTVoctjnM0qZCqipe5xOxGFIAvXFhdwQLjl1LqopYI0/pubhtml
+
+			Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1XTVoctjnM0qZCqipe5xOxGFIAvXFhdwQLjl1LqopYI0/pubhtml',
 				callback: function(data, tabletop) { 
 					console.dir(data) 
 					FBZ.model.noBrain = data;
