@@ -139,6 +139,8 @@
 
 		activateCourses :function () {
 			FBZ.view.$cursosBtnAcademy.on("click",FBZ.control.initAcademy); 
+			FBZ.view.$coursesContainers.hide();
+
 		},
 
 		activateBurger : function () {
@@ -626,6 +628,7 @@
 			FBZ.control.populateLabs();
 			FBZ.control.populateAcademy();
 			FBZ.control.populateContact();
+			FBZ.control.populateCourses();
 			
 
 			
@@ -635,9 +638,8 @@
 		initAcademy : function () { 
 
 			console.log("academy init");
-		 	FBZ.control.populateCourses();
 		 	FBZ.view.$gameRulesBox.hide();
-		 
+			FBZ.view.$coursesContainers.show()
 		 	// FBZ.control.animateCourses(0);
 		},
 
@@ -833,15 +835,14 @@
 
 				$this.parent().addClass("expanded");
 
+				// if($this.parent().hasClass( "course-container-right"))  {
 
-				if($this.parent().hasClass( "course-container-right"))  {
-
-					// console.log("right");
-					$this.parent().parent().children(".course-container-left").hide();
-				} else {
-					// console.log("left");
-					$this.parent().parent().children(".course-container-right").hide();
-				}
+				// 	// console.log("right");
+				// 	$this.parent().parent().children(".course-container-left").hide();
+				// } else {
+				// 	// console.log("left");
+				// 	$this.parent().parent().children(".course-container-right").hide();
+				// }
 
 				$.each( e.currentTarget.children, function( index, value ){
 					// console.log(index, value);

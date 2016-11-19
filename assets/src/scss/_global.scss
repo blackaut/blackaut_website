@@ -276,14 +276,10 @@ $size: 60px;
 		color:$no-flat-blue;
 		margin-bottom:10px;
 		background-color:none;
-		padding-right: 33px!important;
-
 		@include respond-min($bp-narrow) {
 		
 		}
 		@include respond-min($bp-mid) {
-			padding-right: 65px!important;
-			margin-top: 20px;
 		}
 		@include respond-min($bp-wide) {
 		}
@@ -475,13 +471,13 @@ section.courses {
 	// border:1px solid red;
  	overflow-x: scroll;
     overflow-y: hidden;
-    height: 95vh;
+    height: 82vh;
     white-space:nowrap;
-	margin: 10vmin 5vw;
+	margin: 12vh 5vw 5vw 5vw;
 	display: inline-block;
 	width: 90vw;
 	position: relative;
-	height: auto;
+	// height: auto;
 	float: left;
 	// padding-left:10px;
 	// padding-right:50px;
@@ -546,7 +542,8 @@ section.courses {
 	cursor: pointer;
 	// background-color:$no-black;
 	width:45vw;
-	 white-space:normal;
+	white-space:normal;
+	vertical-align:top;
 
 	.close-btn {
 
@@ -559,8 +556,8 @@ section.courses {
 	    display: none;
 
 	    &.active {
-				width:90vw;
-
+				// width:90vw;
+				display: block:
 	    }
 
 		@include respond-min($bp-narrow) {
@@ -568,7 +565,7 @@ section.courses {
 		}
 
 		@include respond-min($bp-mid) {
-			font-size: 2em;
+			font-size: 1.5em;
 			top: -91px;
 			right:15px;
 		}
@@ -587,6 +584,7 @@ section.courses {
 	&.active {
 
 		cursor:	default;
+		width:auto;
 	}
 
 }
@@ -634,6 +632,7 @@ section.courses {
 	display:inline-block;
 	width:80vw;
 	float:left;
+	color: $no-flat-blue;
 
 
 	@include respond-min($bp-narrow) {
@@ -787,13 +786,11 @@ section.courses {
 	@include respond-min($bp-huge) {
 	}
 
-
-
 }
 .course-CTA {
 
 	display:inline-block;
-	transform: skewX(-15deg) translateX(-15px);
+	// transform: skewX(-15deg) translateX(-15px);
 	background-color:white;
 	border:2px solid $no-brightblue;
 	padding:5px 10px;
@@ -843,6 +840,7 @@ section.courses {
     overflow-y: hidden;
     padding:0;
     height: auto;
+	color: $no-flat-blue;
 
 
 	@include respond-min($bp-narrow) {
@@ -867,6 +865,8 @@ section.courses {
 
 .course-description {
 	// opacity:0;
+		color: $no-flat-blue;
+
 	display:none;
 	@include respond-min($bp-mid) {
 		display: block;
@@ -874,6 +874,7 @@ section.courses {
 
 }
 .course-lessonDates {
+	color: $no-flat-blue;
 
 	display:none;
 	@include respond-min($bp-mid) {
@@ -882,6 +883,7 @@ section.courses {
 }
 
 .dates-list {
+	color: $no-flat-blue;
 
 	display:none;
 	@include respond-min($bp-mid) {
@@ -1009,7 +1011,7 @@ section.courses {
 .loader:before {
   width: 5.2em;
   height: 10.2em;
-  background: black;
+  background: white;
   border-radius: 10.2em 0 0 10.2em;
   top: -0.1em;
   left: -0.1em;
@@ -1020,7 +1022,7 @@ section.courses {
 }
 .loader {
 
-  color: #ffffff;
+  color: $no-flat-blue;
   font-size: 11px;
   text-indent: -99999em;
   margin: 55px auto;
@@ -1035,7 +1037,7 @@ section.courses {
 .loader:after {
   width: 5.2em;
   height: 10.2em;
-  background: black;
+  background: white;
   border-radius: 0 10.2em 10.2em 0;
   top: -0.1em;
   left: 5.1em;
@@ -1068,7 +1070,7 @@ section.courses {
 
 .curtain { 
 
-	background-color: black;
+	background-color: white;
 	width:100%;
 	position:absolute;
 	height:100%;
