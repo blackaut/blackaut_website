@@ -3,9 +3,9 @@
  */
 
 ::-webkit-scrollbar {
-	width: 10px;
-	height: 10px;
-	border: 2px solid white;
+	width: 15px;
+	height: 15px;
+	border: 2px solid $no-flat-blue;
 	// background-color: darken($color-bg, 10%);
 
 	// display:none;
@@ -18,10 +18,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	 background: white; // arken($color-bg, 40%);
+	background: $no-flat-blue; // arken($color-bg, 40%);
 	cursor: pointer;
-	border: 1px solid white;
-	width: 10px;
+	border: 1px solid  $no-flat-blue;
+	width: 15px;
 	// display:none;
 
 	// // @include respond-min($bp-wide) {

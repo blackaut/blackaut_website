@@ -22,44 +22,12 @@
 
 
 @font-face {
-  font-family: Roboto;
-  src: url("../../fonts/Roboto-Bold.woff2?v=1.1.0") format("woff2"), url("../../fonts/Roboto-Bold.woff?v=1.1.0") format("woff"), url("./fonts/Bold/Roboto-Bold.ttf?v=1.1.0") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-
-  }
-
-
-
-
-
-@font-face {
-    font-family: 'aldrichregular';
-    src: url('../../fonts/aldrich-regular-webfont.eot');
-    src: url('../../fonts/aldrich-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/aldrich-regular-webfont.woff2') format('woff2'),
-         url('../../fonts/aldrich-regular-webfont.woff') format('woff'),
-         url('../../fonts/aldrich-regular-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Futura';
+	src: url('../../fonts/Futura-Medium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
 
 }
-
-
-
-@font-face {
-    font-family: 'anonymous_proregular';
-    src: url('../../fonts/anonymouspro-regular-webfont.eot');
-    src: url('../../fonts/anonymouspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/anonymouspro-regular-webfont.woff2') format('woff2'),
-         url('../../fonts/anonymouspro-regular-webfont.woff') format('woff'),
-         url('../../anonymouspro-regular-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
 
  /// icon moon
 
@@ -213,7 +181,7 @@ p {
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	font-family: $font-family-headings;
-	font-weight: $font-weight-headings;
+	font-weight: lighter;
 	line-height: $line-height-headings;
 	text-rendering: optimizelegibility; // Fix the character spacing for headings
 	margin-top: 0;

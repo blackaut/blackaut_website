@@ -14,6 +14,7 @@
 		});
 
 
+
 	$(function() {
 
 		// initial functions 
@@ -42,7 +43,7 @@
 		i18n : null,
 		noBrain : {},
 		proyects: {},
-		totalAmountOfProjects:0, 
+		totalAmountOfProjects:0,
 		currentProjectIndex:0,
 		initialProjectIndex:0,
 		courses: {},
@@ -64,6 +65,10 @@
 		// value holders
 		swapToMobileBreakpoint:420,
 		swapToTabletBreakpoint:1024,
+		flatBlue: "ﬂ#2D2DD3",
+		black : "#000000",
+		arrowsActive: false,
+
 
 	};
 
@@ -95,8 +100,6 @@
 		$labsTextContainer 	:$(".labs-text-container"),
 		$labsBg				:$(".labs-bg"),
 		$academyText		:$(".academy-text"),
-		$verticalText		:$(".vertical-text"),
-		$gameRules			:$(".game-rules"),
 
 		$missionTextParagraph :$(".mission-text-paragraph"),
 		$missionTextHeadline  :$(".mission-text-headline"),
@@ -111,23 +114,79 @@
 		$academyTextHeadline 	:$(".academy-text-headline"),
 		$academyTextRules 		:$(".academy-text-rules"),
 
+		$gameRulesBox			:$(".game-rules-box"),
+
 		$contactTextParagraph 	:$(".contact-text-paragraph"),
 		$contactTextHeadline 	:$(".contact-text-headline"),
 		$contactTextAddress 	:$(".contact-text-address"),
-
+		$headerLogo 			:$(".header-logo"),
+		$logoHeader				:$(".logo-header"),
+		$cursosBtnAcademy		:$(".cursos-btn-academy"),
 
 	};
 
 	FBZ.control = {
 		// add function here
 		init : function () {
-			console.debug('NullØbject is running');
+			console.debug('BLACKAUT is running');
 			FBZ.control.disappearScrollIcon();
 			FBZ.control.activateFooter();
 			FBZ.control.scrollerControl();
 			FBZ.control.checkURL();
+			FBZ.control.activateBurger();
+			FBZ.control.activateCourses();
 		},
 
+		activateCourses :function () {
+			FBZ.view.$cursosBtnAcademy.on("click",FBZ.control.initAcademy); 
+		},
+
+		activateBurger : function () {
+
+			document.querySelector( "#nav-toggle" ).addEventListener( "click", function() {
+				this.classList.toggle( "active" );
+
+					$(".site-menu").toggleClass("is-hidden");
+					$(".dropdown-menu").toggleClass("is-hidden");
+			});
+		},
+
+
+		drawFollowLines : function() {
+
+			var amountOfLines = 40;
+
+			if($(".block-line").length != amountOfLines ) {
+
+			for (var i = 0; i < amountOfLines; i++) {
+					$(".area-in").append('<span class="block-line"><span class="shape"></span></span>');
+					document.addEventListener("mousemove",FBZ.control.updatedFollowArrows);
+				}
+			}
+		},
+		updatedFollowArrows : function  (e) {
+			if(FBZ.model.arrowsActive) {
+			 console.log("evento : ",e);
+				for (var l = 0; l < $(".block-line").length; l++) {
+					 $(".block-line:nth-child(" + (l + 1) + ")").each(function() {
+						var offset = $(this).offset(),
+						center_x = (offset.left) + ($(this).width() / 2),
+						center_y = (offset.top) + ($(this).height() / 2),
+						mouse_x = e.pageX,
+						mouse_y = e.pageY,
+						radians = Math.atan2(mouse_x - center_x, mouse_y - center_y),
+						degree = (radians * (180 / Math.PI) * -1) + 90;
+						$(this).css('-moz-transform', 'rotate(' + degree + 'deg)');
+						$(this).css('-webkit-transform', 'rotate(' + degree + 'deg)');
+						$(this).css('-o-transform', 'rotate(' + degree + 'deg)');
+						$(this).css('-ms-transform', 'rotate(' + degree + 'deg)');
+						$(this).css('transform', 'rotate(' + degree + 'deg)');
+				})
+			 }
+ 
+
+      		}
+		},
 
 		detectPlatform : function () {
 
@@ -252,17 +311,83 @@
 
 			FBZ.control.determineSection();
 			FBZ.model.currentSectionIndex = index;
-			console.log("index :", index, FBZ.model.currentSection);
-			console.log("articule :", FBZ.model.currentArticule);
+			// console.log("index :", index, FBZ.model.currentSection);
+			// console.log("articule :", FBZ.model.currentArticule);
 
+			// home 
+			if(FBZ.model.currentSection === "home" && index !== 1 ) {
+				FBZ.control.displayTopLogo();
+
+
+			} else {
+				FBZ.control.hideTopLogo();
+			}
+
+			// mission
+			if(FBZ.model.currentSection === "home" && index == 2 ) {
+				FBZ.model.arrowsActive = true;
+				// console.log("arrows Active true");
+				FBZ.control.colourHeaderChange("#2D2DD3");
+				FBZ.control.colourBGChange($(".masthead"),"#FFF");
+				FBZ.control.burgerColorChange("#2D2DD3");
+				FBZ.control.sidebarColorChange("#FFF");
+
+			}else{
+
+				FBZ.model.arrowsActive = false;
+				// console.log("arrows Active false");
+				FBZ.control.colourBGChange($(".masthead"),"none");
+
+			}
+			// about 
 			//activate slider in the correct sections 
 			if(FBZ.model.currentSection === "home" && index === 3 )  { 
 				FBZ.sliderHome.createInterval();
-				
+				FBZ.control.colourHeaderChange("#FFF");
+				FBZ.control.burgerColorChange("#FFF");
+				FBZ.control.sidebarColorChange("#FFF");
+
+			}else { 
+				FBZ.sliderHome.deleteInterval();
+			}
+			// projects 
+			if(FBZ.model.currentSection === "home" && index === 4 )  { 
+				FBZ.sliderHome.createInterval();
+				FBZ.control.colourHeaderChange("#52FF77");
+				FBZ.control.burgerColorChange("#52FF77");
+				FBZ.control.sidebarColorChange("#52FF77");
+
 				// console.log("execute slider home");
 			}else { 
 				FBZ.sliderHome.deleteInterval();
 			}
+
+			// labs 
+			if(FBZ.model.currentSection === "home" && index === 5 )  { 
+				FBZ.sliderHome.createInterval();
+				FBZ.control.colourHeaderChange("#DE2575");
+				FBZ.control.colourBGChange($(".masthead"),"#FFF");
+				FBZ.control.burgerColorChange("#DE2575");
+				FBZ.control.sidebarColorChange("#FFF");
+
+
+				// console.log("execute slider home");
+			}else { 
+				FBZ.sliderHome.deleteInterval();
+			}
+
+			// academy 
+			if(FBZ.model.currentSection === "home" && index === 6 )  { 
+				FBZ.sliderHome.createInterval();
+				FBZ.control.colourHeaderChange("#52FF77");
+				FBZ.control.burgerColorChange("#52FF77");
+				FBZ.control.sidebarColorChange("#52FF77");
+
+				// console.log("execute slider home");
+			}else { 
+				FBZ.sliderHome.deleteInterval();
+			}
+
 			// to move footer up
 			if(FBZ.model.footerHasBeenDisplayed === true ) {
 				// console.log("stuff back to normal");
@@ -272,6 +397,8 @@
 			// to move footer down
 			if(FBZ.model.currentSection === "home" && index === 8 )  { 
 				FBZ.control.moveElementsDown();
+				FBZ.control.sidebarColorChange("#2D2DD3");
+
 			}else {
 
 			}
@@ -285,8 +412,9 @@
 
 
 					console.log("mission");
-						FBZ.control.animate( FBZ.view.$piramidInfo,"fadeInObj");
+						// FBZ.control.animate( FBZ.view.$piramidInfo,"fadeInObj");
 						FBZ.control.animate( FBZ.view.$missionText,"fadeInUpObj");
+						
 					
 			} else if (FBZ.model.currentArticule === "#about"){
 
@@ -300,20 +428,24 @@
 
 			else if (FBZ.model.currentArticule === "#labs"){
 
-						FBZ.control.animate( FBZ.view.$labsTextContainer,"fadeInUpTools");
-						FBZ.control.animate( FBZ.view.$labsBg,"zoomInBg");
-						console.log("labs");
+					FBZ.control.animate( FBZ.view.$labsTextContainer,"fadeInUpTools");
+					FBZ.control.animate( FBZ.view.$labsBg,"zoomInBg");
+					console.log("labs");
 
 			} else if (FBZ.model.currentArticule === "#academy") {
 
-						FBZ.control.animate(FBZ.view.$academyText,"fadeInLeftObj");
-						FBZ.control.animate(FBZ.view.$verticalText,"fadeInVerticalText");
-						FBZ.control.animate(FBZ.view.$gameRules,"fadeInRightObj");
+					FBZ.control.animate(FBZ.view.$academyText,"fadeInLeftObj");
+
 					console.log("academy");
 
 			} else if (FBZ.model.currentArticule === "#contact") {
 
 					console.log("contact");
+
+					FBZ.control.colourHeaderChange("#2D2DD3");
+					FBZ.control.burgerColorChange("#2D2DD3");
+					FBZ.control.sidebarColorChange("#FFF");
+
 			} else if (FBZ.model.currentArticule === "#footer") {
 					console.log("footer");
 
@@ -338,47 +470,70 @@
 					// } 
 		},
 
-			animateCourses : function (index) {
 
-				// do poll to fix loading bug
-				if($($(".course-container-left").get(index)).find(".course-name").length === 0) {
+			displayTopLogo : function () {
 
-					 FBZ.model.animateCoursesClock = setInterval( function() 
-					{
-					 FBZ.control.animateCourses(index);
-					 // console.log("interval");
-        			}, 100);
-				} else {
+			if(FBZ.view.$headerLogo.hasClass("is-hidden")) {
 
-					clearInterval( FBZ.model.animateCoursesClock);
-					FBZ.control.animate($($(".course-container-left").get(index)),"fadeInObjCourses");
-					FBZ.control.animate($($(".course-container-right").get(index)),"fadeInObjCourses");
-
-					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-name"),"fadeInLeftObj");
-					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-name"),"fadeInLeftObj");
-
-					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-start-date"),"fadeInLeftObjx1");
-					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-start-date"),"fadeInLeftObjx1");
-
-					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-students"),"fadeInLeftObjx2");
-					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-students"),"fadeInLeftObjx2");
-
-					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-teacher"),"fadeInLeftObjx3");
-					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-teacher"),"fadeInLeftObjx3");
-
-					FBZ.control.animate($($(".course-container-left").get(index)).find(".course-CTACopy"),"fadeInLeftObjx4");
-					FBZ.control.animate($($(".course-container-right").get(index)).find(".course-CTACopy"),"fadeInLeftObjx4");
-
+				FBZ.control.fadeShow(FBZ.view.$headerLogo);
+				console.log("display logo");
 				}
-		},
+			},
+
+
+			hideTopLogo : function () {
+				FBZ.control.fadeHide(FBZ.view.$headerLogo);
+			},
+
+			colourHeaderChange: function (colour) { 
+
+				// $obj = $("#octocat");
+				$(".st0").attr('style', "fill:"+colour);
+			},
+
+			colourChange: function ($obj,colour) { 
+				console.log("color change");
+				$($obj).attr('style', "fill:"+colour);
+			},
+
+			colourTextChange : function (obj,colour) {
+				obj.css("color",colour);
+			},
+
+			colourBGChange : function (obj,colour) {
+				obj.css("background",colour);
+			},
+
+		// 	animateCourses : function (index) {
+
+		// 		// do poll to fix loading bug
+		// 		if($($(".course-container-left").get(index)).find(".course-name").length === 0) {
+
+		// 			 FBZ.model.animateCoursesClock = setInterval( function() 
+		// 			{
+		// 			 FBZ.control.animateCourses(index);
+		// 			 // console.log("interval");
+  //       			}, 100);
+		// 		} else {
+
+		// 			clearInterval( FBZ.model.animateCoursesClock);
+		// 			FBZ.control.animate(FBZ.view.$courseContainers),"fadeInObjCourses");
+
+		// 			FBZ.control.animate(FBZ.view.$courseContainers.find(".course-name"),"fadeInLeftObj");
+		// 			FBZ.control.animate(FBZ.view.$courseContainers.find(".course-start-date"),"fadeInLeftObjx1");
+		// 			FBZ.control.animate(FBZ.view.$courseContainers.find(".course-students"),"fadeInLeftObjx2");
+		// 			FBZ.control.animate(FBZ.view.$courseContainers.find(".course-teacher"),"fadeInLeftObjx3");
+		// 			FBZ.control.animate(FBZ.view.$courseContainers.find(".course-CTACopy"),"fadeInLeftObjx4");
+		// 		}
+		// },
 		onClickDisplayCard : function () {
 
 				FBZ.view.$displayCard.toggleClass("fadeOutRightObj");
 				FBZ.view.$displayCard.toggleClass("fadeInRightObj");
 				FBZ.view.$closeDisplayCard.toggleClass("active");
 				$(".slider-control").toggleClass("active");
-
 		},
+
 
 		animate : function (element,animClass) {
 
@@ -416,15 +571,15 @@
 
 
 			var manualOffSetBig = FBZ.model.stageH*0.5;
-			var objePosBig =  $(".big").position();
-			var objeHeightBig  = $(".big img").height();
-			var offsetDownBig = FBZ.model.stageH - objePosBig.top  - objeHeightBig + manualOffSetBig;
+			// var objePosBig =  $(".big").position();
+			// var objeHeightBig  = $(".big img").height();
+			// var offsetDownBig = FBZ.model.stageH - objePosBig.top  - objeHeightBig + manualOffSetBig;
 
 
-			console.log("position : ", objePosBig.top , "stage : ", FBZ.model.stageH , "result :", offsetDownBig, "height : ",objeHeightBig);
+			// console.log("position : ", objePosBig.top , "stage : ", FBZ.model.stageH , "result :", offsetDownBig, "height : ",objeHeightBig);
 			$(".mail-to-drag-down").css("margin-top",offsetDownMail);
 			$(".mail-to-drag-down").css("padding-top",0);
-			$(".big").css("margin-top", offsetDownBig);
+			// $(".big").css("margin-top", offsetDownBig);
 
 		},
 
@@ -433,7 +588,7 @@
 			var offsetUp = 0;
 			$(".mail-to-drag-down").css("margin-top",offsetUp);
 			$(".mail-to-drag-down").css("padding-top",40);
-			$(".big").css("margin-top",0);
+			// $(".big").css("margin-top",0);
 
 		},
 
@@ -479,14 +634,18 @@
 
 		initAcademy : function () { 
 
-		//	console.log("academy init");
-		// FBZ.control.populateCourses();
+			console.log("academy init");
+		 	FBZ.control.populateCourses();
+		 	FBZ.view.$gameRulesBox.hide();
+		 
+		 	// FBZ.control.animateCourses(0);
 		},
 
 		populateMission :  function () { 
 
 			FBZ.view.$missionTextHeadline.append(FBZ.model.noBrain.Mission.elements[0].Headline); 
 			FBZ.view.$missionTextParagraph.append(FBZ.model.noBrain.Mission.elements[0].Paragraph); 
+			FBZ.control.drawFollowLines();
 		},
 
 		populateAbout :  function () { 
@@ -549,11 +708,11 @@
 		},
 
 		populateCourses :  function () { 
-	
- 			FBZ.model.totalAmountOfCourses  = FBZ.model.noBrain.Courses.elements.length;
-// 			 /// ,this is an injection of content coming from the no brain 
+
+			FBZ.model.totalAmountOfCourses  = FBZ.model.noBrain.Courses.elements.length;
+				 /// ,this is an injection of content coming from the no brain 
 		//	console.log(FBZ.model.noBrain.Courses.elements.length, FBZ.view.$coursesContainers);
-			for ( var i = 0 ; i < FBZ.model.noBrain.Courses.elements.length ; i ++ ) { 
+			for ( var i = 0 ; i < FBZ.model.totalAmountOfCourses ; i ++ ) { 
 			//	console.log("container : ", FBZ.view.$coursesContainers[i]);
 				if(FBZ.model.noBrain.Courses.elements[i].Privacy != "PRIVATE") {  
 						
@@ -561,7 +720,7 @@
 
 				 var datesList = FBZ.model.noBrain.Courses.elements[i].LessonDates.replace(/,/g,"<br>");
 				
-				 $(FBZ.view.$coursesContainers[i]).append(
+				 FBZ.view.$coursesContainers.append(
 
 						"<div class='course-card'>"+ 
 
@@ -570,7 +729,7 @@
 									"</div>"+
 									"<div class='course-box'>"+
 										"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
-										"<h4 data-translatable class='course-start-date'>comienza el "+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
+										"<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
 										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
 										"<p data-translatable class='course-teacher'>por "+FBZ.model.noBrain.Courses.elements[i].TeacherName + " // by "+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
 										"<a data-translatable class='course-CTA course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</a>"+
@@ -635,12 +794,13 @@
 						);
 				}
 			}
-
+			
 			FBZ.control.activateForms();
 			FBZ.control.activateCoursesExpansion();
 
 		},
 
+	
 		fixHeaderCourses : function () {
 
 			if($(".cursos-header").css("opacity") != 0 ) {
@@ -661,7 +821,6 @@
 				FBZ.model.$courseCard = $('.course-card');
 				FBZ.model.$courseCard.on('click',FBZ.control.onClickOpenCourseCard);
 				FBZ.model.$courseCard.find(".close-btn").on('click',FBZ.control.onClickCollapseCourseCard);
-
 		},
 
 		onClickOpenCourseCard : function (e) {
@@ -820,6 +979,7 @@
 				FBZ.control.animate( FBZ.view.$staffContainer,"fadeInRightObjx1");
 				FBZ.control.animate( $(".collab-title"),"fadeInRightObjx2");
 				FBZ.control.animate( FBZ.view.$collabContainer,"fadeInRightObjx3");
+
 			for ( var i = 0 ; i < staffLength; i ++ ) { 
 				// console.log("on staff page :",i);
 				if ( i == 0 ) {
@@ -1108,6 +1268,21 @@
 			FBZ.control.changeLanguage('es');
 		},
 
+		burgerColorChange : function (colour) {
+
+				FBZ.control.colourBGChange($("#nav-toggle span" ),colour);
+				$('.pseudo-changer-after').html('#nav-toggle span:after{ background:'+colour+' };');
+				$('.pseudo-changer-before').html('#nav-toggle span:before{ background:'+colour+' };');
+
+		},
+
+		sidebarColorChange : function (colour) {
+
+				$('.one-pagination-before').html('.onepage-pagination li a:before { background:'+colour+' };');
+				$('.one-pagination-before-active').html('.onepage-pagination li a.active:before { border: 2px solid '+colour+' };');
+
+		} ,
+
 		updateLanguage : function () {
 
 			FBZ.control.changeLanguage(FBZ.model.currentLang);
@@ -1177,12 +1352,11 @@
 			   keyboard: true,                  // You can activate the keyboard controls
 			   responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
 			                                    // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
-			                                    // the browser's width is less than 600, the fallback will kick in.
+				                                 // the browser's width is less than 600, the fallback will kick in.
 			   direction: "vertical",            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
 			});
 
 		},
-
 
 			activateForms:function () {
 

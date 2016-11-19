@@ -15,18 +15,18 @@
  */
 
 $input-bgColor         : black;                // Colour of input background
-$input-borderColor     : $no-hardpink;                // Colour of input borders
+$input-borderColor     : $no-flat-blue;                // Colour of input borders
 $form-actions-bgColor  : black;              // Background colour of form actions container (i.e. submit)
 $label-textColor       : #000;         // Text colour of form labels and legends
 $input-textColor       : white;          // Text colour of form inputs
 
-$placeholder-textColor : $no-hardpink;  // Text colour of input placeholder
+$placeholder-textColor : $no-flat-blue;  // Text colour of input placeholder
 
 // Messages & form states and alerts
 $color-warning         : white;    // base colour for warning input state
 $color-error           : $no-styleblue;    // base colour for error input state
 $color-success         : white;              // base colour for success input state
-$color-info        	   : $no-hardpink;                  // base colour for info input state
+$color-info        	   : $no-flat-blue;                  // base colour for info input state
 
 
 /**
@@ -131,7 +131,7 @@ input[type=number]::-webkit-outer-spin-button {
 	@include font-size($type-base);
 	font-family: 'aldrichregular';
 	line-height: $leading-base;
-	color: $no-hardpink;
+	color: $no-flat-blue;
 	font-weight: normal;
 	vertical-align: baseline;
 
@@ -211,7 +211,7 @@ input[type=number]::-webkit-outer-spin-button {
 	&[disabled],
 	&[readonly] {
 		background-color: darken($input-bgColor, 10%);
-		border-color: $no-hardpink;
+		border-color: $no-flat-blue;
 		cursor: not-allowed;
 	}
 
@@ -269,13 +269,14 @@ input[type="reset"],
 input[type="submit"] {
 	width: auto;
 	cursor: pointer;
-	background-color:$no-hardpink;
+	background-color:$no-flat-blue;
 	-webkit-appearance: button;
 	color:black;
 	border-radius:0;
 	font-family: 'Roboto';
-	transform: skewX(-15deg) translateX(-7px);
+	// transform: skewX(-15deg) translateX(-7px);
 	text-transform:uppercase;
+	padding: 15px;
 }
 
 
