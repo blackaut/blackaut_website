@@ -630,8 +630,6 @@
 			FBZ.control.populateContact();
 			FBZ.control.populateCourses();
 			
-
-			
 			// FBZ.control.populatePeople();
 		},
 

@@ -274,7 +274,9 @@ $size: 60px;
 	h2 { 
 		margin-top: 10px;
 		color:$no-flat-blue;
-		margin-bottom:10px;
+		margin-bottom:30px;
+		padding-left: 10vw;
+		text-align:left;
 		background-color:none;
 		@include respond-min($bp-narrow) {
 		
@@ -293,8 +295,9 @@ $size: 60px;
 
 
 .academy-text-paragraph {
-	width: 65vw;
+	width: 80vw;
 	font-size: 0.8em;
+	padding-left: 10vw;
 
 }
 
@@ -330,7 +333,7 @@ $size: 60px;
 	li { 
 		list-style: none;
 		display: inline-block;;
-		width:15vw;
+		width:14vw;
 		margin:0 2vw;
 	}
 	ul {
@@ -362,7 +365,8 @@ $size: 60px;
 .cursos-btn-academy {
 	border:2px solid $no-brightblue;
 	display: block;
-	margin: 0 auto;
+	margin: 50px auto 0 auto;
+
 	color: $no-flat-blue;
 	transition:all 0.7s;
 	&:hover {
@@ -550,14 +554,14 @@ section.courses {
 		cursor: pointer;
 		position:absolute;
 		transition: all 0ms cubic-bezier(0.390, 0.575, 0.565, 1.000)!important;
-	    font-size: 1.6em;
+		font-size: 1.6em;
 	    top: -33px;
 	    right: 10px;
 	    display: none;
 
 	    &.active {
 				// width:90vw;
-				display: block:
+				display: block;
 	    }
 
 		@include respond-min($bp-narrow) {
@@ -3008,9 +3012,11 @@ header {
 	padding-top:5px;
 	transition:$transition;
 
+
 	&:hover { 
 
 		 text-shadow: 2px 2px 0px $no-brightblue;
+		 transform: translateX(-3px);
 	}
 
 	@include respond-min($bp-narrow) {
