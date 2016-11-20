@@ -18,11 +18,11 @@
 	$(function() {
 
 		// initial functions 
+		FBZ.control.resizeContentBlock();
 		FBZ.control.readFromGoogleDocs();
 		FBZ.control.determineSection();
 		FBZ.control.onResizeStage();
 		FBZ.control.defineStage();
-		FBZ.control.resizeContentBlock();
 
 	});// END DOC READY
 	
@@ -115,16 +115,18 @@
 		$academyTextRules 		:$(".academy-text-rules"),
 
 		$gameRulesBox			:$(".game-rules-box"),
-
+		
 		$contactTextParagraph 	:$(".contact-text-paragraph"),
 		$contactTextHeadline 	:$(".contact-text-headline"),
 		$contactTextAddress 	:$(".contact-text-address"),
+		
 		$headerLogo 			:$(".header-logo"),
 		$logoHeader				:$(".logo-header"),
-		$logoIntro				:$(".logo-intro"),
+		$logoIntro				:$(".intro-logo"),
 		$cursosBtnAcademy		:$(".cursos-btn-academy"),
 
 	};
+
 
 	FBZ.control = {
 		// add function here
@@ -141,7 +143,6 @@
 		activateCourses :function () {
 			FBZ.view.$cursosBtnAcademy.on("click",FBZ.control.initAcademy); 
 			FBZ.view.$coursesContainers.hide();
-
 		},
 
 		activateBurger : function () {
@@ -154,6 +155,12 @@
 			});
 		},
 
+		closeBurger : function () {
+					document.querySelector( "#nav-toggle" ).classList.toggle( "active" );
+					$(".site-menu").toggleClass("is-hidden");
+					$(".dropdown-menu").toggleClass("is-hidden");
+
+		},
 
 		drawFollowLines : function() {
 
@@ -193,7 +200,6 @@
 
 		detectPlatform : function () {
 
-				console.log("detectPlatform");
 			if(FBZ.model.stageW < FBZ.model.swapToMobileBreakpoint) {
 
 				console.log("mobile");
@@ -231,16 +237,23 @@
 
 			// FBZ.control.displayFooterList(FBZ.model.currentSection);
 		},
+		goToSectionbyHeader : function (loc) {
 
-		goToSectionbyFooter : function (loc) {
-			
-			// console.log(e);
-			// console.log(e.currentTarget);
-			// console.log(e.currentTarget.attr);
+			console.log(loc);
 			window.location=loc;
 			$.fn.goToSectionByName();
 			FBZ.control.determineSection();
-			// javascript:history.go(0); 
+			FBZ.control.closeBurger();
+		},
+
+
+
+		goToSectionbyFooter : function (loc) {
+
+			window.location=loc;
+			$.fn.goToSectionByName();
+			FBZ.control.determineSection();
+
 		},
 
 
@@ -248,59 +261,6 @@
 			console.log("go to start");
 			 $.fn.moveTo(0);
 		},
-		// displayFooterList : function (e) {
-
-
-		// 	var currentRolloveredSection;
-		// 	// if the function doesnt come from an event trigger it using the passed value.
-		// 	if(e.currentTarget == undefined) {
-		// 		var currentRolloveredSection =	e;
-		// 	}else{	
-		// 		currentRolloveredSection = e.currentTarget.getAttribute("data");
-		// 	}
-
-		// 	for (var i = 0 ; i < FBZ.view.$footerList.length ; i++ ) { 
-
-		// 		if( $(FBZ.view.$footerList[i]).hasClass(currentRolloveredSection) ) {
-
-		// 			if( $(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
-		// 				 $(FBZ.view.$logosFooter[i]).removeClass("make-small");
-		// 			}
-
-		// 			if( !$(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
-		// 				FBZ.control.animate($(FBZ.view.$logosFooter[i]),"make-big");
-		// 			}
-
-		// 				if($(FBZ.view.$footerList[i]).hasClass("is-hidden")) {
-		// 					$(FBZ.view.$footerList[i]).removeClass("is-hidden");
-		// 				}
-
-		// 			if( !$(FBZ.view.$footerList[i]).hasClass("make-text-big")) {
-		// 				FBZ.control.animate($(FBZ.view.$footerList[i]),"make-text-big");
-		// 			}
-
-		// 		}else{ 
-					
-		// 			if( $(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
-		// 				 $(FBZ.view.$logosFooter[i]).removeClass("make-big");
-		// 			}
-		// 			if( !$(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
-		// 				FBZ.control.animate($(FBZ.view.$logosFooter[i]),"make-small");
-		// 			}
-
-		// 			if(!$(FBZ.view.$footerList[i]).hasClass("is-hidden")) {
-		// 				$(FBZ.view.$footerList[i]).addClass("is-hidden");
-		// 			}
-				
-		// 		}
-
-		// 	}
-
-		// },
-
-		// addLoadingCurtain : function() { 
-		// 	FBZ.control.fadeShow($(".curtain"));
-		// },
 
 		removeLoadingCurtain : function() { 
 			FBZ.control.fadeHide($(".curtain"));
@@ -336,12 +296,13 @@
 			// home 
 			if(FBZ.model.currentSection === "home" && index !== 1 ) {
 				FBZ.control.displayTopLogo();
-
-
+			
 
 			} else {
 				FBZ.control.hideTopLogo();
-				FBZ.view.$logoIntro.addClass( "pulse");
+				FBZ.control.animateInCentralLogo();
+
+				
 			}
 
 			// mission
@@ -413,14 +374,14 @@
 			if(FBZ.model.footerHasBeenDisplayed === true ) {
 				// console.log("stuff back to normal");
 				FBZ.control.moveElementsUp();
+				console.log("move up ");
 			}
 
 			// to move footer down
 			if(FBZ.model.currentSection === "home" && index === 8 )  { 
 
 				FBZ.control.moveElementsDown();
-
-
+				console.log("move down");
 				FBZ.control.sidebarColorChange("#2D2DD3");
 
 			}else {
@@ -472,7 +433,6 @@
 
 			} else if (FBZ.model.currentArticule === "#footer") {
 					console.log("footer");
-						FBZ.control.moveElementsUp();
 						FBZ.control.moveElementsDown();
 
 			}
@@ -560,6 +520,9 @@
 				$(".slider-control").toggleClass("active");
 		},
 
+		animateInCentralLogo : function () {
+			FBZ.control.animate(FBZ.view.$logoIntro,"pulse");
+		},
 
 		animate : function (element,animClass) {
 
@@ -588,6 +551,9 @@
 
 		moveElementsDown : function () {
 
+		window.setTimeout(function() {
+
+
 			// to determine a realible position for the mail
 			FBZ.model.footerHasBeenDisplayed = true;
 			var manualOffSet = FBZ.model.stageH*0.2;
@@ -596,17 +562,15 @@
 			var offsetDownMail = FBZ.model.stageH - objePosMail.top  - objeHeightMail - manualOffSet ;
 
 
-			var manualOffSetBig = FBZ.model.stageH*0.5;
 			// var objePosBig =  $(".big").position();
 			// var objeHeightBig  = $(".big img").height();
 			// var offsetDownBig = FBZ.model.stageH - objePosBig.top  - objeHeightBig + manualOffSetBig;
 
-				console.log("move elements down");
-			// console.log("position : ", objePosBig.top , "stage : ", FBZ.model.stageH , "result :", offsetDownBig, "height : ",objeHeightBig);
+			console.log("values  : ",FBZ.model.stageH, objePosMail.top ,objeHeightMail, manualOffSet);
 			$(".mail-to-drag-down").css("margin-top",offsetDownMail);
 			$(".mail-to-drag-down").css("padding-top",0);
 			// $(".big").css("margin-top", offsetDownBig);
-
+			},  100); 
 		},
 
 		moveElementsUp : function () {
@@ -1286,6 +1250,7 @@
 				}
 			//	console.log($.find(".lang-btn").hasClass("active").removeClass("active" ));	
 				$(this).addClass("active" );
+				FBZ.control.closeBurger();
 			});
 
 			FBZ.control.changeLanguage('es');
@@ -1303,7 +1268,6 @@
 
 				$('.one-pagination-before').html('.onepage-pagination li a:before { background:'+colour+' };');
 				$('.one-pagination-before-active').html('.onepage-pagination li a.active:before { border: 2px solid '+colour+' };');
-
 		} ,
 
 		updateLanguage : function () {

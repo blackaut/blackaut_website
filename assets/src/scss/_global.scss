@@ -104,7 +104,7 @@ area {
   transition: all 500ms ease-in-out;
 }
 #nav-toggle.active span {
-  background-color: transparent;
+  background: transparent!important;
 }
 #nav-toggle.active span:before, #nav-toggle.active span:after {
   top: 0;
@@ -2476,7 +2476,7 @@ body {
 
 .grey {
 
-	background-color: $no-palegray;
+	background-color: white;
 }
 
 .blue {
@@ -3096,11 +3096,13 @@ footer {
 		color:$no-gray;
 		display:inline;
 		margin:0;
-		background-color:$no-ultrapalegray;
+		background-color:white;
 		width:30vw;
 		bottom:0;
 		padding:5px;
 		z-index:3;
+		
+
 
 		@include respond-min($bp-narrow) {
 			font-size:0.5em;
@@ -3123,7 +3125,7 @@ footer {
 
 .footer-bg { 
 
-	background:$no-ultrapalegray;
+	background:white;
 	width:100%;
 	height: 150%;
 	// transform:skewY(6deg);
@@ -3191,7 +3193,9 @@ footer {
 
 		&:hover { 
 
-		color:$no-flat-blue;
+			text-shadow: 2px 2px 0px $no-brightblue;
+			transform: translateX(-3px);
+			color:$no-flat-blue;
 		
 		}
 		
@@ -3516,20 +3520,24 @@ footer {
 
 @keyframes pulse {
   from {
-    transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1) translateY(-50%);
+    opacity: 0;
   }
 
   50% {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05) translateY(-50%);
   }
 
   to {
-    transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1) translateY(-50%);
+     opacity: 1;
   }
 }
 
 .pulse {
-  animation-name: pulse;
+  animation: pulse 0.7s forwards 1.5s;
+  opacity:0;
+  transform-origin: 50% 50%;
 }
 
 
