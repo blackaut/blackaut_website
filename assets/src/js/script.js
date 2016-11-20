@@ -121,6 +121,7 @@
 		$contactTextAddress 	:$(".contact-text-address"),
 		$headerLogo 			:$(".header-logo"),
 		$logoHeader				:$(".logo-header"),
+		$logoIntro				:$(".logo-intro"),
 		$cursosBtnAcademy		:$(".cursos-btn-academy"),
 
 	};
@@ -225,61 +226,77 @@
 
 		activateFooter : function () { 
 
-			FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
+			// FBZ.view.$logosFooter.on("mouseover",FBZ.control.displayFooterList);
+			// FBZ.view.$logosFooter.on("click",FBZ.control.goToTheStart);
 
 			// FBZ.control.displayFooterList(FBZ.model.currentSection);
 		},
 
-
-		displayFooterList : function (e) {
-
-
-			var currentRolloveredSection;
-			// if the function doesnt come from an event trigger it using the passed value.
-			if(e.currentTarget == undefined) {
-				var currentRolloveredSection =	e;
-			}else{	
-				currentRolloveredSection = e.currentTarget.getAttribute("data");
-			}
-
-			for (var i = 0 ; i < FBZ.view.$footerList.length ; i++ ) { 
-
-				if( $(FBZ.view.$footerList[i]).hasClass(currentRolloveredSection) ) {
-
-					if( $(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
-						 $(FBZ.view.$logosFooter[i]).removeClass("make-small");
-					}
-
-					if( !$(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
-						FBZ.control.animate($(FBZ.view.$logosFooter[i]),"make-big");
-					}
-
-						if($(FBZ.view.$footerList[i]).hasClass("is-hidden")) {
-							$(FBZ.view.$footerList[i]).removeClass("is-hidden");
-						}
-
-					if( !$(FBZ.view.$footerList[i]).hasClass("make-text-big")) {
-						FBZ.control.animate($(FBZ.view.$footerList[i]),"make-text-big");
-					}
-
-				}else{ 
-					
-					if( $(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
-						 $(FBZ.view.$logosFooter[i]).removeClass("make-big");
-					}
-					if( !$(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
-						FBZ.control.animate($(FBZ.view.$logosFooter[i]),"make-small");
-					}
-
-					if(!$(FBZ.view.$footerList[i]).hasClass("is-hidden")) {
-						$(FBZ.view.$footerList[i]).addClass("is-hidden");
-					}
-				
-				}
-
-			}
-
+		goToSectionbyFooter : function (loc) {
+			
+			// console.log(e);
+			// console.log(e.currentTarget);
+			// console.log(e.currentTarget.attr);
+			window.location=loc;
+			$.fn.goToSectionByName();
+			FBZ.control.determineSection();
+			// javascript:history.go(0); 
 		},
+
+
+		goToTheStart : function () {
+			console.log("go to start");
+			 $.fn.moveTo(0);
+		},
+		// displayFooterList : function (e) {
+
+
+		// 	var currentRolloveredSection;
+		// 	// if the function doesnt come from an event trigger it using the passed value.
+		// 	if(e.currentTarget == undefined) {
+		// 		var currentRolloveredSection =	e;
+		// 	}else{	
+		// 		currentRolloveredSection = e.currentTarget.getAttribute("data");
+		// 	}
+
+		// 	for (var i = 0 ; i < FBZ.view.$footerList.length ; i++ ) { 
+
+		// 		if( $(FBZ.view.$footerList[i]).hasClass(currentRolloveredSection) ) {
+
+		// 			if( $(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
+		// 				 $(FBZ.view.$logosFooter[i]).removeClass("make-small");
+		// 			}
+
+		// 			if( !$(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
+		// 				FBZ.control.animate($(FBZ.view.$logosFooter[i]),"make-big");
+		// 			}
+
+		// 				if($(FBZ.view.$footerList[i]).hasClass("is-hidden")) {
+		// 					$(FBZ.view.$footerList[i]).removeClass("is-hidden");
+		// 				}
+
+		// 			if( !$(FBZ.view.$footerList[i]).hasClass("make-text-big")) {
+		// 				FBZ.control.animate($(FBZ.view.$footerList[i]),"make-text-big");
+		// 			}
+
+		// 		}else{ 
+					
+		// 			if( $(FBZ.view.$logosFooter[i]).hasClass("make-big")) {
+		// 				 $(FBZ.view.$logosFooter[i]).removeClass("make-big");
+		// 			}
+		// 			if( !$(FBZ.view.$logosFooter[i]).hasClass("make-small")) {
+		// 				FBZ.control.animate($(FBZ.view.$logosFooter[i]),"make-small");
+		// 			}
+
+		// 			if(!$(FBZ.view.$footerList[i]).hasClass("is-hidden")) {
+		// 				$(FBZ.view.$footerList[i]).addClass("is-hidden");
+		// 			}
+				
+		// 		}
+
+		// 	}
+
+		// },
 
 		// addLoadingCurtain : function() { 
 		// 	FBZ.control.fadeShow($(".curtain"));
@@ -321,8 +338,10 @@
 				FBZ.control.displayTopLogo();
 
 
+
 			} else {
 				FBZ.control.hideTopLogo();
+				FBZ.view.$logoIntro.addClass( "pulse");
 			}
 
 			// mission
@@ -398,7 +417,10 @@
 
 			// to move footer down
 			if(FBZ.model.currentSection === "home" && index === 8 )  { 
+
 				FBZ.control.moveElementsDown();
+
+
 				FBZ.control.sidebarColorChange("#2D2DD3");
 
 			}else {
@@ -450,6 +472,8 @@
 
 			} else if (FBZ.model.currentArticule === "#footer") {
 					console.log("footer");
+						FBZ.control.moveElementsUp();
+						FBZ.control.moveElementsDown();
 
 			}
 
@@ -577,7 +601,7 @@
 			// var objeHeightBig  = $(".big img").height();
 			// var offsetDownBig = FBZ.model.stageH - objePosBig.top  - objeHeightBig + manualOffSetBig;
 
-
+				console.log("move elements down");
 			// console.log("position : ", objePosBig.top , "stage : ", FBZ.model.stageH , "result :", offsetDownBig, "height : ",objeHeightBig);
 			$(".mail-to-drag-down").css("margin-top",offsetDownMail);
 			$(".mail-to-drag-down").css("padding-top",0);

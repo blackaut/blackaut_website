@@ -167,6 +167,10 @@ var totalSections = $("section").length;
 			}else {
 
 				var firstSection = sections[0].attributes["data-name"].value;
+				console.log("first section ", firstSection);
+				if (firstSection == "footer" ) {
+					FBZ.control.moveElementsDown();
+				}
 				history.pushState( {}, document.title, firstSection );
 			}
 		}

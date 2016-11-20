@@ -67,7 +67,9 @@ area {
 
 // nav toggle
 
-#nav-toggle { 	position: absolute;
+#nav-toggle { 	
+	pointer-events: auto;
+	position: absolute;
 				right: 15px;
 				top: 22px;
 				span {
@@ -492,7 +494,7 @@ section.courses {
 
 	&.expanded {
 
-		width: 100vw;
+		// width: 100vw;
 
 	}
 	@include respond-min($bp-narrow) {
@@ -1448,17 +1450,18 @@ section.courses {
 .close_x { 
 
 	transform-origin: 50% 50%;
-	width:20px;
+	width:31px;
 	transition: all 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
 	position:absolute!important;
-	top:20px;
+	top:35px;
 	opacity:1!important;
 	left:0;
+	z-index:60;
 	display:block;
 	transform: rotate(0deg) translateX(15px) translateY(-6px);
 
 	&.active { 
-		transform: rotate(45deg) translateX(-26px) translateY(23px);
+		transform: rotate(45deg)translateX(-90px) translateY(76px);
 	}
 
 }
@@ -2501,7 +2504,7 @@ body {
 
 header {
 
-	background-color: #transparent;
+	background-color: none;
 	position:absolute;
 	top:0;
 	text-align: center;
@@ -2509,11 +2512,14 @@ header {
 	margin: auto;
 	height:85px;
 	transition: all 0.5s;
+	 pointer-events:none; 
+
 }
 
 
 .logo-header {
 
+	pointer-events: auto;
 	height:45px;
 
 	transform:translateX(-2px);
@@ -2585,6 +2591,7 @@ header {
 	text-align: right;
 	border-bottom:none;
 	box-sizing: border-box;
+	pointer-events: auto;
 
 //  display:non
 	& .active { 
@@ -2613,6 +2620,7 @@ header {
 // lang
 .dropdown-menu { 
 
+	pointer-events: auto;
 	font-family: 'Futura';
 	position:relative;
 	border-radius: 2px;
@@ -2627,6 +2635,7 @@ header {
 
 .lang-btn {
 
+	pointer-events: auto;
 	font-size: .8em;
 	color: white;//$no-flat-blue;
 	cursor:pointer;
@@ -2796,15 +2805,13 @@ header {
 	position:absolute;
 	display:block;
 	width:100%;
-    z-index: 0;
-    transition: all 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000); /* easeOutSine */
+	z-index: 0;
+	transition: all 1200ms cubic-bezier(0.390, 0.575, 0.565, 1.000); /* easeOutSine */
 	opacity:1;
 
 	@include respond-min($bp-narrow) {
-		
 	}
 	@include respond-min($bp-mid) {
-
 	}
 	@include respond-min($bp-wide) {
 
@@ -2818,10 +2825,13 @@ header {
 
 .big-null { 
 
-    transform: scale(0.3);
-    top: -15vw;
-    left: -30vw;
-    position: absolute;
+	transform: scale(0.3);
+	top: -15vw;
+	left: -30vw;
+	position: absolute;
+	@include respond-min($bp-mid) {
+		 transform: scale(0.2);
+	}
 }
 
 .project-image {
@@ -3157,6 +3167,7 @@ footer {
 	display:inline-block;
 	width:100%;
 	margin: 0 10px;
+	cursor: pointer;
 
 	@include respond-min($bp-narrow) {
 		font-size:0.7em;
@@ -3208,15 +3219,37 @@ footer {
 	content:"";
 }
 
+
+.back-to-top-link {
+
+	cursor:pointer!important;
+
+	p {
+		color:$no-flat-blue;
+			pointer:cursor;
+	}
+	img {
+		width: 100px;
+			pointer:cursor;
+	}
+	position:absolute;
+	text-align:center;
+
+
+    top: 15vh;
+    right: 10vw;
+}
+
+
 .end-line {
 	width: 100%;
 	position: absolute;
-	bottom: 35%;
+	bottom: 25%;
 	@include respond-min($bp-narrow) {
-		bottom: 30%;
+		bottom: 15%;
 	}
 	@include respond-min($bp-mid) {
-		bottom: 25%;
+		bottom: 15%;
 	}
 	@include respond-min($bp-wide) {
 	}
@@ -3477,6 +3510,31 @@ footer {
 	}
 
 }
+
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+}
+
+
+
+
 
 // .fake-bg { 
 // 	height:100%;
