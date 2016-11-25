@@ -164,16 +164,38 @@
 
 		drawFollowLines : function() {
 
-			var amountOfLines = 40;
+			var blockWidth = 82
+			var amountOfColumns;
+			var amountOfRows;
+			if(!FBZ.model.mobileMode) { 
+				amountOfColumns = 5;
+				amountOfRows 	= 3;
+			 }
+			if(!FBZ.model.tabletMode) { 
+				amountOfColumns = 5;
+				amountOfRows 	= 7;
+			 }
+			if(!FBZ.model.desktopMode) { 
+				amountOfColumns = 7;
+				amountOfRows 	= 8;
+			 }
 
-			if($(".block-line").length != amountOfLines ) {
+			console.log("areas$ : ",$(".area"),$(".area").width());
 
-			for (var i = 0; i < amountOfLines; i++) {
-					$(".area-in").append('<span class="block-line"><span class="shape"></span></span>');
-					document.addEventListener("mousemove",FBZ.control.updatedFollowArrows);
-				}
+
+				$(".area").width(amountOfColumns*blockWidth+"px");
+				var amountOfLines = amountOfColumns*amountOfRows;
+
+				if($(".block-line").length != amountOfLines ) {
+
+				for (var i = 0; i < amountOfLines; i++) {
+						$(".area-in").append('<span class="block-line"><span class="shape"></span></span>');
+						document.addEventListener("mousemove",FBZ.control.updatedFollowArrows);
+					}
 			}
 		},
+
+
 		updatedFollowArrows : function  (e) {
 			if(FBZ.model.arrowsActive) {
 			 console.log("evento : ",e);
