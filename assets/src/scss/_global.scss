@@ -28,16 +28,29 @@ area {
 }
 
 .area {
-	// width: 50%;
-	 padding-top:85px;
-	 position: relative;
-	 margin: 0 auto;
+
+	width: 100vw;
+	padding-top:85px;
+	position: relative;
+	margin: 0 auto;
 	overflow: hidden;
 	perspective: 600px;
-	height:100vh;
+	height:35vh;
 	display: table-cell; 
 	vertical-align: middle;
 	horizontal-align: middle;
+
+
+	@include respond-min($bp-narrow) {
+		width: 100vw;
+		height:30vh;
+	 }
+
+	@include respond-min($bp-mid) {
+		width: 50vw;
+		height:100vh;
+
+	}
 }
 
  .shape {
@@ -49,12 +62,32 @@ area {
 }
 
 .area .block-line {
-   width: 75px;
-   height: 75px;
+   width: 10px;
+   height: 10px;
    float: left;
    position: relative;
-   padding:40px;
+   padding:20px;
    // border: 1px solid green;
+
+	@include respond-min($bp-narrow) {
+			width: 35px;
+   			height: 35px;
+   			padding:30px;
+
+	 }
+	@include respond-min($bp-mid) {
+			width: 75px;
+   			height: 75px;
+   			padding:40px;
+
+	 }
+	@include respond-min($bp-wide) {
+	 }
+	@include respond-min($bp-huge) {
+	 }
+
+
+
 }
 
 .area .block-line .shape {
@@ -81,14 +114,17 @@ area {
 // nav toggle
 
 #nav-toggle { 	
+
+	
+	z-index:300;
 	pointer-events: auto;
 	position: absolute;
-				right: 15px;
-				top: 22px;
-				span {
-					background: $blue;
+	right: 15px;
+	top: 22px;
+	span {
+		background: $blue;
 
-				}
+	}
 			}
 
 #nav-toggle { cursor: pointer; padding: 18px 35px 16px 0px; }
@@ -1433,30 +1469,34 @@ $dot-size: 12px;
 }
 
 
-
 .display-card { 
 	background-color:rgba(#2D2DD3,0.8);
 	width: 100vw;
 	height: 100%;
 	float: right;
 	padding: 40px;
+	padding-right: 70px;
+	padding-top: 140px;
+
 	overflow:visible;
 	// overflow-y: auto;
 	position: relative;
 	z-index: 440;
 	opacity:.8;
-	padding-top: 50px;
 	cursor:pointer;
 	transition: all  800ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
 
 	@include respond-min($bp-narrow) {
+		padding-top: 270px;
 
 	}
 	@include respond-min($bp-mid) {
 		width: 50vw;
+		padding-top: 180px;
+
 	}
 	@include respond-min($bp-wide) {
-			width: 34vw;
+		width: 34vw;
 	}
 	@include respond-min($bp-huge) {
 	}
@@ -1465,12 +1505,14 @@ $dot-size: 12px;
 
 .close_x { 
 
-	top:35px;
-	left:0;
-	right:auto;
+	top:30px;
+	right:100px;
+	// right:auto;
+	left:auto; 
+	
 
 	transform-origin: 50% 50%;
-	width:31px;
+	width:34px;
 	transition: all 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
 	position:absolute!important;
 
@@ -1479,10 +1521,12 @@ $dot-size: 12px;
 	display:block;
 	transform: rotate(0deg) translateX(15px) translateY(-6px);
 
-	&.active { 
+	&.active {
+		left:0; 
 		transform: rotate(45deg)translateX(-90px) translateY(76px);
+		top:35px;
 	}
-	@include respond-min($bp-narrow) {
+	@include respond-min($bp-mid) {
 
 		left:0;
 		right:150px;
@@ -2064,12 +2108,13 @@ body, html {
 	opacity:0;
 	width:100%;
 	height:50%;
-	top:40vh;
+	top:10vh;
 	display:inline-block;
 	@include respond-min($bp-narrow) {
-	
+		top:40vh;
 	}
 	@include respond-min($bp-mid) {
+		top:40vh;
 		width:50%;
 		height:100%;
 	}
@@ -2084,13 +2129,14 @@ body, html {
   	display:inline-block;
 	width:100%; /* Let it be a block */
 	bottom:0;
-	padding: 50% 50px 30px 40px;
+	padding: 10vh 50px 30px 40px;
 	
 	@include respond-min($bp-narrow) {
+		padding: 12vh 50px 30px 40px;
 	
 	}
 	@include respond-min($bp-mid) {
-		padding: 30% 100px 50px 50px;
+		padding: 30vh 100px 50px 50px;
 	}
 	@include respond-min($bp-wide) {
 	}
@@ -2258,12 +2304,15 @@ body, html {
 	position: absolute;
 	right: 22px;
 	top: 60%;
-	transform:translateY(-50%);
+	transform:translateY(-50%) translateX(0%);
 	z-index: 5;
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	display:block;
+	transition:all 1s;
 
+	// display:none;
 
 	@include respond-min($bp-narrow) {
 
@@ -2280,6 +2329,15 @@ body, html {
 
 	}
 }
+
+.is-fading-side.onepage-pagination {
+	transform:translateY(-50%) translateX(200%);
+}
+
+.is-fading-in#nav-toggle {
+	display:block;
+}
+
 .onepage-pagination li {
 	padding: 0;
 	text-align: center;
@@ -2544,18 +2602,19 @@ header {
 .logo-header {
 
 	pointer-events: auto;
-	height:45px;
+	height:35px;
 
 	transform:translateX(-2px);
 
 	position: absolute;
 	left: 15px;
+	top: 22px;
+
+	@include respond-min($bp-narrow) {
+	 	height:45px;
 	top: 20px;
 
-	// @include respond-min($bp-mid) {
-	// 	height:98px;
-
-	// }
+	}
 
 }
 
@@ -2597,7 +2656,11 @@ header {
 	text-align:center;
 	width: 100vw;
 	height:100vh;
+	display:none;
+}
 
+.site-menu.is-fading-in {
+	display:block;
 }
 
 .menu-btn {
@@ -2779,10 +2842,25 @@ header {
 	transition: all 300ms ease-in-out;
 
 }
+.project-container {
+	padding-left: 15px;
+	overflow:hidden;
+	border:1px solid red;
+	display:block;
+	height:70vh;
+	overflow-y : auto;
+	 unicode-bidi:bidi-override;
+      direction: rtl;
+      // overflow: scroll;
+      overflow-x: hidden!important;
+	padding-left:15px;
+}
 
 .projects-scroller {
 	// margin-top:10px;
 	position: absolute;
+		border:1px solid green;
+
 	transition: all 600ms ease-in-out;
 	width: 93vw;
 	height: 80vh;
@@ -2794,7 +2872,7 @@ header {
 		
 	}
 	@include respond-min($bp-mid) {
-		overflow-y : auto;
+		// overflow-y : auto;
 
 	}
 	@include respond-min($bp-wide) {
@@ -3031,6 +3109,8 @@ header {
 //   filter: grayscale(0);
 // }
 
+
+
 .project-name {
 
 	display: block;
@@ -3038,10 +3118,10 @@ header {
 	color:$no-flat-blue;
 	white-space: nowrap;
 	font-size: 1em;
-	text-align: left;
+	text-align: right;
 	padding-left:20px;
 	// padding-right:20px;
-	text-transform:uppercase;
+	// text-transform:uppercase;
 	margin : 0px;
 	padding-top:5px;
 	transition:$transition;

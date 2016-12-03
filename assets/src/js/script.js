@@ -150,55 +150,90 @@
 			document.querySelector( "#nav-toggle" ).addEventListener( "click", function() {
 				this.classList.toggle( "active" );
 
-					$(".site-menu").toggleClass("is-hidden");
-					$(".dropdown-menu").toggleClass("is-hidden");
+					$(".site-menu").toggleClass("is-fading-in");
+					$(".dropdown-menu").toggleClass("is-fading-in");
+					$(".onepage-pagination").toggleClass("is-fading-side");
 			});
 		},
 
 		closeBurger : function () {
 					document.querySelector( "#nav-toggle" ).classList.toggle( "active" );
-					$(".site-menu").toggleClass("is-hidden");
-					$(".dropdown-menu").toggleClass("is-hidden");
-
+					$(".site-menu").toggleClass("is-fading-in");
+					$(".dropdown-menu").toggleClass("is-fading-in");
+					$(".dropdown-menu").toggleClass("is-fading-side");
 		},
 
 		drawFollowLines : function() {
 
-			var blockWidth = 82
-			var amountOfColumns;
-			var amountOfRows;
-			if(!FBZ.model.mobileMode) { 
-				amountOfColumns = 5;
-				amountOfRows 	= 3;
+			var firstTime;
+			if($(".block-line").width() != undefined ) {
+				firstTime = false;
+				blockWidth = $(".block-line").width();
+				$(".block-line").remove();
+			}else {
+				firstTime = true;
+			}
+
+			 var blockWidth;
+
+			if(FBZ.model.mobileMode) { 
+
+				blockWidth = 40;
 			 }
-			if(!FBZ.model.tabletMode) { 
-				amountOfColumns = 5;
-				amountOfRows 	= 7;
+			if(FBZ.model.tabletMode) { 
+				blockWidth = 60;
+
 			 }
-			if(!FBZ.model.desktopMode) { 
-				amountOfColumns = 7;
-				amountOfRows 	= 8;
+			if(FBZ.model.desktopMode) { 
+
+				blockWidth = 80;
+
 			 }
 
-			console.log("areas$ : ",$(".area"),$(".area").width());
+			// console.log(blockWidth);
+		
+			var amountOfColumns = Math.round( $(".area").height()/blockWidth );
+			var amountOfRows = Math.round( $(".area").width()/blockWidth);
+
+			//
+
+			 // console.log("areas$ : ",$(".area").height(),amountOfColumns,amountOfRows);
 
 
-				$(".area").width(amountOfColumns*blockWidth+"px");
+				// $(".area").width(amountOfColumns*blockWidth+"px");
+
 				var amountOfLines = amountOfColumns*amountOfRows;
 
-				if($(".block-line").length != amountOfLines ) {
+				if($(".block-line").length < amountOfLines ) {
+				
 
 				for (var i = 0; i < amountOfLines; i++) {
 						$(".area-in").append('<span class="block-line"><span class="shape"></span></span>');
-						document.addEventListener("mousemove",FBZ.control.updatedFollowArrows);
+						if (firstTime && FBZ.model.arrowsActive ) {
+							document.addEventListener("mousemove",FBZ.control.updatedFollowArrows);
+						}
 					}
+				// console.log($(".block-line").length , amountOfLines );
+
 			}
+
+
+
+				if(!FBZ.model.desktopMode ) { 
+					// send some values so the initial position is not boring;s
+					var objProxy = {}
+					objProxy.pageX = $(".area-in").width()*2;
+					objProxy.pageY = -$(".area-in").height()*10;
+
+					FBZ.control.updatedFollowArrows(objProxy);
+
+				 }
 		},
 
 
 		updatedFollowArrows : function  (e) {
 			if(FBZ.model.arrowsActive) {
-			 console.log("evento : ",e);
+			 // console.log("evento : ",e);
 				for (var l = 0; l < $(".block-line").length; l++) {
 					 $(".block-line:nth-child(" + (l + 1) + ")").each(function() {
 						var offset = $(this).offset(),
@@ -216,6 +251,9 @@
 				})
 			 }
  
+			 			// $(".block-line").width(blockWidth+"px");
+
+      		}else {
 
       		}
 		},
@@ -1331,7 +1369,9 @@
 				// to re - resize the layout . 
 				FBZ.control.defineStage();
 				FBZ.control.resizeContentBlock();
-				
+				// for the mission stuff 
+				FBZ.control.drawFollowLines();
+
 				//	// to activate accordeon add existence check 
 		//		FBZ.control.activateProjectsAccordeon();
 
