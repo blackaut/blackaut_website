@@ -2838,34 +2838,30 @@ header {
 .projects-holder { 
 
 	position: absolute;
-	top : 0;
+	top: 0;
 	transition: all 300ms ease-in-out;
 
 }
 .project-container {
 	padding-left: 15px;
-	overflow:hidden;
-	border:1px solid red;
 	display:block;
 	height:70vh;
-	overflow-y : auto;
-	 unicode-bidi:bidi-override;
-      direction: rtl;
-      // overflow: scroll;
-      overflow-x: hidden!important;
-	padding-left:15px;
+	overflow : hidden;
+	
 }
 
 .projects-scroller {
-	// margin-top:10px;
-	position: absolute;
-		border:1px solid green;
 
+
+	unicode-bidi:bidi-override;
+    direction: rtl;
+    overflow-x: hidden!important;
+	padding-left:15px;
+	position: absolute;
 	transition: all 600ms ease-in-out;
 	width: 93vw;
-	height: 80vh;
-	overflow-y : hidden;
-	overflow-x : hidden;
+	height: 70vh;
+	overflow-y : auto;
 
 	@include respond-min($bp-narrow) {
 
