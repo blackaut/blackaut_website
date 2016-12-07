@@ -202,7 +202,7 @@ $size: 60px;
 	transform:translateY(-50%) translateX(-50%);
 	opacity:0;
 	z-index:450;
-	background: linear-gradient(to right, rgba(255,81,47,0.6) 0%,rgba(221,36,118,0.6) 100%);
+	background: linear-gradient(to right, rgba(255,81,47,0.7) 0%,rgba(221,36,118,0.7) 100%);
 
 	@include respond-min($bp-narrow) {
 		// width:300px;
@@ -260,6 +260,8 @@ $size: 60px;
 	background-size: cover;
 	background-image: url("../../../assets/img/tools_med.png");
 
+
+
 // '../assets/img/tools_med.png'
 // '../assets/img/tools_big.png'
 
@@ -267,7 +269,39 @@ $size: 60px;
 
 
 
+.video-responsive {
+	width: 100vw;
+	height:100vh;
+    top: 0px;
+	// position:relative;
+  //   width: 200%;
+  //   height: 200%;
+  object-fit: cover;
+}
 
+.video {
+
+	min-width:100vw;
+	width:auto;
+	height:100vh;
+	min-height: 100vh;
+	// position: absolute;
+	background:transparent;
+	margin-left: auto;
+    margin-right: auto;
+object-fit: cover;
+   	display:none;
+
+	@include respond-min($bp-mid) {
+	display:block;
+ }
+}
+
+
+// for IE 10+ and EDGE;
+_:-ms-lang(x), .video-responsive {
+		display:none;
+ } 
 
 .labs-list {
 
@@ -315,7 +349,7 @@ $size: 60px;
 
 	// font-family: Roboto;
 	// text-transform: uppercase;
-	// font-size: 0.6em;
+	// font-size: 0.7em;
 	// text-align:center;
 	// color: $no-flat-blue;
 }
@@ -387,6 +421,7 @@ $size: 60px;
 		display: inline-block;;
 		width:14vw;
 		margin:0 2vw;
+		vertical-align: top;
 	}
 	ul {
 		padding:0;
@@ -612,7 +647,7 @@ section.courses {
 	    display: none;
 
 	    &.active {
-				// width:90vw;
+				
 				display: block;
 	    }
 
@@ -641,6 +676,8 @@ section.courses {
 
 		cursor:	default;
 		width:auto;
+		width:90vw;
+		margin-right: 20px;
 	}
 
 }
@@ -697,7 +734,7 @@ section.courses {
 
 	@include respond-min($bp-mid) {
 
-		width:22vw;
+		width:25vw;
 
 	}
 
@@ -711,17 +748,18 @@ section.courses {
 }
 .course-preincription {
 
-	font-size: 0.9em;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	font-size: 0.8em;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	margin:0;
-	text-align: right;
+	text-align: left;
+	font-family:"Futura";
 
 }
 
 
 .course-box {
-	overflow:hidden;
+	overflow:visible;
 	padding-left:0px;
     width: 100%;
     display: inline-block;
@@ -760,8 +798,8 @@ section.courses {
 	word-wrap: break-word;
 	hyphens: auto;
 	font-family: 'Futura';
-	text-transform: uppercase;
-	font-size: 1em;
+	// text-transform: uppercase;
+	font-size: 0.9em;
 	text-align:left;
 	top:0;
 	color:$no-flat-blue;
@@ -826,6 +864,7 @@ section.courses {
 	// opacity:0;
 	display:none;
 	color:$no-flat-blue;
+	
 
 	@include respond-min($bp-narrow) {
 
@@ -845,6 +884,8 @@ section.courses {
 }
 .course-CTA {
 
+	  line-height: 1.2em;
+  	vertical-align: bottom;
 	display:inline-block;
 	// transform: skewX(-15deg) translateX(-15px);
 	background-color:white;
@@ -870,6 +911,11 @@ section.courses {
 	}
 
 }
+.course-box-table {
+	display: table;
+	border:1px solid red;
+	
+}
 
 
 .course-CTACopy {
@@ -879,8 +925,8 @@ section.courses {
 	position:relative;
 	padding:5px 10px;
 	@include respond-min($bp-mid) {
-		position:absolute;
-		bottom:0;
+		// position:absolute;
+		// bottom:0;
 	}
 
 	&.active {
@@ -904,8 +950,8 @@ section.courses {
 	}
 
 	@include respond-min($bp-mid) {
-		width: 30vw;
-		 padding:0 10px;
+		width: 25vw;
+		padding:0 10px;
 		 height: 100vh;
 		overflow-y: auto;
 	}
@@ -940,12 +986,30 @@ section.courses {
 
 .dates-list {
 	color: $no-flat-blue;
-
+	width:100%;
 	display:none;
+	margin:0!important;
+	padding:0!important;
+
 	@include respond-min($bp-mid) {
-		display: block;
+		display: inline-block;
 	}
 }
+
+.dates-month {
+	color:$no-flat-blue;
+}
+.date-list-day {
+	background-color:$no-flat-blue;
+	color:white;
+	display:inline;
+	padding: 3px;
+	margin:3px!important;
+	font-family:"Futura";
+	font-size:0.8em;
+	float:left;
+}
+
 .course-lessonHours{}
 .course-time{}
 .course-venue {}
@@ -967,18 +1031,20 @@ section.courses {
 }
 
 .teacher-card {
-
+	
 	float:left;
 	background-color:$no-flat-blue;
-	padding:5px;
-	width:22vw;
+	padding:30px;
+	width:25vw;
 	text-align:center;
 	display:none;
 
+
 	.teacher-name {
-		width: 100%;
-		text-align: center;
-		font-size: 1em;
+		width: 50%;
+		text-align: left;
+		font-size: 0.8em;
+		display: inline-block;
 	}
 
 
@@ -1002,10 +1068,11 @@ section.courses {
 }
 
 
-
 .teacher-image {
 
 	margin: 0 auto;
+    display: inline-block;
+    width: 50%;
 
 	img { 
 		width: 100px;
@@ -1015,10 +1082,10 @@ section.courses {
 }
 .course-teacher {
 
-	opacity:0;
+	// opacity:0;
 	position:relative;
 	bottom:auto;
-	
+	color:$no-flat-blue;
 
 	&.active {
 		
@@ -1033,8 +1100,8 @@ section.courses {
 	}
 
 	@include respond-min($bp-mid) {
-		position:absolute;
-		bottom:25px;
+		// position:absolute;
+		// bottom:25px;
 	}
 
 	@include respond-min($bp-wide) {
@@ -2646,8 +2713,12 @@ header {
 
 
 .academy-icon {
-	width:10vw;
+	// width:10vw;
 	display:inline-block;
+	img {
+	width: 10vw;
+	height:10vw;
+	}
 }
 
 .site-menu {
@@ -2802,6 +2873,7 @@ header {
 .projects-title {
 	text-align:left;
 	margin-top:15vh;
+	margin-right:2.2em!important;
 }
 
 .projects-arrow { 
@@ -2842,6 +2914,7 @@ header {
 	transition: all 300ms ease-in-out;
 
 }
+
 .project-container {
 	padding-left: 15px;
 	display:block;
@@ -2851,7 +2924,6 @@ header {
 }
 
 .projects-scroller {
-
 
 	unicode-bidi:bidi-override;
     direction: rtl;
@@ -2888,6 +2960,7 @@ header {
 	margin:0;
 	padding:0;
 	float: left;
+	color:$no-flat-blue;
 
 	&:hover { 
 
@@ -2933,27 +3006,37 @@ header {
 }
 
 .project-image {
+	padding-top:20px;
 	padding-left:20px;
-	width: 100%;
+	width: 97%;
 	height: 40%;
+	position: relative;
 	display:inline-block;
 	overflow: hidden;
 	transition: all 600ms ease-in-out;
-	float:left;
+	float:right;
 
 	@include respond-min($bp-narrow) {
 
 	}
 	@include respond-min($bp-mid) {
-		height: 50%;
+		height: 70%;
 	}
 	@include respond-min($bp-wide) {
 		width: 70%;
-		height: 70%
+		 height: 70%;
 	}
 
 	img {
 		height: auto;
+		position: absolute;
+    	right: 0;
+    	top: 50%;
+    	transform: translateY(-50%);
+    	max-width: 100%;
+    	max-height:100%;
+    	width: auto;
+    	height: auto;
 	}
 }
 
@@ -2961,12 +3044,34 @@ header {
  font-weight: bold;
 }
 
+.project-link {
+	margin-top:30px;
+	float:left;
+	text-align:left;
+	font-family: 'Futura';
+	color:$no-flat-blue!important;
+	display: inline-block;
+	font-size:0.6em!important;
+	padding-left:20px;
+	transition: all;
+
+}
+.web-icon-link {
+		vertical-align: middle;
+		transform: translateY(-0.6em);
+		width:30px;
+		display: inline-block;
+		float:left;
+		text-align:left;
+		margin-right: 6px;
+} 
+
 .project-date {
 
-	float:right;
-	text-align:right;
+	float:left;
+	text-align:left;
 	font-family: 'Futura';
-	color:white;
+	color:$no-flat-blue;
 	font-size: 1em;
 	text-transform:uppercase;
 
@@ -2988,36 +3093,38 @@ header {
 	}
 }
 
-.project-link {
-	width:100%;
-	padding-left:20px;
+// .project-link {
 
-	@include respond-min($bp-narrow) {
+// 	width:100%;
+// 	padding-left:20px;
+
+// 	@include respond-min($bp-narrow) {
 		
-	}
-	@include respond-min($bp-mid) {
+// 	}
+// 	@include respond-min($bp-mid) {
 
-	}
-	@include respond-min($bp-wide) {
-		width:30%;
-		padding-left:20px;
-	}
-	@include respond-min($bp-huge) {
+// 	}
+// 	@include respond-min($bp-wide) {
+// 		width:30%;
+// 		padding-left:20px;
+// 	}
+// 	@include respond-min($bp-huge) {
 
-	}
-}
-
+// 	}
+// }
 
 
 .project-description {
 
-	text-align:right;
-	float:right;
+	text-align:left;
+	float:left;
 	width:100%;
 	padding-left:20px;
+	color:$no-flat-blue;
+	direction: ltr;
 
 	@include respond-min($bp-narrow) {
-		
+
 	}
 	@include respond-min($bp-mid) {
 
@@ -3034,10 +3141,10 @@ header {
 
 .project-client { 
 
-	text-align:right;
-	float:right;
+	text-align:left;
+	float:left;
 	font-family: 'Futura';
-	color:white;
+	color:$no-flat-blue;
 	font-size: 1em;
 	text-transform:uppercase;
 	margin-bottom:10px;
@@ -3062,16 +3169,15 @@ header {
 	}
 }
 
-
 .project-keywords {
 
 	padding-left:20px;
 	display:block;
 	width:100%;
-	float:left;
-	text-align:left;
+	float:right;
+	text-align:right;
 	font-family: 'Futura';
-	color:white;
+	color:$no-flat-blue;
 	font-size: 1em;
 	text-transform:uppercase;
 	overflow:hidden;
@@ -3079,31 +3185,6 @@ header {
 	position: absolute;
 
 }
-
-
-.project-keywords:after {
-
-	content:"";
-	display: inline-block;
-	height: 0.5em;
-	vertical-align: bottom;
-	width:97vw;
-	margin-right: -100%;
-	margin-left: 10px;
-	border-top: 5px solid white;
-}
-// .project-image > img {
-
-//  transition: all 500ms ease-in-out;
-//  transform: rotate(20deg) scale(2);
-//  filter: grayscale(1);
-// }
-
-// .project-image > img:hover{
-//   transition: all 450ms ease-in-out;
-//   transform: rotate(0deg) scale(1);
-//   filter: grayscale(0);
-// }
 
 
 
@@ -3118,15 +3199,16 @@ header {
 	padding-left:20px;
 	// padding-right:20px;
 	// text-transform:uppercase;
-	margin : 0px;
+	margin : 10px 0 ;
 	padding-top:5px;
 	transition:$transition;
+	transform: translateX( 2.2em);
 
 
 	&:hover { 
 
-		 text-shadow: 2px 2px 0px $no-brightblue;
-		 transform: translateX(-3px);
+		// content:"///"; // text-shadow: 2px 2px 0px $no-brightblue;
+		transform: translateX(0%);
 	}
 
 	@include respond-min($bp-narrow) {
@@ -3140,6 +3222,28 @@ header {
 	@include respond-min($bp-huge) {
 	}
 
+}
+
+
+.project-name:before {
+	content:" ////";
+	opacity:0;
+	color:$no-brightblue;
+	padding-left:10px;
+	transition: all 1s;
+}
+
+
+.project-name:hover:before {
+		// display: block;
+		opacity:1;
+
+	}
+
+.close-dash {
+	color:$no-brightblue;
+	padding-left:10px;
+	display:inline;
 }
 
 /// cursos 
@@ -3336,10 +3440,13 @@ footer {
 	}
 	position:absolute;
 	text-align:center;
+    cursor: pointer !important;
+    position: absolute;
+    text-align: center;
+    top: 90vh;
+    right: 50vw;
+    transform: translateX(50%);
 
-
-    top: 15vh;
-    right: 10vw;
 }
 
 

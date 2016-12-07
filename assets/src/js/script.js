@@ -209,15 +209,10 @@
 
 				for (var i = 0; i < amountOfLines; i++) {
 						$(".area-in").append('<span class="block-line"><span class="shape"></span></span>');
-						if (firstTime && FBZ.model.arrowsActive ) {
-							document.addEventListener("mousemove",FBZ.control.updatedFollowArrows);
-						}
 					}
 				// console.log($(".block-line").length , amountOfLines );
 
 			}
-
-
 
 				if(!FBZ.model.desktopMode ) { 
 					// send some values so the initial position is not boring;s
@@ -226,7 +221,6 @@
 					objProxy.pageY = -$(".area-in").height()*10;
 
 					FBZ.control.updatedFollowArrows(objProxy);
-
 				 }
 		},
 
@@ -694,6 +688,8 @@
 			FBZ.view.$missionTextHeadline.append(FBZ.model.noBrain.Mission.elements[0].Headline); 
 			FBZ.view.$missionTextParagraph.append(FBZ.model.noBrain.Mission.elements[0].Paragraph); 
 			FBZ.control.drawFollowLines();
+			document.addEventListener("mousemove",FBZ.control.updatedFollowArrows);
+
 		},
 
 		populateAbout :  function () { 
@@ -732,13 +728,13 @@
 
 					var link = FBZ.model.noBrain.Projects.elements[i].URL;
 					if(link != "") {  
-						link= "<a class='project-link is hidden' href='"+link+"' target='_blank'>"+FBZ.model.noBrain.Projects.elements[i].URL+"</a>";
+						link = "<a class='project-link is-hidden' href='"+link+"' target='_blank'><img class='web-icon-link' src='../assets/img/web_icon.svg' alt='web_icon'/>"+FBZ.model.noBrain.Projects.elements[i].URL+"</a>";
 					}
 				FBZ.view.$projectsCardHolder.append(
 
 						"<div class='project-card'>"+ 
 
-											"<h3 data-translatable class='project-name'>"+FBZ.model.noBrain.Projects.elements[i].Name +"</h3>"+
+											"<h3  class='project-name'><span class='close-dash is-hidden'>–</span><span data-translatable>"+FBZ.model.noBrain.Projects.elements[i].Name+"</span></h3>"+
 											"<div class='project-image is-hidden'>"+
 											FBZ.model.noBrain.Projects.elements[i].Image+"</div>"+
 											// "<div class='project-text-wrapper is-hidden'>"+
@@ -755,6 +751,7 @@
 			FBZ.control.activateProjectsAccordeon();
 		},
 
+
 		populateCourses :  function () { 
 
 			FBZ.model.totalAmountOfCourses  = FBZ.model.noBrain.Courses.elements.length;
@@ -766,29 +763,36 @@
 						
 			//	$coursesContainers
 
-				 var datesList = FBZ.model.noBrain.Courses.elements[i].LessonDates.replace(/,/g,"<br>");
-				
+				var datesList = FBZ.model.noBrain.Courses.elements[i].LessonDates.split(" ");
+				var fullDatelist ="";
+
+					for (var e = 0 ; e < datesList.length ; e ++ ) {
+
+						console.log("dateList", e);
+						fullDatelist += "<li class='date-list-day'>"+datesList[e]+"</li>";
+
+					}
 				 FBZ.view.$coursesContainers.append(
 
 						"<div class='course-card'>"+ 
-
 									"<div class='close-btn is-hidden'>x</div>"+
 									"<div class='course-image' style='background-image:url("+FBZ.model.noBrain.Courses.elements[i].CoursePic+");'>"+
 									"</div>"+
-									"<div class='course-box'>"+
+									"<div class='course-box'><div class='course-box-table'>"+
 										"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
-										"<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates.split(",")[0] +"</h3>"+
+										// "<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</h3>"+
+										"<p class='dates-month'>"+FBZ.model.noBrain.Courses.elements[i].LessonMonth+"</p>"+
+										"<ul class='dates-list'>"+fullDatelist+"</ul>"+
 										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
 										"<p data-translatable class='course-teacher'>por "+FBZ.model.noBrain.Courses.elements[i].TeacherName + " // by "+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
 										"<a data-translatable class='course-CTA course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</a>"+
-									"</div>"+
+									"</div></div>"+
 
 
 									"<div class='course-details is-hidden'>"+
 
 										"<p class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
 											"<p data-translatable class='course-lessonDates'>fechas : // dates : </p>"+
-											"<p class='dates-list'>"+datesList+"</p>"+
 											"<p data-translatable class='course-lessonHours'> horas pedagogicas : "+FBZ.model.noBrain.Courses.elements[i].LessonHours+" // course length :"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
 											"<p class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"</p>"+
 											"<p data-translatable class='course-cost'>valor : "+FBZ.model.noBrain.Courses.elements[i].Cost+" // price : "+FBZ.model.noBrain.Courses.elements[i].Cost+"</p>"+
@@ -797,6 +801,7 @@
 									"</div>"+
 
 									"<div class='teacher-card is-hidden'>"+
+										"<p class='teacher-name'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName+"</p>"+
 										"<div class='teacher-image'>"+
 											"<picture>"+
 												"<source srcset='../"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.Courses.elements[i].TeacherPic+"_small.jpg' media='(max-width: 320px)'/>"+
@@ -805,14 +810,13 @@
 												"<img srcset='../"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.Courses.elements[i].TeacherPic+"_med.jpg' alt='"+FBZ.model.noBrain.Courses.elements[i].TeacherName+"'/>"+
 											"</picture>"+
 										"</div>"+
-										"<p class='teacher-name'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName+"</p>"+
 										"<p data-translatable class='teacher-description'>"+FBZ.model.noBrain.Courses.elements[i].TeacherDescription+"</p>"+			
 									"</div>"+
 										"<div class='course-contact is-hidden'>"+
 
 										"<form class='form form--horizontal' method='post' target='_blank' accept-charset='utf-8' action='../php/html_form_send.php' enctype='multipart/form-data'>"+
 
-												"<h2 class='course-preincription' data-translatable>Pre-inscribete aquí // Pre-suscribe here</h2>"+
+												"<h3 class='course-preincription' data-translatable>Pre-inscribete aquí // Pre-suscribe here</h3>"+
 														"<fieldset class='form-fieldset'>"+
 															"<div class='form-controlGroup'>"+
 																// "<label class='form-label' for='first_name'>Nombre // Name</label>"+
@@ -848,7 +852,6 @@
 
 		},
 
-	
 		fixHeaderCourses : function () {
 
 			if($(".cursos-header").css("opacity") != 0 ) {
@@ -1055,39 +1058,6 @@
 		},
 
 
-
-		populateProjects :  function () { 
-		//	console.log("populateProjects");
-
-			FBZ.model.totalAmountOfProjects  = FBZ.model.noBrain.Projects.elements.length;
-			 /// ,this is an injection of content coming from the no brain 
-//			console.log(FBZ.model.noBrain.Projects.elements.length);
-			for ( var i = 0 ; i < FBZ.model.noBrain.Projects.elements.length ; i ++ ) { 
-//				console.log(FBZ.model.noBrain.Projects.elements[i]);
-				if(FBZ.model.noBrain.Projects.elements[i].Privacy != "PRIVATE") {  
-
-				FBZ.view.$projectsCardHolder.append(
-
-						"<div class='project-card'>"+ 
-
-											"<h3 data-translatable class='project-name'>"+FBZ.model.noBrain.Projects.elements[i].Name +"</h3>"+
-											"<div class='project-image is-hidden'>"+
-											FBZ.model.noBrain.Projects.elements[i].Image+"</div>"+
-											// "<div class='project-text-wrapper is-hidden'>"+
-										"<h3 data-translatable class='project-client is-hidden'>"+FBZ.model.noBrain.Projects.elements[i].Client +"</h3>"+
-											"<p class='project-date is-hidden'>"+ FBZ.model.noBrain.Projects.elements[i].StartDate+"</p>"+
-											"<p class='project-description is-hidden' data-translatable>"+FBZ.model.noBrain.Projects.elements[i].Description+"</p>"+
-											// "</div><!--end project text-wrapper-->"+
-											"<div class='project-keywords is-hidden' data-translatable>"+FBZ.model.noBrain.Projects.elements[i].Keywords+"<span></span></div>"+
-										"</div><!--end project card-->");
-				}
-			}
-			// to activate accordeon.
-			FBZ.control.activateProjectsAccordeon();
-
-		},
-
-
 		activateProjectsAccordeon : function () {
 
 			FBZ.model.visibleScrollProjects 			= FBZ.view.$projectScroller.height();
@@ -1099,6 +1069,9 @@
 
 			FBZ.view.$projectScroller.css({ height : FBZ.model.proyectsHeight*FBZ.model.initialProjectIndex});
 
+
+			// for the slashes 
+			// FBZ.view.$projectCard.on("mouseover",FBZ.control.displaySlashes);
 	//		console.log(FBZ.model.proyectsHeight,FBZ.model.currentProjectIndex, FBZ.model.totalAmountOfProjects );
 
 			// on click car
@@ -1235,6 +1208,8 @@
 						FBZ.control.fadeShow($(value));
 					}
 				});
+				FBZ.control.updateLanguage();
+				FBZ.control.fadeShow($this.find(".close-dash"));
 
 				FBZ.control.scrollToProjectIndex(projectIndex);
 
@@ -1251,6 +1226,8 @@
 						FBZ.control.fadeHide($(value));
 					}
 				});
+				FBZ.control.fadeHide($this.find(".close-dash"));
+
 		},
 
 		readFromGoogleDocs : function () { 

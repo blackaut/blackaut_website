@@ -273,14 +273,17 @@ input[type="submit"] {
 	cursor: pointer;
 	background-color:$no-flat-blue;
 	-webkit-appearance: button;
-	color:black;
+	color:white;
 	border-radius:0;
-	font-family: 'Roboto';
+	font-family: 'Futura';
 	// transform: skewX(-15deg) translateX(-7px);
 	text-transform:uppercase;
-	padding: 15px;
 }
 
+.cursos-btn-academy {
+
+	padding: 15px;
+}
 
 /**
  * Checkboxes:

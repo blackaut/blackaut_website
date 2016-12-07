@@ -118,9 +118,9 @@ var totalSections = $("section").length;
 				}
 			} else{
 
-				if(totalSections === index ) {
-					pos += 50;
-				}
+				// if(totalSections === index ) {
+				// 	pos += 50;
+				// }
 				$(this).css({
 					"-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
 				 "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
