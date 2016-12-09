@@ -13,8 +13,6 @@
 
 		});
 
-
-
 	$(function() {
 
 		// initial functions 
@@ -418,7 +416,6 @@
 				FBZ.control.colourHeaderChange("#52FF77");
 				FBZ.control.burgerColorChange("#52FF77");
 				FBZ.control.sidebarColorChange("#52FF77");
-
 				// console.log("execute slider home");
 			}else { 
 				FBZ.sliderHome.deleteInterval();
@@ -681,6 +678,7 @@
 		 	FBZ.view.$gameRulesBox.hide();
 			FBZ.view.$coursesContainers.show()
 		 	// FBZ.control.animateCourses(0);
+
 		},
 
 		populateMission :  function () { 
@@ -768,7 +766,7 @@
 
 					for (var e = 0 ; e < datesList.length ; e ++ ) {
 
-						console.log("dateList", e);
+						// console.log("dateList", e);
 						fullDatelist += "<li class='date-list-day'>"+datesList[e]+"</li>";
 
 					}
@@ -778,21 +776,23 @@
 									"<div class='close-btn is-hidden'>x</div>"+
 									"<div class='course-image' style='background-image:url("+FBZ.model.noBrain.Courses.elements[i].CoursePic+");'>"+
 									"</div>"+
-									"<div class='course-box'><div class='course-box-table'>"+
+									"<div class='course-box'>"+
 										"<h3 data-translatable class='course-name'>"+FBZ.model.noBrain.Courses.elements[i].CourseName +"</h3>"+
 										// "<h4 data-translatable class='course-start-date'>"+FBZ.model.noBrain.Courses.elements[i].LessonDates+"</h3>"+
 										"<p class='dates-month'>"+FBZ.model.noBrain.Courses.elements[i].LessonMonth+"</p>"+
 										"<ul class='dates-list'>"+fullDatelist+"</ul>"+
+										"<div class='course-spacer'></div>"+
 										"<p data-translatable class='course-students'>"+FBZ.model.noBrain.Courses.elements[i].StudentDescription+"</p>"+
+									
 										"<p data-translatable class='course-teacher'>por "+FBZ.model.noBrain.Courses.elements[i].TeacherName + " // by "+FBZ.model.noBrain.Courses.elements[i].TeacherName +"</p>"+
 										"<a data-translatable class='course-CTA course-CTACopy'>"+FBZ.model.noBrain.Courses.elements[i].CTACopy+"</a>"+
-									"</div></div>"+
+									"</div>"+
 
 
 									"<div class='course-details is-hidden'>"+
-
+										"<div class='course-spacer'></div>"+
 										"<p class='course-description'>"+FBZ.model.noBrain.Courses.elements[i].CourseDescription+"</p>"+
-											"<p data-translatable class='course-lessonDates'>fechas : // dates : </p>"+
+											// "<p data-translatable class='course-lessonDates'>fechas : // dates : </p>"+
 											"<p data-translatable class='course-lessonHours'> horas pedagogicas : "+FBZ.model.noBrain.Courses.elements[i].LessonHours+" // course length :"+FBZ.model.noBrain.Courses.elements[i].LessonHours+"</p>"+
 											"<p class='course-time'>"+FBZ.model.noBrain.Courses.elements[i].Time+"</p>"+
 											"<p data-translatable class='course-cost'>valor : "+FBZ.model.noBrain.Courses.elements[i].Cost+" // price : "+FBZ.model.noBrain.Courses.elements[i].Cost+"</p>"+
@@ -801,7 +801,7 @@
 									"</div>"+
 
 									"<div class='teacher-card is-hidden'>"+
-										"<p class='teacher-name'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName+"</p>"+
+										"<p class='teacher-name'>"+FBZ.model.noBrain.Courses.elements[i].TeacherName+
 										"<div class='teacher-image'>"+
 											"<picture>"+
 												"<source srcset='../"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.Courses.elements[i].TeacherPic+"_small.jpg' media='(max-width: 320px)'/>"+
@@ -810,6 +810,8 @@
 												"<img srcset='../"+FBZ.model.peoplePicBaseURL+FBZ.model.noBrain.Courses.elements[i].TeacherPic+"_med.jpg' alt='"+FBZ.model.noBrain.Courses.elements[i].TeacherName+"'/>"+
 											"</picture>"+
 										"</div>"+
+										"</p>"+
+										
 										"<p data-translatable class='teacher-description'>"+FBZ.model.noBrain.Courses.elements[i].TeacherDescription+"</p>"+			
 									"</div>"+
 										"<div class='course-contact is-hidden'>"+
@@ -1105,6 +1107,15 @@
 					FBZ.view.$projectsCardHolder.css({top: posy } );
 			//		console.log(posy,FBZ.model.currentProjectIndex );
 		},
+
+
+		moveToCourseIndex : function () { 
+				var posX =  FBZ.view.$projectScroller.width() - FBZ.model.proyectsHeight* FBZ.model.currentProjectIndex;
+					FBZ.view.$projectsCardHolder.css({top: posy } );
+			//		console.log(posy,FBZ.model.currentProjectIndex );
+		},
+
+
 
 		fadeHide : function (el) { 
 
