@@ -225,8 +225,9 @@ $size: 60px;
 	height:100vh;
 	margin:auto;
 	top:50%;
-	position:absolute;
 	left:49%;
+
+	position:absolute;
 	transform:translateY(-50%) translateX(-50%);
 	opacity:0;
 	z-index:450;
@@ -238,6 +239,7 @@ $size: 60px;
 
 	@include respond-min($bp-mid) {
 		// width:400px;
+
 	}
 
 	@include respond-min($bp-wide) {
@@ -250,21 +252,26 @@ $size: 60px;
 
 }
 .labs-text {
-	padding-left: 10vw;
-	width:50vw;
+	padding-left: 15vw;
+	width:70vw;
+	font-size: .8em;
 
 	@include respond-min($bp-narrow) {
-
+		padding-left: 10vw;
+		width:50vw;
 	}
 
 	@include respond-min($bp-mid) {
+		    font-size: 1em;
 	}
 
 	@include respond-min($bp-wide) {
-
+		    font-size: 1.1em;
 	}
 
 	@include respond-min($bp-huge) {
+		 font-size: 1.2em;
+	
 	}
 
 }
@@ -272,9 +279,15 @@ $size: 60px;
 
 .labs-text-headline {
 
-    padding-top: 25%;
-    text-align: left;
-    padding-left: 10vw;
+	padding-top: 45%;
+	text-align: left;
+	padding-left: 15vw;
+	@include respond-min($bp-narrow) {
+		padding-top: 40%;
+	}
+	@include respond-min($bp-mid) {
+		padding-top: 25%;
+	}
 }
 
 
@@ -2964,7 +2977,14 @@ header {
 .projects-title {
 	text-align:left;
 	margin-top:15vh;
-	margin-right:2.2em!important;
+	padding-right:50px!important;
+
+	@include respond-min($bp-narrow) {
+		padding-right:50px!important;
+	}
+	@include respond-min($bp-mid) {
+		padding-right:2.2em!important;
+	}
 }
 
 .projects-arrow { 
@@ -3305,10 +3325,11 @@ header {
 	padding-left:20px;
 	// padding-right:20px;
 	// text-transform:uppercase;
-	margin : 10px 0 ;
+
 	padding-top:5px;
 	transition:$transition;
 	transform: translateX( 2.2em);
+    margin: 10px 30px;
 
 
 	&:hover { 
@@ -3319,6 +3340,7 @@ header {
 
 	@include respond-min($bp-narrow) {
 		font-size: 1.5em;
+			margin : 10px 0 ;
 	}
 	@include respond-min($bp-mid) {
 		font-size: 2.2em;
