@@ -284,9 +284,18 @@ $size: 60px;
 	padding-left: 15vw;
 	@include respond-min($bp-narrow) {
 		padding-top: 40%;
+		padding-left: 10vw;
+
 	}
 	@include respond-min($bp-mid) {
 		padding-top: 25%;
+		padding-left: 10vw;
+
+	}
+	@include respond-min($bp-wide) {
+		padding-top: 15%;
+	 }
+	@include respond-min($bp-huge) {
 	}
 }
 
@@ -398,16 +407,21 @@ _:-ms-lang(x), .video-responsive {
 
 
 	h2 { 
-		margin-top: 10px;
+		margin-top: 50px;
 		color:$no-flat-blue;
-		margin-bottom:30px;
-		padding-left: 10vw;
+		margin-bottom:10px;
+		padding-left: 0vw;
 		text-align:left;
 		background-color:none;
 		@include respond-min($bp-narrow) {
-		
+			margin-bottom:30px;
+
+
 		}
 		@include respond-min($bp-mid) {
+			margin-top: 30px;
+			padding-left: 10vw;
+
 		}
 		@include respond-min($bp-wide) {
 		}
@@ -423,8 +437,21 @@ _:-ms-lang(x), .video-responsive {
 .academy-text-paragraph {
 	width: 80vw;
 	font-size: 0.8em;
-	padding-left: 10vw;
+	// padding-left: 10vw;
+	padding-bottom:2vh;
+	@include respond-min($bp-narrow) {
+	
+	 }
+	@include respond-min($bp-mid) {
+		padding-left: 10vw;
+		font-size: 1em;
 
+
+	 }
+	@include respond-min($bp-wide) {
+	 }
+	@include respond-min($bp-huge) {
+	 }
 }
 
 
@@ -447,21 +474,21 @@ _:-ms-lang(x), .video-responsive {
 
 .game-rules-box { 
 
-	// border:1px solid red;
-	// background-color:$no-flat-blue;
 	color:$no-flat-blue;
 	margin-top:20vmin;
 	height:100vh;
 	width: 100%;
-	transform: translateX(1.7em);
-	float:auto;
 
 	li { 
 		list-style: none;
-		display: inline-block;;
-		width:14vw;
+		display: inline-block;
+		width:34vw;
 		margin:0 2vw;
 		vertical-align: top;
+	
+		@include respond-min($bp-mid) {
+			width:14vw;
+		}
 	}
 	ul {
 		padding:0;
@@ -470,7 +497,21 @@ _:-ms-lang(x), .video-responsive {
 			margin-bottom: 10px;
 			text-align: center;
 		}
+
 	}
+
+	span {
+		display:block;
+	}
+
+	@include respond-min($bp-mid) {
+		// height:75vh;
+		span {
+		display:inline;
+		}
+	}
+	
+
 	@include respond-min($bp-narrow) {
 		// height:75vh;
 	}
@@ -489,11 +530,12 @@ _:-ms-lang(x), .video-responsive {
 	}
 
 }
+
 .cursos-btn-academy {
 	border:2px solid $no-brightblue;
 	display: block;
-	margin: 50px auto 0 auto;
-
+	margin: 2vh auto 0 auto;
+	font-size:0.7em;
 	color: $no-flat-blue;
 	transition:all 0.7s;
 	&:hover {
@@ -502,6 +544,24 @@ _:-ms-lang(x), .video-responsive {
 		border:2px solid white;
 
 	}
+
+	@include respond-min($bp-narrow) {
+	margin: 3vh auto 0 auto;
+	font-size:0.8em;
+
+	}
+	@include respond-min($bp-mid) {
+	margin: 5vh auto 0 auto;
+	font-size:1em;
+
+	}
+	@include respond-min($bp-wide) {
+		font-size:0.7em;
+	}
+	@include respond-min($bp-huge) {
+	}
+
+
 }
 
 .academy-text {
@@ -544,25 +604,6 @@ _:-ms-lang(x), .video-responsive {
 	}
 }
 
-.academy-text-intro {
-
-	// width:100%;
-
-	// display:none!important;
-
-	@include respond-min($bp-narrow) {
-	}
-	@include respond-min($bp-mid) {
-		
-		// display: inline-block!important;
-	}
-	@include respond-min($bp-wide) {
-		
-	}
-	@include respond-min($bp-huge) {
-		
-	}
-}
 
 .cursos-header {
 
@@ -2820,10 +2861,33 @@ header {
 	// width:10vw;
 	display:inline-block;
 	img {
+	width: 15vw;
+	height:15vw;
+
+
+	@include respond-min($bp-narrow) {
+	width: 15vw;
+	height:15vw;
+
+ 	}
+
+	@include respond-min($bp-mid) {
 	width: 10vw;
 	height:10vw;
+
+	}
+	@include respond-min($bp-wide) {
+
+	width: 10vw;
+	height:10vw;
+
+	 }
+	@include respond-min($bp-huge) {
+
+	 }
 	}
 }
+
 
 .site-menu {
 	right:auto;
