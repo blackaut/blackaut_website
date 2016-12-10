@@ -647,7 +647,7 @@ section.courses {
     white-space:nowrap;
 	margin: 12vh 5vw 5vw 5vw;
 	display: inline-block;
-	width: 90vw;
+	width: 80vw;
 	position: relative;
 	// height: auto;
 	float: left;
@@ -664,7 +664,7 @@ section.courses {
 
 	}
 	@include respond-min($bp-narrow) {
-
+		width: 90vw;
 	}
 
 	@include respond-min($bp-mid) {
@@ -745,9 +745,15 @@ section.courses {
 	display: inline-block;
 	cursor: pointer;
 	// background-color:$no-black;
-	width:46vw;
 	white-space:normal;
 	vertical-align:top;
+	width:auto;
+	height:90%;
+
+	@include respond-min($bp-mid) {
+
+		width:46vw;
+	}
 
 	.close-btn {
 
@@ -755,16 +761,16 @@ section.courses {
 		position:absolute;
 		transition: all 0ms cubic-bezier(0.390, 0.575, 0.565, 1.000)!important;
 		font-size: 1.6em;
-	    top: 0px;
-	    right: 10px;
-	    display: none;
-    color: white;
-    z-index: 99;
+		top: 0px;
+		right: 10px;
+		display: none;
+		color: white;
+		z-index: 99;
 
-	    &.active {
+		&.active {
 				
 				display: block;
-	    }
+		}
 
 		@include respond-min($bp-narrow) {
 
@@ -772,8 +778,6 @@ section.courses {
 
 		@include respond-min($bp-mid) {
 			font-size: 1.5em;
-			// top: -91px;
-			// right:15px;
 		}
 
 		@include respond-min($bp-wide) {
@@ -782,8 +786,6 @@ section.courses {
 
 		@include respond-min($bp-huge) {
 		}
-
-
 
 	}
 
@@ -799,7 +801,7 @@ section.courses {
 
 .course-image {
 
-	height: 20vh;
+	height: 40vh;
     width: 80vw;
     display: inline-block;
     position: relative;
@@ -878,7 +880,7 @@ section.courses {
 	font-size:0.8em;
 	overflow:visible;
 	padding-left:0px;
-    width: 100%;
+    width: 80vw;
     // display: inline-block;
 	height:50%;
     position: relative;
@@ -891,7 +893,7 @@ section.courses {
 
 
 	@include respond-min($bp-narrow) {
-
+	
 	}
 
 	@include respond-min($bp-mid) {
@@ -918,7 +920,7 @@ section.courses {
 	hyphens: auto;
 	font-family: 'Futura';
 	// text-transform: uppercase;
-	font-size: 0.9em;
+	font-size: 1.6em;
 	text-align:left;
 	top:0;
 	color:$no-flat-blue;
@@ -926,9 +928,11 @@ section.courses {
 	display:inline-block;
 	margin: 0;
 	// opacity:0;
+	margin-top:10px;
 
 	@include respond-min($bp-narrow) {
-
+		font-size: 1.6em;
+		margin-top:0px;
 	}
 
 	@include respond-min($bp-mid) {
@@ -980,7 +984,8 @@ section.courses {
 
 .course-students {
 	// opacity:0;
-	display:none;
+	// display:none;
+	display: block;
 	color:$no-flat-blue;
 
 
@@ -990,7 +995,7 @@ section.courses {
 
 	@include respond-min($bp-mid) {
 		// display:table-cell;
-		display: block;
+
 		// display:table-footer-group;
 	}
 
@@ -1094,15 +1099,23 @@ section.courses {
 	@include respond-min($bp-huge) {
 	}
 
+	.course-spacer {
+		display: none;
+		@include respond-min($bp-mid) {
+				display: block;
+	}
+
+	}
+
 }
 
 .course-description {
 	// opacity:0;
 	color: $no-flat-blue;
 	margin-bottom: 30px;
-	display:none;
-	@include respond-min($bp-mid) {
+	// display:none;
 		display: block;
+	@include respond-min($bp-mid) {
 	}
 
 }
@@ -1118,12 +1131,11 @@ section.courses {
 .dates-list {
 	color: $no-flat-blue;
 	width:100%;
-	display:none;
+	display: inline-block;
 	margin:0!important;
 	padding:0!important;
 
 	@include respond-min($bp-mid) {
-		display: inline-block;
 	}
 }
 
@@ -2515,7 +2527,7 @@ body, html {
 
 	position: absolute;
 	right: 22px;
-	top: 60%;
+	top: 50%;
 	transform:translateY(-50%) translateX(0%);
 	z-index: 5;
 	list-style: none;
