@@ -405,7 +405,7 @@ _:-ms-lang(x), .video-responsive {
 
 .academy { 
 
-
+    overflow: hidden;
 	h2 { 
 		margin-top: 50px;
 		color:$no-flat-blue;
@@ -449,8 +449,12 @@ _:-ms-lang(x), .video-responsive {
 
 	 }
 	@include respond-min($bp-wide) {
+		font-size: 1.2em;
+
 	 }
 	@include respond-min($bp-huge) {
+		font-size: 1.4em;
+
 	 }
 }
 
@@ -496,6 +500,24 @@ _:-ms-lang(x), .video-responsive {
 		p {
 			margin-bottom: 10px;
 			text-align: center;
+
+			@include respond-min($bp-narrow) {
+
+				font-size:1em;
+			}
+
+			@include respond-min($bp-mid) {
+				font-size:1.1em;
+
+			}
+			@include respond-min($bp-wide) {
+				font-size:1.3em;
+
+ 			}
+			@include respond-min($bp-huge) {
+				font-size:1.5em;
+
+ 			}
 		}
 
 	}
@@ -532,6 +554,8 @@ _:-ms-lang(x), .video-responsive {
 }
 
 .cursos-btn-academy {
+
+	cursor:pointer;
 	border:2px solid $no-brightblue;
 	display: block;
 	margin: 2vh auto 0 auto;
@@ -1112,11 +1136,15 @@ section.courses {
 .course-description {
 	// opacity:0;
 	color: $no-flat-blue;
+	width:90%;
 	margin-bottom: 30px;
 	// display:none;
 		display: block;
 	@include respond-min($bp-mid) {
+		width:auto;
 	}
+
+
 
 }
 .course-lessonDates {
@@ -1242,7 +1270,8 @@ section.courses {
 	// display:table-footer-group;
 
 	&.active {
-		
+		position: absolute;
+		top:35%;
 		@include respond-min($bp-mid) {
 			display: none;
 		}
@@ -2872,6 +2901,8 @@ header {
 .academy-icon {
 	// width:10vw;
 	display:inline-block;
+
+
 	img {
 	width: 15vw;
 	height:15vw;
@@ -2898,6 +2929,8 @@ header {
 
 	 }
 	}
+
+
 }
 
 
@@ -2958,6 +2991,8 @@ header {
 // lang
 .dropdown-menu { 
 
+	cursor:pointer;
+	margin-top:20vh;
 	pointer-events: auto;
 	font-family: 'Futura';
 	position:relative;
@@ -2966,28 +3001,39 @@ header {
 
 	&:before { 
 
-		border: 1px $no-gray solid;
+		border: 2px $no-gray solid;
 	}
+	@include respond-min($bp-narrow) {
+	
+
+	}
+	@include respond-min($bp-mid) {
+	 }
+	@include respond-min($bp-wide) {
+	 }
+	@include respond-min($bp-huge) {
+	}
+
 }
 
 
 .lang-btn {
 
 	pointer-events: auto;
-	font-size: .8em;
+	font-size: 1.6em;
 	color: white;//$no-flat-blue;
 	cursor:pointer;
-	padding:8px;
+	padding:16px;
 //	margin: 0 auto;
 	display: inline-block;
 	transition: all 300ms ease-in-out;
 	//transform:translateX(-5px);
-	max-width:50px;
+	// max-width:50px;
 
 	&.active {
 		//background-color:$no-palegray;
 		color:$no-flat-blue;
-		border: 1px $no-flat-blue solid;
+		border: 2px $no-flat-blue solid;
 
 	}
 	&:hover {
@@ -3824,11 +3870,11 @@ footer {
 
 	text-align:right;
 	display:block;
-	padding-right: 40px;
+	padding-right: 60px;
 	float: right;
 
 	@include respond-min($bp-narrow) {
-		padding-right: 40px;
+		padding-right: 60px;
 	}
 	@include respond-min($bp-mid) {
 		padding-right: 103px;
@@ -3861,7 +3907,12 @@ footer {
 
 .contact-text-headline {
 	color: white!important;
+	padding-right:60px!important;
 	padding-top:10vh;
+
+	@include respond-min($bp-mid) {
+		padding-right:103px!important;
+	}
 }
 
 .contact-text-address {
@@ -3872,13 +3923,13 @@ footer {
 
 	float:right;
 	width:80%;
-	margin-left: 20%;
+	margin-left: 30%;
 	font-size:.8em;
 	color: $no-flat-blue!important;
 
 	@include respond-min($bp-narrow) {
 		width:80%;
-		margin-left: 20%;
+		margin-left: 30%;
 		font-size:.8em;
 	}
 	@include respond-min($bp-mid) {
@@ -3889,10 +3940,14 @@ footer {
 	@include respond-min($bp-wide) {
 		width:50%;
 		margin-left: 50%;
+		font-size: 1.2em;
+
 	}
 	@include respond-min($bp-huge) {
 		width:50%;
 		margin-left: 50%;
+		font-size: 1.4em;
+
 	}
 
 }

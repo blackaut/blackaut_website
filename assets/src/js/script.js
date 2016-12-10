@@ -151,6 +151,8 @@
 					$(".site-menu").toggleClass("is-fading-in");
 					$(".dropdown-menu").toggleClass("is-fading-in");
 					$(".onepage-pagination").toggleClass("is-fading-side");
+						FBZ.control.burgerColorChange("#FFF");
+
 			});
 		},
 
