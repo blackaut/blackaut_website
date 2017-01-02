@@ -517,6 +517,8 @@ _:-ms-lang(x), .video-responsive {
 			@include respond-min($bp-huge) {
 				font-size:1.5em;
 
+
+
  			}
 		}
 
@@ -548,7 +550,7 @@ _:-ms-lang(x), .video-responsive {
 		height:75vh;
 	}
 	@include respond-min($bp-huge) {
-	
+		margin-top:15vmin;
 	}
 
 }
@@ -580,9 +582,10 @@ _:-ms-lang(x), .video-responsive {
 
 	}
 	@include respond-min($bp-wide) {
-		font-size:0.7em;
+
 	}
 	@include respond-min($bp-huge) {
+		font-size:1.5em;
 	}
 
 
@@ -967,10 +970,12 @@ section.courses {
 	}
 
 	@include respond-min($bp-wide) {
-
+		font-size: 1.8em;
 	}
 
 	@include respond-min($bp-huge) {
+
+			font-size: 2.5em;
 	}
 
 
@@ -988,18 +993,21 @@ section.courses {
 
 
 	@include respond-min($bp-narrow) {
-
+		font-size: 0.8em;
 	}
 
 	@include respond-min($bp-mid) {
 		margin:10px 0;
+		font-size: 0.9em;
 	}
 
 	@include respond-min($bp-wide) {
-
+		font-size: 1em;
 	}
 
 	@include respond-min($bp-huge) {
+
+		font-size: 1.5em;
 	}
 
 
@@ -1028,6 +1036,7 @@ section.courses {
 	}
 
 	@include respond-min($bp-huge) {
+		font-size:1.5em;
 	}
 
 }
@@ -1898,7 +1907,7 @@ $size: 42px;
 	position: relative;
 	overflow: hidden;
 	transition: $transition;
-	border:1px $no-flat-blue solid;
+	border:2px $no-flat-blue solid;
 
 	@include respond-min($bp-narrow) {
 
@@ -2517,11 +2526,15 @@ p {
 		font-size: .8em;
 	}
 	@include respond-min($bp-mid) {
-	
+		font-size: .9em;
 	}
 	@include respond-min($bp-wide) {
+		font-size: 1em;
+
 	}
 	@include respond-min($bp-huge) {
+		font-size: 1.4em;
+
 	}
 
  }
@@ -2992,7 +3005,7 @@ header {
 .dropdown-menu { 
 
 	cursor:pointer;
-	margin-top:20vh;
+	margin-bottom:5vh;
 	pointer-events: auto;
 	font-family: 'Futura';
 	position:relative;
@@ -3099,14 +3112,9 @@ header {
 .projects-title {
 	text-align:left;
 	margin-top:15vh;
-	padding-right:50px!important;
-
-	@include respond-min($bp-narrow) {
-		padding-right:50px!important;
-	}
-	@include respond-min($bp-mid) {
-		padding-right:2.2em!important;
-	}
+	width:93vw;
+	padding-left:15px;
+	padding-right:15px!important;
 }
 
 .projects-arrow { 

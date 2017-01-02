@@ -135,13 +135,13 @@
 			FBZ.control.scrollerControl();
 			FBZ.control.checkURL();
 			FBZ.control.activateBurger();
-			FBZ.control.activateCourses();
+			// FBZ.control.activateCourses();
 		},
 
-		activateCourses :function () {
-			FBZ.view.$cursosBtnAcademy.on("click",FBZ.control.initAcademy); 
-			FBZ.view.$coursesContainers.hide();
-		},
+		// activateCourses :function () {
+		// 	FBZ.view.$cursosBtnAcademy.on("click",FBZ.control.initAcademy); 
+		// 	FBZ.view.$coursesContainers.hide();
+		// },
 
 		activateBurger : function () {
 
@@ -426,14 +426,14 @@
 			// to move footer up
 			if(FBZ.model.footerHasBeenDisplayed === true ) {
 				// console.log("stuff back to normal");
-				FBZ.control.moveElementsUp();
+				// FBZ.control.moveElementsUp();
 				console.log("move up ");
 			}
 
 			// to move footer down
 			if(FBZ.model.currentSection === "home" && index === 8 )  { 
 
-				FBZ.control.moveElementsDown();
+				// FBZ.control.moveElementsDown();
 				console.log("move down");
 				FBZ.control.sidebarColorChange("#2D2DD3");
 
@@ -475,6 +475,14 @@
 					FBZ.control.animate(FBZ.view.$academyText,"fadeInLeftObj");
 
 					console.log("academy");
+			
+			} else if (FBZ.model.currentArticule === "#courses") {
+
+					console.log("courses");
+					FBZ.control.colourHeaderChange("#52FF77");
+					FBZ.control.burgerColorChange("#52FF77");
+					FBZ.control.sidebarColorChange("#52FF77");
+
 
 			} else if (FBZ.model.currentArticule === "#contact") {
 
@@ -486,7 +494,7 @@
 
 			} else if (FBZ.model.currentArticule === "#footer") {
 					console.log("footer");
-						FBZ.control.moveElementsDown();
+						// FBZ.control.moveElementsDown();
 
 			}
 
