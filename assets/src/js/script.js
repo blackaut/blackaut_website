@@ -21,6 +21,8 @@
 		FBZ.control.determineSection();
 		FBZ.control.onResizeStage();
 		FBZ.control.defineStage();
+		FBZ.control.determineUserCountry();
+
 
 	});// END DOC READY
 	
@@ -66,6 +68,7 @@
 		flatBlue: "ﬂ#2D2DD3",
 		black : "#000000",
 		arrowsActive: false,
+		userCountry: "default",
 
 
 	};
@@ -125,7 +128,6 @@
 
 	};
 
-
 	FBZ.control = {
 		// add function here
 		init : function () {
@@ -137,11 +139,69 @@
 			FBZ.control.activateBurger();
 			// FBZ.control.activateCourses();
 		},
-
 		// activateCourses :function () {
 		// 	FBZ.view.$cursosBtnAcademy.on("click",FBZ.control.initAcademy); 
 		// 	FBZ.view.$coursesContainers.hide();
 		// },
+
+
+		determineUserCountry : function () {
+			$.get("https://ipinfo.io", function(response) {
+				console.log(response.city, response.country);
+				FBZ.model.userCountry = response.country;
+
+				FBZ.control.determineCurrentLanguageByLocation();
+
+			}, "jsonp");
+		},
+
+		determineCurrentLanguageByLocation : function () {
+
+			switch (FBZ.model.userCountry) {
+				case "AR":
+					FBZ.model.currentLang = "es";
+				break;
+				case "CL":
+					FBZ.model.currentLang = "es";
+				break;
+				case "ES":
+					FBZ.model.currentLang = "es";
+				break;
+				case "CO":
+					FBZ.model.currentLang = "es";
+				break;
+				case "PE":
+					FBZ.model.currentLang = "es";
+				break;
+
+				case "PE":
+					FBZ.model.currentLang = "es";
+				break;
+				case "UY":
+					FBZ.model.currentLang = "es";
+				break;
+				case "VE":
+					FBZ.model.currentLang = "es";
+				break;
+				case "PY":
+					FBZ.model.currentLang = "es";
+				break;
+
+				case "PA":
+					FBZ.model.currentLang = "es";
+				break;
+				case "NI":
+					FBZ.model.currentLang = "es";
+				break;
+				case "MX":
+					FBZ.model.currentLang = "es";
+				break;
+				default : 
+					FBZ.model.currentLang = "en";
+			}
+		
+		},
+
 
 		activateBurger : function () {
 
@@ -211,7 +271,6 @@
 						$(".area-in").append('<span class="block-line"><span class="shape"></span></span>');
 					}
 				// console.log($(".block-line").length , amountOfLines );
-
 			}
 
 				if(!FBZ.model.desktopMode ) { 
@@ -223,7 +282,6 @@
 					FBZ.control.updatedFollowArrows(objProxy);
 				 }
 		},
-
 
 		updatedFollowArrows : function  (e) {
 			if(FBZ.model.arrowsActive) {
@@ -293,7 +351,7 @@
 		},
 		goToSectionbyHeader : function (loc) {
 
-			console.log(loc);
+		//	console.log(loc);
 			window.location=loc;
 			$.fn.goToSectionByName();
 			FBZ.control.determineSection();
@@ -312,7 +370,7 @@
 
 
 		goToTheStart : function () {
-			console.log("go to start");
+		//	console.log("go to start");
 			 $.fn.moveTo(0);
 		},
 
@@ -444,19 +502,19 @@
 				// articule triggers for home
 			if(FBZ.model.currentArticule === "#home") {
 
-					console.log("home");
+				//	console.log("home");
 
 			} else if(FBZ.model.currentArticule === "#mission") {
 
 
-					console.log("mission");
+			//		console.log("mission");
 						// FBZ.control.animate( FBZ.view.$piramidInfo,"fadeInObj");
 						FBZ.control.animate( FBZ.view.$missionText,"fadeInUpObj");
 						
 					
 			} else if (FBZ.model.currentArticule === "#about"){
 
-				console.log("about");
+			//	console.log("about");
 
 						// FBZ.control.animate( FBZ.view.$sliderHome,"fadeInObj");
 						FBZ.control.animate(FBZ.view.$displayCard,"fadeInRightObj");
@@ -468,17 +526,17 @@
 
 					FBZ.control.animate( FBZ.view.$labsTextContainer,"fadeInUpTools");
 					FBZ.control.animate( FBZ.view.$labsBg,"zoomInBg");
-					console.log("labs");
+		//			console.log("labs");
 
 			} else if (FBZ.model.currentArticule === "#academy") {
 
 					FBZ.control.animate(FBZ.view.$academyText,"fadeInLeftObj");
 
-					console.log("academy");
+		//			console.log("academy");
 			
 			} else if (FBZ.model.currentArticule === "#courses") {
 
-					console.log("courses");
+			//		console.log("courses");
 					FBZ.control.colourHeaderChange("#52FF77");
 					FBZ.control.burgerColorChange("#52FF77");
 					FBZ.control.sidebarColorChange("#52FF77");
@@ -486,14 +544,14 @@
 
 			} else if (FBZ.model.currentArticule === "#contact") {
 
-					console.log("contact");
+			//		console.log("contact");
 
 					FBZ.control.colourHeaderChange("#2D2DD3");
 					FBZ.control.burgerColorChange("#2D2DD3");
 					FBZ.control.sidebarColorChange("#FFF");
 
 			} else if (FBZ.model.currentArticule === "#footer") {
-					console.log("footer");
+			//		console.log("footer");
 						// FBZ.control.moveElementsDown();
 
 			}
@@ -523,7 +581,7 @@
 			if(FBZ.view.$headerLogo.hasClass("is-hidden")) {
 
 				FBZ.control.fadeShow(FBZ.view.$headerLogo);
-				console.log("display logo");
+		//		console.log("display logo");
 				}
 			},
 
@@ -627,7 +685,7 @@
 			// var objeHeightBig  = $(".big img").height();
 			// var offsetDownBig = FBZ.model.stageH - objePosBig.top  - objeHeightBig + manualOffSetBig;
 
-			console.log("values  : ",FBZ.model.stageH, objePosMail.top ,objeHeightMail, manualOffSet);
+	//		console.log("values  : ",FBZ.model.stageH, objePosMail.top ,objeHeightMail, manualOffSet);
 			$(".mail-to-drag-down").css("margin-top",offsetDownMail);
 			$(".mail-to-drag-down").css("padding-top",0);
 			// $(".big").css("margin-top", offsetDownBig);
@@ -684,7 +742,7 @@
 
 		initAcademy : function () { 
 
-			console.log("academy init");
+		//	console.log("academy init");
 		 	FBZ.view.$gameRulesBox.hide();
 			FBZ.view.$coursesContainers.show()
 		 	// FBZ.control.animateCourses(0);
@@ -1029,7 +1087,7 @@
 					 FBZ.model.animateStaffClock = setInterval( function() 
 					{
 					 FBZ.control.onStaffPage();
-					 console.log("interval");
+				//	 console.log("interval");
 				}, 100);
 				} else {
 
@@ -1269,7 +1327,6 @@
 		}, 
 
 
-
 		disappearScrollIcon : function ()  { 
 			FBZ.view.$scrollIcon.scroll( function () { 
 				//$scrollIcon.css(alpha);
@@ -1290,7 +1347,7 @@
 				selector: '[data-translatable]',
 				separator: ' // ',
 				languages: ['es', 'en'],
-				defaultLanguage: 'es'
+				defaultLanguage: 'en'
 			});
 			
 			FBZ.view.$langBtn.click(function(){
@@ -1311,7 +1368,8 @@
 				FBZ.control.closeBurger();
 			});
 
-			FBZ.control.changeLanguage('es');
+			//FBZ.control.changeLanguage('en');
+			FBZ.control.updateLanguage();
 		},
 
 		burgerColorChange : function (colour) {
