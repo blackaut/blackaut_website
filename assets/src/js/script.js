@@ -145,15 +145,6 @@
 		// },
 
 
-		determineUserCountry : function () {
-			$.get("https://ipinfo.io", function(response) {
-				console.log(response.city, response.country);
-				FBZ.model.userCountry = response.country;
-
-				FBZ.control.determineCurrentLanguageByLocation();
-
-			}, "jsonp");
-		},
 
 		determineCurrentLanguageByLocation : function () {
 
